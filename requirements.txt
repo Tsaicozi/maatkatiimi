@@ -4,6 +4,7 @@ aiohttp>=3.9
 websockets>=12
 requests>=2.28.0
 python-telegram-bot>=20.0
+python-dotenv>=1.0.0
 solders>=0.21
 base58>=2.1
 

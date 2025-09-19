@@ -55,6 +55,8 @@ class TokenCandidate:
     symbol: str = ""
     name: str = ""
     decimals: int = 9
+    # DEX pool osoite (tarvitaan joissain integraatiotesteissä)
+    pool_address: str = ""
     
     # Likviditeetti ja jakelu
     liquidity_usd: float = 0.0
@@ -80,6 +82,8 @@ class TokenCandidate:
     novelty_score: float = 0.0
     liquidity_score: float = 0.0
     distribution_score: float = 0.0
+    # Yhteenvetomainen aktiivisuuspiste (testien yhteensopivuus)
+    activity_score: float = 0.0
     rug_risk_score: float = 0.0
     overall_score: float = 0.0
     last_score: float = 0.0
