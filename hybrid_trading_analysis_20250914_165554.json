@@ -1,0 +1,126 @@
+{
+  "timestamp": "2025-09-14T16:55:54.477707",
+  "tokens_scanned": 1,
+  "tokens_analyzed": 1,
+  "signals_generated": 3,
+  "trades_executed": 3,
+  "portfolio_value": 9967.464937408718,
+  "portfolio_pnl": -32.53506259128153,
+  "active_positions": 3,
+  "performance_metrics": {
+    "total_trades": 7,
+    "winning_trades": 2,
+    "losing_trades": 5,
+    "total_pnl": -27.583245610709916,
+    "max_drawdown": 0.0,
+    "sharpe_ratio": 0.0,
+    "win_rate": 0.2857142857142857,
+    "profit_factor": 0.5
+  },
+  "risk_metrics": {
+    "portfolio_heat": 0.0,
+    "max_portfolio_risk": 0.2,
+    "correlation_threshold": 0.7,
+    "dynamic_position_sizing": true
+  },
+  "tokens": [
+    {
+      "symbol": "WLFI",
+      "name": "World Liberty Financial",
+      "address": "world-liberty-financial",
+      "price": 0.215361,
+      "market_cap": 5928672688.0,
+      "volume_24h": 837711592.0,
+      "price_change_24h": -0.21445,
+      "price_change_7d": 0.0,
+      "liquidity": 83771159.2,
+      "holders": 8602,
+      "fresh_holders_1d": 90,
+      "fresh_holders_7d": 347,
+      "age_minutes": 1,
+      "social_score": 0.9,
+      "technical_score": 0.7999999999999999,
+      "momentum_score": 0.6,
+      "risk_score": 0.0,
+      "timestamp": "2025-09-14T16:55:41.907775",
+      "real_price": 0.215361,
+      "real_volume": 837711592.0,
+      "real_liquidity": 83771159.2,
+      "dex": "coingecko",
+      "pair_address": ""
+    }
+  ],
+  "positions": {
+    "PENGU": {
+      "symbol": "PENGU",
+      "name": "Pudgy Penguins",
+      "shares": 2018.6806744692044,
+      "entry_price": 0.03452552,
+      "current_price": 0.03797820442300262,
+      "entry_time": "2025-09-14T16:50:56.309539",
+      "age_minutes": 4,
+      "market_cap": 2170287856.0,
+      "real_price": 0.03452552,
+      "real_volume": 385845918.0,
+      "real_liquidity": 38584591.800000004,
+      "dex": "coingecko",
+      "pair_address": "",
+      "pnl": 6.9698673197562515,
+      "pnl_percent": 10.000383551073593
+    },
+    "UNKNOWN": {
+      "symbol": "UNKNOWN",
+      "name": "Unknown Token",
+      "shares": 2.9920556520767203,
+      "entry_price": 8.355459559265901,
+      "current_price": 8.997533031274342,
+      "entry_time": "2025-09-14T16:54:40.303047",
+      "age_minutes": 1,
+      "market_cap": 14192.738124001711,
+      "real_price": 8.355459559265901,
+      "real_volume": 320422.75379351916,
+      "real_liquidity": 9025.72439236889,
+      "dex": "raydium",
+      "pair_address": "",
+      "pnl": 1.92111956097138,
+      "pnl_percent": 7.68447824388552
+    },
+    "TRUMP": {
+      "symbol": "TRUMP",
+      "name": "Official Trump",
+      "shares": 7.94709236031927,
+      "entry_price": 8.77,
+      "current_price": 7.476261992381996,
+      "entry_time": "2025-09-14T16:54:40.857520",
+      "age_minutes": 1,
+      "market_cap": 1752776169.0,
+      "real_price": 8.77,
+      "real_volume": 461958696.0,
+      "real_liquidity": 46195869.6,
+      "dex": "coingecko",
+      "pair_address": "",
+      "pnl": -10.281455436595708,
+      "pnl_percent": -14.751858695758308
+    }
+  },
+  "signals": [
+    {
+      "type": "SELL",
+      "symbol": "WLFI",
+      "reasoning": "PnL: 18.6%, Age: 3min",
+      "confidence": 0.8
+    },
+    {
+      "type": "SELL",
+      "symbol": "USDC",
+      "reasoning": "PnL: -16.5%, Age: 0min",
+      "confidence": 0.8
+    },
+    {
+      "type": "SELL",
+      "symbol": "SUSDE",
+      "reasoning": "PnL: -8.3%, Age: 0min",
+      "confidence": 0.8
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "timestamp": "2025-09-14T17:21:45.828401",
+  "tokens_scanned": 2,
+  "tokens_analyzed": 2,
+  "signals_generated": 5,
+  "trades_executed": 5,
+  "portfolio_value": 10051.627556838634,
+  "portfolio_pnl": 51.62755683863361,
+  "active_positions": 2,
+  "performance_metrics": {
+    "total_trades": 10,
+    "winning_trades": 6,
+    "losing_trades": 4,
+    "total_pnl": 74.57858431897047,
+    "max_drawdown": 0.0,
+    "sharpe_ratio": 0.0,
+    "win_rate": 0.6,
+    "profit_factor": 1.0745785843189704
+  },
+  "risk_metrics": {
+    "portfolio_heat": 0.0,
+    "max_portfolio_risk": 0.2,
+    "correlation_threshold": 0.7,
+    "dynamic_position_sizing": true
+  },
+  "tokens": [
+    {
+      "symbol": "SUSDE",
+      "name": "Ethena Staked USDe",
+      "address": "ethena-staked-usde",
+      "price": 1.2,
+      "market_cap": 5947276447.0,
+      "volume_24h": 17958100.0,
+      "price_change_24h": 0.01262,
+      "price_change_7d": 0.0,
+      "liquidity": 1795810.0,
+      "holders": 9297,
+      "fresh_holders_1d": 84,
+      "fresh_holders_7d": 440,
+      "age_minutes": 4,
+      "social_score": 0.9,
+      "technical_score": 0.7999999999999999,
+      "momentum_score": 0.6,
+      "risk_score": 0.0,
+      "timestamp": "2025-09-14T17:21:33.190212",
+      "real_price": 1.2,
+      "real_volume": 17958100.0,
+      "real_liquidity": 1795810.0,
+      "dex": "coingecko",
+      "pair_address": ""
+    },
+    {
+      "symbol": "BNSOL",
+      "name": "Binance Staked SOL",
+      "address": "binance-staked-sol",
+      "price": 261.72,
+      "market_cap": 2957041965.0,
+      "volume_24h": 12087807.0,
+      "price_change_24h": 1.58252,
+      "price_change_7d": 0.0,
+      "liquidity": 1208780.7,
+      "holders": 2855,
+      "fresh_holders_1d": 62,
+      "fresh_holders_7d": 224,
+      "age_minutes": 4,
+      "social_score": 0.9,
+      "technical_score": 0.7999999999999999,
+      "momentum_score": 0.6,
+      "risk_score": 0.0,
+      "timestamp": "2025-09-14T17:21:33.190220",
+      "real_price": 261.72,
+      "real_volume": 12087807.0,
+      "real_liquidity": 1208780.7,
+      "dex": "coingecko",
+      "pair_address": ""
+    }
+  ],
+  "positions": {
+    "UNKNOWN": {
+      "symbol": "UNKNOWN",
+      "name": "Unknown Token",
+      "shares": 3.443427203662405,
+      "entry_price": 7.260208658806603,
+      "current_price": 7.235575380703125,
+      "entry_time": "2025-09-14T17:20:31.389869",
+      "age_minutes": 1,
+      "market_cap": 131.9106975957129,
+      "real_price": 7.260208658806603,
+      "real_volume": 771782.4046540901,
+      "real_liquidity": 74.7806165214214,
+      "dex": "raydium",
+      "pair_address": "",
+      "pnl": -0.0848228999368966,
+      "pnl_percent": -0.3392915997475864
+    },
+    "SUSDE": {
+      "symbol": "SUSDE",
+      "name": "Ethena Staked USDe",
+      "shares": 58.08,
+      "entry_price": 1.2,
+      "current_price": 0.9826327723174753,
+      "entry_time": "2025-09-14T17:21:44.835259",
+      "age_minutes": 0,
+      "market_cap": 5947276447.0,
+      "real_price": 1.2,
+      "real_volume": 17958100.0,
+      "real_liquidity": 1795810.0,
+      "dex": "coingecko",
+      "pair_address": "",
+      "pnl": -12.624688583801035,
+      "pnl_percent": -18.113935640210393
+    }
+  },
+  "signals": [
+    {
+      "type": "BUY",
+      "symbol": "SUSDE",
+      "reasoning": "Korkea entry score (0.80), Matala riski (0.00), Korkea volume ($17,958,100), Social buzz (0.90), Portfolio heat: 0.0%",
+      "confidence": 0.8200000000000001
+    },
+    {
+      "type": "SELL",
+      "symbol": "PUMP",
+      "reasoning": "PnL: 13.6%, Age: 3min",
+      "confidence": 0.8
+    },
+    {
+      "type": "SELL",
+      "symbol": "PENGU",
+      "reasoning": "PnL: 17.7%, Age: 3min",
+      "confidence": 0.8
+    },
+    {
+      "type": "SELL",
+      "symbol": "USDS",
+      "reasoning": "PnL: -10.8%, Age: 0min",
+      "confidence": 0.8
+    },
+    {
+      "type": "SELL",
+      "symbol": "BNSOL",
+      "reasoning": "PnL: -13.0%, Age: 0min",
+      "confidence": 0.8
+    }
+  ]
+}

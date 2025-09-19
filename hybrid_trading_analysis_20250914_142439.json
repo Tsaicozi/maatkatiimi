@@ -1,0 +1,55 @@
+{
+  "timestamp": "2025-09-14T14:24:39.178558",
+  "tokens_scanned": 1,
+  "tokens_analyzed": 1,
+  "signals_generated": 0,
+  "trades_executed": 0,
+  "portfolio_value": 10000.0,
+  "portfolio_pnl": 0.0,
+  "active_positions": 0,
+  "performance_metrics": {
+    "total_trades": 0,
+    "winning_trades": 0,
+    "losing_trades": 0,
+    "total_pnl": 0.0,
+    "max_drawdown": 0.0,
+    "sharpe_ratio": 0.0,
+    "win_rate": 0.0,
+    "profit_factor": 0.0
+  },
+  "risk_metrics": {
+    "portfolio_heat": 0.0,
+    "max_portfolio_risk": 0.2,
+    "correlation_threshold": 0.7,
+    "dynamic_position_sizing": true
+  },
+  "tokens": [
+    {
+      "symbol": "RENDER",
+      "name": "Render",
+      "address": "render-token",
+      "price": 3.95,
+      "market_cap": 2051823985.0,
+      "volume_24h": 67803955.0,
+      "price_change_24h": -2.77386,
+      "price_change_7d": 0.0,
+      "liquidity": 6780395.5,
+      "holders": 3358,
+      "fresh_holders_1d": 62,
+      "fresh_holders_7d": 57,
+      "age_minutes": 1,
+      "social_score": 0.9,
+      "technical_score": 0.6,
+      "momentum_score": 0.6,
+      "risk_score": 0.1,
+      "timestamp": "2025-09-14T14:24:27.797041",
+      "real_price": 3.95,
+      "real_volume": 67803955.0,
+      "real_liquidity": 6780395.5,
+      "dex": "coingecko",
+      "pair_address": ""
+    }
+  ],
+  "positions": {},
+  "signals": []
+}

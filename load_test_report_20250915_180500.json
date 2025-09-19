@@ -1,0 +1,28 @@
+{
+  "run_id": "run_20250915_180500_6638c5bb",
+  "timestamp": "2025-09-15T18:05:00.622428",
+  "test_duration_sec": 10,
+  "rate_per_sec": 200,
+  "tests": [
+    {
+      "test_name": "test_0",
+      "error": "DiscoveryEngine.__init__() got an unexpected keyword argument 'rpc_client'",
+      "success": false
+    },
+    {
+      "test_name": "test_1",
+      "error": "DiscoveryEngine.__init__() got an unexpected keyword argument 'rpc_client'",
+      "success": false
+    },
+    {
+      "test_name": "test_2",
+      "error": "DiscoveryEngine.__init__() got an unexpected keyword argument 'rpc_client'",
+      "success": false
+    }
+  ],
+  "summary": {
+    "total_tests": 3,
+    "passed_tests": 0,
+    "failed_tests": 3
+  }
+}

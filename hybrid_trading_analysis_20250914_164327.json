@@ -1,0 +1,134 @@
+{
+  "timestamp": "2025-09-14T16:43:27.757433",
+  "tokens_scanned": 2,
+  "tokens_analyzed": 2,
+  "signals_generated": 3,
+  "trades_executed": 3,
+  "portfolio_value": 10171.932150079925,
+  "portfolio_pnl": 171.93215007992512,
+  "active_positions": 2,
+  "performance_metrics": {
+    "total_trades": 17,
+    "winning_trades": 11,
+    "losing_trades": 6,
+    "total_pnl": 141.48609386555069,
+    "max_drawdown": 0.0,
+    "sharpe_ratio": 0.0,
+    "win_rate": 0.6470588235294118,
+    "profit_factor": 1.1414860938655507
+  },
+  "risk_metrics": {
+    "portfolio_heat": 0.0,
+    "max_portfolio_risk": 0.2,
+    "correlation_threshold": 0.7,
+    "dynamic_position_sizing": true
+  },
+  "tokens": [
+    {
+      "symbol": "USDS",
+      "name": "USDS",
+      "address": "usds",
+      "price": 0.99975,
+      "market_cap": 7962674195.0,
+      "volume_24h": 7120918.0,
+      "price_change_24h": 0.01279,
+      "price_change_7d": 0.0,
+      "liquidity": 712091.8,
+      "holders": 623,
+      "fresh_holders_1d": 34,
+      "fresh_holders_7d": 121,
+      "age_minutes": 5,
+      "social_score": 0.9,
+      "technical_score": 0.7999999999999999,
+      "momentum_score": 0.6,
+      "risk_score": 0.0,
+      "timestamp": "2025-09-14T16:43:15.838108",
+      "real_price": 0.99975,
+      "real_volume": 7120918.0,
+      "real_liquidity": 712091.8,
+      "dex": "coingecko",
+      "pair_address": ""
+    },
+    {
+      "symbol": "BNSOL",
+      "name": "Binance Staked SOL",
+      "address": "binance-staked-sol",
+      "price": 263.42,
+      "market_cap": 2966064019.0,
+      "volume_24h": 12285579.0,
+      "price_change_24h": 1.60859,
+      "price_change_7d": 0.0,
+      "liquidity": 1228557.9000000001,
+      "holders": 192,
+      "fresh_holders_1d": 55,
+      "fresh_holders_7d": 352,
+      "age_minutes": 5,
+      "social_score": 0.9,
+      "technical_score": 0.75,
+      "momentum_score": 0.6,
+      "risk_score": 0.05,
+      "timestamp": "2025-09-14T16:43:15.838121",
+      "real_price": 263.42,
+      "real_volume": 12285579.0,
+      "real_liquidity": 1228557.9000000001,
+      "dex": "coingecko",
+      "pair_address": ""
+    }
+  ],
+  "positions": {
+    "USDS": {
+      "symbol": "USDS",
+      "name": "USDS",
+      "shares": 132.033008252063,
+      "entry_price": 0.99975,
+      "current_price": 1.2048651976755402,
+      "entry_time": "2025-09-14T16:43:26.846544",
+      "age_minutes": 0,
+      "market_cap": 7962674195.0,
+      "real_price": 0.99975,
+      "real_volume": 7120918.0,
+      "real_liquidity": 712091.8,
+      "dex": "coingecko",
+      "pair_address": "",
+      "pnl": 27.081976587318135,
+      "pnl_percent": 20.516648929786466
+    },
+    "BNSOL": {
+      "symbol": "BNSOL",
+      "name": "Binance Staked SOL",
+      "shares": 0.5011009035001138,
+      "entry_price": 263.42,
+      "current_price": 238.52453493763846,
+      "entry_time": "2025-09-14T16:43:27.168209",
+      "age_minutes": 0,
+      "market_cap": 2966064019.0,
+      "real_price": 263.42,
+      "real_volume": 12285579.0,
+      "real_liquidity": 1228557.9000000001,
+      "dex": "coingecko",
+      "pair_address": "",
+      "pnl": -12.475140035804891,
+      "pnl_percent": -9.450863663488555
+    }
+  },
+  "signals": [
+    {
+      "type": "BUY",
+      "symbol": "USDS",
+      "reasoning": "Korkea entry score (0.80), Matala riski (0.00), Korkea volume ($7,120,918), Social buzz (0.90), Portfolio heat: 0.0%",
+      "confidence": 0.8200000000000001
+    },
+    {
+      "type": "BUY",
+      "symbol": "BNSOL",
+      "reasoning": "Korkea entry score (0.75), Matala riski (0.05), Korkea volume ($12,285,579), Social buzz (0.90), Portfolio heat: 0.0%",
+      "confidence": 0.7750000000000001
+    },
+    {
+      "type": "SELL",
+      "symbol": "USDE",
+      "reasoning": "PnL: -12.0%, Age: 1min",
+      "confidence": 0.8
+    }
+  ]
+}

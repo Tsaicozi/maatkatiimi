@@ -1,0 +1,201 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "Hybrid Trading Bot",
+    "tags": ["hybrid-bot", "trading", "solana"],
+    "timezone": "Europe/Helsinki",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Hot Candidates",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "hybrid_bot_hot_candidates",
+            "legendFormat": "Hot Candidates"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "thresholds": {
+              "steps": [
+                {"color": "red", "value": 0},
+                {"color": "yellow", "value": 1},
+                {"color": "green", "value": 5}
+              ]
+            }
+          }
+        },
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 0}
+      },
+      {
+        "id": 2,
+        "title": "Score Distribution",
+        "type": "heatmap",
+        "targets": [
+          {
+            "expr": "sum(rate(hybrid_bot_score_hist_bucket[5m])) by (le)",
+            "legendFormat": "Score Distribution"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 6, "y": 0}
+      },
+      {
+        "id": 3,
+        "title": "RPC Latency (p95)",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "job:rpc_p95:5m",
+            "legendFormat": "RPC Latency p95"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "s",
+            "color": {
+              "mode": "palette-classic"
+            }
+          }
+        },
+        "gridPos": {"h": 8, "w": 6, "x": 18, "y": 0}
+      },
+      {
+        "id": 4,
+        "title": "Candidates Filtered (per min)",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "job:filter_rate_per_min",
+            "legendFormat": "Filtered per min"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "reqps",
+            "color": {
+              "mode": "palette-classic"
+            }
+          }
+        },
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 8}
+      },
+      {
+        "id": 5,
+        "title": "Telegram Messages (per min)",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "job:telegram_per_min",
+            "legendFormat": "Messages per min"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "reqps",
+            "color": {
+              "mode": "palette-classic"
+            }
+          }
+        },
+        "gridPos": {"h": 8, "w": 6, "x": 6, "y": 8}
+      },
+      {
+        "id": 6,
+        "title": "Queue Depth",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "hybrid_bot_queue_depth",
+            "legendFormat": "Queue Depth"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            }
+          }
+        },
+        "gridPos": {"h": 8, "w": 6, "x": 12, "y": 8}
+      },
+      {
+        "id": 7,
+        "title": "Engine Status",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "hybrid_bot_engine_running",
+            "legendFormat": "Engine Running"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "thresholds": {
+              "steps": [
+                {"color": "red", "value": 0},
+                {"color": "green", "value": 1}
+              ]
+            },
+            "mappings": [
+              {"type": "value", "value": "0", "text": "Stopped"},
+              {"type": "value", "value": "1", "text": "Running"}
+            ]
+          }
+        },
+        "gridPos": {"h": 8, "w": 6, "x": 18, "y": 8}
+      },
+      {
+        "id": 8,
+        "title": "Cycle Duration (p95)",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "job:cycle_p95:5m",
+            "legendFormat": "Cycle Duration p95"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "s",
+            "color": {
+              "mode": "palette-classic"
+            }
+          }
+        },
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 16}
+      },
+      {
+        "id": 9,
+        "title": "RPC Errors (per min)",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "rate(hybrid_bot_rpc_errors_total[1m])",
+            "legendFormat": "RPC Errors per min"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "reqps",
+            "color": {
+              "mode": "palette-classic"
+            }
+          }
+        },
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 16}
+      }
+    ],
+    "time": {
+      "from": "now-1h",
+      "to": "now"
+    },
+    "refresh": "30s"
+  }
+}

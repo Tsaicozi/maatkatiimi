@@ -1,0 +1,80 @@
+{
+  "timestamp": "2025-09-14T16:48:31.084313",
+  "tokens_scanned": 1,
+  "tokens_analyzed": 1,
+  "signals_generated": 1,
+  "trades_executed": 1,
+  "portfolio_value": 10004.972956318017,
+  "portfolio_pnl": 4.972956318017168,
+  "active_positions": 1,
+  "performance_metrics": {
+    "total_trades": 0,
+    "winning_trades": 0,
+    "losing_trades": 0,
+    "total_pnl": 0.0,
+    "max_drawdown": 0.0,
+    "sharpe_ratio": 0.0,
+    "win_rate": 0.0,
+    "profit_factor": 0.0
+  },
+  "risk_metrics": {
+    "portfolio_heat": 0.0,
+    "max_portfolio_risk": 0.2,
+    "correlation_threshold": 0.7,
+    "dynamic_position_sizing": true
+  },
+  "tokens": [
+    {
+      "symbol": "BNSOL",
+      "name": "Binance Staked SOL",
+      "address": "binance-staked-sol",
+      "price": 263.13,
+      "market_cap": 2967677835.0,
+      "volume_24h": 12291512.0,
+      "price_change_24h": 1.73596,
+      "price_change_7d": 0.0,
+      "liquidity": 1229151.2,
+      "holders": 8366,
+      "fresh_holders_1d": 62,
+      "fresh_holders_7d": 175,
+      "age_minutes": 5,
+      "social_score": 0.9,
+      "technical_score": 0.7999999999999999,
+      "momentum_score": 0.6,
+      "risk_score": 0.0,
+      "timestamp": "2025-09-14T16:48:19.296904",
+      "real_price": 263.13,
+      "real_volume": 12291512.0,
+      "real_liquidity": 1229151.2,
+      "dex": "coingecko",
+      "pair_address": ""
+    }
+  ],
+  "positions": {
+    "BNSOL": {
+      "symbol": "BNSOL",
+      "name": "Binance Staked SOL",
+      "shares": 0.26487287652491165,
+      "entry_price": 263.13,
+      "current_price": 281.9048794186155,
+      "entry_time": "2025-09-14T16:48:30.893672",
+      "age_minutes": 0,
+      "market_cap": 2967677835.0,
+      "real_price": 263.13,
+      "real_volume": 12291512.0,
+      "real_liquidity": 1229151.2,
+      "dex": "coingecko",
+      "pair_address": "",
+      "pnl": 4.972956318017052,
+      "pnl_percent": 7.1352105113881015
+    }
+  },
+  "signals": [
+    {
+      "type": "BUY",
+      "symbol": "BNSOL",
+      "reasoning": "Korkea entry score (0.80), Matala riski (0.00), Korkea volume ($12,291,512), Social buzz (0.90), Portfolio heat: 0.0%",
+      "confidence": 0.8200000000000001
+    }
+  ]
+}

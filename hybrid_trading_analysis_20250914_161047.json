@@ -1,0 +1,103 @@
+{
+  "timestamp": "2025-09-14T16:10:47.227862",
+  "tokens_scanned": 1,
+  "tokens_analyzed": 1,
+  "signals_generated": 2,
+  "trades_executed": 2,
+  "portfolio_value": 10204.27791800729,
+  "portfolio_pnl": 204.27791800729028,
+  "active_positions": 2,
+  "performance_metrics": {
+    "total_trades": 24,
+    "winning_trades": 10,
+    "losing_trades": 1,
+    "total_pnl": 206.205803499814,
+    "max_drawdown": 0.0,
+    "sharpe_ratio": 0.0,
+    "win_rate": 0.4166666666666667,
+    "profit_factor": 0.1
+  },
+  "risk_metrics": {
+    "portfolio_heat": 0.0,
+    "max_portfolio_risk": 0.2,
+    "correlation_threshold": 0.7,
+    "dynamic_position_sizing": true
+  },
+  "tokens": [
+    {
+      "symbol": "BNSOL",
+      "name": "Binance Staked SOL",
+      "address": "binance-staked-sol",
+      "price": 263.3,
+      "market_cap": 2964852367.0,
+      "volume_24h": 12278947.0,
+      "price_change_24h": 1.41103,
+      "price_change_7d": 0.0,
+      "liquidity": 1227894.7,
+      "holders": 4291,
+      "fresh_holders_1d": 58,
+      "fresh_holders_7d": 500,
+      "age_minutes": 2,
+      "social_score": 0.9,
+      "technical_score": 0.7999999999999999,
+      "momentum_score": 0.6,
+      "risk_score": 0.0,
+      "timestamp": "2025-09-14T16:10:35.075009",
+      "real_price": 263.3,
+      "real_volume": 12278947.0,
+      "real_liquidity": 1227894.7,
+      "dex": "coingecko",
+      "pair_address": ""
+    }
+  ],
+  "positions": {
+    "USDC": {
+      "symbol": "USDC",
+      "name": "USDC",
+      "shares": 100.01960384235309,
+      "entry_price": 0.999804,
+      "current_price": 0.8796618492662807,
+      "entry_time": "2025-09-14T16:09:33.794061",
+      "age_minutes": 1,
+      "market_cap": 73189389201.0,
+      "real_price": 0.999804,
+      "real_volume": 7811552481.0,
+      "real_liquidity": 781155248.1,
+      "dex": "coingecko",
+      "pair_address": "",
+      "pnl": -12.016570321154882,
+      "pnl_percent": -12.016570321154884
+    },
+    "BNSOL": {
+      "symbol": "BNSOL",
+      "name": "Binance Staked SOL",
+      "shares": 0.37979491074819594,
+      "entry_price": 263.3,
+      "current_price": 289.86350715378836,
+      "entry_time": "2025-09-14T16:10:46.773234",
+      "age_minutes": 0,
+      "market_cap": 2964852367.0,
+      "real_price": 263.3,
+      "real_volume": 12278947.0,
+      "real_liquidity": 1227894.7,
+      "dex": "coingecko",
+      "pair_address": "",
+      "pnl": 10.088684828632111,
+      "pnl_percent": 10.088684828632113
+    }
+  },
+  "signals": [
+    {
+      "type": "BUY",
+      "symbol": "BNSOL",
+      "reasoning": "Korkea entry score (0.80), Matala riski (0.00), Korkea volume ($12,278,947), Social buzz (0.90), Portfolio heat: 0.0%",
+      "confidence": 0.8200000000000001
+    },
+    {
+      "type": "SELL",
+      "symbol": "WLFI",
+      "reasoning": "PnL: 11.4%, Age: 0min",
+      "confidence": 0.8
+    }
+  ]
+}

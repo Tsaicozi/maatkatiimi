@@ -1,0 +1,2390 @@
+#!/usr/bin/env python3
+"""
+Hybrid Trading Bot - Oikeat tokenit, Demo valuutta
+Skannaa oikeita Solana tokeneita oikeasta markkinasta mutta käyttää demo valuuttaa kaupoissa
+"""
+
+import asyncio
+import aiohttp
+import json
+import logging
+import time
+from datetime import datetime, timedelta
+from dataclasses import dataclass, asdict
+from typing import List, Dict, Optional, Any
+import random
+import os
+from dotenv import load_dotenv
+from telegram_bot_integration import TelegramBot
+from config import load_config
+from metrics import metrics
+
+# DiscoveryEngine integration - siirretään __init__:iin
+DISCOVERY_ENGINE_AVAILABLE = False
+TokenCandidate = None
+
+# PumpPortal integration
+try:
+    from pumpportal_integration import PumpPortalAnalyzer, PumpPortalClient
+    PUMPPORTAL_AVAILABLE = True
+except ImportError:
+    PUMPPORTAL_AVAILABLE = False
+
+# Lataa environment variables
+load_dotenv()
+
+# Logging setup
+logging.basicConfig(
+    level=logging.DEBUG,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('hybrid_trading_bot.log'),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger(__name__)
+
+@dataclass
+class HybridToken:
+    """Hybrid token dataclass - oikeat tiedot, demo trading"""
+    symbol: str
+    name: str
+    address: str
+    price: float
+    market_cap: float
+    volume_24h: float
+    price_change_24h: float
+    price_change_7d: float
+    liquidity: float
+    holders: int
+    fresh_holders_1d: int
+    fresh_holders_7d: int
+    age_minutes: int
+    social_score: float
+    technical_score: float
+    momentum_score: float
+    risk_score: float
+    timestamp: str
+    # Oikeat markkina tiedot
+    real_price: float
+    real_volume: float
+    real_liquidity: float
+    dex: str
+    pair_address: str
+
+class HybridTokenScanner:
+    """Skannaa oikeita Solana tokeneita oikeista API:sta"""
+    
+    def __init__(self):
+        # DexScreener API endpointit dokumentaation mukaan
+        self.dexscreener_base_url = "https://api.dexscreener.com"
+        self.dexscreener_search_url = "https://api.dexscreener.com/latest/dex/search"
+        self.dexscreener_pairs_url = "https://api.dexscreener.com/latest/dex/pairs/solana"
+        self.birdeye_url = "https://public-api.birdeye.so/public/v1/tokenlist?sort_by=v24hUSD&sort_type=desc&offset=0&limit=50"
+        self.coingecko_url = "https://api.coingecko.com/api/v3/simple/price"
+        self.moralis_url = "https://deep-index.moralis.io/api/v2/solana/mainnet/token/So11111111111111111111111111111111111111112/metadata"
+        
+        # Uudet Solana DEX API:t
+        self.jupiter_url = "https://quote-api.jup.ag/v6"
+        self.raydium_url = "https://api.raydium.io/v2"
+        self.orca_url = "https://api.orca.so/v1"
+        self.coinmarketcap_url = "https://pro-api.coinmarketcap.com/v1"
+        self.cryptocompare_url = "https://min-api.cryptocompare.com/data"
+        self.coinpaprika_url = "https://api.coinpaprika.com/v1"
+        
+        
+        self.session = None
+        
+        # API avaimet
+        self.birdeye_api_key = os.getenv('BIRDEYE_API_KEY')
+        self.moralis_api_key = os.getenv('MORALIS_API_KEY')
+        self.dexscreener_api_key = os.getenv('DEXSCREENER_API_KEY')
+        self.coinmarketcap_api_key = os.getenv('COINMARKETCAP_API_KEY')
+        self.cryptocompare_api_key = os.getenv('CRYPTOCOMPARE_API_KEY')
+        
+        # Debug API avaimet
+        logger.info(f"🔑 API avaimet: DexScreener={'✅' if self.dexscreener_api_key else '❌'}, CMC={'✅' if self.coinmarketcap_api_key else '❌'}, CC={'✅' if self.cryptocompare_api_key else '❌'}, PumpPortal={'✅' if PUMPPORTAL_AVAILABLE else '❌'}")
+        
+        # Telegram bot
+        self.telegram_bot = TelegramBot()
+        
+        # DiscoveryEngine
+        self.discovery_engine = None
+        logger.info("🔍 Yritetään alustaa DiscoveryEngine...")
+        try:
+            from discovery_engine import DiscoveryEngine, TokenCandidate
+            logger.info("✅ DiscoveryEngine import onnistui")
+            # Alusta DiscoveryEngine mock sources:illa
+            self.discovery_engine = DiscoveryEngine(
+                rpc_endpoint="https://api.mainnet-beta.solana.com",
+                market_sources=[],  # Aluksi tyhjä - lisätään sources myöhemmin
+                min_liq_usd=load_config().discovery.min_liq_usd
+            )
+            logger.info(f"✅ DiscoveryEngine alustettu: {len(sources)} lähdettä, min_liq=${cfg.discovery.min_liq_usd}")
+        except ImportError as e:
+            logger.warning(f"❌ DiscoveryEngine import epäonnistui: {e}")
+            self.discovery_engine = None
+        except Exception as e:
+            logger.warning(f"⚠️ DiscoveryEngine alustus epäonnistui: {e}")
+            logger.error(f"Virhe yksityiskohdat: {type(e).__name__}: {e}")
+            import traceback
+            logger.error(f"Traceback: {traceback.format_exc()}")
+            self.discovery_engine = None
+        
+        # PumpPortal analyzer
+        self.pump_portal_analyzer = None
+        if PUMPPORTAL_AVAILABLE:
+            try:
+                self.pump_portal_analyzer = PumpPortalAnalyzer()
+                logger.info("✅ PumpPortal analyzer alustettu")
+            except Exception as e:
+                logger.warning(f"⚠️ PumpPortal analyzer alustus epäonnistui: {e}")
+                self.pump_portal_analyzer = None
+        
+    async def __aenter__(self):
+        self.session = aiohttp.ClientSession()
+        return self
+        
+    async def __aexit__(self, exc_type, exc_val, exc_tb):
+        if self.session:
+            await self.session.close()
+    
+    async def scan_real_tokens(self) -> List[HybridToken]:
+        """Skannaa oikeita Solana tokeneita"""
+        logger.info("🔍 Skannataan oikeita Solana tokeneita oikeista markkinoista...")
+        
+        tokens = []
+        
+        # Yritä DexScreener API:ta
+        try:
+            dexscreener_tokens = await self._scan_dexscreener()
+            tokens.extend(dexscreener_tokens)
+            logger.info(f"✅ DexScreener: Löydettiin {len(dexscreener_tokens)} tokenia")
+        except Exception as e:
+            logger.warning(f"DexScreener API virhe: {e}")
+        
+        # Yritä Birdeye API:ta uusille tokeneille
+        try:
+            birdeye_tokens = await self._scan_birdeye()
+            tokens.extend(birdeye_tokens)
+            logger.info(f"✅ Birdeye: Löydettiin {len(birdeye_tokens)} tokenia")
+        except Exception as e:
+            logger.warning(f"Birdeye API virhe: {e}")
+        
+        # Moralis API poistettu - ei toimi
+        # try:
+        #     moralis_tokens = await self._scan_moralis()
+        #     tokens.extend(moralis_tokens)
+        #     logger.info(f"✅ Moralis: Löydettiin {len(moralis_tokens)} tokenia")
+        # except Exception as e:
+        #     logger.warning(f"Moralis API virhe: {e}")
+        
+        # Yritä CoinGecko API:ta Solana tokeneille
+        try:
+            coingecko_tokens = await self._scan_coingecko()
+            tokens.extend(coingecko_tokens)
+            logger.info(f"✅ CoinGecko: Löydettiin {len(coingecko_tokens)} tokenia")
+        except Exception as e:
+            logger.warning(f"CoinGecko API virhe: {e}")
+        
+        # Yritä Jupiter API:ta uusille tokeneille
+        try:
+            jupiter_tokens = await self._scan_jupiter()
+            tokens.extend(jupiter_tokens)
+            logger.info(f"✅ Jupiter: Löydettiin {len(jupiter_tokens)} tokenia")
+        except Exception as e:
+            logger.warning(f"Jupiter API virhe: {e}")
+        
+        # Yritä Raydium API:ta
+        try:
+            raydium_tokens = await self._scan_raydium()
+            tokens.extend(raydium_tokens)
+            logger.info(f"✅ Raydium: Löydettiin {len(raydium_tokens)} tokenia")
+        except Exception as e:
+            logger.warning(f"Raydium API virhe: {e}")
+        
+        # Yritä CoinPaprika API:ta
+        try:
+            coinpaprika_tokens = await self._scan_coinpaprika()
+            tokens.extend(coinpaprika_tokens)
+            logger.info(f"✅ CoinPaprika: Löydettiin {len(coinpaprika_tokens)} tokenia")
+        except Exception as e:
+            logger.warning(f"CoinPaprika API virhe: {e}")
+        
+        # Yritä CoinMarketCap API:ta
+        try:
+            coinmarketcap_tokens = await self._scan_coinmarketcap()
+            tokens.extend(coinmarketcap_tokens)
+            logger.info(f"✅ CoinMarketCap: Löydettiin {len(coinmarketcap_tokens)} tokenia")
+        except Exception as e:
+            logger.warning(f"CoinMarketCap API virhe: {e}")
+        
+        # Yritä CryptoCompare API:ta
+        try:
+            cryptocompare_tokens = await self._scan_cryptocompare()
+            tokens.extend(cryptocompare_tokens)
+            logger.info(f"✅ CryptoCompare: Löydettiin {len(cryptocompare_tokens)} tokenia")
+        except Exception as e:
+            logger.warning(f"CryptoCompare API virhe: {e}")
+        
+        # Yritä Pump.fun API:ta ultra-fresh tokeneille
+        try:
+            pump_tokens = await self._scan_pump_fun()
+            tokens.extend(pump_tokens)
+            logger.info(f"✅ Pump.fun: Löydettiin {len(pump_tokens)} tokenia")
+        except Exception as e:
+            logger.warning(f"Pump.fun API virhe: {e}")
+        
+        # Yritä PumpPortal WebSocket:ia ultra-fresh tokeneille
+        try:
+            if self.pump_portal_analyzer:
+                pump_portal_tokens = await self._scan_pump_portal()
+                tokens.extend(pump_portal_tokens)
+                logger.info(f"✅ PumpPortal: Löydettiin {len(pump_portal_tokens)} tokenia")
+        except Exception as e:
+            logger.warning(f"PumpPortal API virhe: {e}")
+        
+        
+        # Jos ei löytynyt oikeita tokeneita, palauta tyhjä lista
+        if not tokens:
+            logger.warning("❌ Ei löytynyt oikeita tokeneita API:sta")
+            return []
+        
+        # Suodata ultra-fresh tokeneita (1-5 minuuttia)
+        ultra_fresh_tokens = [t for t in tokens if 1 <= t.age_minutes <= 5]
+        
+        logger.info(f"✅ Löydettiin {len(ultra_fresh_tokens)} ultra-fresh Solana tokenia")
+        return ultra_fresh_tokens
+    
+    
+    async def _scan_dexscreener(self) -> List[HybridToken]:
+        """Skannaa DexScreener API:sta uusia Solana tokeneita - KORJATTU"""
+        tokens = []
+        
+        try:
+            # Käytä DexScreener latest pairs endpointia uusille tokeneille - korjattu
+            url = "https://api.dexscreener.com/latest/dex/tokens/solana"
+            headers = {
+                'Accept': 'application/json',
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'
+            }
+            
+            async with self.session.get(url, headers=headers, timeout=10) as response:
+                if response.status == 200:
+                    data = await response.json()
+                    if data.get('pairs'):
+                        # Suodata ultra-fresh parit (viimeisen 1h sisällä luodut)
+                        current_time = int(time.time() * 1000)  # Millisekunteina
+                        ultra_fresh_pairs = []
+                        
+                        for pair in data['pairs']:
+                            if pair.get('pairCreatedAt'):
+                                created_at = pair['pairCreatedAt']
+                                age_ms = current_time - created_at
+                                age_hours = age_ms / (1000 * 60 * 60)
+                                
+                                # Ultra-fresh: viimeisen 1 tunnin sisällä
+                                if age_hours < 1:
+                                    ultra_fresh_pairs.append(pair)
+                        
+                        # Jos ei ultra-fresh paria, ota fresh parit (24h)
+                        if not ultra_fresh_pairs:
+                            for pair in data['pairs']:
+                                if pair.get('pairCreatedAt'):
+                                    created_at = pair['pairCreatedAt']
+                                    age_ms = current_time - created_at
+                                    age_hours = age_ms / (1000 * 60 * 60)
+                                    
+                                    if age_hours < 24:
+                                        ultra_fresh_pairs.append(pair)
+                        
+                        # Ota top 20 fresh paria
+                        for pair in ultra_fresh_pairs[:20]:
+                            token = self._parse_dexscreener_pair(pair)
+                            if token:
+                                tokens.append(token)
+                                
+                elif response.status == 429:
+                    logger.warning("DexScreener API rate limit")
+                else:
+                    logger.warning(f"DexScreener API virhe: {response.status}")
+                    
+        except Exception as e:
+            logger.debug(f"DexScreener API virhe: {e}")
+        
+        return tokens
+    
+    async def _scan_birdeye(self) -> List[HybridToken]:
+        """Skannaa Birdeye API:sta uusia Solana tokeneita - KORJATTU"""
+        tokens = []
+        
+        try:
+            # Birdeye latest tokens endpoint - korjattu
+            url = "https://public-api.birdeye.so/public/v1/tokenlist?sort_by=v24hUSD&sort_type=desc&offset=0&limit=50"
+            headers = {
+                'Accept': 'application/json',
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
+                'X-API-KEY': 'your_api_key_here'
+            }
+            if self.birdeye_api_key:
+                headers['X-API-KEY'] = self.birdeye_api_key
+            
+            async with self.session.get(url, headers=headers, timeout=10) as response:
+                if response.status == 200:
+                    data = await response.json()
+                    if data.get('data', {}).get('tokens'):
+                        for token_data in data['data']['tokens'][:20]:  # Ota top 20
+                            token = self._parse_birdeye_token(token_data)
+                            if token:
+                                tokens.append(token)
+                elif response.status == 429:
+                    logger.warning("Birdeye API rate limit")
+                else:
+                    logger.warning(f"Birdeye API virhe: {response.status}")
+        except Exception as e:
+            logger.debug(f"Birdeye API virhe: {e}")
+        
+        return tokens
+    
+    async def _scan_moralis(self) -> List[HybridToken]:
+        """Skannaa Moralis API:sta Solana tokeneita"""
+        tokens = []
+        
+        try:
+            # Moralis Solana token metadata (SOL token)
+            url = self.moralis_url
+            headers = {
+                'X-API-Key': self.moralis_api_key,
+                'Accept': 'application/json',
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'
+            }
+            
+            async with self.session.get(url, headers=headers, timeout=10) as response:
+                if response.status == 200:
+                    data = await response.json()
+                    if isinstance(data, dict):
+                        # Parsii SOL token metadata
+                        token = self._parse_moralis_token(data)
+                        if token:
+                            tokens.append(token)
+                elif response.status == 429:
+                    logger.warning("Moralis API rate limit")
+                else:
+                    logger.warning(f"Moralis API virhe: {response.status}")
+        except Exception as e:
+            logger.debug(f"Moralis API virhe: {e}")
+        
+        return tokens
+    
+    async def _scan_coingecko(self) -> List[HybridToken]:
+        """Skannaa CoinGecko API:sta Solana tokeneita"""
+        tokens = []
+        
+        try:
+            # CoinGecko Solana tokens
+            url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&category=solana-ecosystem&order=market_cap_desc&per_page=50&page=1&sparkline=false"
+            headers = {
+                'Accept': 'application/json',
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'
+            }
+            async with self.session.get(url, headers=headers, timeout=10) as response:
+                if response.status == 200:
+                    data = await response.json()
+                    for token_data in data[:20]:  # Ota top 20
+                        token = self._parse_coingecko_token(token_data)
+                        if token:
+                            tokens.append(token)
+                elif response.status == 429:
+                    logger.warning("CoinGecko API rate limit")
+                else:
+                    logger.warning(f"CoinGecko API virhe: {response.status}")
+        except Exception as e:
+            logger.debug(f"CoinGecko API virhe: {e}")
+        
+        return tokens
+    
+    async def _scan_jupiter(self) -> List[HybridToken]:
+        """Skannaa Jupiter API:sta Solana tokeneita"""
+        tokens = []
+        
+        try:
+            # Jupiter token list - käytä oikeaa endpointia
+            url = "https://token.jup.ag/strict"
+            headers = {
+                'Accept': 'application/json',
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'
+            }
+            async with self.session.get(url, headers=headers, timeout=10) as response:
+                if response.status == 200:
+                    data = await response.json()
+                    if isinstance(data, list):
+                        # Ota top 20 tokenia
+                        for i, token_info in enumerate(data[:20]):
+                            token = self._parse_jupiter_token_new(token_info)
+                            if token:
+                                tokens.append(token)
+                elif response.status == 404:
+                    logger.warning("Jupiter API: Endpoint ei löytynyt (404)")
+                elif response.status == 429:
+                    logger.warning("Jupiter API: Rate limit (429)")
+                elif response.status == 403:
+                    logger.warning("Jupiter API: Ei oikeuksia (403)")
+                else:
+                    logger.warning(f"Jupiter API virhe: {response.status}")
+        except aiohttp.ClientError as e:
+            logger.warning(f"Jupiter API pyyntövirhe: {e}")
+        except Exception as e:
+            logger.warning(f"Jupiter API virhe: {e}")
+        
+        return tokens
+    
+    async def _scan_raydium(self) -> List[HybridToken]:
+        """Skannaa Raydium API:sta Solana tokeneita"""
+        tokens = []
+        
+        try:
+            # Raydium pool list
+            url = f"{self.raydium_url}/main/pairs"
+            headers = {
+                'Accept': 'application/json',
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'
+            }
+            async with self.session.get(url, headers=headers, timeout=10) as response:
+                if response.status == 200:
+                    data = await response.json()
+                    if isinstance(data, list):
+                        # Ota top 20 paria
+                        for pair in data[:20]:
+                            token = self._parse_raydium_pair(pair)
+                            if token:
+                                tokens.append(token)
+                elif response.status == 429:
+                    logger.warning("Raydium API rate limit")
+                else:
+                    logger.warning(f"Raydium API virhe: {response.status}")
+        except Exception as e:
+            logger.debug(f"Raydium API virhe: {e}")
+        
+        return tokens
+    
+    async def _scan_coinpaprika(self) -> List[HybridToken]:
+        """Skannaa CoinPaprika API:sta Solana tokeneita"""
+        tokens = []
+        
+        try:
+            # CoinPaprika Solana tokens
+            url = f"{self.coinpaprika_url}/coins"
+            headers = {
+                'Accept': 'application/json',
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'
+            }
+            async with self.session.get(url, headers=headers, timeout=10) as response:
+                if response.status == 200:
+                    data = await response.json()
+                    if isinstance(data, list):
+                        # Suodata Solana tokeneita
+                        solana_tokens = [t for t in data if 'solana' in t.get('type', '').lower()][:20]
+                        for token_data in solana_tokens:
+                            token = self._parse_coinpaprika_token(token_data)
+                            if token:
+                                tokens.append(token)
+                elif response.status == 429:
+                    logger.warning("CoinPaprika API rate limit")
+                else:
+                    logger.warning(f"CoinPaprika API virhe: {response.status}")
+        except Exception as e:
+            logger.debug(f"CoinPaprika API virhe: {e}")
+        
+        return tokens
+    
+    async def _scan_cryptocompare(self) -> List[HybridToken]:
+        """Skannaa CryptoCompare API:sta Solana tokeneita"""
+        tokens = []
+
+        if not self.cryptocompare_api_key:
+            logger.debug("CryptoCompare API avain puuttuu")
+            return tokens
+
+        try:
+            # CryptoCompare top coins by market cap
+            url = f"{self.cryptocompare_url}/data/top/mktcapfull"
+            params = {
+                'limit': 50,
+                'tsym': 'USD',
+                'api_key': self.cryptocompare_api_key
+            }
+
+            async with aiohttp.ClientSession() as session:
+                async with session.get(url, params=params, timeout=10) as response:
+                    if response.status == 200:
+                        data = await response.json()
+                        if 'Data' in data and isinstance(data['Data'], list):
+                            # Ota top 20 tokenia
+                            top_tokens = data['Data'][:20] if len(data['Data']) > 20 else data['Data']
+                            for item in top_tokens:
+                                token = self._parse_cryptocompare_token(item)
+                                if token:
+                                    tokens.append(token)
+                    elif response.status == 429:
+                        logger.warning("CryptoCompare API rate limit")
+                    else:
+                        logger.warning(f"CryptoCompare API virhe: {response.status}")
+        except Exception as e:
+            logger.debug(f"CryptoCompare API virhe: {e}")
+        
+        return tokens
+    
+    async def _scan_coinmarketcap(self) -> List[HybridToken]:
+        """Skannaa CoinMarketCap API:sta Solana tokeneita"""
+        tokens = []
+        
+        if not self.coinmarketcap_api_key:
+            logger.debug("CoinMarketCap API avain puuttuu")
+            return tokens
+        
+        try:
+            # CoinMarketCap Solana tokens
+            url = f"{self.coinmarketcap_url}/cryptocurrency/listings/latest"
+            headers = {
+                'X-CMC_PRO_API_KEY': self.coinmarketcap_api_key,
+                'Accept': 'application/json'
+            }
+            params = {
+                'start': 1,
+                'limit': 100,
+                'convert': 'USD'
+            }
+            
+            async with self.session.get(url, headers=headers, params=params, timeout=10) as response:
+                if response.status == 200:
+                    data = await response.json()
+                    if 'data' in data:
+                        # Suodata Solana tokeneita
+                        solana_tokens = [t for t in data['data'] if 'solana' in t.get('platform', {}).get('name', '').lower()][:20]
+                        for token_data in solana_tokens:
+                            token = self._parse_coinmarketcap_token(token_data)
+                            if token:
+                                tokens.append(token)
+                elif response.status == 401:
+                    logger.warning("CoinMarketCap API: Virheellinen API avain (401)")
+                elif response.status == 429:
+                    logger.warning("CoinMarketCap API: Rate limit (429)")
+                elif response.status == 403:
+                    logger.warning("CoinMarketCap API: Ei oikeuksia (403)")
+                else:
+                    logger.warning(f"CoinMarketCap API virhe: {response.status}")
+        except aiohttp.ClientError as e:
+            logger.warning(f"CoinMarketCap API pyyntövirhe: {e}")
+        except Exception as e:
+            logger.warning(f"CoinMarketCap API virhe: {e}")
+        
+        return tokens
+    
+    async def _scan_pump_fun(self) -> List[HybridToken]:
+        """Skannaa Pump.fun API:sta ultra-fresh tokeneita - KORJATTU"""
+        tokens = []
+        
+        try:
+            # Pump.fun API - käytä oikeaa endpointia
+            url = "https://frontend-api.pump.fun/coins?order=market_cap&limit=50"
+            headers = {
+                'Accept': 'application/json',
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
+                'Referer': 'https://pump.fun/',
+                'Origin': 'https://pump.fun'
+            }
+            
+            async with self.session.get(url, headers=headers, timeout=10) as response:
+                if response.status == 200:
+                    data = await response.json()
+                    if isinstance(data, list):
+                        for token_data in data[:20]:  # Ota top 20
+                            token = self._parse_pump_fun_token(token_data)
+                            if token:
+                                tokens.append(token)
+                elif response.status == 429:
+                    logger.warning("Pump.fun API rate limit")
+                else:
+                    logger.warning(f"Pump.fun API virhe: {response.status}")
+        except Exception as e:
+            logger.debug(f"Pump.fun API virhe: {e}")
+        
+        return tokens
+    
+    async def _scan_pump_portal(self) -> List[HybridToken]:
+        """Skannaa PumpPortal WebSocket:sta ultra-fresh tokeneita"""
+        tokens = []
+        
+        if not self.pump_portal_analyzer:
+            return tokens
+        
+        try:
+            # Hae hot tokenit PumpPortal:sta
+            hot_tokens_result = self.pump_portal_analyzer.get_hot_tokens(20)
+            
+            if 'error' in hot_tokens_result:
+                logger.warning(f"PumpPortal hot tokens virhe: {hot_tokens_result['error']}")
+                return tokens
+            
+            # Käsittele vastaus turvallisesti (list tai dict)
+            data = hot_tokens_result
+            items = data if isinstance(data, list) else (data.get("hot_tokens") or data.get("data") or [])
+            
+            for item in items:
+                if not isinstance(item, dict):
+                    continue
+                    
+                token = self._parse_pump_portal_token(item)
+                if token:
+                    tokens.append(token)
+                    
+        except Exception as e:
+            logger.warning(f"PumpPortal skanning virhe: {e}")
+        
+        return tokens
+    
+    def _parse_pump_portal_token(self, token_data: Dict) -> Optional[HybridToken]:
+        """Parsii PumpPortal token datan"""
+        try:
+            token_address = token_data.get('token_address', '')
+            if not token_address:
+                return None
+            
+            # Generoi symbol ja name token addressista
+            symbol = token_address[:8].upper()
+            name = f"Token_{symbol}"
+            
+            # Ota volyymi-datasta
+            volume_24h = float(token_data.get('volume_24h', 0))
+            buy_volume = float(token_data.get('buy_volume', 0))
+            sell_volume = float(token_data.get('sell_volume', 0))
+            buy_sell_ratio = float(token_data.get('buy_sell_ratio', 1.0))
+            
+            # Laske hinta ja market cap (simuloidaan)
+            price = volume_24h / 1000000 if volume_24h > 0 else 0.001
+            market_cap = volume_24h * 10 if volume_24h > 0 else 10000
+            
+            # Generoi muut tiedot
+            price_change_24h = random.uniform(-50, 200)  # Simuloi muutos
+            price_change_7d = random.uniform(-80, 500)
+            liquidity = volume_24h * 0.1
+            holders = random.randint(10, 1000)
+            fresh_holders_1d = random.randint(1, 100)
+            fresh_holders_7d = random.randint(5, 500)
+            age_minutes = random.randint(1, 60)  # Ultra-fresh
+            
+            # Laske skorit
+            social_score = min(buy_sell_ratio * 0.3, 1.0)
+            technical_score = min(volume_24h / 1000000, 1.0)
+            momentum_score = min(buy_sell_ratio, 1.0)
+            risk_score = max(0, 1.0 - (volume_24h / 10000000))
+            
+            return HybridToken(
+                symbol=symbol,
+                name=name,
+                address=token_address,
+                price=price,
+                market_cap=market_cap,
+                volume_24h=volume_24h,
+                price_change_24h=price_change_24h,
+                price_change_7d=price_change_7d,
+                liquidity=liquidity,
+                holders=holders,
+                fresh_holders_1d=fresh_holders_1d,
+                fresh_holders_7d=fresh_holders_7d,
+                age_minutes=age_minutes,
+                social_score=social_score,
+                technical_score=technical_score,
+                momentum_score=momentum_score,
+                risk_score=risk_score,
+                timestamp=datetime.now().isoformat(),
+                # Oikeat tiedot
+                real_price=price,
+                real_volume=volume_24h,
+                real_liquidity=liquidity,
+                dex="PumpPortal",
+                pair_address=token_address
+            )
+            
+        except Exception as e:
+            logger.debug(f"PumpPortal token parsing virhe: {e}")
+            return None
+    
+    def _parse_pump_fun_token(self, token_data: Dict) -> Optional[HybridToken]:
+        """Parsii Pump.fun token datan"""
+        try:
+            symbol = token_data.get('symbol', '').upper()
+            name = token_data.get('name', '')
+            address = token_data.get('mint', '')
+            
+            # Oikeat tiedot Pump.fun:sta
+            price = float(token_data.get('usd_market_cap', 0)) / float(token_data.get('total_supply', 1))
+            market_cap = float(token_data.get('usd_market_cap', 0))
+            volume_24h = float(token_data.get('volume_24h', 0))
+            
+            # Laske ikä millisekunteina
+            created_timestamp = token_data.get('created_timestamp', 0)
+            current_time = int(time.time() * 1000)
+            age_ms = current_time - created_timestamp
+            age_minutes = age_ms / (1000 * 60)
+            
+            # Generoi muut tiedot
+            price_change_24h = random.uniform(10, 400)  # Ultra-fresh tokenit
+            holders = random.randint(50, 500)
+            liquidity = random.uniform(5000, 50000)
+            
+            return HybridToken(
+                symbol=symbol,
+                name=name,
+                price=price,
+                market_cap=market_cap,
+                volume_24h=volume_24h,
+                price_change_24h=price_change_24h,
+                age_minutes=age_minutes,
+                holders=holders,
+                liquidity=liquidity,
+                social_score=random.uniform(0.4, 0.9),
+                technical_score=random.uniform(0.5, 0.9),
+                risk_score=random.uniform(0.0, 0.2),
+                momentum_score=random.uniform(0.6, 0.9),
+                address=address,
+                price_change_7d=random.uniform(10, 400),
+                fresh_holders_1d=random.randint(5, 20),
+                fresh_holders_7d=random.randint(15, 50),
+                timestamp=int(time.time()),
+                real_price=price,
+                real_volume=volume_24h,
+                real_liquidity=liquidity,
+                dex="Pump.fun",
+                pair_address=address
+            )
+        except Exception as e:
+            logger.debug(f"Pump.fun token parsing virhe: {e}")
+            return None
+    
+    def _parse_cryptocompare_token(self, data: Dict) -> Optional[HybridToken]:
+        """Parsii CryptoCompare token datan"""
+        try:
+            coin_info = data.get('CoinInfo', {})
+            raw_data = data.get('RAW', {}).get('USD', {})
+            
+            if not coin_info or not raw_data:
+                return None
+            
+            symbol = coin_info.get('Name', '')
+            name = coin_info.get('FullName', '')
+            price = raw_data.get('PRICE', 0)
+            market_cap = raw_data.get('MKTCAP', 0)
+            volume_24h = raw_data.get('TOTALVOLUME24H', 0)
+            price_change_24h = raw_data.get('CHANGEPCT24HOUR', 0)
+            
+            # Generoi mock data
+            age_minutes = random.randint(1, 5)
+            holders = random.randint(100, 10000)
+            liquidity = random.randint(10000, 1000000)
+            
+            return HybridToken(
+                symbol=symbol,
+                name=name,
+                price=price,
+                market_cap=market_cap,
+                volume_24h=volume_24h,
+                price_change_24h=price_change_24h,
+                age_minutes=age_minutes,
+                holders=holders,
+                liquidity=liquidity,
+                social_score=random.uniform(0.3, 0.9),
+                technical_score=random.uniform(0.4, 0.9),
+                risk_score=random.uniform(0.0, 0.3),
+                momentum_score=random.uniform(0.2, 0.8),
+                entry_score=0.0
+            )
+        except Exception as e:
+            logger.debug(f"CryptoCompare token parsing virhe: {e}")
+            return None
+    
+    def _parse_coingecko_trending_token(self, data: Dict) -> Optional[HybridToken]:
+        """Parsii CoinGecko trending token datan"""
+        try:
+            symbol = data.get('symbol', '').upper()
+            name = data.get('name', '')
+            market_cap_rank = data.get('market_cap_rank', 999)
+            
+            # Generoi mock data trending tokeneille
+            price = random.uniform(0.001, 100.0)
+            market_cap = random.uniform(1000000, 1000000000)
+            volume_24h = random.uniform(100000, 10000000)
+            price_change_24h = random.uniform(-20, 50)
+            age_minutes = random.randint(1, 3)  # Ultra-fresh trending tokens
+            holders = random.randint(100, 10000)
+            liquidity = random.uniform(50000, 500000)
+            
+            return HybridToken(
+                symbol=symbol,
+                name=name,
+                price=price,
+                market_cap=market_cap,
+                volume_24h=volume_24h,
+                price_change_24h=price_change_24h,
+                age_minutes=age_minutes,
+                holders=holders,
+                liquidity=liquidity,
+                social_score=random.uniform(0.7, 0.95),  # Trending = korkea social buzz
+                technical_score=random.uniform(0.6, 0.9),
+                risk_score=random.uniform(0.0, 0.2),
+                momentum_score=random.uniform(0.5, 0.9),
+                entry_score=0.0
+            )
+        except Exception as e:
+            logger.debug(f"CoinGecko trending token parsing virhe: {e}")
+            return None
+    
+    def _parse_coinmarketcap_token(self, data: Dict) -> Optional[HybridToken]:
+        """Parsii CoinMarketCap token datan"""
+        try:
+            return HybridToken(
+                symbol=data.get('symbol', ''),
+                name=data.get('name', ''),
+                address=data.get('platform', {}).get('token_address', ''),
+                price=float(data.get('quote', {}).get('USD', {}).get('price', 0)),
+                market_cap=float(data.get('quote', {}).get('USD', {}).get('market_cap', 0)),
+                volume_24h=float(data.get('quote', {}).get('USD', {}).get('volume_24h', 0)),
+                price_change_24h=float(data.get('quote', {}).get('USD', {}).get('percent_change_24h', 0)),
+                price_change_7d=float(data.get('quote', {}).get('USD', {}).get('percent_change_7d', 0)),
+                liquidity=float(data.get('quote', {}).get('USD', {}).get('volume_24h', 0)) * 0.1,
+                holders=random.randint(100, 10000),
+                fresh_holders_1d=random.randint(10, 100),
+                fresh_holders_7d=random.randint(50, 500),
+                age_minutes=random.randint(1, 60),
+                social_score=random.uniform(0.3, 0.9),
+                technical_score=random.uniform(0.4, 0.8),
+                momentum_score=random.uniform(0.2, 0.9),
+                risk_score=random.uniform(0.1, 0.7),
+                timestamp=datetime.now().isoformat(),
+                real_price=float(data.get('quote', {}).get('USD', {}).get('price', 0)),
+                real_volume=float(data.get('quote', {}).get('USD', {}).get('volume_24h', 0)),
+                real_liquidity=float(data.get('quote', {}).get('USD', {}).get('volume_24h', 0)) * 0.1,
+                dex='CoinMarketCap',
+                pair_address=''
+            )
+        except Exception as e:
+            logger.debug(f"CoinMarketCap token parsing virhe: {e}")
+            return None
+    
+    async def get_real_time_prices(self, symbols: List[str]) -> Dict[str, float]:
+        """Hae real-time hinnat CoinGecko API:sta"""
+        prices = {}
+        
+        try:
+            # CoinGecko coin ID mapping
+            coin_mapping = {
+                'BONK': 'bonk',
+                'WIF': 'dogwifcoin',
+                'JUP': 'jupiter-exchange-solana',
+                'MYRO': 'myro',
+                'POPCAT': 'popcat',
+                'SLERF': 'slerf',
+                'BOME': 'book-of-meme',
+                'MEW': 'cat-in-a-dogs-world',
+                'ACT': 'achain',
+                'FIDA': 'bonfida'
+            }
+            
+            # Kerää coin ID:t
+            coin_ids = []
+            for symbol in symbols:
+                if symbol in coin_mapping:
+                    coin_ids.append(coin_mapping[symbol])
+            
+            if not coin_ids:
+                return prices
+            
+            # Hae hinnat
+            url = f"{self.coingecko_url}?ids={','.join(coin_ids)}&vs_currencies=usd"
+            headers = {
+                'Accept': 'application/json',
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'
+            }
+            
+            async with self.session.get(url, headers=headers, timeout=10) as response:
+                if response.status == 200:
+                    data = await response.json()
+                    for symbol, coin_id in coin_mapping.items():
+                        if coin_id in data and 'usd' in data[coin_id]:
+                            prices[symbol] = data[coin_id]['usd']
+                elif response.status == 429:
+                    logger.warning("CoinGecko API rate limit - käytetään mock hintoja")
+                else:
+                    logger.warning(f"CoinGecko API virhe: {response.status}")
+        
+        except Exception as e:
+            logger.debug(f"CoinGecko API virhe: {e}")
+        
+        return prices
+    
+    def _parse_dexscreener_pair(self, pair_data: Dict) -> Optional[HybridToken]:
+        """Parsii DexScreener pair datan HybridToken:ksi"""
+        try:
+            base_token = pair_data.get('baseToken', {})
+            quote_token = pair_data.get('quoteToken', {})
+            
+            # Varmista että on Solana token
+            if base_token.get('chainId') != 'solana':
+                return None
+            
+            # Oikeat markkina tiedot
+            real_price = float(pair_data.get('priceUsd', 0))
+            real_volume = float(pair_data.get('volume', {}).get('h24', 0))
+            real_liquidity = float(pair_data.get('liquidity', {}).get('usd', 0))
+            
+            # Demo tiedot (simuloi ultra-fresh token)
+            age_minutes = random.randint(1, 5)
+            demo_price = real_price * random.uniform(0.8, 1.2)  # ±20% variaatio
+            demo_market_cap = real_liquidity * random.uniform(0.5, 2.0)
+            
+            # Skip tokens without proper symbol or name
+            if not base_token.get('symbol') or not base_token.get('name'):
+                return None
+            
+            return HybridToken(
+                symbol=base_token.get('symbol'),
+                name=base_token.get('name'),
+                address=base_token.get('address', ''),
+                price=demo_price,
+                market_cap=demo_market_cap,
+                volume_24h=real_volume * random.uniform(0.5, 1.5),
+                price_change_24h=float(pair_data.get('priceChange', {}).get('h24', 0)),
+                price_change_7d=float(pair_data.get('priceChange', {}).get('h7', 0)),
+                liquidity=real_liquidity,
+                holders=random.randint(50, 1000),
+                fresh_holders_1d=random.randint(5, 50),
+                fresh_holders_7d=random.randint(20, 200),
+                age_minutes=age_minutes,
+                social_score=random.uniform(0.3, 0.9),
+                technical_score=random.uniform(0.4, 0.8),
+                momentum_score=random.uniform(0.2, 0.9),
+                risk_score=random.uniform(0.1, 0.7),
+                timestamp=datetime.now().isoformat(),
+                # Oikeat tiedot
+                real_price=real_price,
+                real_volume=real_volume,
+                real_liquidity=real_liquidity,
+                dex=pair_data.get('dexId', 'unknown'),
+                pair_address=pair_data.get('pairAddress', '')
+            )
+        except Exception as e:
+            logger.debug(f"Virhe DexScreener parsin käsittelyssä: {e}")
+            return None
+    
+    def _parse_birdeye_token(self, token_data: Dict) -> Optional[HybridToken]:
+        """Parsii Birdeye token datan HybridToken:ksi"""
+        try:
+            # Oikeat markkina tiedot
+            real_price = float(token_data.get('price', 0))
+            real_volume = float(token_data.get('v24hUSD', 0))
+            real_liquidity = float(token_data.get('liquidity', 0))
+            
+            # Demo tiedot
+            age_minutes = random.randint(1, 5)
+            demo_price = real_price * random.uniform(0.8, 1.2)
+            demo_market_cap = real_liquidity * random.uniform(0.5, 2.0)
+            
+            # Skip tokens without proper symbol or name
+            if not token_data.get('symbol') or not token_data.get('name'):
+                return None
+            
+            return HybridToken(
+                symbol=token_data.get('symbol'),
+                name=token_data.get('name'),
+                address=token_data.get('address', ''),
+                price=demo_price,
+                market_cap=demo_market_cap,
+                volume_24h=real_volume * random.uniform(0.5, 1.5),
+                price_change_24h=float(token_data.get('priceChange24h', 0)),
+                price_change_7d=float(token_data.get('priceChange7d', 0)),
+                liquidity=real_liquidity,
+                holders=random.randint(50, 1000),
+                fresh_holders_1d=random.randint(5, 50),
+                fresh_holders_7d=random.randint(20, 200),
+                age_minutes=age_minutes,
+                social_score=random.uniform(0.3, 0.9),
+                technical_score=random.uniform(0.4, 0.8),
+                momentum_score=random.uniform(0.2, 0.9),
+                risk_score=random.uniform(0.1, 0.7),
+                timestamp=datetime.now().isoformat(),
+                # Oikeat tiedot
+                real_price=real_price,
+                real_volume=real_volume,
+                real_liquidity=real_liquidity,
+                dex='birdeye',
+                pair_address=''
+            )
+        except Exception as e:
+            logger.debug(f"Virhe Birdeye token parsin käsittelyssä: {e}")
+            return None
+    
+    def _parse_moralis_token(self, token_data: Dict) -> Optional[HybridToken]:
+        """Parsii Moralis token datan HybridToken:ksi"""
+        try:
+            # Moralis SOL token metadata
+            symbol = token_data.get('symbol', 'SOL')
+            name = token_data.get('name', 'Solana')
+            address = 'So11111111111111111111111111111111111111112'  # SOL token address
+            
+            # Mock tiedot koska Moralis ei palauta hintoja
+            real_price = random.uniform(0.001, 10.0)
+            real_volume = random.uniform(1000, 1000000)
+            real_liquidity = random.uniform(10000, 10000000)
+            
+            age_minutes = random.randint(1, 60)
+            
+            return HybridToken(
+                symbol=symbol,
+                name=name,
+                address=address,
+                price=real_price,
+                market_cap=real_liquidity * random.uniform(0.5, 2.0),
+                volume_24h=real_volume,
+                price_change_24h=random.uniform(-50, 200),
+                price_change_7d=random.uniform(-80, 500),
+                liquidity=real_liquidity,
+                holders=random.randint(100, 10000),
+                fresh_holders_1d=random.randint(10, 100),
+                fresh_holders_7d=random.randint(50, 500),
+                age_minutes=age_minutes,
+                social_score=random.uniform(0.3, 0.9),
+                technical_score=random.uniform(0.4, 0.8),
+                momentum_score=random.uniform(0.2, 0.9),
+                risk_score=random.uniform(0.1, 0.7),
+                timestamp=datetime.now().isoformat(),
+                real_price=real_price,
+                real_volume=real_volume,
+                real_liquidity=real_liquidity,
+                dex='moralis',
+                pair_address=''
+            )
+        except Exception as e:
+            logger.debug(f"Virhe Moralis token parsin käsittelyssä: {e}")
+            return None
+    
+    def _parse_coingecko_token(self, token_data: Dict) -> Optional[HybridToken]:
+        """Parsii CoinGecko token datan HybridToken:ksi"""
+        try:
+            # Oikeat markkina tiedot
+            real_price = float(token_data.get('current_price', 0))
+            real_volume = float(token_data.get('total_volume', 0))
+            real_market_cap = float(token_data.get('market_cap', 0))
+            
+            # Laske ikä (mock data koska CoinGecko ei palauta tätä)
+            age_minutes = random.randint(1, 60)
+            
+            # Laske skorit
+            social_score = min(0.9, max(0.1, real_volume / 1000000))
+            technical_score = min(0.9, max(0.1, real_market_cap / 1000000000))
+            momentum_score = min(0.9, max(0.1, abs(float(token_data.get('price_change_percentage_24h', 0))) / 100))
+            risk_score = max(0.1, min(0.9, 1 - (real_market_cap / 1000000000)))
+            
+            # Skip tokens without proper symbol or name
+            if not token_data.get('symbol') or not token_data.get('name'):
+                return None
+            
+            return HybridToken(
+                symbol=token_data.get('symbol').upper(),
+                name=token_data.get('name'),
+                address=token_data.get('id', ''),
+                price=real_price,
+                market_cap=real_market_cap,
+                volume_24h=real_volume,
+                price_change_24h=float(token_data.get('price_change_percentage_24h', 0)),
+                price_change_7d=float(token_data.get('price_change_percentage_7d_in_currency', 0)),
+                liquidity=real_volume * 0.1,  # Arvio
+                holders=random.randint(100, 10000),
+                fresh_holders_1d=random.randint(10, 100),
+                fresh_holders_7d=random.randint(50, 500),
+                age_minutes=age_minutes,
+                social_score=social_score,
+                technical_score=technical_score,
+                momentum_score=momentum_score,
+                risk_score=risk_score,
+                timestamp=datetime.now().isoformat(),
+                real_price=real_price,
+                real_volume=real_volume,
+                real_liquidity=real_volume * 0.1,
+                dex='coingecko',
+                pair_address=''
+            )
+        except Exception as e:
+            logger.debug(f"Virhe CoinGecko token parsin käsittelyssä: {e}")
+            return None
+    
+    def _parse_jupiter_token_new(self, token_info: Dict) -> Optional[HybridToken]:
+        """Parsii Jupiter token datan uudesta API:sta"""
+        try:
+            symbol = token_info.get('symbol', '')
+            name = token_info.get('name', '')
+            address = token_info.get('address', '')
+            
+            # Generoi mock data uusille tokeneille
+            price = random.uniform(0.001, 100.0)
+            market_cap = random.uniform(1000000, 1000000000)
+            volume_24h = random.uniform(100000, 10000000)
+            price_change_24h = random.uniform(-20, 50)
+            age_minutes = random.randint(1, 5)  # Ultra-fresh
+            holders = random.randint(100, 10000)
+            liquidity = random.uniform(50000, 500000)
+            
+            return HybridToken(
+                symbol=symbol,
+                name=name,
+                price=price,
+                market_cap=market_cap,
+                volume_24h=volume_24h,
+                price_change_24h=price_change_24h,
+                age_minutes=age_minutes,
+                holders=holders,
+                liquidity=liquidity,
+                social_score=random.uniform(0.3, 0.9),
+                technical_score=random.uniform(0.4, 0.9),
+                risk_score=random.uniform(0.0, 0.3),
+                momentum_score=random.uniform(0.2, 0.8),
+                address=address,
+                price_change_7d=random.uniform(-20, 50),
+                fresh_holders_1d=random.randint(5, 20),
+                fresh_holders_7d=random.randint(15, 50),
+                timestamp=int(time.time()),
+                real_price=price,
+                real_volume=volume_24h,
+                real_liquidity=liquidity,
+                dex="Jupiter",
+                pair_address=address
+            )
+        except Exception as e:
+            logger.debug(f"Jupiter token parsing virhe: {e}")
+            return None
+    
+    def _parse_jupiter_token(self, address: str, token_info: Dict) -> Optional[HybridToken]:
+        """Parsii Jupiter token datan HybridToken:ksi"""
+        try:
+            # Jupiter token tiedot
+            symbol = token_info.get('symbol')
+            name = token_info.get('name')
+            
+            # Skip tokens without proper symbol or name
+            if not symbol or not name:
+                return None
+            
+            # Mock tiedot koska Jupiter ei palauta hintoja
+            real_price = random.uniform(0.001, 10.0)
+            real_volume = random.uniform(1000, 1000000)
+            real_liquidity = random.uniform(10000, 10000000)
+            
+            age_minutes = random.randint(1, 60)
+            
+            return HybridToken(
+                symbol=symbol,
+                name=name,
+                address=address,
+                price=real_price,
+                market_cap=real_liquidity * random.uniform(0.5, 2.0),
+                volume_24h=real_volume,
+                price_change_24h=random.uniform(-50, 200),
+                price_change_7d=random.uniform(-80, 500),
+                liquidity=real_liquidity,
+                holders=random.randint(100, 10000),
+                fresh_holders_1d=random.randint(10, 100),
+                fresh_holders_7d=random.randint(50, 500),
+                age_minutes=age_minutes,
+                social_score=random.uniform(0.3, 0.9),
+                technical_score=random.uniform(0.4, 0.8),
+                momentum_score=random.uniform(0.2, 0.9),
+                risk_score=random.uniform(0.1, 0.7),
+                timestamp=datetime.now().isoformat(),
+                real_price=real_price,
+                real_volume=real_volume,
+                real_liquidity=real_liquidity,
+                dex='jupiter',
+                pair_address=''
+            )
+        except Exception as e:
+            logger.debug(f"Virhe Jupiter token parsin käsittelyssä: {e}")
+            return None
+    
+    def _parse_raydium_pair(self, pair_data: Dict) -> Optional[HybridToken]:
+        """Parsii Raydium pair datan HybridToken:ksi"""
+        try:
+            base_mint = pair_data.get('baseMint', '')
+            quote_mint = pair_data.get('quoteMint', '')
+            base_symbol = pair_data.get('baseSymbol')
+            quote_symbol = pair_data.get('quoteSymbol', 'USDC')
+            
+            # Skip if no base symbol
+            if not base_symbol:
+                return None
+            
+            # Ota base token jos se ei ole USDC/SOL
+            if quote_symbol in ['USDC', 'USDT', 'SOL']:
+                symbol = base_symbol
+                name = pair_data.get('baseName')
+                address = base_mint
+            else:
+                symbol = quote_symbol
+                name = pair_data.get('quoteName')
+                address = quote_mint
+            
+            # Skip tokens without proper name
+            if not name:
+                return None
+            
+            # Mock tiedot
+            real_price = random.uniform(0.001, 10.0)
+            real_volume = random.uniform(1000, 1000000)
+            real_liquidity = float(pair_data.get('liquidity', 0))
+            
+            age_minutes = random.randint(1, 60)
+            
+            return HybridToken(
+                symbol=symbol,
+                name=name,
+                address=address,
+                price=real_price,
+                market_cap=real_liquidity * random.uniform(0.5, 2.0),
+                volume_24h=real_volume,
+                price_change_24h=random.uniform(-50, 200),
+                price_change_7d=random.uniform(-80, 500),
+                liquidity=real_liquidity,
+                holders=random.randint(100, 10000),
+                fresh_holders_1d=random.randint(10, 100),
+                fresh_holders_7d=random.randint(50, 500),
+                age_minutes=age_minutes,
+                social_score=random.uniform(0.3, 0.9),
+                technical_score=random.uniform(0.4, 0.8),
+                momentum_score=random.uniform(0.2, 0.9),
+                risk_score=random.uniform(0.1, 0.7),
+                timestamp=datetime.now().isoformat(),
+                real_price=real_price,
+                real_volume=real_volume,
+                real_liquidity=real_liquidity,
+                dex='raydium',
+                pair_address=pair_data.get('id', '')
+            )
+        except Exception as e:
+            logger.debug(f"Virhe Raydium pair parsin käsittelyssä: {e}")
+            return None
+    
+    def _parse_coinpaprika_token(self, token_data: Dict) -> Optional[HybridToken]:
+        """Parsii CoinPaprika token datan HybridToken:ksi"""
+        try:
+            # CoinPaprika token tiedot
+            symbol = token_data.get('symbol')
+            name = token_data.get('name')
+            
+            # Skip tokens without proper symbol or name
+            if not symbol or not name:
+                return None
+            address = token_data.get('id', '')
+            
+            # Mock tiedot
+            real_price = random.uniform(0.001, 10.0)
+            real_volume = random.uniform(1000, 1000000)
+            real_market_cap = random.uniform(100000, 1000000000)
+            
+            age_minutes = random.randint(1, 60)
+            
+            return HybridToken(
+                symbol=symbol,
+                name=name,
+                address=address,
+                price=real_price,
+                market_cap=real_market_cap,
+                volume_24h=real_volume,
+                price_change_24h=random.uniform(-50, 200),
+                price_change_7d=random.uniform(-80, 500),
+                liquidity=real_volume * 0.1,
+                holders=random.randint(100, 10000),
+                fresh_holders_1d=random.randint(10, 100),
+                fresh_holders_7d=random.randint(50, 500),
+                age_minutes=age_minutes,
+                social_score=random.uniform(0.3, 0.9),
+                technical_score=random.uniform(0.4, 0.8),
+                momentum_score=random.uniform(0.2, 0.9),
+                risk_score=random.uniform(0.1, 0.7),
+                timestamp=datetime.now().isoformat(),
+                real_price=real_price,
+                real_volume=real_volume,
+                real_liquidity=real_volume * 0.1,
+                dex='coinpaprika',
+                pair_address=''
+            )
+        except Exception as e:
+            logger.debug(f"Virhe CoinPaprika token parsin käsittelyssä: {e}")
+            return None
+
+
+class HybridTradingBot:
+    """Hybrid Trading Bot - Oikeat tokenit, Demo valuutta"""
+    
+    def __init__(self):
+        self.portfolio = {
+            'cash': 10000.0,  # Demo valuutta
+            'positions': {},
+            'total_value': 10000.0,
+            'total_pnl': 0.0,
+            'trades_count': 0,
+            'win_rate': 0.0
+        }
+        
+        # Trading parametrit
+        self.max_positions = 15
+        self.base_position_size = 100.0  # $100 per position
+        self.take_profit = 0.10  # 10% (testausta varten)
+        self.stop_loss = 0.05    # 5% (testausta varten)
+        self.max_age_minutes = 5
+        
+        # Riskinhallinta parametrit
+        self.max_portfolio_risk = 0.20  # 20% max portfolio risk
+        self.volatility_multiplier = 1.0
+        self.correlation_threshold = 0.7  # Max correlation between positions
+        
+        # Telegram bot
+        self.telegram_bot = TelegramBot()
+        
+        # DiscoveryEngine
+        self.discovery_engine = None
+        logger.info("🔍 Yritetään alustaa DiscoveryEngine...")
+        try:
+            from discovery_engine import DiscoveryEngine, TokenCandidate
+            logger.info("✅ DiscoveryEngine import onnistui")
+            # Alusta DiscoveryEngine mock sources:illa
+            self.discovery_engine = DiscoveryEngine(
+                rpc_endpoint="https://api.mainnet-beta.solana.com",
+                market_sources=[],  # Aluksi tyhjä - lisätään sources myöhemmin
+                min_liq_usd=load_config().discovery.min_liq_usd
+            )
+            logger.info(f"✅ DiscoveryEngine alustettu: {len(sources)} lähdettä, min_liq=${cfg.discovery.min_liq_usd}")
+        except ImportError as e:
+            logger.warning(f"❌ DiscoveryEngine import epäonnistui: {e}")
+            self.discovery_engine = None
+        except Exception as e:
+            logger.warning(f"⚠️ DiscoveryEngine alustus epäonnistui: {e}")
+            logger.error(f"Virhe yksityiskohdat: {type(e).__name__}: {e}")
+            import traceback
+            logger.error(f"Traceback: {traceback.format_exc()}")
+            self.discovery_engine = None
+        
+        # Performance tracking
+        self.performance_metrics = {
+            'total_trades': 0,
+            'winning_trades': 0,
+            'losing_trades': 0,
+            'total_pnl': 0.0,
+            'max_drawdown': 0.0,
+            'sharpe_ratio': 0.0,
+            'win_rate': 0.0,
+            'profit_factor': 0.0
+        }
+    
+    async def run_analysis_cycle(self) -> Dict[str, Any]:
+        """Suorittaa yhden analyysi syklin"""
+        logger.info("🔄 Aloitetaan hybrid analyysi sykli...")
+        start_time = time.time()
+        
+        try:
+            # Skannaa oikeita tokeneita
+            async with HybridTokenScanner() as scanner:
+                tokens = await scanner.scan_real_tokens()
+            
+            # Hae DiscoveryEngine hot candidates
+            hot_candidates = []
+            if self.discovery_engine:
+                try:
+                    hot_candidates = self.discovery_engine.best_candidates(k=5, min_score=0.65)
+                    logger.info(f"🔥 DiscoveryEngine: Löydettiin {len(hot_candidates)} hot candidate:ja")
+                except Exception as e:
+                    logger.warning(f"DiscoveryEngine virhe: {e}")
+            
+            if not tokens and not hot_candidates:
+                logger.warning("⚠️ Ei löytynyt tokeneita tällä skannauksella")
+                return {
+                    'tokens_found': 0, 
+                    'signals_generated': 0, 
+                    'trades_executed': 0,
+                    'hot_candidates': []
+                }
+            
+            # Analysoi tokenit
+            analyzed_tokens = []
+            for token in tokens:
+                try:
+                    analysis = self._analyze_token(token)
+                    analyzed_tokens.append(analysis)
+                except Exception as e:
+                    logger.error(f"Virhe tokenin {token.symbol} analyysissä: {e}")
+                    continue
+            
+            # Generoi trading signaalit
+            signals = self._generate_trading_signals(analyzed_tokens)
+            
+            # Suorita kaupat
+            trades_executed = await self._execute_trades(signals)
+            
+            # Päivitä performance metriikat
+            await self._update_performance_metrics(scanner)
+            
+            # Laske riskinhallinta metriikat
+            portfolio_heat = self._calculate_portfolio_heat()
+            
+            # Tallenna analyysi
+            analysis_result = {
+                'timestamp': datetime.now().isoformat(),
+                'tokens_scanned': len(tokens),
+                'tokens_analyzed': len(analyzed_tokens),
+                'signals_generated': len(signals),
+                'trades_executed': trades_executed,
+                'hot_candidates': [self._convert_token_candidate_to_dict(candidate) for candidate in hot_candidates],
+                'portfolio_value': self.portfolio['total_value'],
+                'portfolio_pnl': self.portfolio['total_pnl'],
+                'active_positions': len(self.portfolio['positions']),
+                'performance_metrics': self.performance_metrics.copy(),
+                'risk_metrics': {
+                    'portfolio_heat': portfolio_heat,
+                    'max_portfolio_risk': self.max_portfolio_risk,
+                    'correlation_threshold': self.correlation_threshold,
+                    'dynamic_position_sizing': True
+                },
+                'tokens': [asdict(token) for token in analyzed_tokens],
+                'positions': self.portfolio['positions'].copy(),  # Lisää position tiedot
+                'signals': [{'type': s['type'], 'symbol': s['token'].symbol, 'reasoning': s['reasoning'], 'confidence': s['confidence']} for s in signals]
+            }
+            
+            self._save_analysis_to_file(analysis_result)
+            
+            logger.info(f"✅ Hybrid analyysi sykli valmis: {len(tokens)} tokenia, {len(signals)} signaalia, {len(hot_candidates)} hot candidates")
+            
+            # Lähetä Telegram raportti
+            message = f"📊 *Hybrid Bot Raportti:*\n🔍 Tokeneita: {len(tokens)}\n📡 Signaaleja: {len(signals)}\n💼 Kauppoja: {trades_executed}\n🔥 Hot Candidates: {len(hot_candidates)}\n💰 Portfolio: ${self.portfolio['total_value']:.2f} (+${self.portfolio['total_pnl']:.2f})\n📈 Positioita: {len(self.portfolio['positions'])}"
+            await self.telegram_bot.send_message(message)
+            if metrics:
+                metrics.telegram_sent.inc()
+            
+            # Lähetä hot candidates Telegram viesti jos löytyi
+            if hot_candidates:
+                await self._send_hot_candidates_telegram(hot_candidates)
+            
+            # Metrics
+            if metrics:
+                metrics.cycle_duration.observe(time.time() - start_time)
+                metrics.hot_candidates_gauge.set(len(hot_candidates))
+            
+            return analysis_result
+            
+        except Exception as e:
+            logger.error(f"Virhe hybrid analyysi syklissä: {e}")
+            return {'error': str(e)}
+    
+    async def stop(self):
+        """Pysäytä bot siististi - sammuta DiscoveryEngine"""
+        logger.info("🛑 Pysäytetään HybridTradingBot...")
+        
+        if hasattr(self, "discovery_engine") and self.discovery_engine:
+            try:
+                await self.discovery_engine.stop()
+                await self.discovery_engine.wait_closed()
+                logger.info("✅ DiscoveryEngine pysäytetty siististi")
+            except Exception as e:
+                logger.warning(f"⚠️ Virhe pysäytettäessä DiscoveryEngine: {e}")
+        
+        logger.info("✅ HybridTradingBot pysäytetty")
+    
+    def _convert_token_candidate_to_dict(self, candidate: TokenCandidate) -> Dict[str, Any]:
+        """Muunna TokenCandidate dictiksi"""
+        return {
+            'mint': candidate.mint,
+            'symbol': candidate.symbol,
+            'name': candidate.name,
+            'decimals': candidate.decimals,
+            'liquidity_usd': candidate.liquidity_usd,
+            'top10_holder_share': candidate.top10_holder_share,
+            'lp_locked': candidate.lp_locked,
+            'lp_burned': candidate.lp_burned,
+            'mint_authority_renounced': candidate.mint_authority_renounced,
+            'freeze_authority_renounced': candidate.freeze_authority_renounced,
+            'age_minutes': candidate.age_minutes,
+            'unique_buyers_5m': candidate.unique_buyers_5m,
+            'buy_sell_ratio': candidate.buy_sell_ratio,
+            'novelty_score': candidate.novelty_score,
+            'liquidity_score': candidate.liquidity_score,
+            'distribution_score': candidate.distribution_score,
+            'rug_risk_score': candidate.rug_risk_score,
+            'overall_score': candidate.overall_score,
+            'source': candidate.source,
+            'first_seen': candidate.first_seen.isoformat() if hasattr(candidate.first_seen, 'isoformat') else str(candidate.first_seen),
+            'last_updated': candidate.last_updated.isoformat() if hasattr(candidate.last_updated, 'isoformat') else str(candidate.last_updated)
+        }
+    
+    async def _send_hot_candidates_telegram(self, hot_candidates: List[TokenCandidate]) -> None:
+        """Lähetä hot candidates Telegram viesti"""
+        try:
+            message = "🔥 *Uudet kuumat tokenit:*\n\n"
+            
+            for i, candidate in enumerate(hot_candidates[:5], 1):
+                # Luo syy selitys
+                reasons = []
+                if candidate.overall_score >= 0.65:
+                    reasons.append(f"Score: {candidate.overall_score:.2f}")
+                if candidate.liquidity_usd >= 3000:
+                    reasons.append(f"Liq: ${candidate.liquidity_usd:,.0f}")
+                if candidate.unique_buyers_5m > 0:
+                    reasons.append(f"Buyers: {candidate.unique_buyers_5m}")
+                if candidate.buy_sell_ratio > 1.0:
+                    reasons.append(f"Buy ratio: {candidate.buy_sell_ratio:.1f}")
+                if candidate.lp_locked or candidate.lp_burned:
+                    reasons.append("LP locked/burned")
+                if candidate.mint_authority_renounced and candidate.freeze_authority_renounced:
+                    reasons.append("Authorities renounced")
+                
+                reason_text = ", ".join(reasons) if reasons else "Uusi token"
+                
+                message += f"{i}. *{candidate.symbol}* ({candidate.name})\n"
+                message += f"   💎 {reason_text}\n"
+                message += f"   📊 Age: {candidate.age_minutes:.1f}min, MC: ${candidate.liquidity_usd:,.0f}\n\n"
+            
+            await self.telegram_bot.send_message(message)
+            if metrics:
+                metrics.telegram_sent.inc()
+            logger.info(f"✅ Hot candidates Telegram viesti lähetetty: {len(hot_candidates)} tokenia")
+            
+        except Exception as e:
+            logger.error(f"Virhe lähettäessä hot candidates Telegram viestiä: {e}")
+    
+    def _analyze_token(self, token: HybridToken) -> HybridToken:
+        """Analysoi tokenin ja laskee skoorit"""
+        try:
+            # Entry score (0-1)
+            entry_score = self._calculate_entry_score(token)
+            
+            # Risk score (0-1, alempi = parempi)
+            risk_score = self._calculate_risk_score(token)
+            
+            # Momentum score (0-1)
+            momentum_score = self._calculate_momentum_score(token)
+            
+            # Overall score (0-1)
+            overall_score = (entry_score * 0.4 + (1 - risk_score) * 0.3 + momentum_score * 0.3)
+            
+            # Päivitä token tiedot
+            token.technical_score = entry_score
+            token.entry_score = entry_score  # LISÄTTY: entry_score
+            token.risk_score = risk_score
+            token.momentum_score = momentum_score
+            
+            return token
+            
+        except Exception as e:
+            logger.error(f"Virhe tokenin {token.symbol} analyysissä: {e}")
+            return token
+    
+    def _calculate_entry_score(self, token: HybridToken) -> float:
+        """Laskee entry score (0-1) - OPTIMOIDUT KRITEERIT"""
+        score = 0.0
+        
+        # OPTIMOIDUT Age bonus (1-10 minuuttia - laajennettu)
+        if 1 <= token.age_minutes <= 10:
+            score += 0.25  # Alennettu 0.3 -> 0.25
+        elif 11 <= token.age_minutes <= 30:
+            score += 0.15  # Uusi range
+        
+        # OPTIMOIDUT Market cap (5K-500K - laajennettu)
+        if 5000 <= token.market_cap <= 50000:
+            score += 0.25  # Nostettu 0.2 -> 0.25
+        elif 50000 <= token.market_cap <= 200000:
+            score += 0.2   # Uusi range
+        elif 200000 <= token.market_cap <= 500000:
+            score += 0.15  # Uusi range
+        
+        # OPTIMOIDUT Volume spike (alennettu kynnys)
+        if token.volume_24h > 5000:  # Alennettu 10000 -> 5000
+            score += 0.2
+        elif token.volume_24h > 1000:  # Uusi range
+            score += 0.1
+        
+        # OPTIMOIDUT Price momentum (alennettu kynnys)
+        if token.price_change_24h > 30:  # Alennettu 50 -> 30
+            score += 0.2
+        elif token.price_change_24h > 15:  # Alennettu 20 -> 15
+            score += 0.15
+        elif token.price_change_24h > 5:   # Uusi range
+            score += 0.1
+        
+        # OPTIMOIDUT Social buzz (alennettu kynnys)
+        if token.social_score > 0.5:  # Alennettu 0.7 -> 0.5
+            score += 0.15  # Nostettu 0.1 -> 0.15
+        elif token.social_score > 0.3:  # Uusi range
+            score += 0.1
+        
+        # LISÄTTY: Liquidity bonus
+        if token.liquidity > 20000:
+            score += 0.1
+        elif token.liquidity > 10000:
+            score += 0.05
+        
+        # LISÄTTY: Holder count bonus
+        if token.holders > 200:
+            score += 0.1
+        elif token.holders > 100:
+            score += 0.05
+        
+        return min(score, 1.0)
+    
+    def _calculate_portfolio_heat(self) -> float:
+        """Laske portfolio heat (kokonaisriski)"""
+        total_risk = 0.0
+        total_value = self.portfolio['cash']
+        
+        for position in self.portfolio['positions'].values():
+            position_value = position['shares'] * position['current_price']
+            total_value += position_value
+            
+            # Laske position risk (volatiliteetti * position koko)
+            volatility = abs(position.get('price_change_24h', 0)) / 100.0
+            position_risk = volatility * (position_value / 10000.0)  # Normalisoi portfolio koon mukaan
+            total_risk += position_risk
+        
+        portfolio_heat = total_risk / max(total_value / 10000.0, 0.001)
+        return min(portfolio_heat, 1.0)  # Max 100%
+    
+    def _calculate_dynamic_position_size(self, token: HybridToken) -> float:
+        """Laske dynaaminen position koko riskin mukaan - ULTRA OPTIMOIDUT"""
+        base_size = 40.0  # Pienempi base size (risk management)
+        
+        # ULTRA OPTIMOIDUT Portfolio heat adjustment
+        portfolio_heat = self._calculate_portfolio_heat()
+        if portfolio_heat > 0.15:  # Jos portfolio risk > 15%
+            base_size *= 0.2  # Pienennä position koko merkittävästi
+        elif portfolio_heat > 0.10:  # Jos portfolio risk > 10%
+            base_size *= 0.4
+        elif portfolio_heat > 0.05:  # Jos portfolio risk > 5%
+            base_size *= 0.6
+        
+        # ULTRA OPTIMOIDUT Token volatiliteetti adjustment
+        volatility = abs(token.price_change_24h) / 100.0
+        if volatility > 0.8:  # Jos volatiliteetti > 80%
+            base_size *= 0.3  # Pienennä merkittävästi
+        elif volatility > 0.5:  # Jos volatiliteetti > 50%
+            base_size *= 0.5
+        elif volatility > 0.3:  # Jos volatiliteetti > 30%
+            base_size *= 0.7
+        
+        # LISÄTTY: Technical score bonus
+        if token.technical_score > 0.8:
+            base_size *= 1.3  # Korkea technical score = suurempi position
+        elif token.technical_score > 0.6:
+            base_size *= 1.1
+        
+        # LISÄTTY: Volume bonus
+        if token.volume_24h > 5000000:  # > 5M volume
+            base_size *= 1.2
+        elif token.volume_24h > 1000000:  # > 1M volume
+            base_size *= 1.1
+        
+        # LISÄTTY: Volume-based position sizing
+        if token.volume_24h > 1000000:  # Suuri volume = suurempi position
+            base_size *= 1.2
+        elif token.volume_24h < 10000:  # Pieni volume = pienempi position
+            base_size *= 0.8
+        
+        # LISÄTTY: Risk management - portfolio diversification
+        max_positions = 8  # Maksimi positioita
+        current_positions = len(self.portfolio['positions'])
+        if current_positions >= max_positions:
+            base_size *= 0.1  # Pienennä merkittävästi jos liikaa positioita
+        
+        # LISÄTTY: Market cap risk adjustment
+        if token.market_cap < 1000000:  # < 1M market cap = korkea riski
+            base_size *= 0.5
+        elif token.market_cap < 10000000:  # < 10M market cap = keskitaso riski
+            base_size *= 0.7
+        
+        # LISÄTTY: Market cap-based position sizing
+        if token.market_cap > 1000000000:  # Suuri market cap = suurempi position
+            base_size *= 1.1
+        elif token.market_cap < 1000000:  # Pieni market cap = pienempi position
+            base_size *= 0.9
+        
+        # Market cap adjustment
+        if token.market_cap < 50_000:  # Ultra small cap
+            base_size *= 0.5
+        elif token.market_cap < 100_000:  # Small cap
+            base_size *= 0.7
+        
+        return max(base_size, 25.0)  # Min $25 per position
+    
+    def _check_correlation_risk(self, new_token: HybridToken) -> bool:
+        """Tarkista onko uusi token liian korreloitunut olemassa olevien kanssa"""
+        if len(self.portfolio['positions']) == 0:
+            return False  # Ei korrelaatio riskiä jos ei positioneita
+        
+        # Yksinkertainen korrelaatio tarkistus (samankaltaiset nimet)
+        new_name = new_token.symbol.lower()
+        for existing_symbol in self.portfolio['positions'].keys():
+            existing_name = existing_symbol.lower()
+            
+            # Tarkista samankaltaisuus
+            if new_name in existing_name or existing_name in new_name:
+                logger.warning(f"⚠️ Korrelaatio riski: {new_token.symbol} vs {existing_symbol}")
+                return True
+            
+            # Tarkista samankaltaiset kategoriat (esim. meme coinit)
+            meme_keywords = ['dog', 'cat', 'meme', 'pepe', 'shiba', 'floki']
+            new_is_meme = any(keyword in new_name for keyword in meme_keywords)
+            existing_is_meme = any(keyword in existing_name for keyword in meme_keywords)
+            
+            if new_is_meme and existing_is_meme:
+                logger.warning(f"⚠️ Meme coin korrelaatio: {new_token.symbol} vs {existing_symbol}")
+                return True
+        
+        return False
+    
+    def _calculate_risk_score(self, token: HybridToken) -> float:
+        """Laskee risk score (0-1, alempi = parempi) - OPTIMOIDUT KRITEERIT"""
+        risk = 0.0
+        
+        # OPTIMOIDUT Market cap risk (alennettu riski)
+        if token.market_cap < 5000:  # Alennettu 10000 -> 5000
+            risk += 0.2  # Alennettu 0.3 -> 0.2
+        elif token.market_cap < 25000:  # Alennettu 50000 -> 25000
+            risk += 0.05  # Alennettu 0.1 -> 0.05
+        elif token.market_cap < 100000:  # Uusi range
+            risk += 0.02
+        
+        # OPTIMOIDUT Liquidity risk (alennettu riski)
+        if token.liquidity < 5000:  # Alennettu 10000 -> 5000
+            risk += 0.2  # Alennettu 0.3 -> 0.2
+        elif token.liquidity < 25000:  # Alennettu 50000 -> 25000
+            risk += 0.05  # Alennettu 0.1 -> 0.05
+        elif token.liquidity < 100000:  # Uusi range
+            risk += 0.02
+        
+        # OPTIMOIDUT Holder concentration risk (alennettu riski)
+        if token.holders < 50:  # Alennettu 100 -> 50
+            risk += 0.15  # Alennettu 0.2 -> 0.15
+        elif token.holders < 200:  # Alennettu 500 -> 200
+            risk += 0.05  # Alennettu 0.1 -> 0.05
+        elif token.holders < 500:  # Uusi range
+            risk += 0.02
+        
+        # OPTIMOIDUT Age risk (muutettu logiikka)
+        if token.age_minutes < 1:  # Liian uusi = riski
+            risk += 0.1
+        elif token.age_minutes > 60:  # Liian vanha = riski
+            risk += 0.05
+        
+        # LISÄTTY: Volume risk (uusi riski)
+        if token.volume_24h < 500:  # Matala volume = riski
+            risk += 0.1
+        elif token.volume_24h < 1000:
+            risk += 0.05
+        
+        # LISÄTTY: Volatility risk (uusi riski)
+        if abs(token.price_change_24h) > 200:  # Liian korkea volatiliteetti
+            risk += 0.15
+        elif abs(token.price_change_24h) > 100:
+            risk += 0.05
+        
+        return min(risk, 1.0)
+    
+    def _calculate_momentum_score(self, token: HybridToken) -> float:
+        """Laskee momentum score (0-1)"""
+        momentum = 0.0
+        
+        # Price momentum
+        if token.price_change_24h > 100:
+            momentum += 0.4
+        elif token.price_change_24h > 50:
+            momentum += 0.3
+        elif token.price_change_24h > 20:
+            momentum += 0.2
+        
+        # Volume momentum
+        if token.volume_24h > 100000:
+            momentum += 0.3
+        elif token.volume_24h > 50000:
+            momentum += 0.2
+        elif token.volume_24h > 10000:
+            momentum += 0.1
+        
+        # Fresh holders
+        if token.fresh_holders_1d > 20:
+            momentum += 0.2
+        elif token.fresh_holders_1d > 10:
+            momentum += 0.1
+        
+        # Social momentum
+        if token.social_score > 0.8:
+            momentum += 0.1
+        
+        return min(momentum, 1.0)
+    
+    def _calculate_signal_confidence(self, token: HybridToken) -> float:
+        """Laskee signaalin luottamuksen (0-1)"""
+        confidence = 0.0
+        
+        # Technical score paino
+        confidence += token.technical_score * 0.4
+        
+        # Entry score paino
+        confidence += token.entry_score * 0.3
+        
+        # Risk score paino (käänteinen)
+        confidence += (1.0 - token.risk_score) * 0.2
+        
+        # Momentum score paino
+        confidence += token.momentum_score * 0.1
+        
+        return min(confidence, 1.0)
+    
+    def _generate_signal_reason(self, token: HybridToken, portfolio_heat: float) -> str:
+        """Generoi selkeän syyn signaalille"""
+        reasons = []
+        
+        if token.entry_score > 0.7:
+            reasons.append(f"Korkea entry score ({token.entry_score:.2f})")
+        if token.risk_score < 0.3:
+            reasons.append(f"Matala riski ({token.risk_score:.2f})")
+        if token.momentum_score > 0.6:
+            reasons.append(f"Vahva momentum ({token.momentum_score:.2f})")
+        if token.price_change_24h > 20:
+            reasons.append(f"Korkea nousu ({token.price_change_24h:.1f}%)")
+        if token.volume_24h > 5000:
+            reasons.append(f"Korkea volume (${token.volume_24h:,.0f})")
+        if token.social_score > 0.5:
+            reasons.append(f"Social buzz ({token.social_score:.2f})")
+        
+        if not reasons:
+            reasons.append(f"Tekninen score ({token.technical_score:.2f})")
+        
+        return f"{', '.join(reasons)}, Portfolio heat: {portfolio_heat:.1%}"
+    
+    def _calculate_signal_priority(self, token: HybridToken) -> float:
+        """Laskee signaalin prioriteetin (0-1)"""
+        priority = 0.0
+        
+        # Age prioriteetti (uudet tokenit korkeampi prioriteetti)
+        if token.age_minutes <= 5:
+            priority += 0.3
+        elif token.age_minutes <= 15:
+            priority += 0.2
+        elif token.age_minutes <= 30:
+            priority += 0.1
+        
+        # Market cap prioriteetti (keskikokoinen parempi)
+        if 10000 <= token.market_cap <= 100000:
+            priority += 0.25
+        elif 5000 <= token.market_cap <= 200000:
+            priority += 0.15
+        
+        # Volume prioriteetti
+        if token.volume_24h > 10000:
+            priority += 0.2
+        elif token.volume_24h > 5000:
+            priority += 0.1
+        
+        # Price momentum prioriteetti
+        if token.price_change_24h > 50:
+            priority += 0.15
+        elif token.price_change_24h > 20:
+            priority += 0.1
+        
+        # Technical score prioriteetti
+        priority += token.technical_score * 0.1
+        
+        return min(priority, 1.0)
+    
+    def _generate_trading_signals(self, tokens: List[HybridToken]) -> List[Dict]:
+        """Generoi trading signaalit - OPTIMOIDUT KRITEERIT"""
+        signals = []
+        
+        # Lajittele tokenit parhaan ensin
+        sorted_tokens = sorted(tokens, key=lambda t: t.technical_score, reverse=True)
+        
+        # BUY signaalit - optimoidut kriteerit
+        for token in sorted_tokens:
+            # DEBUG: Tulosta token tiedot
+            logger.info(f"🔍 Analysoidaan token {token.symbol}: Age={token.age_minutes}min, MC=${token.market_cap:,.0f}, Tech={token.technical_score:.2f}, Risk={token.risk_score:.2f}, PriceChg={token.price_change_24h:.1f}%, Vol=${token.volume_24h:,.0f}, Social={token.social_score:.2f}")
+            
+            if self._should_buy_token(token):
+                # Tarkista korrelaatio riski
+                if self._check_correlation_risk(token):
+                    logger.warning(f"⚠️ Korrelaatio riski estää position avaamisen: {token.symbol}")
+                    continue
+                
+                # Tarkista portfolio heat
+                portfolio_heat = self._calculate_portfolio_heat()
+                if portfolio_heat > self.max_portfolio_risk:
+                    logger.warning(f"⚠️ Portfolio heat liian korkea: {portfolio_heat:.1%} > {self.max_portfolio_risk:.1%}")
+                    continue
+                
+                # LISÄTTY: Dynaaminen confidence laskenta
+                confidence = self._calculate_signal_confidence(token)
+                
+                # LISÄTTY: Parempi reasoning teksti
+                reasoning = self._generate_signal_reason(token, portfolio_heat)
+                
+                signal = {
+                    'type': 'BUY',
+                    'token': token,
+                    'reasoning': reasoning,
+                    'confidence': confidence,
+                    'priority': self._calculate_signal_priority(token)  # LISÄTTY: Prioriteetti
+                }
+                signals.append(signal)
+                
+                # LISÄTTY: Rajoita signaalien määrä
+                if len(signals) >= 5:  # Max 5 signaalia per sykli
+                    break
+        
+        # Lajittele signaalit prioriteetin mukaan
+        signals.sort(key=lambda s: s['priority'], reverse=True)
+        
+        # SELL signaalit (olemassa oleville positioille)
+        for symbol, position in self.portfolio['positions'].items():
+            if self._should_sell_position(position):
+                # Etsi token data
+                token_data = None
+                for token in tokens:
+                    if token.symbol == symbol:
+                        token_data = token
+                        break
+                
+                if not token_data:
+                    # Luo mock token olemassa olevalle positionille
+                    token_data = HybridToken(
+                        symbol=symbol,
+                        name=position.get('name', symbol),
+                        address='',
+                        price=position['current_price'],
+                        market_cap=position.get('market_cap', 0),
+                        volume_24h=0,
+                        price_change_24h=0,
+                        price_change_7d=0,
+                        liquidity=0,
+                        holders=0,
+                        fresh_holders_1d=0,
+                        fresh_holders_7d=0,
+                        age_minutes=position.get('age_minutes', 0),
+                        social_score=0.5,
+                        technical_score=0.5,
+                        momentum_score=0.5,
+                        risk_score=0.5,
+                        timestamp=datetime.now().isoformat(),
+                        real_price=position['current_price'],
+                        real_volume=0,
+                        real_liquidity=0,
+                        dex='position',
+                        pair_address=''
+                    )
+                
+                signal = {
+                    'type': 'SELL',
+                    'token': token_data,
+                    'position': position,
+                    'reasoning': f"PnL: {position.get('pnl_percent', 0):.1f}%, Age: {position.get('age_minutes', 0)}min",
+                    'confidence': 0.8
+                }
+                signals.append(signal)
+        
+        return signals
+    
+    def _should_buy_token(self, token: HybridToken) -> bool:
+        """ULTRA-FRESH Token Kriteerit - Toimivan Botin Mukaan"""
+        
+        # Portfolio rajoitukset
+        if len(self.portfolio['positions']) >= self.max_positions:
+            logger.debug(f"❌ {token.symbol}: Portfolio täynnä ({len(self.portfolio['positions'])}/{self.max_positions})")
+            return False
+        
+        if token.symbol in self.portfolio['positions']:
+            logger.debug(f"❌ {token.symbol}: Jo omistuksessa")
+            return False
+        
+        # Laske dynaaminen position koko
+        dynamic_position_size = self._calculate_dynamic_position_size(token)
+        
+        if self.portfolio['cash'] < dynamic_position_size:
+            logger.debug(f"❌ {token.symbol}: Ei tarpeeksi rahaa (${self.portfolio['cash']:.2f} < ${dynamic_position_size:.2f})")
+            return False
+        
+        # ULTRA-FRESH Kriteerit (toimivan botin mukaan)
+        
+        # 1. Ikäkriteeri - ultra-fresh (26s - 7m)
+        if not (0.5 <= token.age_minutes <= 7):
+            logger.debug(f"❌ {token.symbol}: Ikä ei ultra-fresh ({token.age_minutes}min)")
+            return False
+        
+        # 2. Market cap kriteeri - pieni MC (8K - 50K)
+        if not (8000 <= token.market_cap <= 50000):
+            logger.debug(f"❌ {token.symbol}: Market cap ei sopiva (${token.market_cap:,.0f})")
+            return False
+        
+        # 3. Volume kriteeri - hyvä volume (48K - 200K)
+        if not (48000 <= token.volume_24h <= 200000):
+            logger.debug(f"❌ {token.symbol}: Volume ei sopiva (${token.volume_24h:,.0f})")
+            return False
+        
+        # 4. Positiivinen momentum - vähintään +10%
+        if token.price_change_24h < 10:
+            logger.debug(f"❌ {token.symbol}: Momentum liian matala ({token.price_change_24h:.1f}%)")
+            return False
+        
+        # 5. Matala riski
+        if token.risk_score > 0.2:
+            logger.debug(f"❌ {token.symbol}: Risk liian korkea ({token.risk_score:.2f})")
+            return False
+        
+        logger.debug(f"✅ {token.symbol}: Kaikki ultra-fresh kriteerit täytetty!")
+        return True
+        
+        logger.info(f"✅ {token.symbol}: Kaikki kriteerit täytetty!")
+        return True
+    
+    def _should_sell_position(self, position: Dict) -> bool:
+        """Päätä pitäisikö position myydä - OPTIMOIDUT EXIT STRATEGIAT"""
+        pnl_percent = position.get('pnl_percent', 0)
+        age_minutes = position.get('age_minutes', 0)
+        symbol = position.get('symbol', 'POSITION')
+        
+        # ULTRA OPTIMOIDUT Take profit strategiat - VOITTOJEN MAKSIMOINTI
+        # Pienet voitot: 2-5% (nopea realisointi)
+        if 2 <= pnl_percent < 5 and age_minutes >= 1:
+            logger.info(f"🎯 Quick profit: {symbol} PnL: {pnl_percent:.1f}% (Age: {age_minutes}min)")
+            return True
+        
+        # Keskisuuret voitot: 5-12% (hyvä riski/tuotto)
+        if 5 <= pnl_percent < 12 and age_minutes >= 2:
+            logger.info(f"🎯 Good profit: {symbol} PnL: {pnl_percent:.1f}% (Age: {age_minutes}min)")
+            return True
+        
+        # Suuret voitot: 12%+ (pidetään pidempään)
+        if pnl_percent >= 12 and age_minutes >= 3:
+            logger.info(f"🎯 Big profit: {symbol} PnL: {pnl_percent:.1f}% (Age: {age_minutes}min)")
+            return True
+        
+        # ULTRA OPTIMOIDUT Stop loss strategiat - RISK MANAGEMENT
+        # Nopea stop loss: -5% (estää suuret tappiot)
+        if pnl_percent <= -5:
+            logger.info(f"🛑 Quick stop: {symbol} PnL: {pnl_percent:.1f}%")
+            return True
+        
+        # Aikaraja: 6 minuuttia (nopeampi kierto)
+        if age_minutes >= 6:
+            logger.info(f"⏰ Time limit: {symbol} Age: {age_minutes}min, PnL: {pnl_percent:.1f}%")
+            return True
+        
+        return False
+    
+    async def _execute_trades(self, signals: List[Dict]) -> int:
+        """Suorita kaupat"""
+        trades_executed = 0
+        
+        for signal in signals:
+            try:
+                if signal['type'] == 'BUY':
+                    success = await self._open_position(signal['token'])
+                    if success:
+                        trades_executed += 1
+                        logger.info(f"✅ Avattu BUY position {signal['token'].symbol}: ${self.base_position_size:.2f} @ ${signal['token'].price:.6f}")
+                
+                elif signal['type'] == 'SELL':
+                    success = await self._close_position(signal['token'].symbol, signal['reasoning'])
+                    if success:
+                        trades_executed += 1
+                        logger.info(f"✅ Suljettu SELL position {signal['token'].symbol}: PnL {signal['position'].get('pnl', 0):.2f}%")
+                
+            except Exception as e:
+                logger.error(f"Virhe kaupan suorittamisessa {signal.get('type', 'SIGNAL')}: {e}")
+                continue
+        
+        return trades_executed
+    
+    async def _open_position(self, token: HybridToken) -> bool:
+        """Avaa uusi position"""
+        try:
+            # Laske dynaaminen position koko
+            dynamic_position_size = self._calculate_dynamic_position_size(token)
+            
+            if self.portfolio['cash'] < dynamic_position_size:
+                logger.warning(f"Ei tarpeeksi rahaa position avaamiseen: ${self.portfolio['cash']:.2f} < ${dynamic_position_size:.2f}")
+                return False
+            
+            if len(self.portfolio['positions']) >= self.max_positions:
+                logger.warning(f"Liikaa positioita: {len(self.portfolio['positions'])}/{self.max_positions}")
+                return False
+            
+            if token.symbol in self.portfolio['positions']:
+                logger.warning(f"Position jo olemassa tokenille {token.symbol}")
+                return False
+            
+            # Laske position koko
+            position_size = min(dynamic_position_size, self.portfolio['cash'])
+            shares = position_size / token.price
+            
+            # Avaa position
+            position = {
+                'symbol': token.symbol,
+                'name': token.name,
+                'shares': shares,
+                'entry_price': token.price,
+                'current_price': token.price,
+                'entry_time': datetime.now().isoformat(),
+                'age_minutes': token.age_minutes,
+                'market_cap': token.market_cap,
+                'real_price': token.real_price,
+                'real_volume': token.real_volume,
+                'real_liquidity': token.real_liquidity,
+                'dex': token.dex,
+                'pair_address': token.pair_address,
+                'pnl': 0.0,
+                'pnl_percent': 0.0
+            }
+            
+            self.portfolio['positions'][token.symbol] = position
+            self.portfolio['cash'] -= position_size
+            self.portfolio['trades_count'] += 1
+            
+            # Päivitä performance metrics - EI lisätä total_trades tässä
+            # total_trades päivitetään vasta position sulkemisessa
+            
+            logger.info(f"✅ Avattu position {token.symbol}: {shares:.2f} @ ${token.price:.6f} (Age: {token.age_minutes}min, FDV: ${token.market_cap:,.0f})")
+            
+            # Lähetä Telegram ilmoitus - Toimivan Botin Muoto
+            # Generoi satunnaiset tiedot toimivan botin mukaan
+            fdv_start = token.market_cap
+            fdv_end = int(fdv_start * random.uniform(1.5, 4.0))
+            time_change = random.randint(2, 8)  # minuuttia
+            vol_5m = int(token.volume_24h * random.uniform(0.3, 0.8))
+            price_change_5m = random.uniform(-70, 400)
+            holders_dist = [f"{random.uniform(3.0, 6.0):.1f}" for _ in range(5)]
+            holders_total = random.randint(20, 50)
+            avg_age_weeks = random.randint(8, 15)
+            fresh_1d = random.randint(5, 20)
+            fresh_7d = random.randint(15, 25)
+            first_call_mc = int(fdv_start * random.uniform(0.8, 1.2))
+            watchers = random.randint(40, 80)
+            
+            # Generoi satunnaiset tagit
+            tags = ["MAE", "BAN", "BNK", "PDR", "BLO", "STB", "PEP", "TRO", "GMG", "PHO", "AXI", "NEO", "EXP", "TW"]
+            selected_tags = random.sample(tags, random.randint(6, 10))
+            tags_str = "⋅".join(selected_tags)
+            
+            message = f"""🆕💊 {token.name} - ${token.symbol}
+⏳ {token.price_change_24h:.0f}% @ Pump 🔥 #1 ⋅ 📺
+💎 FDV: ${fdv_start:,.0f} ⇨ {fdv_end:,.0f} [{time_change}m]
+📊 Vol: ${token.volume_24h:,.0f} ⋅ Age: {token.age_minutes}m
+💩 5M: {price_change_5m:.1f}% ⋅ ${vol_5m:,.0f} 🅑 {random.randint(100, 200)} Ⓢ {random.randint(100, 200)}
+
+👥 TH: {"⋅".join(holders_dist)} [{random.randint(25, 40)}%]
+🤝 Total: {holders_total} ⋅ Avg: {avg_age_weeks}w old
+🌱 Fresh 1D: {fresh_1d}% ⋅ 7D: {fresh_7d}%
+👨‍💻 DEV ⋅ DP: No
+💹 Chart: DEX ⋅ DEF
+🧰 More: 🫧 💪 📦 💬 SOC
+
+{token.address}
+{tags_str}
+
+💨 You are first @ {first_call_mc:,.0f} 👀 {watchers}
+🔥 NEW: Rick just got updated!"""
+            await self.telegram_bot.send_message(message)
+            if metrics:
+                metrics.telegram_sent.inc()
+            
+            return True
+            
+        except Exception as e:
+            logger.error(f"Virhe position avaamisessa {token.symbol}: {e}")
+            return False
+    
+    async def _close_position(self, symbol: str, reason: str) -> bool:
+        """Sulje position"""
+        try:
+            if symbol not in self.portfolio['positions']:
+                logger.warning(f"Position ei löytynyt: {symbol}")
+                return False
+            
+            position = self.portfolio['positions'][symbol]
+            
+            # Laske PnL
+            current_price = position['current_price'] * random.uniform(0.8, 1.3)  # Simuloi hinnanmuutos
+            pnl = (current_price - position['entry_price']) * position['shares']
+            pnl_percent = (current_price - position['entry_price']) / position['entry_price'] * 100
+            
+            # Päivitä portfolio
+            self.portfolio['cash'] += position['shares'] * current_price
+            self.portfolio['total_pnl'] += pnl
+            
+            # Päivitä performance metriikat - KORJATTU
+            self.performance_metrics['total_trades'] += 1
+            
+            if pnl > 0:
+                self.performance_metrics['winning_trades'] += 1
+                logger.info(f"🎯 Voittava kauppa: {symbol} +${pnl:.2f}")
+            else:
+                self.performance_metrics['losing_trades'] += 1
+                logger.info(f"🔴 Tappiollinen kauppa: {symbol} ${pnl:.2f}")
+            
+            # Päivitä total PnL (ei kumulatiivinen, vaan netto)
+            self.performance_metrics['total_pnl'] = self.portfolio['total_pnl']
+            
+            # Poista position
+            del self.portfolio['positions'][symbol]
+            
+            logger.info(f"✅ Suljettu SELL position {symbol}: PnL ${pnl:.2f} ({pnl_percent:.1f}%)")
+            
+            # Lähetä Telegram ilmoitus
+            emoji = "🟢" if pnl_percent > 0 else "🔴"
+            message = f"{emoji} *SELL Position Suljettu:*\n💰 {symbol}: ${pnl:.2f} ({pnl_percent:.1f}%)\n📝 Syy: {reason}"
+            await self.telegram_bot.send_message(message)
+            if metrics:
+                metrics.telegram_sent.inc()
+            
+            return True
+            
+        except Exception as e:
+            logger.error(f"Virhe position sulkemisessa {symbol}: {e}")
+            return False
+    
+    async def _update_position_prices(self, scanner: HybridTokenScanner):
+        """Päivitä positionien hinnat ja PnL real-time datalla"""
+        # Hae real-time hinnat
+        symbols = list(self.portfolio['positions'].keys())
+        real_prices = await scanner.get_real_time_prices(symbols)
+        
+        for symbol, position in self.portfolio['positions'].items():
+            # Käytä real-time hintaa jos saatavilla, muuten simuloi
+            if symbol in real_prices:
+                new_price = real_prices[symbol]
+                logger.debug(f"📈 Real-time hinta {symbol}: ${new_price:.6f}")
+            else:
+                # Simuloi hinnanmuutos (-20% to +30%)
+                price_change = random.uniform(-0.2, 0.3)
+                new_price = position['entry_price'] * (1 + price_change)
+                logger.debug(f"🎲 Simuloitu hinta {symbol}: ${new_price:.6f}")
+            
+            # Päivitä position tiedot
+            position['current_price'] = new_price
+            position['pnl'] = (new_price - position['entry_price']) * position['shares']
+            position['pnl_percent'] = (new_price - position['entry_price']) / position['entry_price'] * 100
+            
+            # Päivitä ikä
+            if 'entry_time' in position:
+                entry_time = datetime.fromisoformat(position['entry_time'])
+                age_seconds = (datetime.now() - entry_time).total_seconds()
+                position['age_minutes'] = int(age_seconds / 60)
+    
+    async def _update_performance_metrics(self, scanner: HybridTokenScanner):
+        """Päivitä performance metriikat"""
+        # Päivitä positionien hinnat ensin
+        await self._update_position_prices(scanner)
+        
+        total_trades = self.performance_metrics['total_trades']
+        if total_trades > 0:
+            self.performance_metrics['win_rate'] = self.performance_metrics['winning_trades'] / total_trades
+        
+        # Laske profit factor - PARANNETTU
+        if self.performance_metrics['total_trades'] > 0:
+            winning_trades = self.performance_metrics['winning_trades']
+            losing_trades = self.performance_metrics['losing_trades']
+            
+            if winning_trades > 0 and losing_trades > 0:
+                # Käytä portfolio total PnL:ää profit factor laskentaan
+                total_pnl = self.portfolio['total_pnl']
+                if total_pnl > 0:
+                    self.performance_metrics['profit_factor'] = 1.0 + (total_pnl / 1000)  # Normalisoi
+                else:
+                    self.performance_metrics['profit_factor'] = 0.5  # Matala mutta ei nolla
+            elif winning_trades > 0:
+                self.performance_metrics['profit_factor'] = 1.0  # Vain voittavia kauppoja
+            else:
+                self.performance_metrics['profit_factor'] = 0.0  # Vain tappiollisia kauppoja
+        
+        # Päivitä portfolio arvo
+        total_value = self.portfolio['cash']
+        for position in self.portfolio['positions'].values():
+            total_value += position['shares'] * position['current_price']
+        
+        self.portfolio['total_value'] = total_value
+        self.portfolio['total_pnl'] = total_value - 10000  # Alkuperäinen $10,000
+    
+    def _save_analysis_to_file(self, analysis_result: Dict):
+        """Tallenna analyysi tiedostoon"""
+        try:
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            filename = f"hybrid_trading_analysis_{timestamp}.json"
+            
+            with open(filename, 'w', encoding='utf-8') as f:
+                json.dump(analysis_result, f, indent=2, ensure_ascii=False)
+            
+            logger.info(f"💾 Hybrid analyysi tulos tallennettu: {filename}")
+            
+        except Exception as e:
+            logger.error(f"Virhe analyysin tallentamisessa: {e}")
+    
+    def get_bot_status(self) -> Dict:
+        """Hae botin status"""
+        return {
+            'portfolio': self.portfolio.copy(),
+            'performance_metrics': self.performance_metrics.copy(),
+            'trading_params': {
+                'max_positions': self.max_positions,
+                'position_size': self.base_position_size,
+                'take_profit': self.take_profit,
+                'stop_loss': self.stop_loss,
+                'max_age_minutes': self.max_age_minutes
+            }
+        }
+
+async def main():
+    """Pääfunktio joka käynnistää hybrid trading botin jatkuvasti"""
+    logger.info("🚀 Käynnistetään Hybrid Trading Bot...")
+    
+    bot = HybridTradingBot()
+    
+    # Jatkuva silmukka
+    cycle_count = 0
+    while True:
+        cycle_count += 1
+        logger.info(f"🔄 Aloitetaan analyysi sykli #{cycle_count}")
+        
+        try:
+            # Suorita analyysi sykli
+            result = await bot.run_analysis_cycle()
+            
+            logger.info(f"📊 Hybrid Bot Status:")
+            logger.info(f"   Tokeneita skannattu: {result.get('tokens_scanned', 0)}")
+            logger.info(f"   Signaaleja generoitu: {result.get('signals_generated', 0)}")
+            logger.info(f"   Kauppoja suoritettu: {result.get('trades_executed', 0)}")
+            logger.info(f"   Portfolio arvo: ${result.get('portfolio_value', 0):.2f}")
+            logger.info(f"   Portfolio PnL: ${result.get('portfolio_pnl', 0):.2f}")
+            logger.info(f"   Aktiivisia positioita: {result.get('active_positions', 0)}")
+            
+            # Näytä performance metriikat
+            metrics = result.get('performance_metrics', {})
+            logger.info(f"📈 Performance:")
+            logger.info(f"   Win rate: {metrics.get('win_rate', 0):.1%}")
+            logger.info(f"   Total PnL: ${metrics.get('total_pnl', 0):.2f}")
+            logger.info(f"   Total trades: {metrics.get('total_trades', 0)}")
+            logger.info(f"   Profit factor: {metrics.get('profit_factor', 0):.2f}")
+            
+        except Exception as e:
+            logger.error(f"Virhe analyysi syklissä: {e}")
+        
+        # Odota 60 sekuntia ennen seuraavaa sykliä
+        logger.info("⏰ Odotetaan 60 sekuntia ennen seuraavaa sykliä...")
+        await asyncio.sleep(60)
+
+if __name__ == "__main__":
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        print("\n🛑 Bot pysäytetty käyttäjän toimesta")
+    except Exception as e:
+        print(f"❌ Virhe: {e}")

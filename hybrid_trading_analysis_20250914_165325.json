@@ -1,0 +1,103 @@
+{
+  "timestamp": "2025-09-14T16:53:25.291247",
+  "tokens_scanned": 1,
+  "tokens_analyzed": 1,
+  "signals_generated": 2,
+  "trades_executed": 2,
+  "portfolio_value": 9999.37591763838,
+  "portfolio_pnl": -0.6240823616208218,
+  "active_positions": 2,
+  "performance_metrics": {
+    "total_trades": 4,
+    "winning_trades": 1,
+    "losing_trades": 3,
+    "total_pnl": -8.235488141241206,
+    "max_drawdown": 0.0,
+    "sharpe_ratio": 0.0,
+    "win_rate": 0.25,
+    "profit_factor": 0.5
+  },
+  "risk_metrics": {
+    "portfolio_heat": 0.0,
+    "max_portfolio_risk": 0.2,
+    "correlation_threshold": 0.7,
+    "dynamic_position_sizing": true
+  },
+  "tokens": [
+    {
+      "symbol": "BUIDL",
+      "name": "BlackRock USD Institutional Digital Liquidity Fund",
+      "address": "blackrock-usd-institutional-digital-liquidity-fund",
+      "price": 1.0,
+      "market_cap": 2209200082.0,
+      "volume_24h": 0.0,
+      "price_change_24h": 0.0,
+      "price_change_7d": 0.0,
+      "liquidity": 0.0,
+      "holders": 4385,
+      "fresh_holders_1d": 90,
+      "fresh_holders_7d": 291,
+      "age_minutes": 2,
+      "social_score": 0.1,
+      "technical_score": 0.35,
+      "momentum_score": 0.2,
+      "risk_score": 0.30000000000000004,
+      "timestamp": "2025-09-14T16:53:12.937902",
+      "real_price": 1.0,
+      "real_volume": 0.0,
+      "real_liquidity": 0.0,
+      "dex": "coingecko",
+      "pair_address": ""
+    }
+  ],
+  "positions": {
+    "WLFI": {
+      "symbol": "WLFI",
+      "name": "World Liberty Financial",
+      "shares": 320.02497899285066,
+      "entry_price": 0.217783,
+      "current_price": 0.2562542741796866,
+      "entry_time": "2025-09-14T16:50:56.093156",
+      "age_minutes": 2,
+      "market_cap": 5997398696.0,
+      "real_price": 0.217783,
+      "real_volume": 840431380.0,
+      "real_liquidity": 84043138.0,
+      "dex": "coingecko",
+      "pair_address": "",
+      "pnl": 12.311768711182403,
+      "pnl_percent": 17.664957402408177
+    },
+    "PENGU": {
+      "symbol": "PENGU",
+      "name": "Pudgy Penguins",
+      "shares": 2018.6806744692044,
+      "entry_price": 0.03452552,
+      "current_price": 0.0349027086414225,
+      "entry_time": "2025-09-14T16:50:56.309539",
+      "age_minutes": 2,
+      "market_cap": 2170287856.0,
+      "real_price": 0.03452552,
+      "real_volume": 385845918.0,
+      "real_liquidity": 38584591.800000004,
+      "dex": "coingecko",
+      "pair_address": "",
+      "pnl": 0.7614234210689071,
+      "pnl_percent": 1.0924922822958378
+    }
+  },
+  "signals": [
+    {
+      "type": "SELL",
+      "symbol": "BNSOL",
+      "reasoning": "PnL: 20.0%, Age: 3min",
+      "confidence": 0.8
+    },
+    {
+      "type": "SELL",
+      "symbol": "UNKNOWN",
+      "reasoning": "PnL: -17.3%, Age: 0min",
+      "confidence": 0.8
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "timestamp": "2025-09-14T16:49:43.854867",
+  "tokens_scanned": 1,
+  "tokens_analyzed": 1,
+  "signals_generated": 0,
+  "trades_executed": 0,
+  "portfolio_value": 10008.066520117283,
+  "portfolio_pnl": 8.06652011728329,
+  "active_positions": 1,
+  "performance_metrics": {
+    "total_trades": 0,
+    "winning_trades": 0,
+    "losing_trades": 0,
+    "total_pnl": 0.0,
+    "max_drawdown": 0.0,
+    "sharpe_ratio": 0.0,
+    "win_rate": 0.0,
+    "profit_factor": 0.0
+  },
+  "risk_metrics": {
+    "portfolio_heat": 0.0,
+    "max_portfolio_risk": 0.2,
+    "correlation_threshold": 0.7,
+    "dynamic_position_sizing": true
+  },
+  "tokens": [
+    {
+      "symbol": "SOL",
+      "name": "Solana",
+      "address": "solana",
+      "price": 245.2,
+      "market_cap": 133057945237.0,
+      "volume_24h": 8886956813.0,
+      "price_change_24h": 1.64147,
+      "price_change_7d": 0.0,
+      "liquidity": 888695681.3000001,
+      "holders": 2078,
+      "fresh_holders_1d": 80,
+      "fresh_holders_7d": 432,
+      "age_minutes": 3,
+      "social_score": 0.9,
+      "technical_score": 0.7999999999999999,
+      "momentum_score": 0.6,
+      "risk_score": 0.0,
+      "timestamp": "2025-09-14T16:49:31.903355",
+      "real_price": 245.2,
+      "real_volume": 8886956813.0,
+      "real_liquidity": 888695681.3000001,
+      "dex": "coingecko",
+      "pair_address": ""
+    }
+  ],
+  "positions": {
+    "BNSOL": {
+      "symbol": "BNSOL",
+      "name": "Binance Staked SOL",
+      "shares": 0.26487287652491165,
+      "entry_price": 263.13,
+      "current_price": 293.58430782915553,
+      "entry_time": "2025-09-14T16:48:30.893672",
+      "age_minutes": 1,
+      "market_cap": 2967677835.0,
+      "real_price": 263.13,
+      "real_volume": 12291512.0,
+      "real_liquidity": 1229151.2,
+      "dex": "coingecko",
+      "pair_address": "",
+      "pnl": 8.066520117283565,
+      "pnl_percent": 11.573863804642397
+    }
+  },
+  "signals": []
+}

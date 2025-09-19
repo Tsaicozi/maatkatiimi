@@ -1,0 +1,102 @@
+[
+  {
+    "test_name": "Kevyt kuorma",
+    "test_config": {
+      "rate_per_sec": 500,
+      "duration_sec": 5.0,
+      "burst": 25,
+      "jitter_ms": 2,
+      "min_liq_usd": 2000.0,
+      "max_queue": 10000
+    },
+    "results": {
+      "processed_items": 2400,
+      "elapsed_sec": 5.0011130000057165,
+      "throughput_per_sec": 479.893175778523,
+      "final_queue_size": 0,
+      "queue_utilization": 0.0
+    },
+    "performance": {
+      "items_per_second": 479.893175778523,
+      "queue_stable": true,
+      "throughput_acceptable": true
+    },
+    "timestamp": 1757956069.225726,
+    "status": "completed"
+  },
+  {
+    "test_name": "Keskisuuri kuorma",
+    "test_config": {
+      "rate_per_sec": 1000,
+      "duration_sec": 5.0,
+      "burst": 25,
+      "jitter_ms": 2,
+      "min_liq_usd": 2000.0,
+      "max_queue": 10000
+    },
+    "results": {
+      "processed_items": 4600,
+      "elapsed_sec": 5.001057000015862,
+      "throughput_per_sec": 919.805553103156,
+      "final_queue_size": 0,
+      "queue_utilization": 0.0
+    },
+    "performance": {
+      "items_per_second": 919.805553103156,
+      "queue_stable": true,
+      "throughput_acceptable": true
+    },
+    "timestamp": 1757956074.2298932,
+    "status": "completed"
+  },
+  {
+    "test_name": "Korkea kuorma",
+    "test_config": {
+      "rate_per_sec": 2000,
+      "duration_sec": 5.0,
+      "burst": 25,
+      "jitter_ms": 2,
+      "min_liq_usd": 2000.0,
+      "max_queue": 10000
+    },
+    "results": {
+      "processed_items": 8600,
+      "elapsed_sec": 5.001039665978169,
+      "throughput_per_sec": 1719.6424292543377,
+      "final_queue_size": 0,
+      "queue_utilization": 0.0
+    },
+    "performance": {
+      "items_per_second": 1719.6424292543377,
+      "queue_stable": true,
+      "throughput_acceptable": true
+    },
+    "timestamp": 1757956079.232039,
+    "status": "completed"
+  },
+  {
+    "test_name": "Eritt\u00e4in korkea kuorma",
+    "test_config": {
+      "rate_per_sec": 5000,
+      "duration_sec": 3.0,
+      "burst": 25,
+      "jitter_ms": 2,
+      "min_liq_usd": 2000.0,
+      "max_queue": 10000
+    },
+    "results": {
+      "processed_items": 11675,
+      "elapsed_sec": 3.0000715409987606,
+      "throughput_per_sec": 3891.5738643063323,
+      "final_queue_size": 20,
+      "queue_utilization": 0.2
+    },
+    "performance": {
+      "items_per_second": 3891.5738643063323,
+      "queue_stable": true,
+      "throughput_acceptable": true
+    },
+    "timestamp": 1757956082.233979,
+    "status": "completed"
+  }
+]

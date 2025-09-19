@@ -1,0 +1,73 @@
+{
+  "timestamp": "2025-09-14T17:13:07.787278",
+  "tokens_scanned": 1,
+  "tokens_analyzed": 1,
+  "signals_generated": 0,
+  "trades_executed": 0,
+  "portfolio_value": 10000.481332348416,
+  "portfolio_pnl": 0.48133234841589,
+  "active_positions": 1,
+  "performance_metrics": {
+    "total_trades": 0,
+    "winning_trades": 0,
+    "losing_trades": 0,
+    "total_pnl": 0.0,
+    "max_drawdown": 0.0,
+    "sharpe_ratio": 0.0,
+    "win_rate": 0.0,
+    "profit_factor": 0.0
+  },
+  "risk_metrics": {
+    "portfolio_heat": 0.0,
+    "max_portfolio_risk": 0.2,
+    "correlation_threshold": 0.7,
+    "dynamic_position_sizing": true
+  },
+  "tokens": [
+    {
+      "symbol": "UNKNOWN",
+      "name": "Unknown Token",
+      "address": "So11111111111111111111111111111111111111112",
+      "price": 9.316758592966876,
+      "market_cap": 6611.171347720318,
+      "volume_24h": 223847.24231753004,
+      "price_change_24h": -14.617590809847329,
+      "price_change_7d": 247.14714083119827,
+      "liquidity": 9257.97059513356,
+      "holders": 1460,
+      "fresh_holders_1d": 33,
+      "fresh_holders_7d": 125,
+      "age_minutes": 4,
+      "social_score": 0.5467209373895017,
+      "technical_score": 0.95,
+      "momentum_score": 0.5,
+      "risk_score": 0.1,
+      "timestamp": "2025-09-14T17:13:06.740407",
+      "real_price": 9.316758592966876,
+      "real_volume": 223847.24231753004,
+      "real_liquidity": 9257.97059513356,
+      "dex": "raydium",
+      "pair_address": ""
+    }
+  ],
+  "positions": {
+    "UNKNOWN": {
+      "symbol": "UNKNOWN",
+      "name": "Unknown Token",
+      "shares": 16.578905099192525,
+      "entry_price": 1.507940352539784,
+      "current_price": 1.5369731713861858,
+      "entry_time": "2025-09-14T17:11:52.623327",
+      "age_minutes": 1,
+      "market_cap": 17577.89309072284,
+      "real_price": 1.507940352539784,
+      "real_volume": 776999.5248328946,
+      "real_liquidity": 9604.629778,
+      "dex": "raydium",
+      "pair_address": "",
+      "pnl": 0.4813323484165427,
+      "pnl_percent": 1.9253293936661708
+    }
+  },
+  "signals": []
+}

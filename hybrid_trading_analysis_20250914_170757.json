@@ -1,0 +1,137 @@
+{
+  "timestamp": "2025-09-14T17:07:57.356783",
+  "tokens_scanned": 1,
+  "tokens_analyzed": 1,
+  "signals_generated": 2,
+  "trades_executed": 2,
+  "portfolio_value": 9991.52128038016,
+  "portfolio_pnl": -8.478719619839467,
+  "active_positions": 4,
+  "performance_metrics": {
+    "total_trades": 1,
+    "winning_trades": 1,
+    "losing_trades": 0,
+    "total_pnl": 7.0750845323376605,
+    "max_drawdown": 0.0,
+    "sharpe_ratio": 0.0,
+    "win_rate": 1.0,
+    "profit_factor": 1.0
+  },
+  "risk_metrics": {
+    "portfolio_heat": 0.0,
+    "max_portfolio_risk": 0.2,
+    "correlation_threshold": 0.7,
+    "dynamic_position_sizing": true
+  },
+  "tokens": [
+    {
+      "symbol": "WBTC",
+      "name": "Wrapped Bitcoin",
+      "address": "wrapped-bitcoin",
+      "price": 115493.0,
+      "market_cap": 14693932573.0,
+      "volume_24h": 111348507.0,
+      "price_change_24h": -0.08528,
+      "price_change_7d": 0.0,
+      "liquidity": 11134850.700000001,
+      "holders": 2821,
+      "fresh_holders_1d": 51,
+      "fresh_holders_7d": 396,
+      "age_minutes": 3,
+      "social_score": 0.9,
+      "technical_score": 0.7999999999999999,
+      "momentum_score": 0.6,
+      "risk_score": 0.0,
+      "timestamp": "2025-09-14T17:07:45.619013",
+      "real_price": 115493.0,
+      "real_volume": 111348507.0,
+      "real_liquidity": 11134850.700000001,
+      "dex": "coingecko",
+      "pair_address": ""
+    }
+  ],
+  "positions": {
+    "UNKNOWN": {
+      "symbol": "UNKNOWN",
+      "name": "Unknown Token",
+      "shares": 3.053086019763032,
+      "entry_price": 8.188436171850931,
+      "current_price": 10.3178811268782,
+      "entry_time": "2025-09-14T17:06:43.947955",
+      "age_minutes": 1,
+      "market_cap": 7557.982692097936,
+      "real_price": 8.188436171850931,
+      "real_volume": 273437.6309614162,
+      "real_liquidity": 9604.629778,
+      "dex": "raydium",
+      "pair_address": "",
+      "pnl": 6.501378622048674,
+      "pnl_percent": 26.0055144881947
+    },
+    "LINK": {
+      "symbol": "LINK",
+      "name": "Chainlink",
+      "shares": 2.88476821192053,
+      "entry_price": 24.16,
+      "current_price": 20.82208825104529,
+      "entry_time": "2025-09-14T17:06:44.143252",
+      "age_minutes": 1,
+      "market_cap": 16378457518.0,
+      "real_price": 24.16,
+      "real_volume": 790931824.0,
+      "real_liquidity": 79093182.4,
+      "dex": "coingecko",
+      "pair_address": "",
+      "pnl": -9.629101707580606,
+      "pnl_percent": -13.815859888057574
+    },
+    "BONK": {
+      "symbol": "BONK",
+      "name": "Bonk",
+      "shares": 2816000.0,
+      "entry_price": 2.475e-05,
+      "current_price": 2.2548459219966532e-05,
+      "entry_time": "2025-09-14T17:06:44.582769",
+      "age_minutes": 1,
+      "market_cap": 1914839149.0,
+      "real_price": 2.475e-05,
+      "real_volume": 438042114.0,
+      "real_liquidity": 43804211.400000006,
+      "dex": "coingecko",
+      "pair_address": "",
+      "pnl": -6.199538836574241,
+      "pnl_percent": -8.89511426276148
+    },
+    "WBTC": {
+      "symbol": "WBTC",
+      "name": "Wrapped Bitcoin",
+      "shares": 0.0006034651450737274,
+      "entry_price": 115493.0,
+      "current_price": 114936.23066800048,
+      "entry_time": "2025-09-14T17:07:56.881098",
+      "age_minutes": 0,
+      "market_cap": 14693932573.0,
+      "real_price": 115493.0,
+      "real_volume": 111348507.0,
+      "real_liquidity": 11134850.700000001,
+      "dex": "coingecko",
+      "pair_address": "",
+      "pnl": -0.3359908857076902,
+      "pnl_percent": -0.4820805867018053
+    }
+  },
+  "signals": [
+    {
+      "type": "BUY",
+      "symbol": "WBTC",
+      "reasoning": "Korkea entry score (0.80), Matala riski (0.00), Korkea volume ($111,348,507), Social buzz (0.90), Portfolio heat: 0.0%",
+      "confidence": 0.8200000000000001
+    },
+    {
+      "type": "SELL",
+      "symbol": "WLFI",
+      "reasoning": "PnL: -19.3%, Age: 0min",
+      "confidence": 0.8
+    }
+  ]
+}

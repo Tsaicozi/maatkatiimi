@@ -1,0 +1,48 @@
+[Unit]
+Description=Hybrid Trading Bot
+Documentation=https://github.com/your-repo/hybrid-bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=bot
+Group=bot
+WorkingDirectory=/opt/hybrid-bot
+Environment=PYTHONUNBUFFERED=1
+Environment=PYTHONPATH=/opt/hybrid-bot
+Environment=METRICS_ENABLED=1
+Environment=METRICS_PORT=9108
+Environment=METRICS_HOST=0.0.0.0
+ExecStart=/usr/bin/python3 /opt/hybrid-bot/automatic_hybrid_bot.py
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+RestartSec=5
+StartLimitInterval=60s
+StartLimitBurst=3
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/hybrid-bot/logs /tmp
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+
+# Resource limits
+LimitNOFILE=65536
+LimitNPROC=4096
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=hybrid-bot
+
+# Health check
+ExecStartPost=/bin/sleep 10
+ExecStartPost=/usr/bin/curl -f http://127.0.0.1:9108/metrics || exit 1
+
+[Install]
+WantedBy=multi-user.target

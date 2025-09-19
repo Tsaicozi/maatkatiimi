@@ -1,0 +1,15 @@
+{"level": "INFO", "ts": "2025-09-18T23:14:36", "logger": "__main__", "msg": "TEST_MAX_CYCLES=0 TEST_MAX_RUNTIME=0.0"}
+{"level": "INFO", "ts": "2025-09-18T23:14:36", "logger": "__main__", "msg": "Ympäristömuuttujat: max_cycles=None, max_runtime=None"}
+{"level": "INFO", "ts": "2025-09-18T23:14:36", "logger": "telegram_bot_integration", "msg": "✅ Telegram bot alustettu"}
+{"level": "INFO", "ts": "2025-09-18T23:14:36", "logger": "telegram_rate_limiter", "msg": "📱 Telegram Rate Limiter alustettu: 1s rate limit, 30s max backoff"}
+{"level": "INFO", "ts": "2025-09-18T23:14:36", "logger": "__main__", "msg": "🚀 Käynnistetään Automatic Hybrid Trading Bot..."}
+{"level": "WARNING", "ts": "2025-09-18T23:14:36", "logger": "metrics", "msg": "Metrics-portti 9108 varattu ([Errno 48] Address already in use). Yritetään seuraavaa..."}
+{"level": "INFO", "ts": "2025-09-18T23:14:36", "logger": "metrics", "msg": "✅ Metrics-palvelin käynnissä: http://0.0.0.0:9109/metrics (health=True)"}
+CYCLE_START cycle_id=1
+CYCLE_END cycle_id=1 hot=0 tokens=0
+CYCLE_START cycle_id=2
+CYCLE_END cycle_id=2 hot=0 tokens=0
+CYCLE_START cycle_id=3
+CYCLE_END cycle_id=3 hot=0 tokens=0
+CYCLE_START cycle_id=4
+CYCLE_END cycle_id=4 hot=0 tokens=0

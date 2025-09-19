@@ -1,0 +1,126 @@
+{
+  "timestamp": "2025-09-14T16:38:31.411809",
+  "tokens_scanned": 1,
+  "tokens_analyzed": 1,
+  "signals_generated": 3,
+  "trades_executed": 3,
+  "portfolio_value": 10124.226239502572,
+  "portfolio_pnl": 124.22623950257184,
+  "active_positions": 3,
+  "performance_metrics": {
+    "total_trades": 12,
+    "winning_trades": 8,
+    "losing_trades": 4,
+    "total_pnl": 168.13445166283427,
+    "max_drawdown": 0.0,
+    "sharpe_ratio": 0.0,
+    "win_rate": 0.6666666666666666,
+    "profit_factor": 1.1681344516628343
+  },
+  "risk_metrics": {
+    "portfolio_heat": 0.0,
+    "max_portfolio_risk": 0.2,
+    "correlation_threshold": 0.7,
+    "dynamic_position_sizing": true
+  },
+  "tokens": [
+    {
+      "symbol": "PENGU",
+      "name": "Pudgy Penguins",
+      "address": "pudgy-penguins",
+      "price": 0.03453762,
+      "market_cap": 2170542285.0,
+      "volume_24h": 386870208.0,
+      "price_change_24h": -7.89504,
+      "price_change_7d": 0.0,
+      "liquidity": 38687020.800000004,
+      "holders": 3077,
+      "fresh_holders_1d": 33,
+      "fresh_holders_7d": 433,
+      "age_minutes": 1,
+      "social_score": 0.9,
+      "technical_score": 0.7999999999999999,
+      "momentum_score": 0.6,
+      "risk_score": 0.0,
+      "timestamp": "2025-09-14T16:38:19.720000",
+      "real_price": 0.03453762,
+      "real_volume": 386870208.0,
+      "real_liquidity": 38687020.800000004,
+      "dex": "coingecko",
+      "pair_address": ""
+    }
+  ],
+  "positions": {
+    "LINK": {
+      "symbol": "LINK",
+      "name": "Chainlink",
+      "shares": 5.452292441140025,
+      "entry_price": 24.21,
+      "current_price": 27.748824559220694,
+      "entry_time": "2025-09-14T16:37:18.075199",
+      "age_minutes": 1,
+      "market_cap": 16416041239.0,
+      "real_price": 24.21,
+      "real_volume": 827310238.0,
+      "real_liquidity": 82731023.80000001,
+      "dex": "coingecko",
+      "pair_address": "",
+      "pnl": 19.294706394759665,
+      "pnl_percent": 14.617201814211867
+    },
+    "BONK": {
+      "symbol": "BONK",
+      "name": "Bonk",
+      "shares": 5322580.645161291,
+      "entry_price": 2.48e-05,
+      "current_price": 2.5157420732864936e-05,
+      "entry_time": "2025-09-14T16:37:18.284524",
+      "age_minutes": 1,
+      "market_cap": 1920220361.0,
+      "real_price": 2.48e-05,
+      "real_volume": 460867738.0,
+      "real_liquidity": 46086773.800000004,
+      "dex": "coingecko",
+      "pair_address": "",
+      "pnl": 1.9024006749262736,
+      "pnl_percent": 1.4412126325199042
+    },
+    "PENGU": {
+      "symbol": "PENGU",
+      "name": "Pudgy Penguins",
+      "shares": 3821.9194026687424,
+      "entry_price": 0.03453762,
+      "current_price": 0.03259784765000478,
+      "entry_time": "2025-09-14T16:38:30.839273",
+      "age_minutes": 0,
+      "market_cap": 2170542285.0,
+      "real_price": 0.03453762,
+      "real_volume": 386870208.0,
+      "real_liquidity": 38687020.800000004,
+      "dex": "coingecko",
+      "pair_address": "",
+      "pnl": -7.413653581207073,
+      "pnl_percent": -5.616404228187176
+    }
+  },
+  "signals": [
+    {
+      "type": "BUY",
+      "symbol": "PENGU",
+      "reasoning": "Korkea entry score (0.80), Matala riski (0.00), Korkea volume ($386,870,208), Social buzz (0.90), Portfolio heat: 0.0%",
+      "confidence": 0.8200000000000001
+    },
+    {
+      "type": "SELL",
+      "symbol": "UNKNOWN",
+      "reasoning": "PnL: 28.9%, Age: 3min",
+      "confidence": 0.8
+    },
+    {
+      "type": "SELL",
+      "symbol": "USDS",
+      "reasoning": "PnL: 14.7%, Age: 2min",
+      "confidence": 0.8
+    }
+  ]
+}

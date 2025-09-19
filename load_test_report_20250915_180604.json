@@ -1,0 +1,42 @@
+{
+  "run_id": "run_20250915_180537_3dc07633",
+  "timestamp": "2025-09-15T18:06:04.063454",
+  "test_duration_sec": 5,
+  "rate_per_sec": 100,
+  "tests": [
+    {
+      "test_name": "queue_stability",
+      "duration_sec": 5,
+      "rate_per_sec": 100,
+      "max_queue_size": 408,
+      "avg_queue_size": 214.52,
+      "queue_samples": 50,
+      "success": true,
+      "run_id": "run_20250915_180537_3dc07633"
+    },
+    {
+      "test_name": "throughput",
+      "duration_sec": 5,
+      "rate_per_sec": 100,
+      "candidates_scored": 0,
+      "throughput_per_sec": 0.0,
+      "success": false,
+      "run_id": "run_20250915_180537_3dc07633"
+    },
+    {
+      "test_name": "memory",
+      "duration_sec": 5,
+      "initial_memory_mb": 28.796875,
+      "max_memory_mb": 29.953125,
+      "final_memory_mb": 30.203125,
+      "memory_leak_mb": 1.40625,
+      "success": true,
+      "run_id": "run_20250915_180537_3dc07633"
+    }
+  ],
+  "summary": {
+    "total_tests": 3,
+    "passed_tests": 2,
+    "failed_tests": 1
+  }
+}

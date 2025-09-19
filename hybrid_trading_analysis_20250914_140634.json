@@ -1,0 +1,55 @@
+{
+  "timestamp": "2025-09-14T14:06:34.786482",
+  "tokens_scanned": 1,
+  "tokens_analyzed": 1,
+  "signals_generated": 0,
+  "trades_executed": 0,
+  "portfolio_value": 10000.0,
+  "portfolio_pnl": 0.0,
+  "active_positions": 0,
+  "performance_metrics": {
+    "total_trades": 0,
+    "winning_trades": 0,
+    "losing_trades": 0,
+    "total_pnl": 0.0,
+    "max_drawdown": 0.0,
+    "sharpe_ratio": 0.0,
+    "win_rate": 0.0,
+    "profit_factor": 0.0
+  },
+  "risk_metrics": {
+    "portfolio_heat": 0.0,
+    "max_portfolio_risk": 0.2,
+    "correlation_threshold": 0.7,
+    "dynamic_position_sizing": true
+  },
+  "tokens": [
+    {
+      "symbol": "SOL",
+      "name": "Solana",
+      "address": "solana",
+      "price": 247.76,
+      "market_cap": 134397416093.0,
+      "volume_24h": 8259373730.0,
+      "price_change_24h": 2.1476,
+      "price_change_7d": 0.0,
+      "liquidity": 825937373.0,
+      "holders": 4470,
+      "fresh_holders_1d": 10,
+      "fresh_holders_7d": 222,
+      "age_minutes": 2,
+      "social_score": 0.9,
+      "technical_score": 0.6,
+      "momentum_score": 0.4,
+      "risk_score": 0.0,
+      "timestamp": "2025-09-14T14:06:34.786138",
+      "real_price": 247.76,
+      "real_volume": 8259373730.0,
+      "real_liquidity": 825937373.0,
+      "dex": "coingecko",
+      "pair_address": ""
+    }
+  ],
+  "positions": {},
+  "signals": []
+}

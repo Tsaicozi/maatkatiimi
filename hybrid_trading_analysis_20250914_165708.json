@@ -1,0 +1,109 @@
+{
+  "timestamp": "2025-09-14T16:57:08.049999",
+  "tokens_scanned": 1,
+  "tokens_analyzed": 1,
+  "signals_generated": 3,
+  "trades_executed": 3,
+  "portfolio_value": 9973.364493634983,
+  "portfolio_pnl": -26.635506365017136,
+  "active_positions": 2,
+  "performance_metrics": {
+    "total_trades": 9,
+    "winning_trades": 3,
+    "losing_trades": 6,
+    "total_pnl": -44.660559746956224,
+    "max_drawdown": 0.0,
+    "sharpe_ratio": 0.0,
+    "win_rate": 0.3333333333333333,
+    "profit_factor": 0.5
+  },
+  "risk_metrics": {
+    "portfolio_heat": 0.0,
+    "max_portfolio_risk": 0.2,
+    "correlation_threshold": 0.7,
+    "dynamic_position_sizing": true
+  },
+  "tokens": [
+    {
+      "symbol": "JITOSOL",
+      "name": "Jito Staked SOL",
+      "address": "jito-staked-sol",
+      "price": 301.17,
+      "market_cap": 3683068472.0,
+      "volume_24h": 40717241.0,
+      "price_change_24h": 2.21589,
+      "price_change_7d": 0.0,
+      "liquidity": 4071724.1,
+      "holders": 8758,
+      "fresh_holders_1d": 26,
+      "fresh_holders_7d": 155,
+      "age_minutes": 5,
+      "social_score": 0.9,
+      "technical_score": 0.7999999999999999,
+      "momentum_score": 0.6,
+      "risk_score": 0.0,
+      "timestamp": "2025-09-14T16:56:55.400995",
+      "real_price": 301.17,
+      "real_volume": 40717241.0,
+      "real_liquidity": 4071724.1,
+      "dex": "coingecko",
+      "pair_address": ""
+    }
+  ],
+  "positions": {
+    "UNKNOWN": {
+      "symbol": "UNKNOWN",
+      "name": "Unknown Token",
+      "shares": 2.9920556520767203,
+      "entry_price": 8.355459559265901,
+      "current_price": 7.72068443264407,
+      "entry_time": "2025-09-14T16:54:40.303047",
+      "age_minutes": 2,
+      "market_cap": 14192.738124001711,
+      "real_price": 8.355459559265901,
+      "real_volume": 320422.75379351916,
+      "real_liquidity": 9025.72439236889,
+      "dex": "raydium",
+      "pair_address": "",
+      "pnl": -1.8992825054065643,
+      "pnl_percent": -7.597130021626257
+    },
+    "JITOSOL": {
+      "symbol": "JITOSOL",
+      "name": "Jito Staked SOL",
+      "shares": 0.23141747185974698,
+      "entry_price": 301.17,
+      "current_price": 381.2584530564237,
+      "entry_time": "2025-09-14T16:57:07.278262",
+      "age_minutes": 0,
+      "market_cap": 3683068472.0,
+      "real_price": 301.17,
+      "real_volume": 40717241.0,
+      "real_liquidity": 4071724.1,
+      "dex": "coingecko",
+      "pair_address": "",
+      "pnl": 18.533867331475598,
+      "pnl_percent": 26.592440500854565
+    }
+  },
+  "signals": [
+    {
+      "type": "BUY",
+      "symbol": "JITOSOL",
+      "reasoning": "Korkea entry score (0.80), Matala riski (0.00), Korkea volume ($40,717,241), Social buzz (0.90), Portfolio heat: 0.0%",
+      "confidence": 0.8200000000000001
+    },
+    {
+      "type": "SELL",
+      "symbol": "PENGU",
+      "reasoning": "PnL: 10.0%, Age: 4min",
+      "confidence": 0.8
+    },
+    {
+      "type": "SELL",
+      "symbol": "TRUMP",
+      "reasoning": "PnL: -14.8%, Age: 1min",
+      "confidence": 0.8
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "timestamp": "2025-09-14T16:22:59.426469",
+  "tokens_scanned": 2,
+  "tokens_analyzed": 2,
+  "signals_generated": 3,
+  "trades_executed": 3,
+  "portfolio_value": 9977.746032762465,
+  "portfolio_pnl": -22.253967237535107,
+  "active_positions": 3,
+  "performance_metrics": {
+    "total_trades": 5,
+    "winning_trades": 0,
+    "losing_trades": 1,
+    "total_pnl": -21.275509570242086,
+    "max_drawdown": 0.0,
+    "sharpe_ratio": 0.0,
+    "win_rate": 0.0,
+    "profit_factor": 0.0
+  },
+  "risk_metrics": {
+    "portfolio_heat": 0.0,
+    "max_portfolio_risk": 0.2,
+    "correlation_threshold": 0.7,
+    "dynamic_position_sizing": true
+  },
+  "tokens": [
+    {
+      "symbol": "BNSOL",
+      "name": "Binance Staked SOL",
+      "address": "binance-staked-sol",
+      "price": 263.18,
+      "market_cap": 2966861088.0,
+      "volume_24h": 12320020.0,
+      "price_change_24h": 1.24691,
+      "price_change_7d": 0.0,
+      "liquidity": 1232002.0,
+      "holders": 1724,
+      "fresh_holders_1d": 42,
+      "fresh_holders_7d": 92,
+      "age_minutes": 4,
+      "social_score": 0.9,
+      "technical_score": 0.7999999999999999,
+      "momentum_score": 0.6,
+      "risk_score": 0.0,
+      "timestamp": "2025-09-14T16:22:47.550259",
+      "real_price": 263.18,
+      "real_volume": 12320020.0,
+      "real_liquidity": 1232002.0,
+      "dex": "coingecko",
+      "pair_address": ""
+    },
+    {
+      "symbol": "RENDER",
+      "name": "Render",
+      "address": "render-token",
+      "price": 3.91,
+      "market_cap": 2028216474.0,
+      "volume_24h": 71354445.0,
+      "price_change_24h": -5.16499,
+      "price_change_7d": 0.0,
+      "liquidity": 7135444.5,
+      "holders": 7680,
+      "fresh_holders_1d": 36,
+      "fresh_holders_7d": 332,
+      "age_minutes": 2,
+      "social_score": 0.9,
+      "technical_score": 0.7999999999999999,
+      "momentum_score": 0.6,
+      "risk_score": 0.0,
+      "timestamp": "2025-09-14T16:22:47.550275",
+      "real_price": 3.91,
+      "real_volume": 71354445.0,
+      "real_liquidity": 7135444.5,
+      "dex": "coingecko",
+      "pair_address": ""
+    }
+  ],
+  "positions": {
+    "USDE": {
+      "symbol": "USDE",
+      "name": "Ethena USDe",
+      "shares": 131.73652694610777,
+      "entry_price": 1.002,
+      "current_price": 0.9477859538336925,
+      "entry_time": "2025-09-14T16:20:34.433780",
+      "age_minutes": 2,
+      "market_cap": 13581565304.0,
+      "real_price": 1.002,
+      "real_volume": 274873482.0,
+      "real_liquidity": 27487348.200000003,
+      "dex": "coingecko",
+      "pair_address": "",
+      "pnl": -7.141970153645304,
+      "pnl_percent": -5.410583449731291
+    },
+    "BNSOL": {
+      "symbol": "BNSOL",
+      "name": "Binance Staked SOL",
+      "shares": 0.5015578691389924,
+      "entry_price": 263.18,
+      "current_price": 276.98790193603776,
+      "entry_time": "2025-09-14T16:22:58.865558",
+      "age_minutes": 0,
+      "market_cap": 2966861088.0,
+      "real_price": 263.18,
+      "real_volume": 12320020.0,
+      "real_liquidity": 1232002.0,
+      "dex": "coingecko",
+      "pair_address": "",
+      "pnl": 6.925461872319262,
+      "pnl_percent": 5.246562024484288
+    },
+    "RENDER": {
+      "symbol": "RENDER",
+      "name": "Render",
+      "shares": 33.75959079283887,
+      "entry_price": 3.91,
+      "current_price": 4.096554628933724,
+      "entry_time": "2025-09-14T16:22:59.060679",
+      "age_minutes": 0,
+      "market_cap": 2028216474.0,
+      "real_price": 3.91,
+      "real_volume": 71354445.0,
+      "real_liquidity": 7135444.5,
+      "dex": "coingecko",
+      "pair_address": "",
+      "pnl": 6.298007933312417,
+      "pnl_percent": 4.771218131297285
+    }
+  },
+  "signals": [
+    {
+      "type": "BUY",
+      "symbol": "BNSOL",
+      "reasoning": "Korkea entry score (0.80), Matala riski (0.00), Korkea volume ($12,320,020), Social buzz (0.90), Portfolio heat: 0.0%",
+      "confidence": 0.8200000000000001
+    },
+    {
+      "type": "BUY",
+      "symbol": "RENDER",
+      "reasoning": "Korkea entry score (0.80), Matala riski (0.00), Korkea volume ($71,354,445), Social buzz (0.90), Portfolio heat: 0.0%",
+      "confidence": 0.8200000000000001
+    },
+    {
+      "type": "SELL",
+      "symbol": "WBTC",
+      "reasoning": "PnL: -9.2%, Age: 0min",
+      "confidence": 0.8
+    }
+  ]
+}

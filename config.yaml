@@ -1,0 +1,98 @@
+discovery:
+  min_liq_usd: 500             # peruskynnys — kilpailijaa aggressiivisempi
+  min_liq_fresh_usd: 150       # tuoreille sallitaan hyvin matala likviditeetti
+  score_threshold: 0.35        # kilpailijaa vastaava skore-kynnys
+  min_score_cap_delta: 0.15    # suurempi cap
+  max_top10_share: 0.98        # löysempi jakaumaraja
+  max_top10_share_fresh: 0.99  # vielä löysempi tuoreille
+  max_queue: 2000
+  # Fresh-pass ikkuna ja trade-tilastot
+  fresh_window_sec: 600
+  trade_min_unique_buyers: 0
+  trade_min_trades: 0
+  candidate_ttl_sec: 600       # poista vanhat kandidaatit ~10 minuutin jälkeen
+  # Fresh-pass asetukset
+  fresh_pass:
+    enabled: true
+    ttl_sec: 600           # kuinka kauan tuoretta katsotaan (WS-ts:n perusteella)
+    min_unique_buyers: 0   # min ostajamäärä fresh-passiin (0 = ei vaadita)
+    min_trades: 0          # min trade-count (0 = ei vaadita)
+    sources: ["pumpportal_ws","helius_logs"]  # mitkä lähteet kelpaa fresh-passiin
+  sources:
+    raydium: false
+    orca: false
+    pumpfun: true
+    birdeye_ws: false
+    pumpportal_ws: true
+    geckoterminal: true
+    dexscreener: true
+    helius_logs: true    # UUSI
+  # ohjelma-ID:t, joista haluat kuunnella (täytä omaan ympäristöön)
+  helius_programs:
+    - "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"   # SPL Token (InitializeMint*)
+    # - "RAYDIUM_PROGRAM_ID_HERE"                      # Raydium AMM (täytä)
+    # - "PUMPFUN_PROGRAM_ID_HERE"                      # pump.fun (täytä)
+
+risk:
+  require_lp_locked: false
+  max_top10_share: 0.90
+  require_renounced: false
+
+trading:
+  enabled: true            # ota käyttöön (paper-tilassa oletuksena)
+  paper_trade: true        # jätetään paper-tilaan kunnes valmis liveen
+  default_amount_sol: 0.01 # testin ostosumma
+  slippage: 10
+  priority_fee: 0.00001
+  pool: "auto"
+  sniper_enabled: true
+  sniper_buy_amount_sol: 0.01
+  sniper_sell_delay_sec: 20
+  sniper_sell_amount: "100%"
+  sniper_sources:
+    - "pumpportal_ws"
+
+telegram:
+  cooldown_seconds: 900
+  batch_summary: true
+  rate_limit_seconds: 1
+  max_backoff_seconds: 30
+  backoff_multiplier: 2.0
+  mint_cooldown_seconds: 1800    # UUSI: estä saman mintin lähetys X s
+  enable_command_polling: true   # UUSI: ota /stats-pollaus käyttöön
+  allowed_chat_id: null          # UUSI: rajaa komennot tiettyyn chattiin (valinn.)
+  poll_interval_sec: 1           # UUSI: polling-väli
+
+io:
+  rpc_endpoints:
+    - "https://api.mainnet-beta.solana.com"
+    - "https://solana-api.projectserum.com"
+    - "https://rpc.ankr.com/solana"
+  rpc_timeout_sec: 3
+  ws_connect_timeout_sec: 5
+  retry_max: 4
+  rpc:
+    url: "https://mainnet.helius-rpc.com/?api-key=your-helius-api-key"
+    ws_url: "wss://mainnet.helius-rpc.com/?api-key=your-helius-api-key"
+  pump_portal:
+    base_url: "https://pumpportal.fun"
+    base_ws: "wss://pumpportal.fun/api/data"
+    api_key: null   # PUMPPORTAL_API_KEY environment variable
+    poll_interval_sec: 2
+  trade_api:
+    base_url: "https://pumpportal.fun"  # local-trading endpoint
+  birdeye:
+    api_key: "3d04937fca27446b9e87c5a1e2436668"  # Birdeye API key
+    ws_url: "wss://public-api.birdeye.so/socket"
+
+metrics:
+  enabled: true
+  host: "0.0.0.0"
+  port: 9108
+  namespace: hybrid_bot
+
+runtime:
+  timezone: "Europe/Helsinki"
+  test_max_cycles: null
+  test_max_runtime_sec: null
+  kill_switch_path: "/tmp/hybrid_bot.KILL"

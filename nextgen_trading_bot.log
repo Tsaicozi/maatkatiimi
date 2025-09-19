@@ -1,0 +1,10 @@
+2025-09-11 21:12:40,459 - __main__ - INFO - 🚀 NextGen Trading Bot alustettu
+2025-09-11 21:12:40,459 - __main__ - INFO - 🔄 Aloitetaan täydellinen analyysi sykli...
+2025-09-11 21:12:40,459 - nextgen_token_scanner_bot - INFO - 🔍 Aloitetaan uusien tokenien skannaus...
+2025-09-11 21:12:40,461 - nextgen_token_scanner_bot - INFO - Sosiaalisen median skannaus - placeholder
+2025-09-11 21:12:40,461 - nextgen_token_scanner_bot - INFO - Valaiden liikkeiden skannaus - placeholder
+2025-09-11 21:12:40,461 - nextgen_token_scanner_bot - ERROR - Virhe CoinGecko skannauksessa: Invalid variable type: value should be str, int or float, got False of type <class 'bool'>
+2025-09-11 21:12:40,654 - nextgen_token_scanner_bot - ERROR - Virhe DexScreener skannauksessa: 404, message='Attempt to decode JSON with unexpected mimetype: text/html; charset=utf-8', url='https://api.dexscreener.com/latest/dex/tokens'
+2025-09-11 21:12:40,654 - nextgen_token_scanner_bot - INFO - 🧠 Analysoidaan 0 tokenia...
+2025-09-11 21:12:40,654 - nextgen_token_scanner_bot - INFO - ✅ Löydettiin 0 uniikkia tokenia
+2025-09-11 21:12:40,654 - __main__ - INFO - ❌ Ei löytynyt uusia tokeneita

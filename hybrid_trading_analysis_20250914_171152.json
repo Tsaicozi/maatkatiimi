@@ -1,0 +1,80 @@
+{
+  "timestamp": "2025-09-14T17:11:52.879749",
+  "tokens_scanned": 1,
+  "tokens_analyzed": 1,
+  "signals_generated": 1,
+  "trades_executed": 1,
+  "portfolio_value": 9999.30966484034,
+  "portfolio_pnl": -0.6903351596592984,
+  "active_positions": 1,
+  "performance_metrics": {
+    "total_trades": 0,
+    "winning_trades": 0,
+    "losing_trades": 0,
+    "total_pnl": 0.0,
+    "max_drawdown": 0.0,
+    "sharpe_ratio": 0.0,
+    "win_rate": 0.0,
+    "profit_factor": 0.0
+  },
+  "risk_metrics": {
+    "portfolio_heat": 0.0,
+    "max_portfolio_risk": 0.2,
+    "correlation_threshold": 0.7,
+    "dynamic_position_sizing": true
+  },
+  "tokens": [
+    {
+      "symbol": "UNKNOWN",
+      "name": "Unknown Token",
+      "address": "USDH1SM1ojwWUga67PGrgFWUHibbjqMvuMaDkRJTgkX",
+      "price": 1.507940352539784,
+      "market_cap": 17577.89309072284,
+      "volume_24h": 776999.5248328946,
+      "price_change_24h": -38.08393519318849,
+      "price_change_7d": 471.1265937924086,
+      "liquidity": 9604.629778,
+      "holders": 8605,
+      "fresh_holders_1d": 69,
+      "fresh_holders_7d": 105,
+      "age_minutes": 4,
+      "social_score": 0.7347318543817021,
+      "technical_score": 0.95,
+      "momentum_score": 0.5,
+      "risk_score": 0.1,
+      "timestamp": "2025-09-14T17:11:51.629811",
+      "real_price": 1.507940352539784,
+      "real_volume": 776999.5248328946,
+      "real_liquidity": 9604.629778,
+      "dex": "raydium",
+      "pair_address": ""
+    }
+  ],
+  "positions": {
+    "UNKNOWN": {
+      "symbol": "UNKNOWN",
+      "name": "Unknown Token",
+      "shares": 16.578905099192525,
+      "entry_price": 1.507940352539784,
+      "current_price": 1.4663009827786644,
+      "entry_time": "2025-09-14T17:11:52.623327",
+      "age_minutes": 0,
+      "market_cap": 17577.89309072284,
+      "real_price": 1.507940352539784,
+      "real_volume": 776999.5248328946,
+      "real_liquidity": 9604.629778,
+      "dex": "raydium",
+      "pair_address": "",
+      "pnl": -0.6903351596597905,
+      "pnl_percent": -2.761340638639162
+    }
+  },
+  "signals": [
+    {
+      "type": "BUY",
+      "symbol": "UNKNOWN",
+      "reasoning": "Korkea entry score (0.95), Matala riski (0.10), Korkea volume ($777,000), Social buzz (0.73), Portfolio heat: 0.0%",
+      "confidence": 0.8950000000000001
+    }
+  ]
+}

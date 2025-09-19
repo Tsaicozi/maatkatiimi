@@ -1,0 +1,103 @@
+{
+  "timestamp": "2025-09-14T16:45:53.182341",
+  "tokens_scanned": 1,
+  "tokens_analyzed": 1,
+  "signals_generated": 2,
+  "trades_executed": 2,
+  "portfolio_value": 10187.636087797846,
+  "portfolio_pnl": 187.6360877978459,
+  "active_positions": 2,
+  "performance_metrics": {
+    "total_trades": 20,
+    "winning_trades": 14,
+    "losing_trades": 6,
+    "total_pnl": 190.0726013269489,
+    "max_drawdown": 0.0,
+    "sharpe_ratio": 0.0,
+    "win_rate": 0.7,
+    "profit_factor": 1.190072601326949
+  },
+  "risk_metrics": {
+    "portfolio_heat": 0.0,
+    "max_portfolio_risk": 0.2,
+    "correlation_threshold": 0.7,
+    "dynamic_position_sizing": true
+  },
+  "tokens": [
+    {
+      "symbol": "BUIDL",
+      "name": "BlackRock USD Institutional Digital Liquidity Fund",
+      "address": "blackrock-usd-institutional-digital-liquidity-fund",
+      "price": 1.0,
+      "market_cap": 2209200082.0,
+      "volume_24h": 0.0,
+      "price_change_24h": 0.0,
+      "price_change_7d": 0.0,
+      "liquidity": 0.0,
+      "holders": 6191,
+      "fresh_holders_1d": 63,
+      "fresh_holders_7d": 251,
+      "age_minutes": 5,
+      "social_score": 0.1,
+      "technical_score": 0.35,
+      "momentum_score": 0.2,
+      "risk_score": 0.30000000000000004,
+      "timestamp": "2025-09-14T16:45:41.384397",
+      "real_price": 1.0,
+      "real_volume": 0.0,
+      "real_liquidity": 0.0,
+      "dex": "coingecko",
+      "pair_address": ""
+    }
+  ],
+  "positions": {
+    "PUMP": {
+      "symbol": "PUMP",
+      "name": "Pump.fun",
+      "shares": 16894.940349341286,
+      "entry_price": 0.00781299,
+      "current_price": 0.006447568963664754,
+      "entry_time": "2025-09-14T16:44:39.837152",
+      "age_minutes": 1,
+      "market_cap": 2758891039.0,
+      "real_price": 0.00781299,
+      "real_volume": 1338818233.0,
+      "real_liquidity": 133881823.30000001,
+      "dex": "coingecko",
+      "pair_address": "",
+      "pnl": -23.068706960619757,
+      "pnl_percent": -17.476293151984663
+    },
+    "USD1": {
+      "symbol": "USD1",
+      "name": "USD1",
+      "shares": 132.0,
+      "entry_price": 1.0,
+      "current_price": 1.1262880272205849,
+      "entry_time": "2025-09-14T16:44:40.038842",
+      "age_minutes": 1,
+      "market_cap": 2665618475.0,
+      "real_price": 1.0,
+      "real_volume": 229819700.0,
+      "real_liquidity": 22981970.0,
+      "dex": "coingecko",
+      "pair_address": "",
+      "pnl": 16.6700195931172,
+      "pnl_percent": 12.628802722058484
+    }
+  },
+  "signals": [
+    {
+      "type": "SELL",
+      "symbol": "USDS",
+      "reasoning": "PnL: 7.7%, Age: 1min",
+      "confidence": 0.8
+    },
+    {
+      "type": "SELL",
+      "symbol": "RENDER",
+      "reasoning": "PnL: -17.5%, Age: 0min",
+      "confidence": 0.8
+    }
+  ]
+}

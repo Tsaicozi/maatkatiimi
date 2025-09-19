@@ -1,0 +1,12 @@
+groups:
+- name: hybrid-bot-recordings
+  rules:
+  - record: job:cycle_p95:5m
+    expr: histogram_quantile(0.95, sum(rate(hybrid_bot_cycle_duration_sec_bucket[5m])) by (le))
+  - record: job:rpc_p95:5m
+    expr: histogram_quantile(0.95, sum(rate(hybrid_bot_rpc_latency_sec_bucket[5m])) by (le))
+  - record: job:telegram_per_min
+    expr: rate(hybrid_bot_telegram_sent_total[1m])
+  - record: job:filter_rate_per_min
+    expr: rate(hybrid_bot_candidates_filtered_total[1m])
+

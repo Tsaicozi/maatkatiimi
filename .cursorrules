@@ -1,0 +1,32 @@
+# Cursor Rules
+
+## Tavoite
+- Toteuta DiscoveryEngine (Solana uutuustoken-seulonta), integroi se HybridTradingBotiin ja AutomaticHybridBotiin.
+- Paranna ajastus (driftittömyys), lokien rotaatio, siisti sammutus, aikavyöhyke (Europe/Helsinki), tunnin raportti ed. baselineen.
+
+## Koodistandardi
+- Python 3.10+; käytä typing-annotaatioita.
+- Asynkronisuus: asyncio, ei blokkaavia kutsuja kuumissa poluissa.
+- Lokit: logging + RotatingFileHandler.
+- Aikavyöhyke: zoneinfo.ZoneInfo("Europe/Helsinki").
+- Älä käytä sys.exit async-kontekstissa.
+
+## Turva / Solana
+- Tee pikafiltterit: mint/freeze authority renounced, LP lukittu/poltettu, top10 holder share, min liquidity USD.
+- Älä oleta ulkoisten API:en vakaata vastemuotoa → try/except + backoff.
+
+## Rakenteelliset vaatimukset
+- Uusi moduuli: `discovery_engine.py` (TokenCandidate, DiscoveryEngine).
+- Lähdeadapterit-kansio: `sources/` (esim. `raydium_newpools.py`).
+- Päivitä: `hybrid_trading_bot.py` integroimaan DiscoveryEngine.
+- Päivitä: `automatic_hybrid_bot.py` tarkkaan ajastukseen ja sammutukseen.
+
+## Testaus / hyväksymiskriteerit
+- `run_analysis_cycle()` palauttaa kentän `hot_candidates` Top-K listoille.
+- Telegram-viesti lähtee vain, jos piste > kynnys ja data-ikkuna riittävä.
+- `automatic_hybrid_bot.log` kiertää (max 5 MB, 3 varmuuskopiota).
+- Sammutus ei kaada prosessia; KeyboardInterrupt/SIGTERM -> graceful stop.
+
+## Tyylit
+- PEP8, mypy-siivous mahdollisuuksien mukaan.
+- Ei massiivisia koodimuutoksia kerralla; tee loogiset commitit.

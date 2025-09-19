@@ -1,0 +1,80 @@
+{
+  "timestamp": "2025-09-14T15:32:33.551329",
+  "tokens_scanned": 1,
+  "tokens_analyzed": 1,
+  "signals_generated": 1,
+  "trades_executed": 1,
+  "portfolio_value": 10099.41780359075,
+  "portfolio_pnl": 99.41780359074983,
+  "active_positions": 1,
+  "performance_metrics": {
+    "total_trades": 9,
+    "winning_trades": 4,
+    "losing_trades": 0,
+    "total_pnl": 92.32084467704999,
+    "max_drawdown": 0.0,
+    "sharpe_ratio": 0.0,
+    "win_rate": 0.4444444444444444,
+    "profit_factor": 0.0
+  },
+  "risk_metrics": {
+    "portfolio_heat": 0.0,
+    "max_portfolio_risk": 0.2,
+    "correlation_threshold": 0.7,
+    "dynamic_position_sizing": true
+  },
+  "tokens": [
+    {
+      "symbol": "JITOSOL",
+      "name": "Jito Staked SOL",
+      "address": "jito-staked-sol",
+      "price": 303.17,
+      "market_cap": 3705136423.0,
+      "volume_24h": 36148225.0,
+      "price_change_24h": 1.88489,
+      "price_change_7d": 0.0,
+      "liquidity": 3614822.5,
+      "holders": 2238,
+      "fresh_holders_1d": 72,
+      "fresh_holders_7d": 407,
+      "age_minutes": 3,
+      "social_score": 0.9,
+      "technical_score": 0.7999999999999999,
+      "momentum_score": 0.6,
+      "risk_score": 0.0,
+      "timestamp": "2025-09-14T15:32:21.904008",
+      "real_price": 303.17,
+      "real_volume": 36148225.0,
+      "real_liquidity": 3614822.5,
+      "dex": "coingecko",
+      "pair_address": ""
+    }
+  ],
+  "positions": {
+    "JITOSOL": {
+      "symbol": "JITOSOL",
+      "name": "Jito Staked SOL",
+      "shares": 0.32984794009961405,
+      "entry_price": 303.17,
+      "current_price": 324.68585033866736,
+      "entry_time": "2025-09-14T15:32:33.350605",
+      "age_minutes": 0,
+      "market_cap": 3705136423.0,
+      "real_price": 303.17,
+      "real_volume": 36148225.0,
+      "real_liquidity": 3614822.5,
+      "dex": "coingecko",
+      "pair_address": "",
+      "pnl": 7.096958913701008,
+      "pnl_percent": 7.096958913701008
+    }
+  },
+  "signals": [
+    {
+      "type": "BUY",
+      "symbol": "JITOSOL",
+      "reasoning": "Korkea entry score (0.80), Matala riski (0.00), Korkea volume ($36,148,225), Social buzz (0.90), Portfolio heat: 0.0%",
+      "confidence": 0.8200000000000001
+    }
+  ]
+}

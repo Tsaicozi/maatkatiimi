@@ -1,0 +1,134 @@
+{
+  "timestamp": "2025-09-14T16:09:34.351854",
+  "tokens_scanned": 2,
+  "tokens_analyzed": 2,
+  "signals_generated": 3,
+  "trades_executed": 3,
+  "portfolio_value": 10201.742772925165,
+  "portfolio_pnl": 201.7427729251649,
+  "active_positions": 2,
+  "performance_metrics": {
+    "total_trades": 22,
+    "winning_trades": 9,
+    "losing_trades": 1,
+    "total_pnl": 189.348612444514,
+    "max_drawdown": 0.0,
+    "sharpe_ratio": 0.0,
+    "win_rate": 0.4090909090909091,
+    "profit_factor": 0.1111111111111111
+  },
+  "risk_metrics": {
+    "portfolio_heat": 0.0,
+    "max_portfolio_risk": 0.2,
+    "correlation_threshold": 0.7,
+    "dynamic_position_sizing": true
+  },
+  "tokens": [
+    {
+      "symbol": "USDC",
+      "name": "USDC",
+      "address": "usd-coin",
+      "price": 0.999804,
+      "market_cap": 73189389201.0,
+      "volume_24h": 7811552481.0,
+      "price_change_24h": -0.00108,
+      "price_change_7d": 0.0,
+      "liquidity": 781155248.1,
+      "holders": 7160,
+      "fresh_holders_1d": 86,
+      "fresh_holders_7d": 337,
+      "age_minutes": 5,
+      "social_score": 0.9,
+      "technical_score": 0.7999999999999999,
+      "momentum_score": 0.6,
+      "risk_score": 0.0,
+      "timestamp": "2025-09-14T16:09:22.973211",
+      "real_price": 0.999804,
+      "real_volume": 7811552481.0,
+      "real_liquidity": 781155248.1,
+      "dex": "coingecko",
+      "pair_address": ""
+    },
+    {
+      "symbol": "WLFI",
+      "name": "World Liberty Financial",
+      "address": "world-liberty-financial",
+      "price": 0.228224,
+      "market_cap": 6222559221.0,
+      "volume_24h": 849723930.0,
+      "price_change_24h": 4.76158,
+      "price_change_7d": 0.0,
+      "liquidity": 84972393.0,
+      "holders": 9722,
+      "fresh_holders_1d": 42,
+      "fresh_holders_7d": 391,
+      "age_minutes": 2,
+      "social_score": 0.9,
+      "technical_score": 0.7999999999999999,
+      "momentum_score": 0.6,
+      "risk_score": 0.0,
+      "timestamp": "2025-09-14T16:09:22.973229",
+      "real_price": 0.228224,
+      "real_volume": 849723930.0,
+      "real_liquidity": 84972393.0,
+      "dex": "coingecko",
+      "pair_address": ""
+    }
+  ],
+  "positions": {
+    "USDC": {
+      "symbol": "USDC",
+      "name": "USDC",
+      "shares": 100.01960384235309,
+      "entry_price": 0.999804,
+      "current_price": 1.0096588839246294,
+      "entry_time": "2025-09-14T16:09:33.794061",
+      "age_minutes": 0,
+      "market_cap": 73189389201.0,
+      "real_price": 0.999804,
+      "real_volume": 7811552481.0,
+      "real_liquidity": 781155248.1,
+      "dex": "coingecko",
+      "pair_address": "",
+      "pnl": 0.9856815860538074,
+      "pnl_percent": 0.9856815860538074
+    },
+    "WLFI": {
+      "symbol": "WLFI",
+      "name": "World Liberty Financial",
+      "shares": 438.1660123387549,
+      "entry_price": 0.228224,
+      "current_price": 0.2542608868724075,
+      "entry_time": "2025-09-14T16:09:33.989790",
+      "age_minutes": 0,
+      "market_cap": 6222559221.0,
+      "real_price": 0.228224,
+      "real_volume": 849723930.0,
+      "real_liquidity": 84972393.0,
+      "dex": "coingecko",
+      "pair_address": "",
+      "pnl": 11.408478894598066,
+      "pnl_percent": 11.408478894598066
+    }
+  },
+  "signals": [
+    {
+      "type": "BUY",
+      "symbol": "USDC",
+      "reasoning": "Korkea entry score (0.80), Matala riski (0.00), Korkea volume ($7,811,552,481), Social buzz (0.90), Portfolio heat: 0.0%",
+      "confidence": 0.8200000000000001
+    },
+    {
+      "type": "BUY",
+      "symbol": "WLFI",
+      "reasoning": "Korkea entry score (0.80), Matala riski (0.00), Korkea volume ($849,723,930), Social buzz (0.90), Portfolio heat: 0.0%",
+      "confidence": 0.8200000000000001
+    },
+    {
+      "type": "SELL",
+      "symbol": "TRUMP",
+      "reasoning": "PnL: -19.0%, Age: 0min",
+      "confidence": 0.8
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "timestamp": "2025-09-14T16:25:00.112551",
+  "tokens_scanned": 1,
+  "tokens_analyzed": 1,
+  "signals_generated": 1,
+  "trades_executed": 1,
+  "portfolio_value": 10036.955016129426,
+  "portfolio_pnl": 36.95501612942644,
+  "active_positions": 2,
+  "performance_metrics": {
+    "total_trades": 0,
+    "winning_trades": 0,
+    "losing_trades": 0,
+    "total_pnl": 0.0,
+    "max_drawdown": 0.0,
+    "sharpe_ratio": 0.0,
+    "win_rate": 0.0,
+    "profit_factor": 0.0
+  },
+  "risk_metrics": {
+    "portfolio_heat": 0.0,
+    "max_portfolio_risk": 0.2,
+    "correlation_threshold": 0.7,
+    "dynamic_position_sizing": true
+  },
+  "tokens": [
+    {
+      "symbol": "PENGU",
+      "name": "Pudgy Penguins",
+      "address": "pudgy-penguins",
+      "price": 0.03462152,
+      "market_cap": 2178010561.0,
+      "volume_24h": 391654824.0,
+      "price_change_24h": -7.83745,
+      "price_change_7d": 0.0,
+      "liquidity": 39165482.4,
+      "holders": 512,
+      "fresh_holders_1d": 32,
+      "fresh_holders_7d": 183,
+      "age_minutes": 1,
+      "social_score": 0.9,
+      "technical_score": 0.7999999999999999,
+      "momentum_score": 0.6,
+      "risk_score": 0.0,
+      "timestamp": "2025-09-14T16:24:47.961011",
+      "real_price": 0.03462152,
+      "real_volume": 391654824.0,
+      "real_liquidity": 39165482.4,
+      "dex": "coingecko",
+      "pair_address": ""
+    }
+  ],
+  "positions": {
+    "PUMP": {
+      "symbol": "PUMP",
+      "name": "Pump.fun",
+      "shares": 16853.373100484405,
+      "entry_price": 0.00783226,
+      "current_price": 0.009351888771959325,
+      "entry_time": "2025-09-14T16:23:47.016889",
+      "age_minutes": 1,
+      "market_cap": 2777665380.0,
+      "real_price": 0.00783226,
+      "real_volume": 1332206485.0,
+      "real_liquidity": 133220648.5,
+      "dex": "coingecko",
+      "pair_address": "",
+      "pnl": 25.610870668061438,
+      "pnl_percent": 19.402174748531394
+    },
+    "PENGU": {
+      "symbol": "PENGU",
+      "name": "Pudgy Penguins",
+      "shares": 3812.6575609620836,
+      "entry_price": 0.03462152,
+      "current_price": 0.03759691059828482,
+      "entry_time": "2025-09-14T16:24:59.887941",
+      "age_minutes": 0,
+      "market_cap": 2178010561.0,
+      "real_price": 0.03462152,
+      "real_volume": 391654824.0,
+      "real_liquidity": 39165482.4,
+      "dex": "coingecko",
+      "pair_address": "",
+      "pnl": 11.344145461366113,
+      "pnl_percent": 8.594049591944025
+    }
+  },
+  "signals": [
+    {
+      "type": "BUY",
+      "symbol": "PENGU",
+      "reasoning": "Korkea entry score (0.80), Matala riski (0.00), Korkea volume ($391,654,824), Social buzz (0.90), Portfolio heat: 0.0%",
+      "confidence": 0.8200000000000001
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "timestamp": "2025-09-12T13:26:20.437052",
+  "positions": {},
+  "portfolio_value": 10000.0,
+  "available_cash": 10000.0,
+  "total_trades": 0,
+  "successful_trades": 0,
+  "total_pnl": 0.0,
+  "reset_reason": "Manual reset for testing"
+}

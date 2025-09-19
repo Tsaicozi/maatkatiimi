@@ -1,0 +1,32 @@
+{
+  "cycle_number": 1,
+  "timestamp": "2025-09-14T23:02:30.142941",
+  "authorized_files": [
+    "hybrid_trading_bot.py",
+    "real_solana_token_scanner.py",
+    "automatic_hybrid_bot.py",
+    "telegram_bot_integration.py"
+  ],
+  "last_improvements": {
+    "automatic_hybrid_bot.py": "2025-09-14T23:00:35.638089",
+    "telegram_bot_integration.py": "2025-09-14T23:02:30.142441"
+  },
+  "total_sessions": 2,
+  "performance_analysis": {
+    "timestamp": "2025-09-14T22:58:57.790021",
+    "log_file": "hybrid_bot_output.log",
+    "analyzed_lines": 100,
+    "recent_activity": [
+      "2025-09-14 22:58:36,088 - __main__ - INFO -    Kauppoja suoritettu: 0\n",
+      "2025-09-14 22:58:36,088 - __main__ - INFO -    Portfolio arvo: $10022.31\n",
+      "2025-09-14 22:58:36,088 - __main__ - INFO -    Portfolio PnL: $22.31\n",
+      "2025-09-14 22:58:36,088 - __main__ - INFO -    Aktiivisia positioita: 0\n",
+      "2025-09-14 22:58:36,088 - __main__ - INFO - 📈 Performance:\n",
+      "2025-09-14 22:58:36,088 - __main__ - INFO -    Win rate: 66.7%\n",
+      "2025-09-14 22:58:36,088 - __main__ - INFO -    Total PnL: $24.61\n",
+      "2025-09-14 22:58:36,088 - __main__ - INFO -    Total trades: 6\n",
+      "2025-09-14 22:58:36,088 - __main__ - INFO -    Profit factor: 1.02\n",
+      "2025-09-14 22:58:36,088 - __main__ - INFO - ⏰ Odotetaan 60 sekuntia ennen seuraavaa sykliä...\n"
+    ]
+  }
+}

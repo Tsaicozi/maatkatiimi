@@ -1,0 +1,4 @@
+min_liq_fresh_usd,max_top10_share_fresh,score_threshold,hot_total,candidates_total,duration_s,ts
+800.0,0.98,0.45,0,0,131.1,2025-09-17 22:27:40
+800.0,0.98,0.5,0,0,121.0,2025-09-17 22:29:41
+800.0,0.99,0.45,0,0,121.2,2025-09-17 22:31:42

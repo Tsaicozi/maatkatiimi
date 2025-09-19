@@ -1,0 +1,809 @@
+{
+  "timestamp": "2025-09-10T22:48:38.666897",
+  "portfolio_value": 100000,
+  "symbols": [
+    "AAPL",
+    "MSFT",
+    "GOOGL",
+    "TSLA",
+    "NVDA"
+  ],
+  "weights": [
+    0.2,
+    0.2,
+    0.2,
+    0.2,
+    0.2
+  ],
+  "position_analysis": {
+    "AAPL": {
+      "symbol": "AAPL",
+      "entry_price": 100.0,
+      "stop_loss": 90.0,
+      "position_size": 200,
+      "position_value": 20000.0,
+      "position_percentage": 20.0,
+      "risk_per_share": 10.0,
+      "max_risk_amount": 2000.0,
+      "volatility": 0.32446295267133857,
+      "var_95": -0.5033812509637708,
+      "expected_return": 0.086082562132626,
+      "sharpe_ratio": 0.20366751146336157,
+      "recommendation": "VAROITUS: Huono riski-tuotto -suhde, suosittelemme pienempää position kokoa"
+    },
+    "MSFT": {
+      "symbol": "MSFT",
+      "entry_price": 100.0,
+      "stop_loss": 90.0,
+      "position_size": 200,
+      "position_value": 20000.0,
+      "position_percentage": 20.0,
+      "risk_per_share": 10.0,
+      "max_risk_amount": 2000.0,
+      "volatility": 0.2478495373265991,
+      "var_95": -0.34794138051756573,
+      "expected_return": 0.22820546030243377,
+      "sharpe_ratio": 0.8400478070212208,
+      "recommendation": "VAROITUS: Kohtalainen riski-tuotto -suhde, harkitse pienempää position kokoa"
+    },
+    "GOOGL": {
+      "symbol": "GOOGL",
+      "entry_price": 100.0,
+      "stop_loss": 90.0,
+      "position_size": 200,
+      "position_value": 20000.0,
+      "position_percentage": 20.0,
+      "risk_per_share": 10.0,
+      "max_risk_amount": 2000.0,
+      "volatility": 0.31965092495509273,
+      "var_95": -0.4712039504405903,
+      "expected_return": 0.5387352500887496,
+      "sharpe_ratio": 1.6228179229001944,
+      "recommendation": "VAROITUS: Kohtalainen riski-tuotto -suhde, harkitse pienempää position kokoa"
+    },
+    "TSLA": {
+      "symbol": "TSLA",
+      "entry_price": 100.0,
+      "stop_loss": 90.0,
+      "position_size": 200,
+      "position_value": 20000.0,
+      "position_percentage": 20.0,
+      "risk_per_share": 10.0,
+      "max_risk_amount": 2000.0,
+      "volatility": 0.7042954799731294,
+      "var_95": -0.9144067195844868,
+      "expected_return": 0.6808636820704249,
+      "sharpe_ratio": 0.9383329878755412,
+      "recommendation": "VAROITUS: Kohtalainen riski-tuotto -suhde, harkitse pienempää position kokoa"
+    },
+    "NVDA": {
+      "symbol": "NVDA",
+      "entry_price": 100.0,
+      "stop_loss": 90.0,
+      "position_size": 200,
+      "position_value": 20000.0,
+      "position_percentage": 20.0,
+      "risk_per_share": 10.0,
+      "max_risk_amount": 2000.0,
+      "volatility": 0.5033790836242048,
+      "var_95": -0.7315065784382705,
+      "expected_return": 0.6258742615485456,
+      "sharpe_ratio": 1.2036142963795813,
+      "recommendation": "VAROITUS: Kohtalainen riski-tuotto -suhde, harkitse pienempää position kokoa"
+    }
+  },
+  "stress_analysis": {
+    "baseline": {
+      "annual_return": 0.37139988326891127,
+      "annual_volatility": 0.2893569272093392,
+      "var_95": -0.02832292756325001,
+      "sharpe_ratio": 1.2835354828060397
+    },
+    "2008_financial_crisis": {
+      "annual_return": 0.5584997081722789,
+      "annual_volatility": 0.723392318023348,
+      "var_95": -0.07227557287637901,
+      "max_drawdown": -0.684098107278609,
+      "recovery_time_days": 3447
+    },
+    "covid_19_shock": {
+      "annual_return": 0.7741996498067341,
+      "annual_volatility": 0.8680707816280177,
+      "var_95": -0.08631798903895639,
+      "max_drawdown": -0.7498239707632064,
+      "recovery_time_days": 3779
+    },
+    "interest_rate_shock": {
+      "annual_return": 0.4070998249033671,
+      "annual_volatility": 0.43403539081400877,
+      "var_95": -0.043079629440113114,
+      "max_drawdown": -0.47265884095304794,
+      "recovery_time_days": 2382
+    },
+    "stress_score": {
+      "stress_score": 7.151173216663618,
+      "stress_level": "Korkea",
+      "recommendations": [
+        "VAROITUS: Korkea stress riski - vähennä position kokoja",
+        "Lisää diversifikaatiota portfolioon",
+        "Harkitse hedge-strategioita",
+        "Seuraa markkinoita tarkemmin"
+      ]
+    }
+  },
+  "correlation_analysis": {
+    "correlation_matrix": {
+      "AAPL": {
+        "AAPL": 1.0,
+        "MSFT": 0.5301388693867223,
+        "GOOGL": 0.49277544994241046,
+        "TSLA": 0.48422005584088584,
+        "NVDA": 0.4343390322254397
+      },
+      "MSFT": {
+        "AAPL": 0.5301388693867223,
+        "MSFT": 1.0,
+        "GOOGL": 0.5013791158154273,
+        "TSLA": 0.4348464361718722,
+        "NVDA": 0.6326509369476775
+      },
+      "GOOGL": {
+        "AAPL": 0.49277544994241046,
+        "MSFT": 0.5013791158154273,
+        "GOOGL": 1.0,
+        "TSLA": 0.49873601545593393,
+        "NVDA": 0.47015192077184753
+      },
+      "TSLA": {
+        "AAPL": 0.48422005584088584,
+        "MSFT": 0.4348464361718722,
+        "GOOGL": 0.49873601545593393,
+        "TSLA": 1.0,
+        "NVDA": 0.4497462253522139
+      },
+      "NVDA": {
+        "AAPL": 0.4343390322254397,
+        "MSFT": 0.6326509369476775,
+        "GOOGL": 0.47015192077184753,
+        "TSLA": 0.4497462253522139,
+        "NVDA": 1.0
+      }
+    },
+    "analysis": {
+      "average_correlation": 0.492898405791043,
+      "high_correlations": [],
+      "diversification_efficiency": 0.507101594208957,
+      "correlation_level": "Kohtalainen"
+    },
+    "diversification_benefits": {
+      "individual_volatilities": {
+        "AAPL": 0.32446295267133857,
+        "MSFT": 0.2478495373265991,
+        "GOOGL": 0.31965092495509273,
+        "TSLA": 0.7042954799731294,
+        "NVDA": 0.5033790836242048
+      },
+      "portfolio_volatility": 0.32575114367150604,
+      "diversification_benefit": 0.22426830958637056,
+      "benefit_percentage": 22.426830958637055
+    },
+    "recommendations": [
+      "Hyvä diversifikaatio - jatka nykyistä strategiaa"
+    ]
+  },
+  "liquidity_analysis": {
+    "individual_analysis": {
+      "AAPL": {
+        "symbol": "AAPL",
+        "liquidity_score": 0.9410473456550866,
+        "liquidity_level": "Korkea",
+        "volume_metrics": {
+          "dollar_volume": 11745504108.585869,
+          "avg_volume": 54573701.71875,
+          "volume_volatility": 0.355833402435408,
+          "volume_trend": -0.0006238177651628918,
+          "volume_consistency": 0.6525664768940952
+        },
+        "spread_metrics": {
+          "avg_daily_spread": 0.01894659497237324,
+          "spread_volatility": 0.009725654935543731,
+          "estimated_bid_ask_spread": 0.0018946594972373242
+        },
+        "market_impact": {
+          "1000_shares": {
+            "price_impact_percent": 1.832384405869298e-06,
+            "execution_days": 1,
+            "impact_level": "Matala"
+          },
+          "5000_shares": {
+            "price_impact_percent": 9.16192202934649e-06,
+            "execution_days": 1,
+            "impact_level": "Matala"
+          },
+          "10000_shares": {
+            "price_impact_percent": 1.832384405869298e-05,
+            "execution_days": 1,
+            "impact_level": "Matala"
+          },
+          "50000_shares": {
+            "price_impact_percent": 9.16192202934649e-05,
+            "execution_days": 1,
+            "impact_level": "Matala"
+          },
+          "100000_shares": {
+            "price_impact_percent": 0.0001832384405869298,
+            "execution_days": 1,
+            "impact_level": "Matala"
+          }
+        },
+        "recommendations": [
+          "Hyvä likviditeetti - normaali kauppa OK"
+        ]
+      },
+      "MSFT": {
+        "symbol": "MSFT",
+        "liquidity_score": 0.9905608908894872,
+        "liquidity_level": "Korkea",
+        "volume_metrics": {
+          "dollar_volume": 10120930543.42892,
+          "avg_volume": 20066334.65625,
+          "volume_volatility": 0.33037704650388194,
+          "volume_trend": 0.0015384205173518634,
+          "volume_consistency": 0.6650286939561982
+        },
+        "spread_metrics": {
+          "avg_daily_spread": 0.01424448479017525,
+          "spread_volatility": 0.006676929405399433,
+          "estimated_bid_ask_spread": 0.0014244484790175251
+        },
+        "market_impact": {
+          "1000_shares": {
+            "price_impact_percent": 4.983471157691138e-06,
+            "execution_days": 1,
+            "impact_level": "Matala"
+          },
+          "5000_shares": {
+            "price_impact_percent": 2.4917355788455692e-05,
+            "execution_days": 1,
+            "impact_level": "Matala"
+          },
+          "10000_shares": {
+            "price_impact_percent": 4.9834711576911385e-05,
+            "execution_days": 1,
+            "impact_level": "Matala"
+          },
+          "50000_shares": {
+            "price_impact_percent": 0.0002491735578845569,
+            "execution_days": 1,
+            "impact_level": "Matala"
+          },
+          "100000_shares": {
+            "price_impact_percent": 0.0004983471157691138,
+            "execution_days": 1,
+            "impact_level": "Matala"
+          }
+        },
+        "recommendations": [
+          "Hyvä likviditeetti - normaali kauppa OK"
+        ]
+      },
+      "GOOGL": {
+        "symbol": "GOOGL",
+        "liquidity_score": 0.8884472204813454,
+        "liquidity_level": "Korkea",
+        "volume_metrics": {
+          "dollar_volume": 7418023657.513035,
+          "avg_volume": 38439397.078125,
+          "volume_volatility": 0.5003473426055397,
+          "volume_trend": -0.0022405443400334707,
+          "volume_consistency": 0.5521281654869045
+        },
+        "spread_metrics": {
+          "avg_daily_spread": 0.02219784126160356,
+          "spread_volatility": 0.008362103563608753,
+          "estimated_bid_ask_spread": 0.0022197841261603563
+        },
+        "market_impact": {
+          "1000_shares": {
+            "price_impact_percent": 2.6014976196624e-06,
+            "execution_days": 1,
+            "impact_level": "Matala"
+          },
+          "5000_shares": {
+            "price_impact_percent": 1.3007488098312001e-05,
+            "execution_days": 1,
+            "impact_level": "Matala"
+          },
+          "10000_shares": {
+            "price_impact_percent": 2.6014976196624003e-05,
+            "execution_days": 1,
+            "impact_level": "Matala"
+          },
+          "50000_shares": {
+            "price_impact_percent": 0.00013007488098312,
+            "execution_days": 1,
+            "impact_level": "Matala"
+          },
+          "100000_shares": {
+            "price_impact_percent": 0.00026014976196624,
+            "execution_days": 1,
+            "impact_level": "Matala"
+          }
+        },
+        "recommendations": [
+          "Hyvä likviditeetti - normaali kauppa OK"
+        ]
+      },
+      "TSLA": {
+        "symbol": "TSLA",
+        "liquidity_score": 0.7791961602152366,
+        "liquidity_level": "Kohtalainen",
+        "volume_metrics": {
+          "dollar_volume": 29593648598.858215,
+          "avg_volume": 91050250.578125,
+          "volume_volatility": 0.3478374512121387,
+          "volume_trend": -0.00862816666554453,
+          "volume_consistency": 0.6997927952671963
+        },
+        "spread_metrics": {
+          "avg_daily_spread": 0.036076239883820256,
+          "spread_volatility": 0.013182286044233452,
+          "estimated_bid_ask_spread": 0.003607623988382026
+        },
+        "market_impact": {
+          "1000_shares": {
+            "price_impact_percent": 1.0982946160504604e-06,
+            "execution_days": 1,
+            "impact_level": "Matala"
+          },
+          "5000_shares": {
+            "price_impact_percent": 5.491473080252302e-06,
+            "execution_days": 1,
+            "impact_level": "Matala"
+          },
+          "10000_shares": {
+            "price_impact_percent": 1.0982946160504604e-05,
+            "execution_days": 1,
+            "impact_level": "Matala"
+          },
+          "50000_shares": {
+            "price_impact_percent": 5.491473080252302e-05,
+            "execution_days": 1,
+            "impact_level": "Matala"
+          },
+          "100000_shares": {
+            "price_impact_percent": 0.00010982946160504604,
+            "execution_days": 1,
+            "impact_level": "Matala"
+          }
+        },
+        "recommendations": [
+          "Hyvä likviditeetti - normaali kauppa OK"
+        ]
+      },
+      "NVDA": {
+        "symbol": "NVDA",
+        "liquidity_score": 0.9254958843525062,
+        "liquidity_level": "Korkea",
+        "volume_metrics": {
+          "dollar_volume": 29135746605.53182,
+          "avg_volume": 174188451.53125,
+          "volume_volatility": 0.24947743173180198,
+          "volume_trend": 0.00025614801423006156,
+          "volume_consistency": 0.7804772563523189
+        },
+        "spread_metrics": {
+          "avg_daily_spread": 0.02305995669179576,
+          "spread_volatility": 0.008275720771186908,
+          "estimated_bid_ask_spread": 0.002305995669179576
+        },
+        "market_impact": {
+          "1000_shares": {
+            "price_impact_percent": 5.740908718168361e-07,
+            "execution_days": 1,
+            "impact_level": "Matala"
+          },
+          "5000_shares": {
+            "price_impact_percent": 2.8704543590841803e-06,
+            "execution_days": 1,
+            "impact_level": "Matala"
+          },
+          "10000_shares": {
+            "price_impact_percent": 5.7409087181683605e-06,
+            "execution_days": 1,
+            "impact_level": "Matala"
+          },
+          "50000_shares": {
+            "price_impact_percent": 2.8704543590841805e-05,
+            "execution_days": 1,
+            "impact_level": "Matala"
+          },
+          "100000_shares": {
+            "price_impact_percent": 5.740908718168361e-05,
+            "execution_days": 1,
+            "impact_level": "Matala"
+          }
+        },
+        "recommendations": [
+          "Hyvä likviditeetti - normaali kauppa OK"
+        ]
+      }
+    },
+    "portfolio_liquidity": {
+      "average_liquidity_score": 0.9049495003187324,
+      "liquidity_level": "Korkea",
+      "liquidity_volatility": 0.07090944410622027,
+      "min_liquidity_score": 0.7791961602152366,
+      "worst_liquidity_symbol": "TSLA",
+      "total_symbols": 5
+    },
+    "recommendations": [
+      "Hyvä portfolio-likviditeetti - jatka nykyistä strategiaa"
+    ],
+    "timestamp": "2025-09-10T22:48:37.946922"
+  },
+  "model_analysis": {
+    "AAPL": {
+      "symbol": "AAPL",
+      "model_type": "ml_prediction",
+      "evaluation_date": "2025-09-10T22:48:38.257273",
+      "basic_metrics": {
+        "total_days": 502,
+        "avg_daily_return": 0.0006375260790900058,
+        "volatility": 0.27721058119375613,
+        "sharpe_ratio": 0.5795470405164321,
+        "max_drawdown": -0.3336052208070352,
+        "avg_volume": 56746972.302788846,
+        "volume_volatility": 0.3918527304119177
+      },
+      "accuracy_metrics": {
+        "mse": 79.5658274934238,
+        "mae": 6.967187099535931,
+        "rmse": 8.919967908766477,
+        "mape": 3.3493008969389457,
+        "direction_accuracy": 0.47925311203319504,
+        "r2_score": 0.853668258858955,
+        "accuracy_level": "Matala"
+      },
+      "overfitting_analysis": {
+        "model_results": {
+          "ma_5": {
+            "train_error": 1.7077775303028606,
+            "test_error": 2.551994523104122,
+            "overfitting_ratio": 0.4943366321557974,
+            "overfitting_level": "Korkea"
+          },
+          "ma_10": {
+            "train_error": 2.3008602313892212,
+            "test_error": 3.2231014630616617,
+            "overfitting_ratio": 0.40082453470700674,
+            "overfitting_level": "Korkea"
+          },
+          "ma_20": {
+            "train_error": 3.1788115021226617,
+            "test_error": 3.9101180836382565,
+            "overfitting_ratio": 0.23005660481197532,
+            "overfitting_level": "Korkea"
+          }
+        },
+        "best_model": "ma_5",
+        "overfitting_risk": "Korkea"
+      },
+      "stability_analysis": {
+        "error": "Ei dataa stabiilisuusanalyysiin"
+      },
+      "reliability_score": {
+        "accuracy_score": 26.235761343724953,
+        "overfitting_score": 0,
+        "stability_score": 0,
+        "total_score": 26.235761343724953,
+        "reliability_percentage": 26.23576134372495,
+        "reliability_level": "Matala"
+      },
+      "recommendations": [
+        "VAROITUS: Matala mallin tarkkuus",
+        "Harkitse mallin parametrien säätämistä",
+        "Lisää enemmän dataa koulutukseen",
+        "Tarkista datan laatu",
+        "VAROITUS: Korkea overfitting-riski",
+        "Vähennä mallin monimutkaisuutta",
+        "Lisää regularisointia",
+        "Käytä cross-validationia",
+        "VAROITUS: Matala mallin stabiilisuus",
+        "Malli vaihtelee paljon ajan myötä",
+        "Harkitse adaptiivisia malleja",
+        "Seuraa mallin suorituskykyä säännöllisesti",
+        "YLEINEN SUOSITUS: Mallin luotettavuus on matala - harkitse vaihtoehtoja"
+      ]
+    },
+    "MSFT": {
+      "symbol": "MSFT",
+      "model_type": "ml_prediction",
+      "evaluation_date": "2025-09-10T22:48:38.355231",
+      "basic_metrics": {
+        "total_days": 502,
+        "avg_daily_return": 0.0009129727329478474,
+        "volatility": 0.22504256692656271,
+        "sharpe_ratio": 1.0223360488859654,
+        "max_drawdown": -0.23726642809898732,
+        "avg_volume": 21816818.428286854,
+        "volume_volatility": 0.35960565067857764
+      },
+      "accuracy_metrics": {
+        "mse": 240.76968182152004,
+        "mae": 12.406891923326675,
+        "rmse": 15.516754874055337,
+        "mape": 2.9557512047744754,
+        "direction_accuracy": 0.5020746887966805,
+        "r2_score": 0.874256287885238,
+        "accuracy_level": "Kohtalainen"
+      },
+      "overfitting_analysis": {
+        "model_results": {
+          "ma_5": {
+            "train_error": 1.5114905912650165,
+            "test_error": 1.7193499460482633,
+            "overfitting_ratio": 0.13751944999491028,
+            "overfitting_level": "Kohtalainen"
+          },
+          "ma_10": {
+            "train_error": 2.065417990592512,
+            "test_error": 2.2394893845808896,
+            "overfitting_ratio": 0.08427901508616241,
+            "overfitting_level": "Kohtalainen"
+          },
+          "ma_20": {
+            "train_error": 2.673220710304983,
+            "test_error": 3.5938954240654617,
+            "overfitting_ratio": 0.3444065468337033,
+            "overfitting_level": "Korkea"
+          }
+        },
+        "best_model": "ma_5",
+        "overfitting_risk": "Korkea"
+      },
+      "stability_analysis": {
+        "error": "Ei dataa stabiilisuusanalyysiin"
+      },
+      "reliability_score": {
+        "accuracy_score": 27.085742571159134,
+        "overfitting_score": 0,
+        "stability_score": 0,
+        "total_score": 27.085742571159134,
+        "reliability_percentage": 27.085742571159134,
+        "reliability_level": "Matala"
+      },
+      "recommendations": [
+        "Kohtalainen mallin tarkkuus",
+        "Harkitse mallin parantamista",
+        "Seuraa suorituskykyä tarkemmin",
+        "VAROITUS: Korkea overfitting-riski",
+        "Vähennä mallin monimutkaisuutta",
+        "Lisää regularisointia",
+        "Käytä cross-validationia",
+        "VAROITUS: Matala mallin stabiilisuus",
+        "Malli vaihtelee paljon ajan myötä",
+        "Harkitse adaptiivisia malleja",
+        "Seuraa mallin suorituskykyä säännöllisesti",
+        "YLEINEN SUOSITUS: Mallin luotettavuus on matala - harkitse vaihtoehtoja"
+      ]
+    },
+    "GOOGL": {
+      "symbol": "GOOGL",
+      "model_type": "ml_prediction",
+      "evaluation_date": "2025-09-10T22:48:38.499963",
+      "basic_metrics": {
+        "total_days": 502,
+        "avg_daily_return": 0.0013158712380004437,
+        "volatility": 0.30171237062724576,
+        "sharpe_ratio": 1.0990585214876407,
+        "max_drawdown": -0.2980586984940995,
+        "avg_volume": 30775130.318725098,
+        "volume_volatility": 0.45679109798094336
+      },
+      "accuracy_metrics": {
+        "mse": 64.83731477261394,
+        "mae": 6.433851731169767,
+        "rmse": 8.052162117879517,
+        "mape": 3.8326047542836075,
+        "direction_accuracy": 0.508298755186722,
+        "r2_score": 0.8596783365090654,
+        "accuracy_level": "Kohtalainen"
+      },
+      "overfitting_analysis": {
+        "model_results": {
+          "ma_5": {
+            "train_error": 1.9722567575951457,
+            "test_error": 2.517543413093312,
+            "overfitting_ratio": 0.2764785332326896,
+            "overfitting_level": "Korkea"
+          },
+          "ma_10": {
+            "train_error": 2.5709881303192237,
+            "test_error": 3.197828909676273,
+            "overfitting_ratio": 0.243813175162041,
+            "overfitting_level": "Korkea"
+          },
+          "ma_20": {
+            "train_error": 3.4473466322735797,
+            "test_error": 4.411735116858295,
+            "overfitting_ratio": 0.2797480460932603,
+            "overfitting_level": "Korkea"
+          }
+        },
+        "best_model": "ma_5",
+        "overfitting_risk": "Korkea"
+      },
+      "stability_analysis": {
+        "error": "Ei dataa stabiilisuusanalyysiin"
+      },
+      "reliability_score": {
+        "accuracy_score": 26.33337034945083,
+        "overfitting_score": 0,
+        "stability_score": 0,
+        "total_score": 26.33337034945083,
+        "reliability_percentage": 26.33337034945083,
+        "reliability_level": "Matala"
+      },
+      "recommendations": [
+        "Kohtalainen mallin tarkkuus",
+        "Harkitse mallin parantamista",
+        "Seuraa suorituskykyä tarkemmin",
+        "VAROITUS: Korkea overfitting-riski",
+        "Vähennä mallin monimutkaisuutta",
+        "Lisää regularisointia",
+        "Käytä cross-validationia",
+        "VAROITUS: Matala mallin stabiilisuus",
+        "Malli vaihtelee paljon ajan myötä",
+        "Harkitse adaptiivisia malleja",
+        "Seuraa mallin suorituskykyä säännöllisesti",
+        "YLEINEN SUOSITUS: Mallin luotettavuus on matala - harkitse vaihtoehtoja"
+      ]
+    },
+    "TSLA": {
+      "symbol": "TSLA",
+      "model_type": "ml_prediction",
+      "evaluation_date": "2025-09-10T22:48:38.581785",
+      "basic_metrics": {
+        "total_days": 502,
+        "avg_daily_return": 0.00126037216786499,
+        "volatility": 0.6286258338405772,
+        "sharpe_ratio": 0.505250928619211,
+        "max_drawdown": -0.5376568011858521,
+        "avg_volume": 101454375.75298804,
+        "volume_volatility": 0.294687209480446
+      },
+      "accuracy_metrics": {
+        "mse": 824.9934084325386,
+        "mae": 21.134287274625787,
+        "rmse": 28.722698487999672,
+        "mape": 7.936172913051316,
+        "direction_accuracy": 0.508298755186722,
+        "r2_score": 0.8433720563718922,
+        "accuracy_level": "Kohtalainen"
+      },
+      "overfitting_analysis": {
+        "model_results": {
+          "ma_5": {
+            "train_error": 4.004525573547857,
+            "test_error": 4.74480934750221,
+            "overfitting_ratio": 0.18486179207952705,
+            "overfitting_level": "Korkea"
+          },
+          "ma_10": {
+            "train_error": 5.595755334543542,
+            "test_error": 5.875008693970436,
+            "overfitting_ratio": 0.04990449773652828,
+            "overfitting_level": "Matala"
+          },
+          "ma_20": {
+            "train_error": 7.731899659829018,
+            "test_error": 7.500400254137271,
+            "overfitting_ratio": -0.029940818670280898,
+            "overfitting_level": "Matala"
+          }
+        },
+        "best_model": "ma_5",
+        "overfitting_risk": "Kohtalainen"
+      },
+      "stability_analysis": {
+        "error": "Ei dataa stabiilisuusanalyysiin"
+      },
+      "reliability_score": {
+        "accuracy_score": 22.229802190683124,
+        "overfitting_score": 15,
+        "stability_score": 0,
+        "total_score": 37.229802190683124,
+        "reliability_percentage": 37.229802190683124,
+        "reliability_level": "Matala"
+      },
+      "recommendations": [
+        "Kohtalainen mallin tarkkuus",
+        "Harkitse mallin parantamista",
+        "Seuraa suorituskykyä tarkemmin",
+        "Kohtalainen overfitting-riski",
+        "Seuraa mallin suorituskykyä test-datalla",
+        "Harkitse mallin yksinkertaistamista",
+        "VAROITUS: Matala mallin stabiilisuus",
+        "Malli vaihtelee paljon ajan myötä",
+        "Harkitse adaptiivisia malleja",
+        "Seuraa mallin suorituskykyä säännöllisesti",
+        "YLEINEN SUOSITUS: Mallin luotettavuus on matala - harkitse vaihtoehtoja"
+      ]
+    },
+    "NVDA": {
+      "symbol": "NVDA",
+      "model_type": "ml_prediction",
+      "evaluation_date": "2025-09-10T22:48:38.666834",
+      "basic_metrics": {
+        "total_days": 502,
+        "avg_daily_return": 0.0032423030850513026,
+        "volatility": 0.507826470980389,
+        "sharpe_ratio": 1.6089361703724205,
+        "max_drawdown": -0.36881025848741905,
+        "avg_volume": 336385006.1673307,
+        "volume_volatility": 0.296539650194222
+      },
+      "accuracy_metrics": {
+        "mse": 78.22954122105872,
+        "mae": 7.077951130926362,
+        "rmse": 8.844746532324073,
+        "mape": 6.5225466714654665,
+        "direction_accuracy": 0.5145228215767634,
+        "r2_score": 0.9444615520314558,
+        "accuracy_level": "Kohtalainen"
+      },
+      "overfitting_analysis": {
+        "model_results": {
+          "ma_5": {
+            "train_error": 3.6137160332074196,
+            "test_error": 3.3870625733278987,
+            "overfitting_ratio": -0.06272032937749968,
+            "overfitting_level": "Matala"
+          },
+          "ma_10": {
+            "train_error": 4.930704783114318,
+            "test_error": 4.472588119616286,
+            "overfitting_ratio": -0.09291099014219985,
+            "overfitting_level": "Matala"
+          },
+          "ma_20": {
+            "train_error": 6.667018469969641,
+            "test_error": 6.398339704774091,
+            "overfitting_ratio": -0.04029968814482278,
+            "overfitting_level": "Matala"
+          }
+        },
+        "best_model": "ma_5",
+        "overfitting_risk": "Matala"
+      },
+      "stability_analysis": {
+        "error": "Ei dataa stabiilisuusanalyysiin"
+      },
+      "reliability_score": {
+        "accuracy_score": 23.767909760069802,
+        "overfitting_score": 30,
+        "stability_score": 0,
+        "total_score": 53.7679097600698,
+        "reliability_percentage": 53.7679097600698,
+        "reliability_level": "Matala"
+      },
+      "recommendations": [
+        "Kohtalainen mallin tarkkuus",
+        "Harkitse mallin parantamista",
+        "Seuraa suorituskykyä tarkemmin",
+        "VAROITUS: Matala mallin stabiilisuus",
+        "Malli vaihtelee paljon ajan myötä",
+        "Harkitse adaptiivisia malleja",
+        "Seuraa mallin suorituskykyä säännöllisesti",
+        "YLEINEN SUOSITUS: Mallin luotettavuus on matala - harkitse vaihtoehtoja"
+      ]
+    }
+  },
+  "overall_recommendations": [
+    "🚨 KORKEA STRESS RISKI - vähennä position kokoja ja lisää diversifikaatiota",
+    "🤖 MATALA MALLIN LUOTETTAVUUS - harkitse mallien parantamista",
+    "📊 Suorita analyysi säännöllisesti (esim. kuukausittain)",
+    "📈 Seuraa markkinatilannetta ja mukauta strategiaa tarpeen mukaan"
+  ]
+}

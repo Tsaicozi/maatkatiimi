@@ -1,0 +1,472 @@
+[2025-09-18 15:44:52] init: bot constructed
+[2025-09-18 15:44:52] signal: loop handlers installed
+[2025-09-18 15:44:52] start: scheduler armed
+[2025-09-18 15:45:00] self-term: sending SIGTERM after 8s
+[2025-09-18 15:45:00] signal: sync handler fired 15
+[2025-09-18 15:45:00] shutdown: requested (SIGNAL 15(sync))
+[2025-09-18 15:45:00] shutdown: begin
+[2025-09-18 15:45:19] atexit: process exiting
+[2025-09-18 15:47:03] init: bot constructed
+[2025-09-18 15:47:03] signal: loop handlers installed
+[2025-09-18 15:47:03] start: scheduler armed
+[2025-09-18 15:47:13] signal: sync handler fired 15
+[2025-09-18 15:47:13] shutdown: requested (SIGNAL 15(sync))
+[2025-09-18 15:47:13] shutdown: begin
+[2025-09-18 15:47:19] atexit: process exiting
+[2025-09-18 15:54:02] init: constructed
+[2025-09-18 15:54:02] signal: loop handlers installed
+[2025-09-18 15:54:02] start: scheduler armed
+[2025-09-18 15:54:13] signal: sync handler fired 15
+[2025-09-18 15:54:13] shutdown: requested (SIGNAL 15(sync))
+[2025-09-18 15:54:13] shutdown: begin
+[2025-09-18 15:54:13] step: telegram_notice
+[2025-09-18 15:54:14] step: cancel_own_tasks
+[2025-09-18 15:54:14] atexit: process exiting
+[2025-09-18 16:10:45] init: constructed
+[2025-09-18 16:10:45] signal: loop handlers installed
+[2025-09-18 16:10:45] start: scheduler armed
+[2025-09-18 16:10:45] shutdown: requested (kill_switch)
+[2025-09-18 16:10:45] shutdown: begin
+[2025-09-18 16:10:45] step: telegram_notice
+[2025-09-18 16:10:47] step: cancel_own_tasks
+[2025-09-18 16:10:47] atexit: process exiting
+[2025-09-18 16:16:08] init: constructed
+[2025-09-18 16:16:08] signal: loop handlers installed
+[2025-09-18 16:16:08] start: scheduler armed
+[2025-09-18 16:16:08] shutdown: requested (kill_switch)
+[2025-09-18 16:16:08] shutdown: begin
+[2025-09-18 16:16:08] step: telegram_notice
+[2025-09-18 16:16:09] step: cancel_own_tasks
+[2025-09-18 16:16:09] atexit: process exiting
+[2025-09-18 16:19:08] init: constructed
+[2025-09-18 16:19:08] signal: loop handlers installed
+[2025-09-18 16:19:08] start: scheduler armed
+[2025-09-18 16:19:08] shutdown: requested (kill_switch)
+[2025-09-18 16:19:08] shutdown: begin
+[2025-09-18 16:19:08] step: telegram_notice
+[2025-09-18 16:19:08] step: cancel_own_tasks
+[2025-09-18 16:19:08] atexit: process exiting
+[2025-09-18 16:19:43] init: constructed
+[2025-09-18 16:19:43] signal: loop handlers installed
+[2025-09-18 16:19:43] start: scheduler armed
+[2025-09-18 16:19:43] shutdown: requested (kill_switch)
+[2025-09-18 16:19:43] shutdown: begin
+[2025-09-18 16:19:43] step: telegram_notice
+[2025-09-18 16:19:43] step: cancel_own_tasks
+[2025-09-18 16:19:44] atexit: process exiting
+[2025-09-18 16:20:00] init: constructed
+[2025-09-18 16:20:00] signal: loop handlers installed
+[2025-09-18 16:20:00] start: scheduler armed
+[2025-09-18 16:20:00] shutdown: requested (kill_switch)
+[2025-09-18 16:20:00] shutdown: begin
+[2025-09-18 16:20:00] step: telegram_notice
+[2025-09-18 16:20:01] step: cancel_own_tasks
+[2025-09-18 16:20:01] atexit: process exiting
+[2025-09-18 16:33:28] init: constructed
+[2025-09-18 16:33:28] signal: loop handlers installed
+[2025-09-18 16:33:28] start: scheduler armed
+[2025-09-18 16:33:28] shutdown: requested (kill_switch)
+[2025-09-18 16:33:28] shutdown: begin
+[2025-09-18 16:33:28] step: telegram_notice
+[2025-09-18 16:33:30] step: cancel_own_tasks
+[2025-09-18 16:33:30] atexit: process exiting
+[2025-09-18 16:41:12] init: constructed
+[2025-09-18 16:41:12] signal: loop handlers installed
+[2025-09-18 16:41:12] start: scheduler armed
+[2025-09-18 16:45:31] signal: sync handler fired 15
+[2025-09-18 16:45:31] shutdown: requested (SIGNAL 15(sync))
+[2025-09-18 16:45:31] shutdown: begin
+[2025-09-18 16:45:31] step: telegram_notice
+[2025-09-18 16:45:33] step: cancel_own_tasks
+[2025-09-18 16:45:33] atexit: process exiting
+[2025-09-18 16:45:36] init: constructed
+[2025-09-18 16:45:36] signal: loop handlers installed
+[2025-09-18 16:45:36] start: scheduler armed
+[2025-09-18 16:46:21] signal: sync handler fired 15
+[2025-09-18 16:46:21] shutdown: requested (SIGNAL 15(sync))
+[2025-09-18 16:46:21] shutdown: begin
+[2025-09-18 16:46:21] step: telegram_notice
+[2025-09-18 16:46:21] step: cancel_own_tasks
+[2025-09-18 16:46:22] atexit: process exiting
+[2025-09-18 17:01:10] init: constructed
+[2025-09-18 17:01:10] signal: loop handlers installed
+[2025-09-18 17:01:10] start: scheduler armed
+[2025-09-18 17:03:41] signal: sync handler fired 15
+[2025-09-18 17:03:41] shutdown: requested (SIGNAL 15(sync))
+[2025-09-18 17:03:41] shutdown: begin
+[2025-09-18 17:03:41] step: telegram_notice
+[2025-09-18 17:03:42] step: cancel_own_tasks
+[2025-09-18 17:03:42] atexit: process exiting
+[2025-09-18 17:13:10] init: constructed
+[2025-09-18 17:13:10] signal: loop handlers installed
+[2025-09-18 17:13:10] start: scheduler armed
+[2025-09-18 17:15:31] signal: sync handler fired 15
+[2025-09-18 17:15:31] shutdown: requested (SIGNAL 15(sync))
+[2025-09-18 17:15:31] shutdown: begin
+[2025-09-18 17:15:31] step: telegram_notice
+[2025-09-18 17:15:32] step: cancel_own_tasks
+[2025-09-18 17:15:33] atexit: process exiting
+[2025-09-18 17:18:31] init: constructed
+[2025-09-18 17:18:31] signal: loop handlers installed
+[2025-09-18 17:18:31] start: scheduler armed
+[2025-09-18 17:21:47] signal: sync handler fired 15
+[2025-09-18 17:21:47] shutdown: requested (SIGNAL 15(sync))
+[2025-09-18 17:21:47] shutdown: begin
+[2025-09-18 17:21:47] step: telegram_notice
+[2025-09-18 17:21:49] step: cancel_own_tasks
+[2025-09-18 18:26:27] init: constructed
+[2025-09-18 18:26:27] signal: loop handlers installed
+[2025-09-18 18:26:27] start: scheduler armed
+[2025-09-18 18:27:27] shutdown: begin
+[2025-09-18 18:27:27] step: telegram_notice
+[2025-09-18 18:27:29] step: cancel_own_tasks
+[2025-09-18 18:27:29] atexit: process exiting
+[2025-09-18 18:29:19] init: constructed
+[2025-09-18 18:29:19] signal: loop handlers installed
+[2025-09-18 18:29:19] start: scheduler armed
+[2025-09-18 18:34:48] signal: sync handler fired 15
+[2025-09-18 18:34:48] shutdown: requested (SIGNAL 15(sync))
+[2025-09-18 18:34:48] shutdown: begin
+[2025-09-18 18:34:48] step: telegram_notice
+[2025-09-18 18:34:50] step: cancel_own_tasks
+[2025-09-18 18:37:00] init: constructed
+[2025-09-18 18:37:00] signal: loop handlers installed
+[2025-09-18 18:37:00] start: scheduler armed
+[2025-09-18 18:57:36] signal: sync handler fired 15
+[2025-09-18 18:57:36] shutdown: requested (SIGNAL 15(sync))
+[2025-09-18 18:57:36] shutdown: begin
+[2025-09-18 18:57:36] step: telegram_notice
+[2025-09-18 18:57:38] step: cancel_own_tasks
+[2025-09-18 18:57:38] atexit: process exiting
+[2025-09-18 19:51:59] init: constructed
+[2025-09-18 19:51:59] signal: loop handlers installed
+[2025-09-18 19:51:59] start: scheduler armed
+[2025-09-18 20:05:17] signal: sync handler fired 15
+[2025-09-18 20:05:17] shutdown: requested (SIGNAL 15(sync))
+[2025-09-18 20:05:17] shutdown: begin
+[2025-09-18 20:05:17] step: telegram_notice
+[2025-09-18 20:05:18] step: cancel_own_tasks
+[2025-09-18 20:05:32] init: constructed
+[2025-09-18 20:05:32] signal: loop handlers installed
+[2025-09-18 20:05:32] start: scheduler armed
+[2025-09-18 20:11:22] signal: sync handler fired 15
+[2025-09-18 20:11:22] shutdown: requested (SIGNAL 15(sync))
+[2025-09-18 20:11:22] shutdown: begin
+[2025-09-18 20:11:22] step: telegram_notice
+[2025-09-18 20:11:24] step: cancel_own_tasks
+[2025-09-18 20:11:24] atexit: process exiting
+[2025-09-18 20:41:39] init: constructed
+[2025-09-18 20:41:39] signal: loop handlers installed
+[2025-09-18 20:41:39] start: scheduler armed
+[2025-09-18 21:01:28] signal: sync handler fired 15
+[2025-09-18 21:01:28] shutdown: requested (SIGNAL 15(sync))
+[2025-09-18 21:01:28] shutdown: begin
+[2025-09-18 21:01:28] step: telegram_notice
+[2025-09-18 21:01:29] step: cancel_own_tasks
+[2025-09-18 21:01:29] atexit: process exiting
+[2025-09-18 21:30:58] init: constructed
+[2025-09-18 21:30:58] signal: loop handlers installed
+[2025-09-18 21:30:58] start: scheduler armed
+[2025-09-18 21:33:39] signal: sync handler fired 15
+[2025-09-18 21:33:39] shutdown: requested (SIGNAL 15(sync))
+[2025-09-18 21:33:39] shutdown: begin
+[2025-09-18 21:33:39] step: telegram_notice
+[2025-09-18 21:33:40] step: cancel_own_tasks
+[2025-09-18 21:38:19] init: constructed
+[2025-09-18 21:38:19] signal: loop handlers installed
+[2025-09-18 21:38:19] start: scheduler armed
+[2025-09-18 21:42:04] shutdown: begin
+[2025-09-18 21:42:04] step: telegram_notice
+[2025-09-18 21:42:04] step: cancel_own_tasks
+[2025-09-18 21:42:14] atexit: process exiting
+[2025-09-18 21:43:01] init: constructed
+[2025-09-18 21:43:01] signal: loop handlers installed
+[2025-09-18 21:43:01] start: scheduler armed
+[2025-09-18 21:44:02] shutdown: begin
+[2025-09-18 21:44:02] step: telegram_notice
+[2025-09-18 21:44:02] step: cancel_own_tasks
+[2025-09-18 21:44:02] atexit: process exiting
+[2025-09-18 21:47:47] init: constructed
+[2025-09-18 21:47:47] signal: loop handlers installed
+[2025-09-18 21:47:47] start: scheduler armed
+[2025-09-18 21:48:00] shutdown: begin
+[2025-09-18 21:48:00] step: telegram_notice
+[2025-09-18 21:48:00] step: cancel_own_tasks
+[2025-09-18 21:48:00] atexit: process exiting
+[2025-09-18 21:50:17] init: constructed
+[2025-09-18 21:50:17] signal: loop handlers installed
+[2025-09-18 21:50:17] start: scheduler armed
+[2025-09-18 21:52:27] signal: sync handler fired 15
+[2025-09-18 21:52:27] shutdown: requested (SIGNAL 15(sync))
+[2025-09-18 21:52:27] shutdown: begin
+[2025-09-18 21:52:27] step: telegram_notice
+[2025-09-18 21:52:28] step: cancel_own_tasks
+[2025-09-18 21:56:55] init: constructed
+[2025-09-18 21:56:55] signal: loop handlers installed
+[2025-09-18 21:56:55] start: scheduler armed
+[2025-09-18 21:58:00] shutdown: begin
+[2025-09-18 21:58:00] step: telegram_notice
+[2025-09-18 21:58:00] step: cancel_own_tasks
+[2025-09-18 21:58:00] atexit: process exiting
+[2025-09-18 22:05:19] init: constructed
+[2025-09-18 22:05:19] signal: loop handlers installed
+[2025-09-18 22:05:19] start: scheduler armed
+[2025-09-18 22:06:50] signal: sync handler fired 15
+[2025-09-18 22:06:51] shutdown: requested (SIGNAL 15(sync))
+[2025-09-18 22:06:51] shutdown: begin
+[2025-09-18 22:06:51] step: telegram_notice
+[2025-09-18 22:06:52] step: cancel_own_tasks
+[2025-09-18 22:06:52] atexit: process exiting
+[2025-09-18 22:07:31] init: constructed
+[2025-09-18 22:07:31] signal: loop handlers installed
+[2025-09-18 22:07:31] start: scheduler armed
+[2025-09-18 22:08:00] shutdown: begin
+[2025-09-18 22:08:00] step: telegram_notice
+[2025-09-18 22:08:00] step: cancel_own_tasks
+[2025-09-18 22:08:00] atexit: process exiting
+[2025-09-18 22:12:07] init: constructed
+[2025-09-18 22:12:07] signal: loop handlers installed
+[2025-09-18 22:12:07] start: scheduler armed
+[2025-09-18 22:14:32] signal: sync handler fired 15
+[2025-09-18 22:14:32] shutdown: requested (SIGNAL 15(sync))
+[2025-09-18 22:14:32] shutdown: begin
+[2025-09-18 22:14:32] step: telegram_notice
+[2025-09-18 22:14:32] step: cancel_own_tasks
+[2025-09-18 22:14:32] atexit: process exiting
+[2025-09-18 22:18:14] init: constructed
+[2025-09-18 22:18:14] signal: loop handlers installed
+[2025-09-18 22:18:14] start: scheduler armed
+[2025-09-18 22:21:26] signal: sync handler fired 15
+[2025-09-18 22:21:26] shutdown: requested (SIGNAL 15(sync))
+[2025-09-18 22:21:26] shutdown: begin
+[2025-09-18 22:21:26] step: telegram_notice
+[2025-09-18 22:21:26] step: cancel_own_tasks
+[2025-09-18 22:21:27] atexit: process exiting
+[2025-09-18 22:21:28] init: constructed
+[2025-09-18 22:21:28] signal: loop handlers installed
+[2025-09-18 22:21:28] start: scheduler armed
+[2025-09-18 22:24:18] init: constructed
+[2025-09-18 22:24:18] signal: loop handlers installed
+[2025-09-18 22:24:18] start: scheduler armed
+[2025-09-18 22:28:01] shutdown: begin
+[2025-09-18 22:28:01] step: telegram_notice
+[2025-09-18 22:28:02] step: cancel_own_tasks
+[2025-09-18 22:28:02] atexit: process exiting
+[2025-09-18 22:42:01] init: constructed
+[2025-09-18 22:42:01] signal: loop handlers installed
+[2025-09-18 22:42:01] start: scheduler armed
+[2025-09-18 22:42:48] signal: sync handler fired 15
+[2025-09-18 22:42:48] shutdown: requested (SIGNAL 15(sync))
+[2025-09-18 22:42:48] shutdown: begin
+[2025-09-18 22:42:48] step: telegram_notice
+[2025-09-18 22:42:49] step: cancel_own_tasks
+[2025-09-18 22:42:49] atexit: process exiting
+[2025-09-18 22:46:27] init: constructed
+[2025-09-18 22:46:27] signal: loop handlers installed
+[2025-09-18 22:46:27] start: scheduler armed
+[2025-09-18 22:53:33] signal: sync handler fired 15
+[2025-09-18 22:53:33] shutdown: requested (SIGNAL 15(sync))
+[2025-09-18 22:53:33] shutdown: begin
+[2025-09-18 22:53:33] step: telegram_notice
+[2025-09-18 22:53:33] step: cancel_own_tasks
+[2025-09-18 22:53:34] atexit: process exiting
+[2025-09-18 22:53:36] init: constructed
+[2025-09-18 22:53:36] signal: loop handlers installed
+[2025-09-18 22:53:36] start: scheduler armed
+[2025-09-18 22:54:12] signal: sync handler fired 15
+[2025-09-18 22:54:12] shutdown: requested (SIGNAL 15(sync))
+[2025-09-18 22:54:12] shutdown: begin
+[2025-09-18 22:54:12] step: telegram_notice
+[2025-09-18 22:54:13] step: cancel_own_tasks
+[2025-09-18 22:54:13] atexit: process exiting
+[2025-09-18 22:55:58] init: constructed
+[2025-09-18 22:55:58] signal: loop handlers installed
+[2025-09-18 22:55:58] start: scheduler armed
+[2025-09-18 22:56:17] signal: sync handler fired 15
+[2025-09-18 22:56:17] shutdown: requested (SIGNAL 15(sync))
+[2025-09-18 22:56:17] shutdown: begin
+[2025-09-18 22:56:17] step: telegram_notice
+[2025-09-18 22:56:18] step: cancel_own_tasks
+[2025-09-18 22:56:28] atexit: process exiting
+[2025-09-18 22:57:08] init: constructed
+[2025-09-18 22:57:08] signal: loop handlers installed
+[2025-09-18 22:57:08] start: scheduler armed
+[2025-09-18 23:01:54] signal: sync handler fired 15
+[2025-09-18 23:01:54] shutdown: requested (SIGNAL 15(sync))
+[2025-09-18 23:01:54] shutdown: begin
+[2025-09-18 23:01:54] step: telegram_notice
+[2025-09-18 23:01:55] step: cancel_own_tasks
+[2025-09-18 23:01:55] atexit: process exiting
+[2025-09-18 23:01:57] init: constructed
+[2025-09-18 23:01:57] signal: loop handlers installed
+[2025-09-18 23:01:57] start: scheduler armed
+[2025-09-18 23:14:32] signal: sync handler fired 15
+[2025-09-18 23:14:32] shutdown: requested (SIGNAL 15(sync))
+[2025-09-18 23:14:32] shutdown: begin
+[2025-09-18 23:14:32] step: telegram_notice
+[2025-09-18 23:14:33] step: cancel_own_tasks
+[2025-09-18 23:14:36] init: constructed
+[2025-09-18 23:14:36] signal: loop handlers installed
+[2025-09-18 23:14:36] start: scheduler armed
+[2025-09-18 23:14:43] atexit: process exiting
+[2025-09-18 23:19:05] signal: sync handler fired 15
+[2025-09-18 23:19:05] shutdown: requested (SIGNAL 15(sync))
+[2025-09-18 23:19:05] shutdown: begin
+[2025-09-18 23:19:05] step: telegram_notice
+[2025-09-18 23:19:06] step: cancel_own_tasks
+[2025-09-18 23:19:06] atexit: process exiting
+[2025-09-18 23:19:09] init: constructed
+[2025-09-18 23:19:09] signal: loop handlers installed
+[2025-09-18 23:19:09] start: scheduler armed
+[2025-09-19 14:52:45] signal: sync handler fired 15
+[2025-09-19 14:52:45] shutdown: requested (SIGNAL 15(sync))
+[2025-09-19 14:52:45] shutdown: begin
+[2025-09-19 14:52:45] step: telegram_notice
+[2025-09-19 14:52:45] step: cancel_own_tasks
+[2025-09-19 14:52:56] atexit: process exiting
+[2025-09-19 14:59:37] init: constructed
+[2025-09-19 14:59:37] signal: loop handlers installed
+[2025-09-19 14:59:37] start: scheduler armed
+[2025-09-19 15:15:02] signal: sync handler fired 15
+[2025-09-19 15:15:02] shutdown: requested (SIGNAL 15(sync))
+[2025-09-19 15:15:02] shutdown: begin
+[2025-09-19 15:15:02] step: telegram_notice
+[2025-09-19 15:15:03] step: cancel_own_tasks
+[2025-09-19 15:15:03] atexit: process exiting
+[2025-09-19 15:27:29] init: constructed
+[2025-09-19 15:27:29] signal: loop handlers installed
+[2025-09-19 15:27:29] start: scheduler armed
+[2025-09-19 17:39:15] signal: sync handler fired 15
+[2025-09-19 17:39:15] shutdown: requested (SIGNAL 15(sync))
+[2025-09-19 17:39:15] shutdown: begin
+[2025-09-19 17:39:15] step: telegram_notice
+[2025-09-19 17:39:16] step: cancel_own_tasks
+[2025-09-19 17:39:49] init: constructed
+[2025-09-19 17:39:49] signal: loop handlers installed
+[2025-09-19 17:39:49] start: scheduler armed
+[2025-09-19 17:46:51] signal: sync handler fired 15
+[2025-09-19 17:46:51] shutdown: requested (SIGNAL 15(sync))
+[2025-09-19 17:46:51] shutdown: begin
+[2025-09-19 17:46:51] step: telegram_notice
+[2025-09-19 17:46:51] step: cancel_own_tasks
+[2025-09-19 17:46:52] atexit: process exiting
+[2025-09-19 17:50:12] init: constructed
+[2025-09-19 17:50:12] signal: loop handlers installed
+[2025-09-19 17:50:12] start: scheduler armed
+[2025-09-19 19:26:39] signal: sync handler fired 15
+[2025-09-19 19:26:39] shutdown: requested (SIGNAL 15(sync))
+[2025-09-19 19:26:39] shutdown: begin
+[2025-09-19 19:26:39] step: telegram_notice
+[2025-09-19 19:26:39] step: cancel_own_tasks
+[2025-09-19 19:42:04] init: constructed
+[2025-09-19 19:42:04] signal: loop handlers installed
+[2025-09-19 19:42:04] start: scheduler armed
+[2025-09-19 19:49:25] signal: sync handler fired 15
+[2025-09-19 19:49:25] shutdown: requested (SIGNAL 15(sync))
+[2025-09-19 19:49:25] shutdown: begin
+[2025-09-19 19:49:25] step: telegram_notice
+[2025-09-19 19:49:26] step: cancel_own_tasks
+[2025-09-19 19:49:26] atexit: process exiting
+[2025-09-19 19:50:32] init: constructed
+[2025-09-19 19:50:32] signal: loop handlers installed
+[2025-09-19 19:50:32] start: scheduler armed
+[2025-09-19 19:51:53] signal: sync handler fired 15
+[2025-09-19 19:51:53] shutdown: requested (SIGNAL 15(sync))
+[2025-09-19 19:51:53] shutdown: begin
+[2025-09-19 19:51:53] step: telegram_notice
+[2025-09-19 19:51:53] step: cancel_own_tasks
+[2025-09-19 19:51:54] atexit: process exiting
+[2025-09-19 19:51:56] init: constructed
+[2025-09-19 19:51:56] signal: loop handlers installed
+[2025-09-19 19:51:56] start: scheduler armed
+[2025-09-19 19:53:35] signal: sync handler fired 15
+[2025-09-19 19:53:35] shutdown: requested (SIGNAL 15(sync))
+[2025-09-19 19:53:35] shutdown: begin
+[2025-09-19 19:53:35] step: telegram_notice
+[2025-09-19 19:53:37] step: cancel_own_tasks
+[2025-09-19 19:53:40] init: constructed
+[2025-09-19 19:53:40] signal: loop handlers installed
+[2025-09-19 19:53:40] start: scheduler armed
+[2025-09-19 19:53:47] atexit: process exiting
+[2025-09-19 19:54:53] signal: sync handler fired 15
+[2025-09-19 19:54:53] shutdown: requested (SIGNAL 15(sync))
+[2025-09-19 19:54:53] shutdown: begin
+[2025-09-19 19:54:53] step: telegram_notice
+[2025-09-19 19:54:55] step: cancel_own_tasks
+[2025-09-19 19:54:56] init: constructed
+[2025-09-19 19:54:56] signal: loop handlers installed
+[2025-09-19 19:54:56] start: scheduler armed
+[2025-09-19 19:55:05] atexit: process exiting
+[2025-09-19 20:47:58] signal: sync handler fired 15
+[2025-09-19 20:47:58] shutdown: requested (SIGNAL 15(sync))
+[2025-09-19 20:47:58] shutdown: begin
+[2025-09-19 20:47:58] step: telegram_notice
+[2025-09-19 20:47:59] step: cancel_own_tasks
+[2025-09-19 20:48:57] init: constructed
+[2025-09-19 20:48:57] signal: loop handlers installed
+[2025-09-19 20:48:57] start: scheduler armed
+[2025-09-19 20:50:30] signal: sync handler fired 15
+[2025-09-19 20:50:30] shutdown: requested (SIGNAL 15(sync))
+[2025-09-19 20:50:30] shutdown: begin
+[2025-09-19 20:50:30] step: telegram_notice
+[2025-09-19 20:50:31] step: cancel_own_tasks
+[2025-09-19 20:50:39] init: constructed
+[2025-09-19 20:50:39] signal: loop handlers installed
+[2025-09-19 20:50:39] start: scheduler armed
+[2025-09-19 21:11:45] signal: sync handler fired 15
+[2025-09-19 21:11:45] shutdown: requested (SIGNAL 15(sync))
+[2025-09-19 21:11:45] shutdown: begin
+[2025-09-19 21:11:45] step: telegram_notice
+[2025-09-19 21:11:46] step: cancel_own_tasks
+[2025-09-19 21:11:46] atexit: process exiting
+[2025-09-19 21:13:21] init: constructed
+[2025-09-19 21:13:21] signal: loop handlers installed
+[2025-09-19 21:13:21] start: scheduler armed
+[2025-09-19 21:25:18] signal: sync handler fired 15
+[2025-09-19 21:25:18] shutdown: requested (SIGNAL 15(sync))
+[2025-09-19 21:25:18] shutdown: begin
+[2025-09-19 21:25:18] step: telegram_notice
+[2025-09-19 21:25:19] step: cancel_own_tasks
+[2025-09-19 21:26:15] init: constructed
+[2025-09-19 21:26:15] signal: loop handlers installed
+[2025-09-19 21:26:15] start: scheduler armed
+[2025-09-19 21:39:02] signal: sync handler fired 15
+[2025-09-19 21:39:02] shutdown: requested (SIGNAL 15(sync))
+[2025-09-19 21:39:02] shutdown: begin
+[2025-09-19 21:39:02] step: telegram_notice
+[2025-09-19 21:39:03] step: cancel_own_tasks
+[2025-09-19 21:53:26] init: constructed
+[2025-09-19 21:53:26] signal: loop handlers installed
+[2025-09-19 21:53:26] start: scheduler armed
+[2025-09-19 21:56:48] signal: sync handler fired 15
+[2025-09-19 21:56:48] shutdown: requested (SIGNAL 15(sync))
+[2025-09-19 21:56:48] shutdown: begin
+[2025-09-19 21:56:48] step: telegram_notice
+[2025-09-19 21:56:48] step: cancel_own_tasks
+[2025-09-19 21:57:54] init: constructed
+[2025-09-19 21:57:54] signal: loop handlers installed
+[2025-09-19 21:57:54] start: scheduler armed
+[2025-09-19 22:15:32] signal: sync handler fired 15
+[2025-09-19 22:15:32] shutdown: requested (SIGNAL 15(sync))
+[2025-09-19 22:15:32] shutdown: begin
+[2025-09-19 22:15:32] step: telegram_notice
+[2025-09-19 22:15:33] step: cancel_own_tasks
+[2025-09-19 22:15:51] init: constructed
+[2025-09-19 22:15:51] signal: loop handlers installed
+[2025-09-19 22:15:51] start: scheduler armed
+[2025-09-19 22:31:35] signal: sync handler fired 15
+[2025-09-19 22:31:35] shutdown: requested (SIGNAL 15(sync))
+[2025-09-19 22:31:35] shutdown: begin
+[2025-09-19 22:31:35] step: telegram_notice
+[2025-09-19 22:31:35] step: cancel_own_tasks
+[2025-09-19 22:32:46] init: constructed
+[2025-09-19 22:32:46] signal: loop handlers installed
+[2025-09-19 22:32:46] start: scheduler armed
+[2025-09-19 22:45:41] signal: sync handler fired 15
+[2025-09-19 22:45:41] shutdown: requested (SIGNAL 15(sync))
+[2025-09-19 22:45:41] shutdown: begin
+[2025-09-19 22:45:41] step: telegram_notice
+[2025-09-19 22:45:41] step: cancel_own_tasks
+[2025-09-19 22:45:51] init: constructed
+[2025-09-19 22:45:51] signal: loop handlers installed
+[2025-09-19 22:45:51] start: scheduler armed

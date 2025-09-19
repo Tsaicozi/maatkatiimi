@@ -1,0 +1,100 @@
+2025-09-15 17:25:12 - root - INFO - ✅ Unix signaali käsittely käytössä
+2025-09-15 17:25:12 - root - INFO - 🚀 Käynnistetään Automatic Hybrid Trading Bot...
+2025-09-15 17:25:12 - metrics - INFO - ✅ Metrics-palvelin käynnissä: http://0.0.0.0:9108/metrics (health=True)
+2025-09-15 17:25:12 - root - INFO - 📊 Metrics endpoint: http://0.0.0.0:9108/metrics
+2025-09-15 17:25:12 - root - INFO - 📊 Metrics endpoint (curl): http://127.0.0.1:9108/metrics
+2025-09-15 17:25:17 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-15 17:25:17 - root - INFO - ⏰ Align seuraavaan minuuttiin: 42.1s odotusta
+2025-09-15 17:26:00 - root - INFO - 🔄 Aloitetaan analyysi sykli #1
+2025-09-15 17:26:00 - hybrid_trading_bot - INFO - 🔄 Aloitetaan hybrid analyysi sykli...
+2025-09-15 17:26:00 - hybrid_trading_bot - INFO - 🔑 API avaimet: DexScreener=✅, CMC=✅, CC=✅, PumpPortal=✅
+2025-09-15 17:26:00 - telegram_bot_integration - INFO - ✅ Telegram bot alustettu
+2025-09-15 17:26:00 - hybrid_trading_bot - INFO - 🔍 Yritetään alustaa DiscoveryEngine...
+2025-09-15 17:26:00 - hybrid_trading_bot - INFO - ✅ DiscoveryEngine import onnistui
+2025-09-15 17:26:00 - rpc_interfaces - INFO - SolanaRPC alustettu endpoint: https://api.mainnet-beta.solana.com
+2025-09-15 17:26:00 - discovery_engine - INFO - DiscoveryEngine alustettu: 0 lähdettä, min_liq=$3000
+2025-09-15 17:26:00 - hybrid_trading_bot - INFO - ✅ DiscoveryEngine alustettu mock RPC:lla
+2025-09-15 17:26:00 - hybrid_trading_bot - INFO - ✅ PumpPortal analyzer alustettu
+2025-09-15 17:26:00 - hybrid_trading_bot - INFO - 🔍 Skannataan oikeita Solana tokeneita oikeista markkinoista...
+2025-09-15 17:26:05 - hybrid_trading_bot - INFO - ✅ DexScreener: Löydettiin 0 tokenia
+2025-09-15 17:26:10 - hybrid_trading_bot - WARNING - Birdeye API virhe: 404
+2025-09-15 17:26:10 - hybrid_trading_bot - INFO - ✅ Birdeye: Löydettiin 0 tokenia
+2025-09-15 17:26:16 - hybrid_trading_bot - INFO - ✅ CoinGecko: Löydettiin 20 tokenia
+2025-09-15 17:26:22 - hybrid_trading_bot - INFO - ✅ Jupiter: Löydettiin 20 tokenia
+2025-09-15 17:26:33 - hybrid_trading_bot - INFO - ✅ Raydium: Löydettiin 0 tokenia
+2025-09-15 17:26:38 - hybrid_trading_bot - INFO - ✅ CoinPaprika: Löydettiin 0 tokenia
+2025-09-15 17:26:44 - hybrid_trading_bot - WARNING - CoinMarketCap API: Virheellinen API avain (401)
+2025-09-15 17:26:44 - hybrid_trading_bot - INFO - ✅ CoinMarketCap: Löydettiin 0 tokenia
+2025-09-15 17:26:50 - hybrid_trading_bot - INFO - ✅ CryptoCompare: Löydettiin 0 tokenia
+2025-09-15 17:26:51 - root - INFO - 📡 Vastaanotettu sammutus signaali
+2025-09-15 17:26:55 - hybrid_trading_bot - WARNING - Pump.fun API virhe: 530
+2025-09-15 17:26:55 - hybrid_trading_bot - INFO - ✅ Pump.fun: Löydettiin 0 tokenia
+2025-09-15 17:26:55 - hybrid_trading_bot - WARNING - PumpPortal skanning virhe: 'list' object has no attribute 'get'
+2025-09-15 17:26:55 - hybrid_trading_bot - INFO - ✅ PumpPortal: Löydettiin 0 tokenia
+2025-09-15 17:26:55 - hybrid_trading_bot - INFO - ✅ Löydettiin 25 ultra-fresh Solana tokenia
+2025-09-15 17:26:55 - discovery_engine - INFO - Palautettu 0 kandidattia (min_score=0.65)
+2025-09-15 17:26:55 - hybrid_trading_bot - INFO - 🔥 DiscoveryEngine: Löydettiin 0 hot candidate:ja
+2025-09-15 17:26:55 - hybrid_trading_bot - INFO - 🔍 Analysoidaan token SOL: Age=2min, MC=$842,905,460, Tech=1.00, Risk=0.00, PriceChg=35.5%, Vol=$696,484, Social=0.87
+2025-09-15 17:26:55 - hybrid_trading_bot - INFO - 🔍 Analysoidaan token WBTC: Age=2min, MC=$960,152,802, Tech=1.00, Risk=0.00, PriceChg=40.5%, Vol=$4,090,929, Social=0.77
+2025-09-15 17:26:55 - hybrid_trading_bot - INFO - 🔍 Analysoidaan token JitoSOL: Age=3min, MC=$537,840,755, Tech=0.95, Risk=0.00, PriceChg=46.6%, Vol=$8,068,471, Social=0.48
+2025-09-15 17:26:55 - hybrid_trading_bot - INFO - 🔍 Analysoidaan token JUP: Age=5min, MC=$468,773,691, Tech=0.95, Risk=0.00, PriceChg=15.4%, Vol=$529,374, Social=0.81
+2025-09-15 17:26:55 - hybrid_trading_bot - INFO - 🔍 Analysoidaan token BILLY: Age=3min, MC=$436,335,298, Tech=0.95, Risk=0.02, PriceChg=20.9%, Vol=$1,813,046, Social=0.50
+2025-09-15 17:26:55 - hybrid_trading_bot - INFO - 🔍 Analysoidaan token USDT: Age=5min, MC=$835,006,597, Tech=0.90, Risk=0.00, PriceChg=9.7%, Vol=$3,437,878, Social=0.70
+2025-09-15 17:26:55 - hybrid_trading_bot - INFO - 🔍 Analysoidaan token ETH: Age=5min, MC=$80,540,782, Tech=0.90, Risk=0.00, PriceChg=10.9%, Vol=$9,264,539, Social=0.64
+2025-09-15 17:26:55 - hybrid_trading_bot - INFO - 🔍 Analysoidaan token $WIF: Age=5min, MC=$324,162,293, Tech=0.90, Risk=0.00, PriceChg=25.7%, Vol=$4,570,107, Social=0.44
+2025-09-15 17:26:55 - hybrid_trading_bot - INFO - 🔍 Analysoidaan token PYUSD: Age=5min, MC=$775,979,408, Tech=0.85, Risk=0.00, PriceChg=7.6%, Vol=$4,818,395, Social=0.48
+2025-09-15 17:26:55 - hybrid_trading_bot - INFO - 🔍 Analysoidaan token $michi: Age=4min, MC=$898,481,556, Tech=0.85, Risk=0.00, PriceChg=8.8%, Vol=$5,363,646, Social=0.43
+2025-09-15 17:26:55 - hybrid_trading_bot - INFO - 🔍 Analysoidaan token WLFI: Age=1min, MC=$5,890,987,153, Tech=0.80, Risk=0.00, PriceChg=1.0%, Vol=$881,420,538, Social=0.90
+2025-09-15 17:26:55 - hybrid_trading_bot - INFO - 🔍 Analysoidaan token JITOSOL: Age=1min, MC=$3,522,403,342, Tech=0.80, Risk=0.02, PriceChg=-3.9%, Vol=$47,229,911, Social=0.90
+2025-09-15 17:26:55 - hybrid_trading_bot - INFO - 🔍 Analysoidaan token PUMP: Age=1min, MC=$2,943,411,634, Tech=0.80, Risk=0.00, PriceChg=5.0%, Vol=$1,436,763,242, Social=0.90
+2025-09-15 17:26:55 - hybrid_trading_bot - INFO - 🔍 Analysoidaan token BNSOL: Age=2min, MC=$2,855,485,294, Tech=0.80, Risk=0.00, PriceChg=-3.7%, Vol=$7,382,863, Social=0.90
+2025-09-15 17:26:55 - hybrid_trading_bot - INFO - 🔍 Analysoidaan token JLP: Age=4min, MC=$2,180,353,379, Tech=0.80, Risk=0.00, PriceChg=-1.6%, Vol=$79,938,014, Social=0.90
+2025-09-15 17:26:55 - hybrid_trading_bot - INFO - 🔍 Analysoidaan token USDC: Age=2min, MC=$29,588,855, Tech=0.80, Risk=0.02, PriceChg=-17.6%, Vol=$8,186,218, Social=0.84
+2025-09-15 17:26:55 - hybrid_trading_bot - INFO - 🔍 Analysoidaan token Bonk: Age=1min, MC=$761,687,516, Tech=0.80, Risk=0.02, PriceChg=-15.7%, Vol=$8,540,857, Social=0.87
+2025-09-15 17:26:55 - hybrid_trading_bot - INFO - 🔍 Analysoidaan token JLP: Age=1min, MC=$452,693,386, Tech=0.80, Risk=0.00, PriceChg=-12.8%, Vol=$2,479,014, Social=0.80
+2025-09-15 17:26:55 - hybrid_trading_bot - INFO - 🔍 Analysoidaan token MUMU: Age=4min, MC=$825,324,708, Tech=0.80, Risk=0.00, PriceChg=-12.0%, Vol=$3,792,566, Social=0.74
+2025-09-15 17:26:55 - hybrid_trading_bot - INFO - 🔍 Analysoidaan token JupSOL: Age=3min, MC=$588,988,406, Tech=0.80, Risk=0.00, PriceChg=-2.3%, Vol=$470,761, Social=0.71
+2025-09-15 17:26:55 - hybrid_trading_bot - INFO - 🔍 Analysoidaan token mSOL: Age=5min, MC=$960,865,534, Tech=0.80, Risk=0.00, PriceChg=-12.8%, Vol=$4,116,862, Social=0.58
+2025-09-15 17:26:55 - hybrid_trading_bot - INFO - 🔍 Analysoidaan token MEW: Age=4min, MC=$116,566,229, Tech=0.80, Risk=0.00, PriceChg=-4.2%, Vol=$6,802,988, Social=0.86
+2025-09-15 17:26:55 - hybrid_trading_bot - INFO - 🔍 Analysoidaan token INF: Age=5min, MC=$565,024,817, Tech=0.80, Risk=0.00, PriceChg=-10.7%, Vol=$2,561,489, Social=0.69
+2025-09-15 17:26:55 - hybrid_trading_bot - INFO - 🔍 Analysoidaan token POPCAT: Age=1min, MC=$334,578,604, Tech=0.75, Risk=0.00, PriceChg=-2.0%, Vol=$4,585,552, Social=0.32
+2025-09-15 17:26:55 - hybrid_trading_bot - INFO - 🔍 Analysoidaan token PONKE: Age=2min, MC=$998,218,551, Tech=0.75, Risk=0.00, PriceChg=0.5%, Vol=$2,075,561, Social=0.37
+2025-09-15 17:26:55 - hybrid_trading_bot - INFO - 💾 Hybrid analyysi tulos tallennettu: hybrid_trading_analysis_20250915_172655.json
+2025-09-15 17:26:55 - hybrid_trading_bot - INFO - ✅ Hybrid analyysi sykli valmis: 25 tokenia, 0 signaalia, 0 hot candidates
+2025-09-15 17:27:00 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-15 17:27:00 - root - INFO - ✅ Sykli #1 valmis
+2025-09-15 17:27:00 - root - WARNING - ⚠️ Sykli kesti 60.7s (>60s) - jatketaan heti
+2025-09-15 17:27:00 - root - INFO - 🛑 Suoritetaan graceful shutdown...
+2025-09-15 17:27:06 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-15 17:27:06 - root - INFO - ✅ Graceful shutdown valmis
+2025-09-15 17:27:06 - root - INFO - 👋 Automatic Hybrid Trading Bot lopetettu
+2025-09-15 17:45:33 - telegram_bot_integration - INFO - ✅ Telegram bot alustettu
+2025-09-15 17:45:33 - hybrid_trading_bot - INFO - 🔍 Yritetään alustaa DiscoveryEngine...
+2025-09-15 17:45:33 - hybrid_trading_bot - INFO - ✅ DiscoveryEngine import onnistui
+2025-09-15 17:45:33 - rpc_interfaces - INFO - SolanaRPC alustettu endpoint: https://api.mainnet-beta.solana.com
+2025-09-15 17:45:33 - discovery_engine - INFO - DiscoveryEngine alustettu: 0 lähdettä, min_liq=$3000
+2025-09-15 17:45:33 - hybrid_trading_bot - INFO - ✅ DiscoveryEngine alustettu mock RPC:lla
+2025-09-15 17:45:33 - telegram_bot_integration - INFO - ✅ Telegram bot alustettu
+2025-09-15 17:48:14 - telegram_bot_integration - INFO - ✅ Telegram bot alustettu
+2025-09-15 17:48:14 - hybrid_trading_bot - INFO - 🔍 Yritetään alustaa DiscoveryEngine...
+2025-09-15 17:48:14 - hybrid_trading_bot - INFO - ✅ DiscoveryEngine import onnistui
+2025-09-15 17:48:14 - rpc_interfaces - INFO - SolanaRPC alustettu endpoint: https://api.mainnet-beta.solana.com
+2025-09-15 17:48:14 - discovery_engine - INFO - DiscoveryEngine alustettu: 0 lähdettä, min_liq=$3000
+2025-09-15 17:48:14 - hybrid_trading_bot - INFO - ✅ DiscoveryEngine alustettu mock RPC:lla
+2025-09-15 17:48:14 - telegram_bot_integration - INFO - ✅ Telegram bot alustettu
+2025-09-15 17:48:44 - telegram_bot_integration - INFO - ✅ Telegram bot alustettu
+2025-09-15 17:48:44 - hybrid_trading_bot - INFO - 🔍 Yritetään alustaa DiscoveryEngine...
+2025-09-15 17:48:44 - hybrid_trading_bot - INFO - ✅ DiscoveryEngine import onnistui
+2025-09-15 17:48:44 - rpc_interfaces - INFO - SolanaRPC alustettu endpoint: https://api.mainnet-beta.solana.com
+2025-09-15 17:48:44 - discovery_engine - INFO - DiscoveryEngine alustettu: 0 lähdettä, min_liq=$3000
+2025-09-15 17:48:44 - hybrid_trading_bot - INFO - ✅ DiscoveryEngine alustettu mock RPC:lla
+2025-09-15 17:48:44 - telegram_bot_integration - INFO - ✅ Telegram bot alustettu
+2025-09-15 20:43:06 - root - INFO - TEST_MAX_CYCLES=None TEST_MAX_RUNTIME=None
+2025-09-15 20:43:06 - root - INFO - Ympäristömuuttujat: max_cycles=None, max_runtime=None
+2025-09-15 20:43:06 - telegram_bot_integration - INFO - ✅ Telegram bot alustettu
+2025-09-15 20:43:06 - hybrid_trading_bot - INFO - 🔍 Yritetään alustaa DiscoveryEngine...
+2025-09-15 20:43:06 - hybrid_trading_bot - INFO - ✅ DiscoveryEngine import onnistui
+2025-09-15 20:43:06 - rpc_interfaces - INFO - SolanaRPC alustettu endpoint: https://api.mainnet-beta.solana.com
+2025-09-15 20:43:06 - discovery_engine - INFO - DiscoveryEngine alustettu: 0 lähdettä, min_liq=$3000
+2025-09-15 20:43:06 - hybrid_trading_bot - INFO - ✅ DiscoveryEngine alustettu mock RPC:lla
+2025-09-15 20:43:06 - telegram_bot_integration - INFO - ✅ Telegram bot alustettu

@@ -1,0 +1,92 @@
+{
+  "timestamp": "2025-09-14T16:42:14.718496",
+  "tokens_scanned": 1,
+  "tokens_analyzed": 1,
+  "signals_generated": 3,
+  "trades_executed": 3,
+  "portfolio_value": 10133.38425248569,
+  "portfolio_pnl": 133.38425248569,
+  "active_positions": 1,
+  "performance_metrics": {
+    "total_trades": 16,
+    "winning_trades": 10,
+    "losing_trades": 6,
+    "total_pnl": 142.13509000019937,
+    "max_drawdown": 0.0,
+    "sharpe_ratio": 0.0,
+    "win_rate": 0.625,
+    "profit_factor": 1.1421350900001994
+  },
+  "risk_metrics": {
+    "portfolio_heat": 0.0,
+    "max_portfolio_risk": 0.2,
+    "correlation_threshold": 0.7,
+    "dynamic_position_sizing": true
+  },
+  "tokens": [
+    {
+      "symbol": "UNKNOWN",
+      "name": "Unknown Token",
+      "address": "So11111111111111111111111111111111111111112",
+      "price": 0.8703116171122862,
+      "market_cap": 8133.677644601412,
+      "volume_24h": 21314.544643927802,
+      "price_change_24h": -1.7980823615176647,
+      "price_change_7d": 96.65147130148483,
+      "liquidity": 8828.891009604016,
+      "holders": 1951,
+      "fresh_holders_1d": 93,
+      "fresh_holders_7d": 442,
+      "age_minutes": 3,
+      "social_score": 0.6353227984209238,
+      "technical_score": 0.95,
+      "momentum_score": 0.30000000000000004,
+      "risk_score": 0.1,
+      "timestamp": "2025-09-14T16:42:13.229210",
+      "real_price": 0.8703116171122862,
+      "real_volume": 21314.544643927802,
+      "real_liquidity": 8828.891009604016,
+      "dex": "raydium",
+      "pair_address": ""
+    }
+  ],
+  "positions": {
+    "USDE": {
+      "symbol": "USDE",
+      "name": "Ethena USDe",
+      "shares": 131.73652694610777,
+      "entry_price": 1.002,
+      "current_price": 0.8817659234682823,
+      "entry_time": "2025-09-14T16:40:58.820072",
+      "age_minutes": 1,
+      "market_cap": 13584154244.0,
+      "real_price": 1.002,
+      "real_volume": 268479854.0,
+      "real_liquidity": 26847985.400000002,
+      "dex": "coingecko",
+      "pair_address": "",
+      "pnl": -15.839219662861012,
+      "pnl_percent": -11.999408835500768
+    }
+  },
+  "signals": [
+    {
+      "type": "SELL",
+      "symbol": "LINK",
+      "reasoning": "PnL: -15.0%, Age: 3min",
+      "confidence": 0.8
+    },
+    {
+      "type": "SELL",
+      "symbol": "BONK",
+      "reasoning": "PnL: 6.4%, Age: 3min",
+      "confidence": 0.8
+    },
+    {
+      "type": "SELL",
+      "symbol": "UNKNOWN",
+      "reasoning": "PnL: 5.2%, Age: 1min",
+      "confidence": 0.8
+    }
+  ]
+}

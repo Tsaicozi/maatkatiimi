@@ -1,0 +1,55 @@
+{
+  "timestamp": "2025-09-15T07:30:21.611052",
+  "tokens_scanned": 1,
+  "tokens_analyzed": 1,
+  "signals_generated": 0,
+  "trades_executed": 0,
+  "portfolio_value": 10010.038262563177,
+  "portfolio_pnl": 10.03826256317734,
+  "active_positions": 0,
+  "performance_metrics": {
+    "total_trades": 13,
+    "winning_trades": 6,
+    "losing_trades": 7,
+    "total_pnl": 7.718515878397242,
+    "max_drawdown": 0.0,
+    "sharpe_ratio": 0.0,
+    "win_rate": 0.46153846153846156,
+    "profit_factor": 1.0100382625631774
+  },
+  "risk_metrics": {
+    "portfolio_heat": 0.0,
+    "max_portfolio_risk": 0.2,
+    "correlation_threshold": 0.7,
+    "dynamic_position_sizing": true
+  },
+  "tokens": [
+    {
+      "symbol": "SUSDE",
+      "name": "Ethena Staked USDe",
+      "address": "ethena-staked-usde",
+      "price": 1.2,
+      "market_cap": 5948745968.0,
+      "volume_24h": 6606595.0,
+      "price_change_24h": -0.02722,
+      "price_change_7d": 0.0,
+      "liquidity": 660659.5,
+      "holders": 8116,
+      "fresh_holders_1d": 59,
+      "fresh_holders_7d": 466,
+      "age_minutes": 2,
+      "social_score": 0.9,
+      "technical_score": 0.7999999999999999,
+      "momentum_score": 0.6,
+      "risk_score": 0.0,
+      "timestamp": "2025-09-15T07:30:06.395612",
+      "real_price": 1.2,
+      "real_volume": 6606595.0,
+      "real_liquidity": 660659.5,
+      "dex": "coingecko",
+      "pair_address": ""
+    }
+  ],
+  "positions": {},
+  "signals": []
+}

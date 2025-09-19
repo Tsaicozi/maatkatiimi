@@ -1,0 +1,38 @@
+=== 1-MIN RUN REPORT ===
+2025-09-18 15:27:16
+Duration: 60s
+Metrics port: 9124
+LOG: automatic_hybrid_bot.log
+
+— Last cycle (if any) —
+{
+  "evt": "cycle_start",
+  "ts": "2025-09-18T15:27:09+03:00",
+  "run_id": "run_20250918_152555_6604ff68",
+  "cycle_id": 2
+}
+
+— Cycles timeline (from cycle_events.ndjson) —
+{
+  "run_id": "run_20250918_152555_6604ff68",
+  "starts": 2,
+  "ends": 1,
+  "last_end": {
+    "evt": "cycle_end",
+    "ts": "2025-09-18T15:26:09+03:00",
+    "run_id": "run_20250918_152555_6604ff68",
+    "cycle_id": 1,
+    "tokens": 0,
+    "hot": 4,
+    "result": "success"
+  }
+}
+
+— Metrics snapshot —
+(no metrics snapshot)
+
+— Last TopScore rows —
+
+— Last warnings/errors —
+
+=== END REPORT ===

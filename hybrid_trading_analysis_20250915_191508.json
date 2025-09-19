@@ -1,0 +1,55 @@
+{
+  "timestamp": "2025-09-15T19:15:08.702075",
+  "tokens_scanned": 1,
+  "tokens_analyzed": 1,
+  "signals_generated": 0,
+  "trades_executed": 0,
+  "portfolio_value": 10010.949145686947,
+  "portfolio_pnl": 10.949145686947304,
+  "active_positions": 0,
+  "performance_metrics": {
+    "total_trades": 21,
+    "winning_trades": 9,
+    "losing_trades": 12,
+    "total_pnl": 17.363182866951014,
+    "max_drawdown": 0.0,
+    "sharpe_ratio": 0.0,
+    "win_rate": 0.42857142857142855,
+    "profit_factor": 1.0109491456869473
+  },
+  "risk_metrics": {
+    "portfolio_heat": 0.0,
+    "max_portfolio_risk": 0.2,
+    "correlation_threshold": 0.7,
+    "dynamic_position_sizing": true
+  },
+  "tokens": [
+    {
+      "symbol": "PUMP",
+      "name": "Pump.fun",
+      "address": "pump-fun",
+      "price": 0.0082806,
+      "market_cap": 2918157591.0,
+      "volume_24h": 1433381737.0,
+      "price_change_24h": -4.65275,
+      "price_change_7d": 0.0,
+      "liquidity": 143338173.70000002,
+      "holders": 5529,
+      "fresh_holders_1d": 26,
+      "fresh_holders_7d": 103,
+      "age_minutes": 1,
+      "social_score": 0.9,
+      "technical_score": 0.7999999999999999,
+      "momentum_score": 0.6,
+      "risk_score": 0.0,
+      "timestamp": "2025-09-15T19:14:19.928248",
+      "real_price": 0.0082806,
+      "real_volume": 1433381737.0,
+      "real_liquidity": 143338173.70000002,
+      "dex": "coingecko",
+      "pair_address": ""
+    }
+  ],
+  "positions": {},
+  "signals": []
+}

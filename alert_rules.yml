@@ -1,0 +1,65 @@
+groups:
+- name: hybrid-bot-alerts
+  rules:
+  - alert: NoHotCandidates
+    expr: avg_over_time(hybrid_bot_hot_candidates[30m]) == 0
+    for: 20m
+    labels: 
+      severity: warning
+    annotations:
+      summary: "Hot candidates 0 30 min"
+      description: "Seulonta saattaa olla rikki tai datalähteet alhaalla. 20min viive flappeja varten."
+
+  - alert: HighRPCErrors
+    expr: rate(hybrid_bot_rpc_errors_total[5m]) > 1
+    for: 10m
+    labels: 
+      severity: critical
+    annotations:
+      summary: "RPC-virheitä liikaa"
+      description: "RPC-virheiden nopeus >1/min kymmenen minuutin ajan. SLO: <1/min keskiarvona."
+
+  - alert: SlowCycles
+    expr: histogram_quantile(0.95, sum(rate(hybrid_bot_cycle_duration_sec_bucket[5m])) by (le)) > 3
+    for: 15m
+    labels: 
+      severity: warning
+    annotations:
+      summary: "Syklit hitaita (p95 > 3s)"
+      description: "Trading-syklit hidastuneet viimeisen 15 min aikana. SLO: p95 < 3s 99% ajasta."
+
+  - alert: MetricsServerDown
+    expr: hybrid_bot_metrics_health == 0
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      summary: "Metrics server alhaalla"
+      description: "Metrics-palvelin ei vastaa tai on alhaalla."
+
+  - alert: DiscoveryEngineDown
+    expr: hybrid_bot_engine_running == 0
+    for: 2m
+    labels:
+      severity: critical
+    annotations:
+      summary: "DiscoveryEngine alhaalla"
+      description: "DiscoveryEngine ei pyöri tai on pysähtynyt."
+
+  - alert: HighQueueDepth
+    expr: hybrid_bot_queue_depth > 100
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: "Jonon pituus korkea"
+      description: "Candidate-jonon pituus >100 viiden minuutin ajan."
+
+  - alert: NoTelegramMessages
+    expr: rate(hybrid_bot_telegram_sent_total[10m]) == 0
+    for: 15m
+    labels:
+      severity: warning
+    annotations:
+      summary: "Ei Telegram-viestejä"
+      description: "Telegram-viestejä ei ole lähetetty 10 minuutin ajan."

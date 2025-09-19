@@ -1,0 +1,592 @@
+{"level": "INFO", "ts": "2025-09-18T23:19:09", "logger": "__main__", "msg": "TEST_MAX_CYCLES=0 TEST_MAX_RUNTIME=0.0"}
+{"level": "INFO", "ts": "2025-09-18T23:19:09", "logger": "__main__", "msg": "Ympäristömuuttujat: max_cycles=None, max_runtime=None"}
+{"level": "INFO", "ts": "2025-09-18T23:19:09", "logger": "telegram_bot_integration", "msg": "✅ Telegram bot alustettu"}
+{"level": "INFO", "ts": "2025-09-18T23:19:09", "logger": "telegram_rate_limiter", "msg": "📱 Telegram Rate Limiter alustettu: 1s rate limit, 30s max backoff"}
+{"level": "INFO", "ts": "2025-09-18T23:19:09", "logger": "__main__", "msg": "🚀 Käynnistetään Automatic Hybrid Trading Bot..."}
+{"level": "INFO", "ts": "2025-09-18T23:19:09", "logger": "metrics", "msg": "✅ Metrics-palvelin käynnissä: http://0.0.0.0:9108/metrics (health=True)"}
+CYCLE_START cycle_id=1
+CYCLE_END cycle_id=1 hot=0 tokens=0
+CYCLE_START cycle_id=2
+CYCLE_END cycle_id=2 hot=0 tokens=0
+CYCLE_START cycle_id=3
+CYCLE_END cycle_id=3 hot=0 tokens=0
+CYCLE_START cycle_id=4
+CYCLE_END cycle_id=4 hot=0 tokens=0
+CYCLE_START cycle_id=5
+CYCLE_END cycle_id=5 hot=0 tokens=0
+CYCLE_START cycle_id=6
+CYCLE_END cycle_id=6 hot=0 tokens=0
+CYCLE_START cycle_id=7
+CYCLE_END cycle_id=7 hot=0 tokens=0
+CYCLE_START cycle_id=8
+CYCLE_END cycle_id=8 hot=0 tokens=0
+CYCLE_START cycle_id=9
+CYCLE_END cycle_id=9 hot=0 tokens=0
+CYCLE_START cycle_id=10
+CYCLE_END cycle_id=10 hot=0 tokens=0
+CYCLE_START cycle_id=11
+CYCLE_END cycle_id=11 hot=0 tokens=0
+CYCLE_START cycle_id=12
+CYCLE_END cycle_id=12 hot=0 tokens=0
+CYCLE_START cycle_id=13
+CYCLE_END cycle_id=13 hot=0 tokens=0
+CYCLE_START cycle_id=14
+CYCLE_END cycle_id=14 hot=0 tokens=0
+CYCLE_START cycle_id=15
+CYCLE_END cycle_id=15 hot=0 tokens=0
+CYCLE_START cycle_id=16
+CYCLE_END cycle_id=16 hot=0 tokens=0
+CYCLE_START cycle_id=17
+CYCLE_END cycle_id=17 hot=0 tokens=0
+CYCLE_START cycle_id=18
+CYCLE_END cycle_id=18 hot=0 tokens=0
+CYCLE_START cycle_id=19
+CYCLE_END cycle_id=19 hot=0 tokens=0
+CYCLE_START cycle_id=20
+CYCLE_END cycle_id=20 hot=0 tokens=0
+CYCLE_START cycle_id=21
+CYCLE_END cycle_id=21 hot=0 tokens=0
+CYCLE_START cycle_id=22
+CYCLE_END cycle_id=22 hot=0 tokens=0
+CYCLE_START cycle_id=23
+CYCLE_END cycle_id=23 hot=0 tokens=0
+CYCLE_START cycle_id=24
+CYCLE_END cycle_id=24 hot=0 tokens=0
+CYCLE_START cycle_id=25
+CYCLE_END cycle_id=25 hot=0 tokens=0
+CYCLE_START cycle_id=26
+CYCLE_END cycle_id=26 hot=0 tokens=0
+CYCLE_START cycle_id=27
+CYCLE_END cycle_id=27 hot=0 tokens=0
+CYCLE_START cycle_id=28
+CYCLE_END cycle_id=28 hot=0 tokens=0
+CYCLE_START cycle_id=29
+CYCLE_END cycle_id=29 hot=0 tokens=0
+CYCLE_START cycle_id=30
+CYCLE_END cycle_id=30 hot=0 tokens=0
+CYCLE_START cycle_id=31
+CYCLE_END cycle_id=31 hot=0 tokens=0
+CYCLE_START cycle_id=32
+CYCLE_END cycle_id=32 hot=0 tokens=0
+CYCLE_START cycle_id=33
+CYCLE_END cycle_id=33 hot=0 tokens=0
+CYCLE_START cycle_id=34
+CYCLE_END cycle_id=34 hot=0 tokens=0
+CYCLE_START cycle_id=35
+CYCLE_END cycle_id=35 hot=0 tokens=0
+CYCLE_START cycle_id=36
+CYCLE_END cycle_id=36 hot=0 tokens=0
+CYCLE_START cycle_id=37
+CYCLE_END cycle_id=37 hot=0 tokens=0
+CYCLE_START cycle_id=38
+CYCLE_END cycle_id=38 hot=0 tokens=0
+CYCLE_START cycle_id=39
+CYCLE_END cycle_id=39 hot=0 tokens=0
+CYCLE_START cycle_id=40
+CYCLE_END cycle_id=40 hot=0 tokens=0
+CYCLE_START cycle_id=41
+CYCLE_END cycle_id=41 hot=0 tokens=0
+CYCLE_START cycle_id=42
+CYCLE_END cycle_id=42 hot=0 tokens=0
+CYCLE_START cycle_id=43
+CYCLE_END cycle_id=43 hot=0 tokens=0
+CYCLE_START cycle_id=44
+CYCLE_END cycle_id=44 hot=0 tokens=0
+CYCLE_START cycle_id=45
+CYCLE_END cycle_id=45 hot=0 tokens=0
+CYCLE_START cycle_id=46
+CYCLE_END cycle_id=46 hot=0 tokens=0
+CYCLE_START cycle_id=47
+CYCLE_END cycle_id=47 hot=0 tokens=0
+CYCLE_START cycle_id=48
+CYCLE_END cycle_id=48 hot=0 tokens=0
+CYCLE_START cycle_id=49
+CYCLE_END cycle_id=49 hot=0 tokens=0
+CYCLE_START cycle_id=50
+CYCLE_END cycle_id=50 hot=0 tokens=0
+CYCLE_START cycle_id=51
+CYCLE_END cycle_id=51 hot=0 tokens=0
+CYCLE_START cycle_id=52
+CYCLE_END cycle_id=52 hot=0 tokens=0
+CYCLE_START cycle_id=53
+CYCLE_END cycle_id=53 hot=0 tokens=0
+CYCLE_START cycle_id=54
+CYCLE_END cycle_id=54 hot=0 tokens=0
+CYCLE_START cycle_id=55
+CYCLE_END cycle_id=55 hot=0 tokens=0
+CYCLE_START cycle_id=56
+CYCLE_END cycle_id=56 hot=0 tokens=0
+CYCLE_START cycle_id=57
+CYCLE_END cycle_id=57 hot=0 tokens=0
+CYCLE_START cycle_id=58
+CYCLE_END cycle_id=58 hot=0 tokens=0
+CYCLE_START cycle_id=59
+CYCLE_END cycle_id=59 hot=0 tokens=0
+CYCLE_START cycle_id=60
+CYCLE_END cycle_id=60 hot=0 tokens=0
+CYCLE_START cycle_id=61
+CYCLE_END cycle_id=61 hot=0 tokens=0
+CYCLE_START cycle_id=62
+CYCLE_END cycle_id=62 hot=0 tokens=0
+CYCLE_START cycle_id=63
+CYCLE_END cycle_id=63 hot=0 tokens=0
+CYCLE_START cycle_id=64
+CYCLE_END cycle_id=64 hot=0 tokens=0
+CYCLE_START cycle_id=65
+CYCLE_END cycle_id=65 hot=0 tokens=0
+CYCLE_START cycle_id=66
+CYCLE_END cycle_id=66 hot=0 tokens=0
+CYCLE_START cycle_id=67
+CYCLE_END cycle_id=67 hot=0 tokens=0
+CYCLE_START cycle_id=68
+CYCLE_END cycle_id=68 hot=0 tokens=0
+CYCLE_START cycle_id=69
+CYCLE_END cycle_id=69 hot=0 tokens=0
+CYCLE_START cycle_id=70
+CYCLE_END cycle_id=70 hot=0 tokens=0
+CYCLE_START cycle_id=71
+CYCLE_END cycle_id=71 hot=0 tokens=0
+CYCLE_START cycle_id=72
+CYCLE_END cycle_id=72 hot=0 tokens=0
+CYCLE_START cycle_id=73
+CYCLE_END cycle_id=73 hot=0 tokens=0
+CYCLE_START cycle_id=74
+CYCLE_END cycle_id=74 hot=0 tokens=0
+CYCLE_START cycle_id=75
+CYCLE_END cycle_id=75 hot=0 tokens=0
+CYCLE_START cycle_id=76
+CYCLE_END cycle_id=76 hot=0 tokens=0
+CYCLE_START cycle_id=77
+CYCLE_END cycle_id=77 hot=0 tokens=0
+CYCLE_START cycle_id=78
+CYCLE_END cycle_id=78 hot=0 tokens=0
+CYCLE_START cycle_id=79
+CYCLE_END cycle_id=79 hot=0 tokens=0
+CYCLE_START cycle_id=80
+CYCLE_END cycle_id=80 hot=0 tokens=0
+CYCLE_START cycle_id=81
+CYCLE_END cycle_id=81 hot=0 tokens=0
+CYCLE_START cycle_id=82
+CYCLE_END cycle_id=82 hot=0 tokens=0
+CYCLE_START cycle_id=83
+CYCLE_END cycle_id=83 hot=0 tokens=0
+CYCLE_START cycle_id=84
+CYCLE_END cycle_id=84 hot=0 tokens=0
+CYCLE_START cycle_id=85
+CYCLE_END cycle_id=85 hot=0 tokens=0
+CYCLE_START cycle_id=86
+CYCLE_END cycle_id=86 hot=0 tokens=0
+CYCLE_START cycle_id=87
+CYCLE_END cycle_id=87 hot=0 tokens=0
+CYCLE_START cycle_id=88
+CYCLE_END cycle_id=88 hot=0 tokens=0
+CYCLE_START cycle_id=89
+CYCLE_END cycle_id=89 hot=0 tokens=0
+CYCLE_START cycle_id=90
+CYCLE_END cycle_id=90 hot=0 tokens=0
+CYCLE_START cycle_id=91
+CYCLE_END cycle_id=91 hot=0 tokens=0
+CYCLE_START cycle_id=92
+CYCLE_END cycle_id=92 hot=0 tokens=0
+CYCLE_START cycle_id=93
+CYCLE_END cycle_id=93 hot=0 tokens=0
+CYCLE_START cycle_id=94
+CYCLE_END cycle_id=94 hot=0 tokens=0
+CYCLE_START cycle_id=95
+CYCLE_END cycle_id=95 hot=0 tokens=0
+CYCLE_START cycle_id=96
+CYCLE_END cycle_id=96 hot=0 tokens=0
+CYCLE_START cycle_id=97
+CYCLE_END cycle_id=97 hot=0 tokens=0
+CYCLE_START cycle_id=98
+CYCLE_END cycle_id=98 hot=0 tokens=0
+CYCLE_START cycle_id=99
+CYCLE_END cycle_id=99 hot=0 tokens=0
+CYCLE_START cycle_id=100
+CYCLE_END cycle_id=100 hot=0 tokens=0
+CYCLE_START cycle_id=101
+CYCLE_END cycle_id=101 hot=0 tokens=0
+CYCLE_START cycle_id=102
+CYCLE_END cycle_id=102 hot=0 tokens=0
+CYCLE_START cycle_id=103
+CYCLE_END cycle_id=103 hot=0 tokens=0
+CYCLE_START cycle_id=104
+CYCLE_END cycle_id=104 hot=0 tokens=0
+CYCLE_START cycle_id=105
+CYCLE_END cycle_id=105 hot=0 tokens=0
+CYCLE_START cycle_id=106
+CYCLE_END cycle_id=106 hot=0 tokens=0
+CYCLE_START cycle_id=107
+CYCLE_END cycle_id=107 hot=0 tokens=0
+CYCLE_START cycle_id=108
+CYCLE_END cycle_id=108 hot=0 tokens=0
+CYCLE_START cycle_id=109
+CYCLE_END cycle_id=109 hot=0 tokens=0
+CYCLE_START cycle_id=110
+CYCLE_END cycle_id=110 hot=0 tokens=0
+CYCLE_START cycle_id=111
+CYCLE_END cycle_id=111 hot=0 tokens=0
+CYCLE_START cycle_id=112
+CYCLE_END cycle_id=112 hot=0 tokens=0
+CYCLE_START cycle_id=113
+CYCLE_END cycle_id=113 hot=0 tokens=0
+CYCLE_START cycle_id=114
+CYCLE_END cycle_id=114 hot=0 tokens=0
+CYCLE_START cycle_id=115
+CYCLE_END cycle_id=115 hot=0 tokens=0
+CYCLE_START cycle_id=116
+CYCLE_END cycle_id=116 hot=0 tokens=0
+CYCLE_START cycle_id=117
+CYCLE_END cycle_id=117 hot=0 tokens=0
+CYCLE_START cycle_id=118
+CYCLE_END cycle_id=118 hot=0 tokens=0
+CYCLE_START cycle_id=119
+CYCLE_END cycle_id=119 hot=0 tokens=0
+CYCLE_START cycle_id=120
+CYCLE_END cycle_id=120 hot=0 tokens=0
+CYCLE_START cycle_id=121
+CYCLE_END cycle_id=121 hot=0 tokens=0
+CYCLE_START cycle_id=122
+CYCLE_END cycle_id=122 hot=0 tokens=0
+CYCLE_START cycle_id=123
+CYCLE_END cycle_id=123 hot=0 tokens=0
+CYCLE_START cycle_id=124
+CYCLE_END cycle_id=124 hot=0 tokens=0
+CYCLE_START cycle_id=125
+CYCLE_END cycle_id=125 hot=0 tokens=0
+CYCLE_START cycle_id=126
+CYCLE_END cycle_id=126 hot=0 tokens=0
+CYCLE_START cycle_id=127
+CYCLE_END cycle_id=127 hot=0 tokens=0
+CYCLE_START cycle_id=128
+CYCLE_END cycle_id=128 hot=0 tokens=0
+CYCLE_START cycle_id=129
+CYCLE_END cycle_id=129 hot=0 tokens=0
+CYCLE_START cycle_id=130
+CYCLE_END cycle_id=130 hot=0 tokens=0
+CYCLE_START cycle_id=131
+CYCLE_END cycle_id=131 hot=0 tokens=0
+CYCLE_START cycle_id=132
+CYCLE_END cycle_id=132 hot=0 tokens=0
+CYCLE_START cycle_id=133
+CYCLE_END cycle_id=133 hot=0 tokens=0
+CYCLE_START cycle_id=134
+CYCLE_END cycle_id=134 hot=0 tokens=0
+CYCLE_START cycle_id=135
+CYCLE_END cycle_id=135 hot=0 tokens=0
+CYCLE_START cycle_id=136
+CYCLE_END cycle_id=136 hot=0 tokens=0
+CYCLE_START cycle_id=137
+CYCLE_END cycle_id=137 hot=0 tokens=0
+CYCLE_START cycle_id=138
+CYCLE_END cycle_id=138 hot=0 tokens=0
+CYCLE_START cycle_id=139
+CYCLE_END cycle_id=139 hot=0 tokens=0
+CYCLE_START cycle_id=140
+CYCLE_END cycle_id=140 hot=0 tokens=0
+CYCLE_START cycle_id=141
+CYCLE_END cycle_id=141 hot=0 tokens=0
+CYCLE_START cycle_id=142
+CYCLE_END cycle_id=142 hot=0 tokens=0
+CYCLE_START cycle_id=143
+CYCLE_END cycle_id=143 hot=0 tokens=0
+CYCLE_START cycle_id=144
+CYCLE_END cycle_id=144 hot=0 tokens=0
+CYCLE_START cycle_id=145
+CYCLE_END cycle_id=145 hot=0 tokens=0
+CYCLE_START cycle_id=146
+CYCLE_END cycle_id=146 hot=0 tokens=0
+CYCLE_START cycle_id=147
+CYCLE_END cycle_id=147 hot=0 tokens=0
+CYCLE_START cycle_id=148
+CYCLE_END cycle_id=148 hot=0 tokens=0
+CYCLE_START cycle_id=149
+CYCLE_END cycle_id=149 hot=0 tokens=0
+CYCLE_START cycle_id=150
+CYCLE_END cycle_id=150 hot=0 tokens=0
+CYCLE_START cycle_id=151
+CYCLE_END cycle_id=151 hot=0 tokens=0
+CYCLE_START cycle_id=152
+CYCLE_END cycle_id=152 hot=0 tokens=0
+CYCLE_START cycle_id=153
+CYCLE_END cycle_id=153 hot=0 tokens=0
+CYCLE_START cycle_id=154
+CYCLE_END cycle_id=154 hot=0 tokens=0
+CYCLE_START cycle_id=155
+CYCLE_END cycle_id=155 hot=0 tokens=0
+CYCLE_START cycle_id=156
+CYCLE_END cycle_id=156 hot=0 tokens=0
+CYCLE_START cycle_id=157
+CYCLE_END cycle_id=157 hot=0 tokens=0
+CYCLE_START cycle_id=158
+CYCLE_END cycle_id=158 hot=0 tokens=0
+CYCLE_START cycle_id=159
+CYCLE_END cycle_id=159 hot=0 tokens=0
+CYCLE_START cycle_id=160
+CYCLE_END cycle_id=160 hot=0 tokens=0
+CYCLE_START cycle_id=161
+CYCLE_END cycle_id=161 hot=0 tokens=0
+CYCLE_START cycle_id=162
+CYCLE_END cycle_id=162 hot=0 tokens=0
+CYCLE_START cycle_id=163
+CYCLE_END cycle_id=163 hot=0 tokens=0
+CYCLE_START cycle_id=164
+CYCLE_END cycle_id=164 hot=0 tokens=0
+CYCLE_START cycle_id=165
+CYCLE_END cycle_id=165 hot=0 tokens=0
+CYCLE_START cycle_id=166
+CYCLE_END cycle_id=166 hot=0 tokens=0
+CYCLE_START cycle_id=167
+CYCLE_END cycle_id=167 hot=0 tokens=0
+CYCLE_START cycle_id=168
+CYCLE_END cycle_id=168 hot=0 tokens=0
+CYCLE_START cycle_id=169
+CYCLE_END cycle_id=169 hot=0 tokens=0
+CYCLE_START cycle_id=170
+CYCLE_END cycle_id=170 hot=0 tokens=0
+CYCLE_START cycle_id=171
+CYCLE_END cycle_id=171 hot=0 tokens=0
+CYCLE_START cycle_id=172
+CYCLE_END cycle_id=172 hot=0 tokens=0
+CYCLE_START cycle_id=173
+CYCLE_END cycle_id=173 hot=0 tokens=0
+CYCLE_START cycle_id=174
+CYCLE_END cycle_id=174 hot=0 tokens=0
+CYCLE_START cycle_id=175
+CYCLE_END cycle_id=175 hot=0 tokens=0
+CYCLE_START cycle_id=176
+CYCLE_END cycle_id=176 hot=0 tokens=0
+CYCLE_START cycle_id=177
+CYCLE_END cycle_id=177 hot=0 tokens=0
+CYCLE_START cycle_id=178
+CYCLE_END cycle_id=178 hot=0 tokens=0
+CYCLE_START cycle_id=179
+CYCLE_END cycle_id=179 hot=0 tokens=0
+CYCLE_START cycle_id=180
+CYCLE_END cycle_id=180 hot=0 tokens=0
+CYCLE_START cycle_id=181
+CYCLE_END cycle_id=181 hot=0 tokens=0
+CYCLE_START cycle_id=182
+CYCLE_END cycle_id=182 hot=0 tokens=0
+CYCLE_START cycle_id=183
+CYCLE_END cycle_id=183 hot=0 tokens=0
+CYCLE_START cycle_id=184
+CYCLE_END cycle_id=184 hot=0 tokens=0
+CYCLE_START cycle_id=185
+CYCLE_END cycle_id=185 hot=0 tokens=0
+CYCLE_START cycle_id=186
+CYCLE_END cycle_id=186 hot=0 tokens=0
+CYCLE_START cycle_id=187
+CYCLE_END cycle_id=187 hot=0 tokens=0
+CYCLE_START cycle_id=188
+CYCLE_END cycle_id=188 hot=0 tokens=0
+CYCLE_START cycle_id=189
+CYCLE_END cycle_id=189 hot=0 tokens=0
+CYCLE_START cycle_id=190
+CYCLE_END cycle_id=190 hot=0 tokens=0
+CYCLE_START cycle_id=191
+CYCLE_END cycle_id=191 hot=0 tokens=0
+CYCLE_START cycle_id=192
+CYCLE_END cycle_id=192 hot=0 tokens=0
+CYCLE_START cycle_id=193
+CYCLE_END cycle_id=193 hot=0 tokens=0
+CYCLE_START cycle_id=194
+CYCLE_END cycle_id=194 hot=0 tokens=0
+CYCLE_START cycle_id=195
+CYCLE_END cycle_id=195 hot=0 tokens=0
+CYCLE_START cycle_id=196
+CYCLE_END cycle_id=196 hot=0 tokens=0
+CYCLE_START cycle_id=197
+CYCLE_END cycle_id=197 hot=0 tokens=0
+CYCLE_START cycle_id=198
+CYCLE_END cycle_id=198 hot=0 tokens=0
+CYCLE_START cycle_id=199
+CYCLE_END cycle_id=199 hot=0 tokens=0
+CYCLE_START cycle_id=200
+CYCLE_END cycle_id=200 hot=0 tokens=0
+CYCLE_START cycle_id=201
+CYCLE_END cycle_id=201 hot=0 tokens=0
+CYCLE_START cycle_id=202
+CYCLE_END cycle_id=202 hot=0 tokens=0
+CYCLE_START cycle_id=203
+CYCLE_END cycle_id=203 hot=0 tokens=0
+CYCLE_START cycle_id=204
+CYCLE_END cycle_id=204 hot=0 tokens=0
+CYCLE_START cycle_id=205
+CYCLE_END cycle_id=205 hot=0 tokens=0
+CYCLE_START cycle_id=206
+CYCLE_END cycle_id=206 hot=0 tokens=0
+CYCLE_START cycle_id=207
+CYCLE_END cycle_id=207 hot=0 tokens=0
+CYCLE_START cycle_id=208
+CYCLE_END cycle_id=208 hot=0 tokens=0
+CYCLE_START cycle_id=209
+CYCLE_END cycle_id=209 hot=0 tokens=0
+CYCLE_START cycle_id=210
+CYCLE_END cycle_id=210 hot=0 tokens=0
+CYCLE_START cycle_id=211
+CYCLE_END cycle_id=211 hot=0 tokens=0
+CYCLE_START cycle_id=212
+CYCLE_END cycle_id=212 hot=0 tokens=0
+CYCLE_START cycle_id=213
+CYCLE_END cycle_id=213 hot=0 tokens=0
+CYCLE_START cycle_id=214
+CYCLE_END cycle_id=214 hot=0 tokens=0
+CYCLE_START cycle_id=215
+CYCLE_END cycle_id=215 hot=0 tokens=0
+CYCLE_START cycle_id=216
+CYCLE_END cycle_id=216 hot=0 tokens=0
+CYCLE_START cycle_id=217
+CYCLE_END cycle_id=217 hot=0 tokens=0
+CYCLE_START cycle_id=218
+CYCLE_END cycle_id=218 hot=0 tokens=0
+CYCLE_START cycle_id=219
+CYCLE_END cycle_id=219 hot=0 tokens=0
+CYCLE_START cycle_id=220
+CYCLE_END cycle_id=220 hot=0 tokens=0
+CYCLE_START cycle_id=221
+CYCLE_END cycle_id=221 hot=0 tokens=0
+CYCLE_START cycle_id=222
+CYCLE_END cycle_id=222 hot=0 tokens=0
+CYCLE_START cycle_id=223
+CYCLE_END cycle_id=223 hot=0 tokens=0
+CYCLE_START cycle_id=224
+CYCLE_END cycle_id=224 hot=0 tokens=0
+CYCLE_START cycle_id=225
+CYCLE_END cycle_id=225 hot=0 tokens=0
+CYCLE_START cycle_id=226
+CYCLE_END cycle_id=226 hot=0 tokens=0
+CYCLE_START cycle_id=227
+CYCLE_END cycle_id=227 hot=0 tokens=0
+CYCLE_START cycle_id=228
+CYCLE_END cycle_id=228 hot=0 tokens=0
+CYCLE_START cycle_id=229
+CYCLE_END cycle_id=229 hot=0 tokens=0
+CYCLE_START cycle_id=230
+CYCLE_END cycle_id=230 hot=0 tokens=0
+CYCLE_START cycle_id=231
+CYCLE_END cycle_id=231 hot=0 tokens=0
+CYCLE_START cycle_id=232
+CYCLE_END cycle_id=232 hot=0 tokens=0
+CYCLE_START cycle_id=233
+CYCLE_END cycle_id=233 hot=0 tokens=0
+CYCLE_START cycle_id=234
+CYCLE_END cycle_id=234 hot=0 tokens=0
+CYCLE_START cycle_id=235
+CYCLE_END cycle_id=235 hot=0 tokens=0
+CYCLE_START cycle_id=236
+CYCLE_END cycle_id=236 hot=0 tokens=0
+CYCLE_START cycle_id=237
+CYCLE_END cycle_id=237 hot=0 tokens=0
+CYCLE_START cycle_id=238
+CYCLE_END cycle_id=238 hot=0 tokens=0
+CYCLE_START cycle_id=239
+CYCLE_END cycle_id=239 hot=0 tokens=0
+CYCLE_START cycle_id=240
+CYCLE_END cycle_id=240 hot=0 tokens=0
+CYCLE_START cycle_id=241
+CYCLE_END cycle_id=241 hot=0 tokens=0
+CYCLE_START cycle_id=242
+CYCLE_END cycle_id=242 hot=0 tokens=0
+CYCLE_START cycle_id=243
+CYCLE_END cycle_id=243 hot=0 tokens=0
+CYCLE_START cycle_id=244
+CYCLE_END cycle_id=244 hot=0 tokens=0
+CYCLE_START cycle_id=245
+CYCLE_END cycle_id=245 hot=0 tokens=0
+CYCLE_START cycle_id=246
+CYCLE_END cycle_id=246 hot=0 tokens=0
+CYCLE_START cycle_id=247
+CYCLE_END cycle_id=247 hot=0 tokens=0
+CYCLE_START cycle_id=248
+CYCLE_END cycle_id=248 hot=0 tokens=0
+CYCLE_START cycle_id=249
+CYCLE_END cycle_id=249 hot=0 tokens=0
+CYCLE_START cycle_id=250
+CYCLE_END cycle_id=250 hot=0 tokens=0
+CYCLE_START cycle_id=251
+CYCLE_END cycle_id=251 hot=0 tokens=0
+CYCLE_START cycle_id=252
+CYCLE_END cycle_id=252 hot=0 tokens=0
+CYCLE_START cycle_id=253
+CYCLE_END cycle_id=253 hot=0 tokens=0
+CYCLE_START cycle_id=254
+CYCLE_END cycle_id=254 hot=0 tokens=0
+CYCLE_START cycle_id=255
+CYCLE_END cycle_id=255 hot=0 tokens=0
+CYCLE_START cycle_id=256
+CYCLE_END cycle_id=256 hot=0 tokens=0
+CYCLE_START cycle_id=257
+CYCLE_END cycle_id=257 hot=0 tokens=0
+CYCLE_START cycle_id=258
+CYCLE_END cycle_id=258 hot=0 tokens=0
+CYCLE_START cycle_id=259
+CYCLE_END cycle_id=259 hot=0 tokens=0
+CYCLE_START cycle_id=260
+CYCLE_END cycle_id=260 hot=0 tokens=0
+CYCLE_START cycle_id=261
+CYCLE_END cycle_id=261 hot=0 tokens=0
+CYCLE_START cycle_id=262
+CYCLE_END cycle_id=262 hot=0 tokens=0
+CYCLE_START cycle_id=263
+CYCLE_END cycle_id=263 hot=0 tokens=0
+CYCLE_START cycle_id=264
+CYCLE_END cycle_id=264 hot=0 tokens=0
+CYCLE_START cycle_id=265
+CYCLE_END cycle_id=265 hot=0 tokens=0
+CYCLE_START cycle_id=266
+CYCLE_END cycle_id=266 hot=0 tokens=0
+CYCLE_START cycle_id=267
+CYCLE_END cycle_id=267 hot=0 tokens=0
+CYCLE_START cycle_id=268
+CYCLE_END cycle_id=268 hot=0 tokens=0
+CYCLE_START cycle_id=269
+CYCLE_END cycle_id=269 hot=0 tokens=0
+CYCLE_START cycle_id=270
+CYCLE_END cycle_id=270 hot=0 tokens=0
+CYCLE_START cycle_id=271
+CYCLE_END cycle_id=271 hot=0 tokens=0
+CYCLE_START cycle_id=272
+CYCLE_END cycle_id=272 hot=0 tokens=0
+CYCLE_START cycle_id=273
+CYCLE_END cycle_id=273 hot=0 tokens=0
+CYCLE_START cycle_id=274
+CYCLE_END cycle_id=274 hot=0 tokens=0
+CYCLE_START cycle_id=275
+CYCLE_END cycle_id=275 hot=0 tokens=0
+CYCLE_START cycle_id=276
+CYCLE_END cycle_id=276 hot=0 tokens=0
+CYCLE_START cycle_id=277
+CYCLE_END cycle_id=277 hot=0 tokens=0
+CYCLE_START cycle_id=278
+CYCLE_END cycle_id=278 hot=0 tokens=0
+CYCLE_START cycle_id=279
+CYCLE_END cycle_id=279 hot=0 tokens=0
+CYCLE_START cycle_id=280
+CYCLE_END cycle_id=280 hot=0 tokens=0
+CYCLE_START cycle_id=281
+CYCLE_END cycle_id=281 hot=0 tokens=0
+CYCLE_START cycle_id=282
+CYCLE_END cycle_id=282 hot=0 tokens=0
+CYCLE_START cycle_id=283
+CYCLE_END cycle_id=283 hot=0 tokens=0
+CYCLE_START cycle_id=284
+CYCLE_END cycle_id=284 hot=0 tokens=0
+CYCLE_START cycle_id=285
+CYCLE_END cycle_id=285 hot=0 tokens=0
+CYCLE_START cycle_id=286
+CYCLE_END cycle_id=286 hot=0 tokens=0
+CYCLE_START cycle_id=287
+CYCLE_END cycle_id=287 hot=0 tokens=0
+CYCLE_START cycle_id=288
+CYCLE_END cycle_id=288 hot=0 tokens=0
+CYCLE_START cycle_id=289
+CYCLE_END cycle_id=289 hot=0 tokens=0
+CYCLE_START cycle_id=290
+CYCLE_END cycle_id=290 hot=0 tokens=0
+CYCLE_START cycle_id=291
+CYCLE_END cycle_id=291 hot=0 tokens=0
+CYCLE_START cycle_id=292
+CYCLE_END cycle_id=292 hot=0 tokens=0
+CYCLE_START cycle_id=293
+CYCLE_END cycle_id=293 hot=0 tokens=0

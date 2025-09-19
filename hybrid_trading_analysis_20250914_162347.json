@@ -1,0 +1,105 @@
+{
+  "timestamp": "2025-09-14T16:23:47.206758",
+  "tokens_scanned": 2,
+  "tokens_analyzed": 2,
+  "signals_generated": 1,
+  "trades_executed": 1,
+  "portfolio_value": 9998.964422796516,
+  "portfolio_pnl": -1.0355772034836264,
+  "active_positions": 1,
+  "performance_metrics": {
+    "total_trades": 0,
+    "winning_trades": 0,
+    "losing_trades": 0,
+    "total_pnl": 0.0,
+    "max_drawdown": 0.0,
+    "sharpe_ratio": 0.0,
+    "win_rate": 0.0,
+    "profit_factor": 0.0
+  },
+  "risk_metrics": {
+    "portfolio_heat": 0.0,
+    "max_portfolio_risk": 0.2,
+    "correlation_threshold": 0.7,
+    "dynamic_position_sizing": true
+  },
+  "tokens": [
+    {
+      "symbol": "PUMP",
+      "name": "Pump.fun",
+      "address": "pump-fun",
+      "price": 0.00783226,
+      "market_cap": 2777665380.0,
+      "volume_24h": 1332206485.0,
+      "price_change_24h": 20.336,
+      "price_change_7d": 0.0,
+      "liquidity": 133220648.5,
+      "holders": 4807,
+      "fresh_holders_1d": 15,
+      "fresh_holders_7d": 286,
+      "age_minutes": 4,
+      "social_score": 0.9,
+      "technical_score": 0.95,
+      "momentum_score": 0.7,
+      "risk_score": 0.0,
+      "timestamp": "2025-09-14T16:23:35.603532",
+      "real_price": 0.00783226,
+      "real_volume": 1332206485.0,
+      "real_liquidity": 133220648.5,
+      "dex": "coingecko",
+      "pair_address": ""
+    },
+    {
+      "symbol": "BUIDL",
+      "name": "BlackRock USD Institutional Digital Liquidity Fund",
+      "address": "blackrock-usd-institutional-digital-liquidity-fund",
+      "price": 1.0,
+      "market_cap": 2209200082.0,
+      "volume_24h": 0.0,
+      "price_change_24h": 0.0,
+      "price_change_7d": 0.0,
+      "liquidity": 0.0,
+      "holders": 5211,
+      "fresh_holders_1d": 55,
+      "fresh_holders_7d": 101,
+      "age_minutes": 1,
+      "social_score": 0.1,
+      "technical_score": 0.35,
+      "momentum_score": 0.2,
+      "risk_score": 0.30000000000000004,
+      "timestamp": "2025-09-14T16:23:35.603541",
+      "real_price": 1.0,
+      "real_volume": 0.0,
+      "real_liquidity": 0.0,
+      "dex": "coingecko",
+      "pair_address": ""
+    }
+  ],
+  "positions": {
+    "PUMP": {
+      "symbol": "PUMP",
+      "name": "Pump.fun",
+      "shares": 16853.373100484405,
+      "entry_price": 0.00783226,
+      "current_price": 0.0077708137128199815,
+      "entry_time": "2025-09-14T16:23:47.016889",
+      "age_minutes": 0,
+      "market_cap": 2777665380.0,
+      "real_price": 0.00783226,
+      "real_volume": 1332206485.0,
+      "real_liquidity": 133220648.5,
+      "dex": "coingecko",
+      "pair_address": "",
+      "pnl": -1.035577203484373,
+      "pnl_percent": -0.7845281844578585
+    }
+  },
+  "signals": [
+    {
+      "type": "BUY",
+      "symbol": "PUMP",
+      "reasoning": "Korkea entry score (0.95), Matala riski (0.00), Vahva momentum (0.70), Korkea nousu (20.3%), Korkea volume ($1,332,206,485), Social buzz (0.90), Portfolio heat: 0.0%",
+      "confidence": 0.9349999999999999
+    }
+  ]
+}

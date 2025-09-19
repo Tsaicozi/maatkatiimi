@@ -1,0 +1,98 @@
+{
+  "timestamp": "2025-09-14T15:37:24.072987",
+  "tokens_scanned": 1,
+  "tokens_analyzed": 1,
+  "signals_generated": 4,
+  "trades_executed": 4,
+  "portfolio_value": 10152.745594264385,
+  "portfolio_pnl": 152.74559426438464,
+  "active_positions": 1,
+  "performance_metrics": {
+    "total_trades": 17,
+    "winning_trades": 7,
+    "losing_trades": 1,
+    "total_pnl": 140.3543542934675,
+    "max_drawdown": 0.0,
+    "sharpe_ratio": 0.0,
+    "win_rate": 0.4117647058823529,
+    "profit_factor": 0.14285714285714285
+  },
+  "risk_metrics": {
+    "portfolio_heat": 0.0,
+    "max_portfolio_risk": 0.2,
+    "correlation_threshold": 0.7,
+    "dynamic_position_sizing": true
+  },
+  "tokens": [
+    {
+      "symbol": "PUMP",
+      "name": "Pump.fun",
+      "address": "pump-fun",
+      "price": 0.00817255,
+      "market_cap": 2892286848.0,
+      "volume_24h": 1318998925.0,
+      "price_change_24h": 26.14894,
+      "price_change_7d": 0.0,
+      "liquidity": 131899892.5,
+      "holders": 9575,
+      "fresh_holders_1d": 36,
+      "fresh_holders_7d": 151,
+      "age_minutes": 4,
+      "social_score": 0.9,
+      "technical_score": 0.95,
+      "momentum_score": 0.7999999999999999,
+      "risk_score": 0.0,
+      "timestamp": "2025-09-14T15:37:11.529831",
+      "real_price": 0.00817255,
+      "real_volume": 1318998925.0,
+      "real_liquidity": 131899892.5,
+      "dex": "coingecko",
+      "pair_address": ""
+    }
+  ],
+  "positions": {
+    "PUMP": {
+      "symbol": "PUMP",
+      "name": "Pump.fun",
+      "shares": 12236.082985114805,
+      "entry_price": 0.00817255,
+      "current_price": 0.009185230282243157,
+      "entry_time": "2025-09-14T15:37:23.289768",
+      "age_minutes": 0,
+      "market_cap": 2892286848.0,
+      "real_price": 0.00817255,
+      "real_volume": 1318998925.0,
+      "real_liquidity": 131899892.5,
+      "dex": "coingecko",
+      "pair_address": "",
+      "pnl": 12.39123997091674,
+      "pnl_percent": 12.39123997091674
+    }
+  },
+  "signals": [
+    {
+      "type": "BUY",
+      "symbol": "PUMP",
+      "reasoning": "Korkea entry score (0.95), Matala riski (0.00), Vahva momentum (0.80), Korkea nousu (26.1%), Korkea volume ($1,318,998,925), Social buzz (0.90), Portfolio heat: 0.0%",
+      "confidence": 0.945
+    },
+    {
+      "type": "SELL",
+      "symbol": "JITOSOL",
+      "reasoning": "PnL: -6.4%, Age: 3min",
+      "confidence": 0.8
+    },
+    {
+      "type": "SELL",
+      "symbol": "USDS",
+      "reasoning": "PnL: -19.5%, Age: 1min",
+      "confidence": 0.8
+    },
+    {
+      "type": "SELL",
+      "symbol": "BONK",
+      "reasoning": "PnL: 20.5%, Age: 1min",
+      "confidence": 0.8
+    }
+  ]
+}

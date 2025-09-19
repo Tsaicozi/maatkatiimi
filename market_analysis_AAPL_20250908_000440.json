@@ -1,0 +1,56 @@
+{
+  "timestamp": "2025-09-08T00:04:40.297362",
+  "symbol": "AAPL",
+  "market_data": {
+    "current_price": 239.69000244140625,
+    "change_1d_percent": -0.03753287945149619,
+    "volume": 54837300,
+    "high_1mo": 241.32000732421875,
+    "low_1mo": 205.35693489516686
+  },
+  "technical_analysis": {
+    "symbol": "AAPL",
+    "current_price": 239.69000244140625,
+    "sma_20": 231.15299911499022,
+    "sma_50": 218.2656234741211,
+    "rsi": 64.19063128877522,
+    "trend": "Vahva nouseva",
+    "rsi_signal": "Neutraali"
+  },
+  "strategies": [
+    {
+      "name": "Trend-following (Nouseva)",
+      "type": "Momentum",
+      "entry_price": 239.69000244140625,
+      "target_price": 268.45280273437504,
+      "stop_loss": 227.70550231933592,
+      "risk_level": "Keskitaso",
+      "expected_return": 12.0,
+      "reasoning": "Trend on Vahva nouseva, RSI: 64.2"
+    },
+    {
+      "name": "Konservatiivi (Buy & Hold)",
+      "type": "Long-term",
+      "entry_price": 239.69000244140625,
+      "target_price": 287.6280029296875,
+      "stop_loss": 191.75200195312502,
+      "risk_level": "Matala",
+      "expected_return": 20.0,
+      "reasoning": "Pitk\u00e4aikainen sijoitus, v\u00e4hent\u00e4\u00e4 volatiliteettiriski\u00e4"
+    }
+  ],
+  "risk_metrics": {
+    "symbol": "AAPL",
+    "volatility_annual": 32.29454931802282,
+    "sharpe_ratio": 0.4304214335525701,
+    "var_95_percent": -3.097281111299748,
+    "max_drawdown_percent": -33.36051616882116
+  },
+  "summary": {
+    "current_price": 239.69000244140625,
+    "trend": "Vahva nouseva",
+    "rsi_signal": "Neutraali",
+    "volatility": 32.29454931802282,
+    "recommended_strategy": "Trend-following (Nouseva)"
+  }
+}

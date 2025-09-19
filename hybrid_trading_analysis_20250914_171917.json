@@ -1,0 +1,151 @@
+{
+  "timestamp": "2025-09-14T17:19:17.239699",
+  "tokens_scanned": 2,
+  "tokens_analyzed": 2,
+  "signals_generated": 3,
+  "trades_executed": 3,
+  "portfolio_value": 10040.23762236434,
+  "portfolio_pnl": 40.237622364340496,
+  "active_positions": 3,
+  "performance_metrics": {
+    "total_trades": 5,
+    "winning_trades": 3,
+    "losing_trades": 2,
+    "total_pnl": 54.65235194569292,
+    "max_drawdown": 0.0,
+    "sharpe_ratio": 0.0,
+    "win_rate": 0.6,
+    "profit_factor": 1.054652351945693
+  },
+  "risk_metrics": {
+    "portfolio_heat": 0.0,
+    "max_portfolio_risk": 0.2,
+    "correlation_threshold": 0.7,
+    "dynamic_position_sizing": true
+  },
+  "tokens": [
+    {
+      "symbol": "WLFI",
+      "name": "World Liberty Financial",
+      "address": "world-liberty-financial",
+      "price": 0.212678,
+      "market_cap": 5829949155.0,
+      "volume_24h": 859216782.0,
+      "price_change_24h": -0.80036,
+      "price_change_7d": 0.0,
+      "liquidity": 85921678.2,
+      "holders": 8383,
+      "fresh_holders_1d": 47,
+      "fresh_holders_7d": 210,
+      "age_minutes": 3,
+      "social_score": 0.9,
+      "technical_score": 0.7999999999999999,
+      "momentum_score": 0.6,
+      "risk_score": 0.0,
+      "timestamp": "2025-09-14T17:19:03.558690",
+      "real_price": 0.212678,
+      "real_volume": 859216782.0,
+      "real_liquidity": 85921678.2,
+      "dex": "coingecko",
+      "pair_address": ""
+    },
+    {
+      "symbol": "UNKNOWN",
+      "name": "Unknown Token",
+      "address": "4ht2LYFSViv2tmewC4Yn76QXKLbzeB1UeTms6YBK5pS6",
+      "price": 1.8783040118869208,
+      "market_cap": 12.100008190402756,
+      "volume_24h": 175861.38518640058,
+      "price_change_24h": 172.58063266497496,
+      "price_change_7d": 422.7744201816792,
+      "liquidity": 7.106088287754104,
+      "holders": 782,
+      "fresh_holders_1d": 92,
+      "fresh_holders_7d": 86,
+      "age_minutes": 1,
+      "social_score": 0.809073832536668,
+      "technical_score": 0.9,
+      "momentum_score": 0.9999999999999999,
+      "risk_score": 0.45,
+      "timestamp": "2025-09-14T17:19:15.637856",
+      "real_price": 1.8783040118869208,
+      "real_volume": 175861.38518640058,
+      "real_liquidity": 7.106088287754104,
+      "dex": "raydium",
+      "pair_address": ""
+    }
+  ],
+  "positions": {
+    "PUMP": {
+      "symbol": "PUMP",
+      "name": "Pump.fun",
+      "shares": 10385.078006601625,
+      "entry_price": 0.00793138,
+      "current_price": 0.009135595759054668,
+      "entry_time": "2025-09-14T17:16:48.138408",
+      "age_minutes": 2,
+      "market_cap": 2821557942.0,
+      "real_price": 0.00793138,
+      "real_volume": 1336198442.0,
+      "real_liquidity": 133619844.2,
+      "dex": "coingecko",
+      "pair_address": "",
+      "pnl": 12.505874594561712,
+      "pnl_percent": 15.182928557888639
+    },
+    "PENGU": {
+      "symbol": "PENGU",
+      "name": "Pudgy Penguins",
+      "shares": 2010.3673991419826,
+      "entry_price": 0.03466829,
+      "current_price": 0.04078655364353566,
+      "entry_time": "2025-09-14T17:16:48.357446",
+      "age_minutes": 2,
+      "market_cap": 2175662542.0,
+      "real_price": 0.03466829,
+      "real_volume": 358472851.0,
+      "real_liquidity": 35847285.1,
+      "dex": "coingecko",
+      "pair_address": "",
+      "pnl": 12.299957768319738,
+      "pnl_percent": 17.64801103122093
+    },
+    "WLFI": {
+      "symbol": "WLFI",
+      "name": "World Liberty Financial",
+      "shares": 327.1375464684015,
+      "entry_price": 0.213048,
+      "current_price": 0.19848690643079128,
+      "entry_time": "2025-09-14T17:18:01.983699",
+      "age_minutes": 1,
+      "market_cap": 5829949155.0,
+      "real_price": 0.213048,
+      "real_volume": 858446139.0,
+      "real_liquidity": 85844613.9,
+      "dex": "coingecko",
+      "pair_address": "",
+      "pnl": -4.7634804241277555,
+      "pnl_percent": -6.8346539602384
+    }
+  },
+  "signals": [
+    {
+      "type": "SELL",
+      "symbol": "USDC",
+      "reasoning": "PnL: -16.1%, Age: 3min",
+      "confidence": 0.8
+    },
+    {
+      "type": "SELL",
+      "symbol": "USDS",
+      "reasoning": "PnL: 23.9%, Age: 3min",
+      "confidence": 0.8
+    },
+    {
+      "type": "SELL",
+      "symbol": "JITOSOL",
+      "reasoning": "PnL: 10.1%, Age: 3min",
+      "confidence": 0.8
+    }
+  ]
+}

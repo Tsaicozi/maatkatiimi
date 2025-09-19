@@ -1,0 +1,74 @@
+{
+  "timestamp": "2025-09-14T15:31:20.982870",
+  "tokens_scanned": 1,
+  "tokens_analyzed": 1,
+  "signals_generated": 3,
+  "trades_executed": 3,
+  "portfolio_value": 10092.32084467705,
+  "portfolio_pnl": 92.32084467704954,
+  "active_positions": 0,
+  "performance_metrics": {
+    "total_trades": 8,
+    "winning_trades": 4,
+    "losing_trades": 0,
+    "total_pnl": 92.32084467704999,
+    "max_drawdown": 0.0,
+    "sharpe_ratio": 0.0,
+    "win_rate": 0.5,
+    "profit_factor": 0.0
+  },
+  "risk_metrics": {
+    "portfolio_heat": 0.0,
+    "max_portfolio_risk": 0.2,
+    "correlation_threshold": 0.7,
+    "dynamic_position_sizing": true
+  },
+  "tokens": [
+    {
+      "symbol": "WBTC",
+      "name": "Wrapped Bitcoin",
+      "address": "wrapped-bitcoin",
+      "price": 115954.0,
+      "market_cap": 14755752894.0,
+      "volume_24h": 113113109.0,
+      "price_change_24h": 0.17129,
+      "price_change_7d": 0.0,
+      "liquidity": 11311310.9,
+      "holders": 6241,
+      "fresh_holders_1d": 44,
+      "fresh_holders_7d": 134,
+      "age_minutes": 4,
+      "social_score": 0.9,
+      "technical_score": 0.7999999999999999,
+      "momentum_score": 0.6,
+      "risk_score": 0.0,
+      "timestamp": "2025-09-14T15:31:09.015693",
+      "real_price": 115954.0,
+      "real_volume": 113113109.0,
+      "real_liquidity": 11311310.9,
+      "dex": "coingecko",
+      "pair_address": ""
+    }
+  ],
+  "positions": {},
+  "signals": [
+    {
+      "type": "SELL",
+      "symbol": "PUMP",
+      "reasoning": "PnL: 18.2%, Age: 1min",
+      "confidence": 0.8
+    },
+    {
+      "type": "SELL",
+      "symbol": "WBTC",
+      "reasoning": "PnL: 19.7%, Age: 0min",
+      "confidence": 0.8
+    },
+    {
+      "type": "SELL",
+      "symbol": "USDE",
+      "reasoning": "PnL: 22.0%, Age: 0min",
+      "confidence": 0.8
+    }
+  ]
+}

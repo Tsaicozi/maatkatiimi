@@ -1,0 +1,128 @@
+{
+  "timestamp": "2025-09-14T16:20:34.597291",
+  "tokens_scanned": 2,
+  "tokens_analyzed": 2,
+  "signals_generated": 2,
+  "trades_executed": 2,
+  "portfolio_value": 10007.05995731928,
+  "portfolio_pnl": 7.05995731927942,
+  "active_positions": 2,
+  "performance_metrics": {
+    "total_trades": 2,
+    "winning_trades": 0,
+    "losing_trades": 0,
+    "total_pnl": 0.0,
+    "max_drawdown": 0.0,
+    "sharpe_ratio": 0.0,
+    "win_rate": 0.0,
+    "profit_factor": 0.0
+  },
+  "risk_metrics": {
+    "portfolio_heat": 0.0,
+    "max_portfolio_risk": 0.2,
+    "correlation_threshold": 0.7,
+    "dynamic_position_sizing": true
+  },
+  "tokens": [
+    {
+      "symbol": "WBTC",
+      "name": "Wrapped Bitcoin",
+      "address": "wrapped-bitcoin",
+      "price": 115929.0,
+      "market_cap": 14737169911.0,
+      "volume_24h": 115356045.0,
+      "price_change_24h": -0.0118,
+      "price_change_7d": 0.0,
+      "liquidity": 11535604.5,
+      "holders": 2042,
+      "fresh_holders_1d": 40,
+      "fresh_holders_7d": 199,
+      "age_minutes": 1,
+      "social_score": 0.9,
+      "technical_score": 0.7999999999999999,
+      "momentum_score": 0.6,
+      "risk_score": 0.0,
+      "timestamp": "2025-09-14T16:20:22.647536",
+      "real_price": 115929.0,
+      "real_volume": 115356045.0,
+      "real_liquidity": 11535604.5,
+      "dex": "coingecko",
+      "pair_address": ""
+    },
+    {
+      "symbol": "USDE",
+      "name": "Ethena USDe",
+      "address": "ethena-usde",
+      "price": 1.002,
+      "market_cap": 13581565304.0,
+      "volume_24h": 274873482.0,
+      "price_change_24h": 0.08085,
+      "price_change_7d": 0.0,
+      "liquidity": 27487348.200000003,
+      "holders": 4664,
+      "fresh_holders_1d": 60,
+      "fresh_holders_7d": 424,
+      "age_minutes": 2,
+      "social_score": 0.9,
+      "technical_score": 0.7999999999999999,
+      "momentum_score": 0.6,
+      "risk_score": 0.0,
+      "timestamp": "2025-09-14T16:20:22.647539",
+      "real_price": 1.002,
+      "real_volume": 274873482.0,
+      "real_liquidity": 27487348.200000003,
+      "dex": "coingecko",
+      "pair_address": ""
+    }
+  ],
+  "positions": {
+    "WBTC": {
+      "symbol": "WBTC",
+      "name": "Wrapped Bitcoin",
+      "shares": 0.001138627953316254,
+      "entry_price": 115929.0,
+      "current_price": 105253.96683142273,
+      "entry_time": "2025-09-14T16:20:34.255258",
+      "age_minutes": 0,
+      "market_cap": 14737169911.0,
+      "real_price": 115929.0,
+      "real_volume": 115356045.0,
+      "real_liquidity": 11535604.5,
+      "dex": "coingecko",
+      "pair_address": "",
+      "pnl": -12.154891168320262,
+      "pnl_percent": -9.208250885091108
+    },
+    "USDE": {
+      "symbol": "USDE",
+      "name": "Ethena USDe",
+      "shares": 131.73652694610777,
+      "entry_price": 1.002,
+      "current_price": 1.147858168064962,
+      "entry_time": "2025-09-14T16:20:34.433780",
+      "age_minutes": 0,
+      "market_cap": 13581565304.0,
+      "real_price": 1.002,
+      "real_volume": 274873482.0,
+      "real_liquidity": 27487348.200000003,
+      "dex": "coingecko",
+      "pair_address": "",
+      "pnl": 19.21484848759978,
+      "pnl_percent": 14.556703399696804
+    }
+  },
+  "signals": [
+    {
+      "type": "BUY",
+      "symbol": "WBTC",
+      "reasoning": "Korkea entry score (0.80), Matala riski (0.00), Korkea volume ($115,356,045), Social buzz (0.90), Portfolio heat: 0.0%",
+      "confidence": 0.8200000000000001
+    },
+    {
+      "type": "BUY",
+      "symbol": "USDE",
+      "reasoning": "Korkea entry score (0.80), Matala riski (0.00), Korkea volume ($274,873,482), Social buzz (0.90), Portfolio heat: 0.0%",
+      "confidence": 0.8200000000000001
+    }
+  ]
+}

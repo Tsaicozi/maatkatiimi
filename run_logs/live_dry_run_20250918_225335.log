@@ -1,0 +1,6 @@
+{"level": "INFO", "ts": "2025-09-18T22:53:36", "logger": "__main__", "msg": "TEST_MAX_CYCLES=0 TEST_MAX_RUNTIME=0.0"}
+{"level": "INFO", "ts": "2025-09-18T22:53:36", "logger": "__main__", "msg": "Ympäristömuuttujat: max_cycles=None, max_runtime=None"}
+{"level": "INFO", "ts": "2025-09-18T22:53:36", "logger": "telegram_bot_integration", "msg": "✅ Telegram bot alustettu"}
+{"level": "INFO", "ts": "2025-09-18T22:53:36", "logger": "telegram_rate_limiter", "msg": "📱 Telegram Rate Limiter alustettu: 1s rate limit, 30s max backoff"}
+{"level": "INFO", "ts": "2025-09-18T22:53:36", "logger": "__main__", "msg": "🚀 Käynnistetään Automatic Hybrid Trading Bot..."}
+{"level": "INFO", "ts": "2025-09-18T22:53:36", "logger": "metrics", "msg": "✅ Metrics-palvelin käynnissä: http://0.0.0.0:9108/metrics (health=True)"}
