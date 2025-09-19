@@ -139,6 +139,13 @@ class MetricsCfg:
     namespace: str = "hybrid_bot"
 
 @dataclass
+class PerformanceCfg:
+    enabled: bool = False
+    sample_interval_sec: float = 0.02
+    write_report: bool = False
+    report_dir: str = ".runtime"
+
+@dataclass
 class RuntimeCfg:
     timezone: str = "Europe/Helsinki"
     test_max_cycles: Optional[int] = None
@@ -153,6 +160,7 @@ class AppCfg:
     telegram: TelegramCfg = field(default_factory=TelegramCfg)
     io: IOCfg = field(default_factory=IOCfg)
     metrics: MetricsCfg = field(default_factory=MetricsCfg)
+    performance: PerformanceCfg = field(default_factory=PerformanceCfg)
     runtime: RuntimeCfg = field(default_factory=RuntimeCfg)
 
 def load_config(path: str = "config.yaml") -> AppCfg:
@@ -182,6 +190,7 @@ def load_config(path: str = "config.yaml") -> AppCfg:
         telegram=TelegramCfg(**_filter_fields(TelegramCfg, tel_raw)),
         io=IOCfg(**_filter_fields(IOCfg, data.get("io"))),
         metrics=MetricsCfg(**_filter_fields(MetricsCfg, data.get("metrics"))),
+        performance=PerformanceCfg(**_filter_fields(PerformanceCfg, data.get("performance"))),
         runtime=RuntimeCfg(**_filter_fields(RuntimeCfg, data.get("runtime"))),
     )
 
@@ -197,6 +206,11 @@ def load_config(path: str = "config.yaml") -> AppCfg:
     cfg.discovery.candidate_ttl_sec = _env_int("DISCOVERY_CANDIDATE_TTL_SEC", cfg.discovery.candidate_ttl_sec) if os.getenv("DISCOVERY_CANDIDATE_TTL_SEC") else cfg.discovery.candidate_ttl_sec
     cfg.runtime.test_max_cycles = _env_int("TEST_MAX_CYCLES", cfg.runtime.test_max_cycles) if os.getenv("TEST_MAX_CYCLES") else cfg.runtime.test_max_cycles
     cfg.runtime.test_max_runtime_sec = _env_float("TEST_MAX_RUNTIME", cfg.runtime.test_max_runtime_sec) if os.getenv("TEST_MAX_RUNTIME") else cfg.runtime.test_max_runtime_sec
+    # Performance ENV-override
+    cfg.performance.enabled = _env_bool("PERF_ENABLED", cfg.performance.enabled)
+    cfg.performance.sample_interval_sec = _env_float("PERF_SAMPLE_INTERVAL", cfg.performance.sample_interval_sec)
+    cfg.performance.write_report = _env_bool("PERF_WRITE_REPORT", cfg.performance.write_report)
+    cfg.performance.report_dir = _env_str("PERF_REPORT_DIR", cfg.performance.report_dir) or cfg.performance.report_dir
     
     # Trading ENV-override
     cfg.trading.enabled = _env_bool("TRADING_ENABLED", cfg.trading.enabled)

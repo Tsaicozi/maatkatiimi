@@ -427,6 +427,24 @@ class AutomaticHybridBot:
                       run_id=getattr(self, "run_id", None),
                       cycle_id=self.cycle_count + 1)
         
+        # PerformanceAgent (opt-in)
+        perf_agent = None
+        perf_cfg = None
+        try:
+            cfg_local = self._cfg or load_config()
+            perf_cfg = getattr(cfg_local, "performance", None)
+            if perf_cfg and bool(getattr(perf_cfg, "enabled", False)):
+                try:
+                    from performance_agent import PerformanceAgent
+                    interval = float(getattr(perf_cfg, "sample_interval_sec", 0.02) or 0.02)
+                    perf_agent = PerformanceAgent(sample_interval_sec=interval)
+                    await perf_agent.__aenter__()
+                except Exception as pe:
+                    logger.warning(f"PerformanceAgent start failed: {pe}")
+                    perf_agent = None
+        except Exception:
+            perf_agent = None
+
         try:
             result = await self.trading_bot.run_analysis_cycle()
         except AttributeError as e:
@@ -521,6 +539,32 @@ class AutomaticHybridBot:
         
         # Päivitä heartbeat
         self._last_cycle_ts = time.time()
+        
+        # Finalisoi PerformanceAgent ja kirjoita raportti (opt-in)
+        if perf_agent is not None:
+            try:
+                await perf_agent.__aexit__(None, None, None)
+                rep = perf_agent.build_report()
+                # Kirjoita raportti tiedostoon jos asetettu
+                if perf_cfg and bool(getattr(perf_cfg, "write_report", False)):
+                    try:
+                        out_dir = getattr(perf_cfg, "report_dir", ".runtime") or ".runtime"
+                        p = Path(out_dir)
+                        p.mkdir(parents=True, exist_ok=True)
+                        ts = datetime.now(HELSINKI_TZ).strftime("%Y%m%d_%H%M%S")
+                        out_path = p / f"performance_cycle_{ts}.json"
+                        out_path.write_text(json.dumps(rep.to_dict(), indent=2, ensure_ascii=False), encoding="utf-8")
+                        logger.info(f"🧪 Performance report written: {out_path}")
+                    except Exception as we:
+                        logger.warning(f"Performance report write failed: {we}")
+                # Loggaa lyhyet suositukset
+                try:
+                    for s in (rep.suggestions or [])[:5]:
+                        logger.info(f"⚙️ Perf suggestion: {s}")
+                except Exception:
+                    pass
+            except Exception as xe:
+                logger.warning(f"PerformanceAgent finalize failed: {xe}")
     
     async def start(self):
         """Käynnistä automaattinen bot - tarkka ajastus"""
