@@ -2259,6 +2259,13 @@ class HybridTradingBot:
         """Lähetä hot candidates Telegram viesti score breakdown:lla + per-mint cooldown + dedupe"""
         try:
             current_time = time.time()
+            # Dynaaminen min score DiscoveryEnginestä
+            effective_min = None
+            try:
+                if self.discovery_engine and hasattr(self.discovery_engine, '_calculate_dynamic_score_threshold'):
+                    effective_min = float(self.discovery_engine._calculate_dynamic_score_threshold())
+            except Exception:
+                effective_min = None
             
             # Dedupe: poista saman syklin duplikaatit
             seen_mints = set()
@@ -2269,7 +2276,7 @@ class HybridTradingBot:
                     unique_candidates.append(candidate)
                     seen_mints.add(mint)
             
-            # Cooldown: suodata mintit jotka ovat cooldown:issa
+            # Cooldown ja data window: suodata mintit jotka ovat cooldown:issa tai eivät täytä min scorea
             filtered_candidates = []
             for candidate in unique_candidates:
                 mint = getattr(candidate, 'mint', 'unknown')
@@ -2280,6 +2287,17 @@ class HybridTradingBot:
                         self._apply_trade_metrics(candidate, metrics)
                     if not self._is_viable_ws_candidate(candidate):
                         continue
+                # Score gate: käytä dynaamista minimiä jos saatavilla
+                if effective_min is not None:
+                    if float(getattr(candidate, 'overall_score', 0.0) or 0.0) < effective_min:
+                        continue
+                # Data window: vaadi vähintään pieni määrä trade-dataa ultra-freshille
+                buyers = int(getattr(candidate, 'unique_buyers_5m', 0) or 0)
+                extra = getattr(candidate, 'extra', {}) or {}
+                buyers_short = int(extra.get('trade_unique_buyers_30s') or buyers)
+                if buyers == 0 and buyers_short < 1:
+                    # ohita, liian vähän dataa
+                    continue
                 if mint not in self._mint_cooldown or (current_time - self._mint_cooldown[mint]) >= self._mint_cooldown_sec:
                     filtered_candidates.append(candidate)
                     self._mint_cooldown[mint] = current_time
@@ -3685,53 +3703,78 @@ class HybridTradingBot:
         return min(priority, 1.0)
     
     def _generate_trading_signals(self, tokens: List[HybridToken]) -> List[Dict]:
-        """Generoi trading signaalit - OPTIMOIDUT KRITEERIT"""
-        signals = []
+        """Generoi trading signaalit käyttämällä strategioita + nykyiset säännöt."""
+        signals: List[Dict] = []
         
-        # Lajittele tokenit parhaan ensin
-        sorted_tokens = sorted(tokens, key=lambda t: t.technical_score, reverse=True)
-        
-        # BUY signaalit - optimoidut kriteerit
-        for token in sorted_tokens:
-            # DEBUG: Tulosta token tiedot
-            # Käytä oikeaa ikää on-chain aikaleimasta
-            age_min = self._age_minutes(token)
-            age_txt = f"{age_min:.0f}min" if age_min is not None else "n/a"
-            logger.info(f"🔍 Analysoidaan token {token.symbol}: Age={age_txt}, MC=${token.market_cap:,.0f}, Tech={token.technical_score:.2f}, Risk={token.risk_score:.2f}, PriceChg={token.price_change_24h:.1f}%, Vol=${token.volume_24h:,.0f}, Social={token.social_score:.2f}")
-            
-            if self._should_buy_token(token):
-                # Tarkista korrelaatio riski
+        # 1) Strategy engine
+        try:
+            from strategies import MomentumStrategy, VolumeSpikeStrategy
+            strategies = [
+                MomentumStrategy(max_signals=3),
+                VolumeSpikeStrategy(max_signals=2),
+            ]
+            ctx = {
+                "portfolio_risk": self._calculate_portfolio_heat(),
+                "positions": self.portfolio.get('positions', {}),
+            }
+            strat_signals = []
+            for strat in strategies:
+                try:
+                    for s in strat.generate(tokens, ctx):
+                        strat_signals.append(s)
+                except Exception as e:
+                    logger.warning(f"Strategy error {type(strat).__name__}: {e}")
+            # Convert StrategySignal -> dict
+            for s in strat_signals:
+                signals.append({
+                    'type': s.type,
+                    'token': s.token,
+                    'reasoning': s.reasoning,
+                    'confidence': s.confidence,
+                    'priority': s.priority,
+                })
+        except Exception as e:
+            logger.warning(f"Strategies unavailable: {e}")
+
+        # 2) Legacy rule-based generator as a fallback/augment
+        try:
+            sorted_tokens = sorted(tokens, key=lambda t: t.technical_score, reverse=True)
+            for token in sorted_tokens:
+                age_min = self._age_minutes(token)
+                age_txt = f"{age_min:.0f}min" if age_min is not None else "n/a"
+                logger.info(
+                    f"🔍 Analysoidaan token {token.symbol}: Age={age_txt}, MC=${token.market_cap:,.0f}, "
+                    f"Tech={token.technical_score:.2f}, Risk={token.risk_score:.2f}, PriceChg={token.price_change_24h:.1f}%, "
+                    f"Vol=${token.volume_24h:,.0f}, Social={token.social_score:.2f}"
+                )
+                if not self._should_buy_token(token):
+                    continue
                 if self._check_correlation_risk(token):
                     logger.warning(f"⚠️ Korrelaatio riski estää position avaamisen: {token.symbol}")
                     continue
-                
-                # Tarkista portfolio heat
                 portfolio_heat = self._calculate_portfolio_heat()
                 if portfolio_heat > self.max_portfolio_risk:
                     logger.warning(f"⚠️ Portfolio heat liian korkea: {portfolio_heat:.1%} > {self.max_portfolio_risk:.1%}")
                     continue
-                
-                # LISÄTTY: Dynaaminen confidence laskenta
                 confidence = self._calculate_signal_confidence(token)
-                
-                # LISÄTTY: Parempi reasoning teksti
                 reasoning = self._generate_signal_reason(token, portfolio_heat)
-                
-                signal = {
+                signals.append({
                     'type': 'BUY',
                     'token': token,
                     'reasoning': reasoning,
                     'confidence': confidence,
-                    'priority': self._calculate_signal_priority(token)  # LISÄTTY: Prioriteetti
-                }
-                signals.append(signal)
-                
-                # LISÄTTY: Rajoita signaalien määrä
-                if len(signals) >= 5:  # Max 5 signaalia per sykli
+                    'priority': self._calculate_signal_priority(token)
+                })
+                if len(signals) >= 5:
                     break
+        except Exception as e:
+            logger.warning(f"Legacy generator failed: {e}")
         
-        # Lajittele signaalit prioriteetin mukaan
-        signals.sort(key=lambda s: s['priority'], reverse=True)
+        # Order by priority
+        try:
+            signals.sort(key=lambda s: float(s.get('priority') or 0.0), reverse=True)
+        except Exception:
+            pass
         
         # SELL signaalit (olemassa oleville positioille)
         for symbol, position in self.portfolio['positions'].items():

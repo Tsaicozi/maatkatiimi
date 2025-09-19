@@ -80,6 +80,7 @@ class TokenCandidate:
     novelty_score: float = 0.0
     liquidity_score: float = 0.0
     distribution_score: float = 0.0
+    activity_score: float = 0.0
     rug_risk_score: float = 0.0
     overall_score: float = 0.0
     last_score: float = 0.0
@@ -613,6 +614,8 @@ class DiscoveryEngine:
             metrics.min_score_effective.set(effective)
         
         logger.info(f"min_score dynamic={effective:.2f} (base={base:.2f}, q80={q80:.2f}, cap={cap:.2f})")
+        # Expose for external consumers (e.g., HybridTradingBot telegram gating)
+        self.score_threshold = effective
         
         # Tallenna viimeisin effective score
         self.last_effective_score = effective

@@ -597,7 +597,7 @@ class AutomaticHybridBot:
         await asyncio.sleep(align_seconds)
         logger.info("✅ Align odotus valmis, aloitetaan pääsilmukka")
         
-        # Pääsilmukka - tarkka 60s ajastus
+        # Pääsilmukka - tarkka 60s ajastus (driftless): aina seuraavan minuutin nollasekuntille
         while self.running:
             try:
                 # Tarkista pysäytysehtoja (testimoodi)
@@ -621,14 +621,20 @@ class AutomaticHybridBot:
                     await self.request_shutdown("kill_switch")
                     break
                 
-                # Laske seuraava sykli timing
-                sleep_time = 60.0  # 60s välein
-                
+                # Laske seuraava sykli timing driftittömästi
+                now = datetime.now(HELSINKI_TZ)
+                next_minute = now.replace(second=0, microsecond=0) + timedelta(minutes=1)
+                sleep_time = max(0.0, (next_minute - now).total_seconds())
+                if sleep_time < 0.005:
+                    # jos ollaan aivan rajan tuntumassa, hyppää seuraavaan minuuttiin
+                    next_minute = next_minute + timedelta(minutes=1)
+                    sleep_time = max(0.0, (next_minute - now).total_seconds())
+
                 if sleep_time > 0:
-                    logger.info(f"⏰ Odotetaan {sleep_time:.1f} sekuntia ennen seuraavaa sykliä...")
+                    logger.info(f"⏰ Odotetaan {sleep_time:.1f} sekuntia ennen seuraavaa sykliä (driftless)...")
                     await asyncio.sleep(sleep_time)
                 else:
-                    logger.warning(f"⚠️ Sykli kesti liian kauan - jatketaan heti")
+                    logger.warning("⚠️ Sykli kesti liian kauan - jatketaan heti")
                 
             except KeyboardInterrupt:
                 logger.info("📡 KeyboardInterrupt vastaanotettu")
