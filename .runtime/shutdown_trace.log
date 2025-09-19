@@ -470,3 +470,113 @@
 [2025-09-19 22:45:51] init: constructed
 [2025-09-19 22:45:51] signal: loop handlers installed
 [2025-09-19 22:45:51] start: scheduler armed
+[2025-09-19 20:48:42] init: constructed
+[2025-09-19 20:48:42] signal: loop handlers installed
+[2025-09-19 20:48:42] init: constructed
+[2025-09-19 20:48:42] signal: loop handlers installed
+[2025-09-19 20:48:42] init: constructed
+[2025-09-19 20:48:42] signal: loop handlers installed
+[2025-09-19 20:48:42] init: constructed
+[2025-09-19 20:48:42] signal: loop handlers installed
+[2025-09-19 20:48:42] init: constructed
+[2025-09-19 20:48:42] signal: loop handlers installed
+[2025-09-19 20:48:42] init: constructed
+[2025-09-19 20:48:42] signal: loop handler install failed: no running event loop
+[2025-09-19 20:48:42] init: constructed
+[2025-09-19 20:48:42] signal: loop handlers installed
+[2025-09-19 20:48:42] start: scheduler armed
+[2025-09-19 20:49:42] shutdown: begin
+[2025-09-19 20:49:42] step: telegram_notice
+[2025-09-19 20:49:42] step: cancel_own_tasks
+[2025-09-19 20:49:42] init: constructed
+[2025-09-19 20:49:42] signal: loop handlers installed
+[2025-09-19 20:49:42] start: scheduler armed
+[2025-09-19 20:50:12] init: constructed
+[2025-09-19 20:50:12] signal: loop handlers installed
+[2025-09-19 20:50:12] start: scheduler armed
+[2025-09-19 20:50:28] init: constructed
+[2025-09-19 20:50:28] signal: loop handlers installed
+[2025-09-19 20:50:28] start: scheduler armed
+[2025-09-19 20:50:32] atexit: process exiting
+[2025-09-19 20:50:32] atexit: process exiting
+[2025-09-19 20:50:32] atexit: process exiting
+[2025-09-19 20:50:32] atexit: process exiting
+[2025-09-19 20:50:32] atexit: process exiting
+[2025-09-19 20:50:32] atexit: process exiting
+[2025-09-19 20:50:32] atexit: process exiting
+[2025-09-19 20:54:16] init: constructed
+[2025-09-19 20:54:16] signal: loop handlers installed
+[2025-09-19 20:54:16] atexit: process exiting
+[2025-09-19 20:54:21] init: constructed
+[2025-09-19 20:54:21] signal: loop handlers installed
+[2025-09-19 20:54:21] start: scheduler armed
+[2025-09-19 20:54:22] shutdown: begin
+[2025-09-19 20:54:22] step: telegram_notice
+[2025-09-19 20:54:22] step: cancel_own_tasks
+[2025-09-19 20:54:22] atexit: process exiting
+[2025-09-19 20:56:05] init: constructed
+[2025-09-19 20:56:05] signal: loop handlers installed
+[2025-09-19 20:56:05] start: scheduler armed
+[2025-09-19 20:56:05] shutdown: begin
+[2025-09-19 20:56:05] step: telegram_notice
+[2025-09-19 20:56:05] step: cancel_own_tasks
+[2025-09-19 20:56:05] step: de_stop
+[2025-09-19 20:56:05] step: close_sessions
+[2025-09-19 20:56:05] shutdown: end
+[2025-09-19 20:56:05] atexit: process exiting
+[2025-09-19 20:56:12] init: constructed
+[2025-09-19 20:56:12] signal: loop handlers installed
+[2025-09-19 20:56:12] start: scheduler armed
+[2025-09-19 20:56:26] shutdown: begin
+[2025-09-19 20:56:26] step: telegram_notice
+[2025-09-19 20:56:27] step: cancel_own_tasks
+[2025-09-19 20:56:27] step: de_stop
+[2025-09-19 20:56:27] step: close_sessions
+[2025-09-19 20:56:27] shutdown: end
+[2025-09-19 20:56:27] atexit: process exiting
+[2025-09-19 20:56:32] init: constructed
+[2025-09-19 20:56:32] signal: loop handlers installed
+[2025-09-19 20:56:32] start: scheduler armed
+[2025-09-19 20:56:44] shutdown: begin
+[2025-09-19 20:56:44] step: telegram_notice
+[2025-09-19 20:56:45] step: cancel_own_tasks
+[2025-09-19 20:56:45] step: de_stop
+[2025-09-19 20:56:45] step: close_sessions
+[2025-09-19 20:56:45] shutdown: end
+[2025-09-19 20:56:46] atexit: process exiting
+[2025-09-19 20:56:50] init: constructed
+[2025-09-19 20:56:50] signal: loop handlers installed
+[2025-09-19 20:56:50] start: scheduler armed
+[2025-09-19 20:58:05] init: constructed
+[2025-09-19 20:58:05] signal: loop handlers installed
+[2025-09-19 20:58:05] start: scheduler armed
+[2025-09-19 21:00:28] init: constructed
+[2025-09-19 21:00:28] signal: loop handlers installed
+[2025-09-19 21:00:28] start: scheduler armed
+[2025-09-19 21:01:18] init: constructed
+[2025-09-19 21:01:18] signal: loop handlers installed
+[2025-09-19 21:01:18] start: scheduler armed
+[2025-09-19 21:03:15] init: constructed
+[2025-09-19 21:03:15] signal: loop handlers installed
+[2025-09-19 21:03:15] start: scheduler armed
+[2025-09-19 21:03:18] shutdown: requested (cli_timeout)
+[2025-09-19 21:03:18] shutdown: begin
+[2025-09-19 21:03:18] step: telegram_notice
+[2025-09-19 21:03:19] step: cancel_own_tasks
+[2025-09-19 21:03:19] step: de_stop
+[2025-09-19 21:03:19] step: close_sessions
+[2025-09-19 21:03:19] shutdown: end
+[2025-09-19 21:03:19] shutdown: completed OK
+[2025-09-19 21:03:19] atexit: process exiting
+[2025-09-19 21:04:16] init: constructed
+[2025-09-19 21:04:16] signal: loop handlers installed
+[2025-09-19 21:04:16] start: scheduler armed
+[2025-09-19 21:04:19] shutdown: requested (cli_timeout)
+[2025-09-19 21:04:19] shutdown: begin
+[2025-09-19 21:04:19] step: telegram_notice
+[2025-09-19 21:04:20] step: cancel_own_tasks
+[2025-09-19 21:04:20] step: de_stop
+[2025-09-19 21:04:20] step: close_sessions
+[2025-09-19 21:04:20] shutdown: end
+[2025-09-19 21:04:20] shutdown: completed OK
+[2025-09-19 21:04:20] atexit: process exiting
