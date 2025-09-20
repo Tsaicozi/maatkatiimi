@@ -25,6 +25,8 @@ from logging.handlers import RotatingFileHandler
 from typing import Any, Dict, Optional, Protocol, Tuple, List
 from zoneinfo import ZoneInfo
 
+import errno
+
 
 HELSINKI_TZ = ZoneInfo("Europe/Helsinki")
 
@@ -45,6 +47,39 @@ def _setup_logging_if_needed(log_path: str = "agent_leader.log", level: int = lo
 logger = logging.getLogger(__name__)
 _setup_logging_if_needed()
 
+
+def _pid_is_alive(pid: int) -> bool:
+	try:
+		os.kill(pid, 0)
+		return True
+	except OSError as e:
+		return e.errno == errno.EPERM  # exists but no permission
+
+
+def _acquire_pid_lock(lock_path: str) -> str:
+	p = os.path.abspath(lock_path)
+	dirname = os.path.dirname(p)
+	os.makedirs(dirname, exist_ok=True)
+	if os.path.exists(p):
+		try:
+			old_pid = int((open(p, "r", encoding="utf-8").read() or "0").strip())
+			if old_pid > 0 and _pid_is_alive(old_pid):
+				raise RuntimeError(f"Leader already running (pid={old_pid})")
+		except Exception:
+			pass
+		# stale file
+		with contextlib.suppress(Exception):
+			os.remove(p)
+	with open(p, "w", encoding="utf-8") as f:
+		f.write(str(os.getpid()))
+	return p
+
+
+def _release_pid_lock(lock_path: str | None) -> None:
+	if not lock_path:
+		return
+	with contextlib.suppress(Exception):
+		os.remove(lock_path)
 
 # --- Data structures ---
 @dataclass(slots=True)
@@ -363,26 +398,32 @@ async def _demo_main() -> None:
         except Exception:
             telegram = None
 
-    leader = AgentLeader(telegram=telegram, report_interval_sec=30)
-    # Rekisteröi pari demoagenttia
-    leader.register_agent(EchoAgent("echo-fast", max_concurrent=2, fail_ratio=0.1))
-    leader.register_agent(EchoAgent("echo-slow", max_concurrent=1, fail_ratio=0.2, min_run_ms=120, max_run_ms=400))
-
-    await leader.start()
-
-    # Syötä muutama tehtävä
-    for i in range(15):
-        await leader.submit_task(f"demo_task_{i}", priority=0 if i % 3 == 0 else 5, timeout_sec=3.0)
-
-    # Aja tietty aika tai kunnes jono tyhjä ja ei inflightteja
-    deadline = time.time() + 60
+    lock_path = os.getenv("LEADER_LOCK_PATH") or ".runtime/agent_leader.pid"
+    lock_file: str | None = None
     try:
-        while time.time() < deadline:
-            if leader._queue.qsize() == 0 and not leader._inflight:
-                break
-            await asyncio.sleep(0.25)
+        lock_file = _acquire_pid_lock(lock_path)
+        leader = AgentLeader(telegram=telegram, report_interval_sec=30)
+        # Rekisteröi pari demoagenttia
+        leader.register_agent(EchoAgent("echo-fast", max_concurrent=2, fail_ratio=0.1))
+        leader.register_agent(EchoAgent("echo-slow", max_concurrent=1, fail_ratio=0.2, min_run_ms=120, max_run_ms=400))
+
+        await leader.start()
+
+        # Syötä muutama tehtävä
+        for i in range(15):
+            await leader.submit_task(f"demo_task_{i}", priority=0 if i % 3 == 0 else 5, timeout_sec=3.0)
+
+        # Aja tietty aika tai kunnes jono tyhjä ja ei inflightteja
+        deadline = time.time() + 60
+        try:
+            while time.time() < deadline:
+                if leader._queue.qsize() == 0 and not leader._inflight:
+                    break
+                await asyncio.sleep(0.25)
+        finally:
+            await leader.stop()
     finally:
-        await leader.stop()
+        _release_pid_lock(lock_file)
 
 
 def _main() -> None:
