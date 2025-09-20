@@ -15100,3 +15100,6 @@
 {"level": "INFO", "ts": "2025-09-20T10:05:17", "logger": "null_telegram_bot", "msg": "[offline] Telegram message skipped: 🛑 Bot sammutetaan siististi (signal)…"}
 {"level": "INFO", "ts": "2025-09-20T10:05:21", "logger": "__main__", "msg": "💓 heartbeat: idle=21.5s (scheduler alive)"}
 {"level": "INFO", "ts": "2025-09-20T10:05:31", "logger": "__main__", "msg": "💓 heartbeat: idle=31.5s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-20T10:05:41", "logger": "__main__", "msg": "💓 heartbeat: idle=41.5s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-20T10:05:51", "logger": "__main__", "msg": "💓 heartbeat: idle=51.5s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-20T10:06:00", "logger": "__main__", "msg": "👋 Automatic Hybrid Trading Bot lopetettu"}
