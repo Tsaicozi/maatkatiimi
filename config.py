@@ -3,6 +3,8 @@ from __future__ import annotations
 import os
 import yaml
 import dataclasses
+import time
+import copy
 from dataclasses import dataclass, field
 from typing import Optional
 
@@ -254,3 +256,30 @@ def load_config(path: str = "config.yaml") -> AppCfg:
             cfg.io.rpc_endpoints = deduped
     
     return cfg
+
+
+# --- Lightweight cached loader for performance-critical paths ---
+_CFG_CACHE: dict[str, tuple[float, float, AppCfg]] = {}
+
+def load_config_cached(ttl_sec: int = 30, path: str = "config.yaml") -> AppCfg:
+    """
+    Cached loader that avoids re-parsing YAML repeatedly.
+    Cache invalidates if TTL expires or file mtime changes.
+
+    Returns a deepcopy of the cached config to avoid accidental mutation leaks.
+    """
+    try:
+        mtime = os.path.getmtime(path) if os.path.exists(path) else -1.0
+    except Exception:
+        mtime = -1.0
+
+    now = time.time()
+    cached = _CFG_CACHE.get(path)
+    if cached:
+        loaded_at, last_mtime, cfg = cached
+        if (now - loaded_at) < float(ttl_sec) and last_mtime == mtime:
+            return copy.deepcopy(cfg)
+
+    cfg = load_config(path)
+    _CFG_CACHE[path] = (now, mtime, cfg)
+    return copy.deepcopy(cfg)

@@ -88,7 +88,7 @@ from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 from hybrid_trading_bot import HybridTradingBot
 from telegram_bot_integration import TelegramBot
-from config import load_config
+from config import load_config, load_config_cached
 from metrics import init_metrics
 from json_logging import generate_run_id, generate_cycle_id
 from rpc_pool import init_rpc_pool, get_rpc_pool
@@ -151,6 +151,9 @@ class AutomaticHybridBot:
         self._last_cycle_ts = time.time()
         self._heartbeat_task = None
         self._heartbeat_interval = float(os.getenv("HEARTBEAT_INTERVAL_SEC", "10") or "10")
+        
+        # Monotonic scheduling state
+        self._next_tick_mono = None
         
         # Graceful shutdown state
         self._shutting_down = False
@@ -596,6 +599,17 @@ class AutomaticHybridBot:
         logger.info(f"⏰ Align odotus: {align_seconds:.1f}s")
         await asyncio.sleep(align_seconds)
         logger.info("✅ Align odotus valmis, aloitetaan pääsilmukka")
+        # aseta monotonic schedule lähtöpiste
+        try:
+            self._next_tick_mono = asyncio.get_running_loop().time()
+        except Exception:
+            self._next_tick_mono = None
+        # cache kill switch path kerran
+        try:
+            cfg_once = load_config_cached()
+            self._kill_switch_path = cfg_once.runtime.kill_switch_path
+        except Exception:
+            self._kill_switch_path = None
         
         # Pääsilmukka - tarkka 60s ajastus
         while self.running:
@@ -614,21 +628,30 @@ class AutomaticHybridBot:
                 # Suorita sykli
                 await self.run_trading_cycle()
                 
-                # Tarkista kill switch
-                config = load_config()
-                if config.runtime.kill_switch_path and os.path.exists(config.runtime.kill_switch_path):
+                # Tarkista kill switch ilman jatkuvaa YAML-latausta
+                if getattr(self, "_kill_switch_path", None) and os.path.exists(self._kill_switch_path):
                     logger.warning("🛑 Kill switch havaittu – pysäytetään botti siististi.")
                     await self.request_shutdown("kill_switch")
                     break
                 
-                # Laske seuraava sykli timing
-                sleep_time = 60.0  # 60s välein
-                
-                if sleep_time > 0:
-                    logger.info(f"⏰ Odotetaan {sleep_time:.1f} sekuntia ennen seuraavaa sykliä...")
-                    await asyncio.sleep(sleep_time)
+                # Driftitön ajastus monotonic-kellolla
+                try:
+                    loop_now = asyncio.get_running_loop().time()
+                except Exception:
+                    loop_now = None
+                if loop_now is not None:
+                    if self._next_tick_mono is None:
+                        self._next_tick_mono = loop_now
+                    self._next_tick_mono += 60.0
+                    delay = self._next_tick_mono - loop_now
+                    if delay > 0:
+                        logger.info(f"⏰ Odotetaan {delay:.1f} sekuntia ennen seuraavaa sykliä...")
+                        await asyncio.sleep(delay)
+                    else:
+                        logger.warning("⚠️ Sykli kesti liian kauan - jatketaan heti")
                 else:
-                    logger.warning(f"⚠️ Sykli kesti liian kauan - jatketaan heti")
+                    # Varafallback jos monotonic ei saatavilla
+                    await asyncio.sleep(60.0)
                 
             except KeyboardInterrupt:
                 logger.info("📡 KeyboardInterrupt vastaanotettu")
@@ -654,7 +677,7 @@ class AutomaticHybridBot:
     async def _start_telegram_polling(self):
         """Käynnistä Telegram komennonpollaus taustataskuna"""
         try:
-            config = load_config()
+            config = load_config_cached()
             await self.telegram_bot.start_polling(
                 on_command=self._on_telegram_command,
                 poll_interval=config.telegram.poll_interval_sec,
