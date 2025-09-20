@@ -1,0 +1,8 @@
+2025-09-20 05:28:32,679 - __main__ - INFO - Agent registered: echo-fast (max_concurrent=2)
+2025-09-20 05:28:32,679 - __main__ - INFO - Agent registered: echo-slow (max_concurrent=1)
+2025-09-20 05:28:32,679 - __main__ - INFO - AgentLeader started (2 agents)
+2025-09-20 05:28:33,200 - __main__ - INFO - [notify] 🔴 Tehtävä epäonnistui agentilla echo-slow: demo_task_4 Virhe: demo failure ID: a2e52b2c54514c518b171f63125472a2
+2025-09-20 05:28:33,229 - __main__ - INFO - [notify] 🔴 Tehtävä epäonnistui agentilla echo-fast: demo_task_1 Virhe: demo failure ID: 119bdaba55174b1cbc17520dc1758b77
+2025-09-20 05:28:33,367 - __main__ - INFO - [notify] 🔴 Tehtävä epäonnistui agentilla echo-fast: demo_task_7 Virhe: demo failure ID: 58baeb7cc1ff47c2836f0633e7f6fbe5
+2025-09-20 05:28:33,432 - __main__ - INFO - [notify] 🔴 Tehtävä epäonnistui agentilla echo-fast: demo_task_5 Virhe: demo failure ID: 55ee293ce8f24feb9aff2a6c586e46c7
+2025-09-20 05:28:33,933 - __main__ - INFO - AgentLeader stopped. Success=11 Fail=4 Queue=0
