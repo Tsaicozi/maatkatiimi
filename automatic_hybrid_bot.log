@@ -98,3 +98,14 @@
 {"level": "INFO", "ts": "2025-09-20T09:46:22", "logger": "__main__", "msg": "💓 heartbeat: idle=26.4s (scheduler alive)"}
 {"level": "INFO", "ts": "2025-09-20T09:46:32", "logger": "__main__", "msg": "💓 heartbeat: idle=36.4s (scheduler alive)"}
 {"level": "INFO", "ts": "2025-09-20T09:46:42", "logger": "__main__", "msg": "💓 heartbeat: idle=46.5s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-20T09:46:52", "logger": "__main__", "msg": "💓 heartbeat: idle=56.5s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-20T09:46:55", "logger": "__main__", "msg": "🔄 Aloitetaan analyysi sykli #62"}
+{"level": "INFO", "ts": "2025-09-20T09:46:55", "logger": "__main__", "msg": "Cycle started"}
+{"level": "INFO", "ts": "2025-09-20T09:46:55", "logger": "__main__", "msg": "{\"evt\": \"cycle_start\", \"run_id\": \"run_20250920_081335_d9720d9e\", \"cycle_id\": 62}"}
+{"level": "INFO", "ts": "2025-09-20T09:46:55", "logger": "hybrid_trading_bot", "msg": "🔄 Aloitetaan hybrid analyysi sykli..."}
+{"level": "INFO", "ts": "2025-09-20T09:46:56", "logger": "hybrid_trading_bot", "msg": "🔑 API health: cmc=❌(401), birdeye=❌(401), pumpportal=❌(599)"}
+{"level": "INFO", "ts": "2025-09-20T09:46:56", "logger": "hybrid_trading_bot", "msg": "✅ PumpPortal analyzer alustettu"}
+{"level": "INFO", "ts": "2025-09-20T09:46:56", "logger": "hybrid_trading_bot", "msg": "🔍 Skannataan oikeita Solana tokeneita oikeista markkinoista..."}
+{"level": "INFO", "ts": "2025-09-20T09:46:56", "logger": "hybrid_trading_bot", "msg": "✅ CoinGecko: Löydettiin 20 tokenia"}
+{"level": "INFO", "ts": "2025-09-20T09:46:57", "logger": "hybrid_trading_bot", "msg": "✅ Jupiter: Löydettiin 20 tokenia"}
+{"level": "INFO", "ts": "2025-09-20T09:47:02", "logger": "__main__", "msg": "💓 heartbeat: idle=66.5s (scheduler alive)"}

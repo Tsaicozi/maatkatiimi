@@ -220,3 +220,23 @@
 2025-09-20 09:45:47,481 - hybrid_agent - ERROR - Task execution failed: Discovery engine not initialized
 2025-09-20 09:45:47,481 - agent_leader - ERROR - ❌ Task failed: token_scan - Discovery engine not initialized
 2025-09-20 09:45:48,026 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 09:46:47,144 - __main__ - INFO - 🛑 Main loop cancelled
+2025-09-20 09:46:47,144 - __main__ - INFO - 🛑 GitHub monitoring loop cancelled
+2025-09-20 09:46:47,144 - agent_leader - INFO - 🛑 Agent Leader main loop cancelled
+2025-09-20 09:46:47,144 - agent_leader - INFO - 🛑 Stopping Agent Leader...
+2025-09-20 09:46:47,144 - hybrid_agent - INFO - 🛑 Stopping Hybrid Trading Agent...
+2025-09-20 09:46:47,144 - hybrid_agent - INFO - ✅ Hybrid Trading Agent stopped successfully
+2025-09-20 09:46:47,396 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 09:46:47,396 - agent_leader - INFO - ✅ Agent Leader stopped gracefully
+2025-09-20 09:46:47,396 - __main__ - INFO - 🛑 Stopping Cloud Agent Leader...
+2025-09-20 09:46:47,396 - hybrid_agent - INFO - 🛑 Stopping Hybrid Trading Agent...
+2025-09-20 09:46:47,396 - hybrid_agent - INFO - ✅ Hybrid Trading Agent stopped successfully
+2025-09-20 09:46:47,396 - __main__ - INFO - ✅ hybrid agent stopped
+2025-09-20 09:46:47,396 - __main__ - INFO - ✅ Cloud Agent Leader stopped
+2025-09-20 09:46:47,396 - __main__ - INFO - ⏰ Demo timeout reached
+2025-09-20 09:46:47,396 - __main__ - INFO - 🛑 Stopping Cloud Agent Leader...
+2025-09-20 09:46:47,396 - hybrid_agent - INFO - 🛑 Stopping Hybrid Trading Agent...
+2025-09-20 09:46:47,396 - hybrid_agent - INFO - ✅ Hybrid Trading Agent stopped successfully
+2025-09-20 09:46:47,396 - __main__ - INFO - ✅ hybrid agent stopped
+2025-09-20 09:46:47,396 - __main__ - INFO - ✅ Cloud Agent Leader stopped
+2025-09-20 09:47:03,741 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
