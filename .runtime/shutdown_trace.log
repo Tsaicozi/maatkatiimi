@@ -484,3 +484,10 @@
 [2025-09-20 08:42:46] step: telegram_notice
 [2025-09-20 08:42:47] step: cancel_own_tasks
 [2025-09-20 08:42:47] atexit: process exiting
+[2025-09-20 09:41:41] init: constructed
+[2025-09-20 09:41:41] signal: loop handlers installed
+[2025-09-20 09:41:41] start: scheduler armed
+[2025-09-20 09:42:41] shutdown: begin
+[2025-09-20 09:42:41] step: telegram_notice
+[2025-09-20 09:42:42] step: cancel_own_tasks
+[2025-09-20 09:42:42] atexit: process exiting

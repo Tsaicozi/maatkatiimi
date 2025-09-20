@@ -1930,8 +1930,66 @@ class HybridTradingBot:
                     logger.error(f"Virhe tokenin {token.symbol} analyysissä: {e}")
                     continue
             
-            # Generoi trading signaalit
+            # Generoi trading signaalit omasta analyysista
             signals = self._generate_trading_signals(analyzed_tokens)
+
+            # Täydennä signaaleja DiscoveryEnginen hot candidateista (ei pakota kauppaa,
+            # mutta lisää näkyvyyttä ja tekee /signals-laskennasta informatiivisemman)
+            try:
+                if hot_candidates:
+                    from math import isnan
+                    cfg = self._cfg or load_config()
+                    base_min = getattr(getattr(cfg, "trading", None), "min_score_for_trade", None)
+                    if base_min is None:
+                        base_min = getattr(getattr(cfg, "discovery", None), "score_threshold", 0.55)
+                    base_min = float(base_min or 0.55)
+
+                    for c in hot_candidates:
+                        # Luo mock HybridToken projektiota varten
+                        try:
+                            score_val = float(getattr(c, "last_score", 0.0) or 0.0)
+                        except Exception:
+                            score_val = 0.0
+                        if score_val != score_val:  # NaN
+                            score_val = 0.0
+
+                        token = HybridToken(
+                            symbol=getattr(c, "symbol", "CAND"),
+                            name=getattr(c, "name", getattr(c, "symbol", "Candidate")),
+                            address=getattr(c, "mint", ""),
+                            price=float(getattr(c, "price_usd", 0.0) or 0.0) or 0.000001,
+                            market_cap=float(getattr(c, "market_cap_usd", 0.0) or 0.0),
+                            volume_24h=float(getattr(c, "volume_24h_usd", 0.0) or 0.0),
+                            price_change_24h=0.0,
+                            price_change_7d=0.0,
+                            liquidity=float(getattr(c, "liquidity_usd", 0.0) or 0.0),
+                            holders=0,
+                            fresh_holders_1d=0,
+                            fresh_holders_7d=0,
+                            age_minutes=int(getattr(c, "age_minutes", 0.0) or 0.0),
+                            social_score=0.5,
+                            technical_score=float(score_val),
+                            momentum_score=0.5,
+                            risk_score=float(getattr(c, "rug_risk_score", 0.0) or 0.0),
+                            timestamp=datetime.now().isoformat(),
+                            real_price=float(getattr(c, "price_usd", 0.0) or 0.0),
+                            real_volume=float(getattr(c, "volume_24h_usd", 0.0) or 0.0),
+                            real_liquidity=float(getattr(c, "liquidity_usd", 0.0) or 0.0),
+                            dex=str((getattr(c, "extra", {}) or {}).get("source", "de")),
+                            pair_address=getattr(c, "mint", "")
+                        )
+
+                        reason = f"DE score {score_val:.2f} (min {base_min:.2f})"
+                        enriched = {
+                            'type': 'BUY',
+                            'token': token,
+                            'reasoning': reason,
+                            'confidence': min(0.99, max(0.5, score_val)),
+                            'priority': min(1.0, max(0.0, score_val))
+                        }
+                        signals.append(enriched)
+            except Exception as e:
+                logger.warning(f"Hot candidate signal augmentation failed: {e}")
             
             # Suorita kaupat
             trades_executed = await self._execute_trades(signals)
