@@ -2201,6 +2201,7 @@ class HybridTradingBot:
             'distribution_score': candidate.distribution_score,
             'rug_risk_score': candidate.rug_risk_score,
             'overall_score': candidate.overall_score,
+            'score': getattr(candidate, 'last_score', None) if getattr(candidate, 'last_score', None) is not None else candidate.overall_score,
             'source': candidate.source,
             'first_seen': candidate.first_seen.isoformat() if hasattr(candidate.first_seen, 'isoformat') else str(candidate.first_seen),
             'last_updated': candidate.last_updated.isoformat() if hasattr(candidate.last_updated, 'isoformat') else str(candidate.last_updated)
@@ -3801,34 +3802,34 @@ class HybridTradingBot:
             logger.debug(f"❌ {token.symbol}: Ei tarpeeksi rahaa (${self.portfolio['cash']:.2f} < ${dynamic_position_size:.2f})")
             return False
         
-        # ULTRA-FRESH Kriteerit (toimivan botin mukaan)
+        # ULTRA-FRESH Kriteerit (löysemmät, jotta signaaleja löytyy realistisesti)
         
-        # 1. Ikäkriteeri - ultra-fresh (26s - 7m)
-        if not (0.5 <= token.age_minutes <= 7):
+        # 1. Ikäkriteeri - tuore (20s - 12m)
+        if not (0.33 <= token.age_minutes <= 12):
             logger.debug(f"❌ {token.symbol}: Ikä ei ultra-fresh ({token.age_minutes}min)")
             return False
         
-        # 2. Market cap kriteeri - pieni MC (8K - 50K)
-        if not (8000 <= token.market_cap <= 50000):
+        # 2. Market cap kriteeri - pieni-keskikokoinen MC (5K - 120K)
+        if not (5000 <= token.market_cap <= 120000):
             logger.debug(f"❌ {token.symbol}: Market cap ei sopiva (${token.market_cap:,.0f})")
             return False
         
-        # 3. Volume kriteeri - hyvä volume (48K - 200K)
-        if not (48000 <= token.volume_24h <= 200000):
+        # 3. Volume kriteeri - riittävä likviditeetti (20K - 400K)
+        if not (20000 <= token.volume_24h <= 400000):
             logger.debug(f"❌ {token.symbol}: Volume ei sopiva (${token.volume_24h:,.0f})")
             return False
         
-        # 4. Positiivinen momentum - vähintään +10%
-        if token.price_change_24h < 10:
+        # 4. Positiivinen momentum - vähintään +5%
+        if token.price_change_24h < 5:
             logger.debug(f"❌ {token.symbol}: Momentum liian matala ({token.price_change_24h:.1f}%)")
             return False
         
-        # 5. Matala riski
-        if token.risk_score > 0.2:
+        # 5. Matala-kohtalainen riski (salli hieman korkeampi)
+        if token.risk_score > 0.35:
             logger.debug(f"❌ {token.symbol}: Risk liian korkea ({token.risk_score:.2f})")
             return False
         
-        logger.debug(f"✅ {token.symbol}: Kaikki ultra-fresh kriteerit täytetty!")
+        logger.debug(f"✅ {token.symbol}: Kriteerit täytetty (löysemmät rajat)")
         return True
         
         logger.info(f"✅ {token.symbol}: Kaikki kriteerit täytetty!")
