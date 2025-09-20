@@ -1,0 +1,104 @@
+# Agent Leader Configuration
+# Configuration file for Agent Leader deployment
+
+# General settings
+general:
+  timezone: "Europe/Helsinki"
+  log_level: "INFO"
+  log_file: "agent_leader.log"
+  max_log_size: "10MB"
+  max_log_files: 3
+
+# Agent management
+agents:
+  max_agents: 50
+  health_check_interval: 30  # seconds
+  heartbeat_timeout: 120     # seconds
+  auto_restart_failed: true
+  restart_delay: 60         # seconds
+
+# Task management
+tasks:
+  max_queue_size: 1000
+  task_timeout: 300         # seconds
+  retry_failed_tasks: true
+  max_retries: 3
+  retry_delay: 30           # seconds
+
+# Reporting
+reporting:
+  enabled: true
+  interval: 300             # seconds (5 minutes)
+  include_metrics: true
+  include_agent_health: true
+  include_task_stats: true
+
+# Telegram integration
+telegram:
+  enabled: true
+  bot_token: "${TELEGRAM_BOT_TOKEN}"
+  chat_id: "${TELEGRAM_CHAT_ID}"
+  rate_limit: 1             # messages per second
+  max_backoff: 30           # seconds
+
+# Monitoring
+monitoring:
+  prometheus_enabled: true
+  metrics_port: 8080
+  metrics_path: "/metrics"
+  grafana_enabled: true
+
+# Persistence
+persistence:
+  enabled: true
+  redis_url: "redis://redis:6379/0"
+  backup_interval: 3600     # seconds (1 hour)
+  max_backups: 24
+
+# Security
+security:
+  enable_auth: false
+  api_key: "${API_KEY}"
+  allowed_ips: []
+  rate_limit_requests: 100  # per minute
+
+# Cloud deployment
+cloud:
+  provider: "docker"        # docker, kubernetes, aws, gcp, azure
+  region: "eu-west-1"
+  instance_type: "t3.micro"
+  auto_scaling:
+    enabled: false
+    min_instances: 1
+    max_instances: 3
+    scale_up_threshold: 80   # CPU percentage
+    scale_down_threshold: 20 # CPU percentage
+
+# Environment-specific overrides
+environments:
+  development:
+    log_level: "DEBUG"
+    telegram:
+      enabled: false
+    monitoring:
+      prometheus_enabled: false
+      grafana_enabled: false
+  
+  staging:
+    log_level: "INFO"
+    agents:
+      max_agents: 10
+    tasks:
+      max_queue_size: 100
+  
+  production:
+    log_level: "WARNING"
+    agents:
+      max_agents: 100
+    tasks:
+      max_queue_size: 10000
+    security:
+      enable_auth: true
+    cloud:
+      auto_scaling:
+        enabled: true

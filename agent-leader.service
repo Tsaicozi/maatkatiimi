@@ -1,0 +1,35 @@
+[Unit]
+Description=Agent Leader - Keskitetty agenttien hallinta
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=jarihiirikoski
+Group=staff
+WorkingDirectory=/Users/jarihiirikoski/matkatiimi
+Environment=PYTHONPATH=/Users/jarihiirikoski/matkatiimi
+Environment=PYTHONUNBUFFERED=1
+Environment=TZ=Europe/Helsinki
+ExecStart=/Library/Frameworks/Python.framework/Versions/3.11/bin/python3 /Users/jarihiirikoski/matkatiimi/integrated_agent_leader.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=agent-leader
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/Users/jarihiirikoski/matkatiimi/logs
+ReadWritePaths=/Users/jarihiirikoski/matkatiimi/.runtime
+
+# Resource limits
+LimitNOFILE=65536
+MemoryMax=1G
+CPUQuota=50%
+
+[Install]
+WantedBy=multi-user.target

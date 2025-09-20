@@ -1,0 +1,26 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+rule_files:
+  # - "first_rules.yml"
+  # - "second_rules.yml"
+
+scrape_configs:
+  # Agent Leader metrics
+  - job_name: 'agent-leader'
+    static_configs:
+      - targets: ['agent-leader:8080']
+    scrape_interval: 30s
+    metrics_path: /metrics
+
+  # Redis metrics (if using Redis exporter)
+  - job_name: 'redis'
+    static_configs:
+      - targets: ['redis:6379']
+    scrape_interval: 30s
+
+  # Prometheus itself
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']

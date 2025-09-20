@@ -1,0 +1,222 @@
+2025-09-20 08:58:11,587 - __main__ - INFO - 🎭 Starting Agent Leader demo...
+2025-09-20 08:58:11,587 - __main__ - INFO - ✅ Registered agent: Echo Agent (demo_echo)
+2025-09-20 08:58:11,587 - __main__ - INFO - 📋 Created task: Test Task 1 (Priority: HIGH)
+2025-09-20 08:58:11,587 - __main__ - INFO - 📋 Created task: Test Task 2 (Priority: MEDIUM)
+2025-09-20 08:58:11,587 - __main__ - INFO - 📋 Created task: Fail Task (Priority: LOW)
+2025-09-20 08:58:11,587 - __main__ - INFO - 🚀 Starting Agent Leader...
+2025-09-20 08:58:11,587 - __main__ - INFO - 🚀 Echo Agent started
+2025-09-20 08:58:11,588 - __main__ - INFO - 🎯 Assigned task Test Task 1 to demo_echo
+2025-09-20 08:58:11,588 - __main__ - INFO - 🎯 Assigned task Test Task 2 to demo_echo
+2025-09-20 08:58:11,588 - __main__ - INFO - 🎯 Assigned task Fail Task to demo_echo
+2025-09-20 08:58:11,689 - __main__ - INFO - ✅ Task completed: Test Task 1
+2025-09-20 08:58:11,689 - __main__ - INFO - ✅ Task completed: Test Task 2
+2025-09-20 08:58:11,689 - __main__ - ERROR - ❌ Task failed: Fail Task - Simulated failure for task: Fail Task
+2025-09-20 08:58:41,589 - __main__ - INFO - 🛑 Agent Leader main loop cancelled
+2025-09-20 08:58:41,590 - __main__ - INFO - 🛑 Stopping Agent Leader...
+2025-09-20 08:58:41,590 - __main__ - INFO - 🛑 Echo Agent stopped
+2025-09-20 08:58:41,590 - __main__ - INFO - ✅ Agent Leader stopped gracefully
+2025-09-20 08:58:41,590 - __main__ - INFO - 🛑 Stopping Agent Leader...
+2025-09-20 08:58:41,590 - __main__ - INFO - 🛑 Echo Agent stopped
+2025-09-20 08:58:41,590 - __main__ - INFO - ✅ Agent Leader stopped gracefully
+2025-09-20 09:01:21,743 - __main__ - INFO - 🎭 Starting Agent Leader demo...
+2025-09-20 09:01:21,743 - __main__ - INFO - ✅ Registered agent: Echo Agent (demo_echo)
+2025-09-20 09:01:21,743 - __main__ - INFO - 📋 Created task: Test Task 1 (Priority: HIGH)
+2025-09-20 09:01:21,743 - __main__ - INFO - 📋 Created task: Test Task 2 (Priority: MEDIUM)
+2025-09-20 09:01:21,743 - __main__ - INFO - 📋 Created task: Fail Task (Priority: LOW)
+2025-09-20 09:01:21,743 - __main__ - INFO - 🚀 Starting Agent Leader...
+2025-09-20 09:01:21,743 - __main__ - INFO - 🚀 Echo Agent started
+2025-09-20 09:01:21,743 - __main__ - INFO - 🎯 Assigned task Test Task 1 to demo_echo
+2025-09-20 09:01:21,743 - __main__ - INFO - 🎯 Assigned task Test Task 2 to demo_echo
+2025-09-20 09:01:21,743 - __main__ - INFO - 🎯 Assigned task Fail Task to demo_echo
+2025-09-20 09:01:21,845 - __main__ - INFO - ✅ Task completed: Test Task 1
+2025-09-20 09:01:21,845 - __main__ - INFO - ✅ Task completed: Test Task 2
+2025-09-20 09:01:21,845 - __main__ - ERROR - ❌ Task failed: Fail Task - Simulated failure for task: Fail Task
+2025-09-20 09:01:51,745 - __main__ - INFO - 🛑 Agent Leader main loop cancelled
+2025-09-20 09:01:51,745 - __main__ - INFO - 🛑 Stopping Agent Leader...
+2025-09-20 09:01:51,746 - __main__ - INFO - 🛑 Echo Agent stopped
+2025-09-20 09:01:51,746 - __main__ - INFO - ✅ Agent Leader stopped gracefully
+2025-09-20 09:01:51,746 - __main__ - INFO - 🛑 Stopping Agent Leader...
+2025-09-20 09:01:51,746 - __main__ - INFO - 🛑 Echo Agent stopped
+2025-09-20 09:01:51,747 - __main__ - INFO - ✅ Agent Leader stopped gracefully
+2025-09-20 09:02:07,590 - __main__ - INFO - 🎭 Starting Agent Leader demo...
+2025-09-20 09:02:07,590 - __main__ - INFO - ✅ Registered agent: Echo Agent (demo_echo)
+2025-09-20 09:02:07,590 - __main__ - INFO - 📋 Created task: Test Task 1 (Priority: HIGH)
+2025-09-20 09:02:07,590 - __main__ - INFO - 📋 Created task: Test Task 2 (Priority: MEDIUM)
+2025-09-20 09:02:07,590 - __main__ - INFO - 📋 Created task: Fail Task (Priority: LOW)
+2025-09-20 09:02:07,590 - __main__ - INFO - 🚀 Starting Agent Leader...
+2025-09-20 09:02:07,590 - __main__ - INFO - 🚀 Echo Agent started
+2025-09-20 09:02:07,590 - __main__ - INFO - 🎯 Assigned task Test Task 1 to demo_echo
+2025-09-20 09:02:07,591 - __main__ - INFO - 🎯 Assigned task Test Task 2 to demo_echo
+2025-09-20 09:02:07,591 - __main__ - INFO - 🎯 Assigned task Fail Task to demo_echo
+2025-09-20 09:02:07,692 - __main__ - INFO - ✅ Task completed: Test Task 1
+2025-09-20 09:02:07,692 - __main__ - INFO - ✅ Task completed: Test Task 2
+2025-09-20 09:02:07,692 - __main__ - ERROR - ❌ Task failed: Fail Task - Simulated failure for task: Fail Task
+2025-09-20 09:02:37,592 - __main__ - INFO - 🛑 Agent Leader main loop cancelled
+2025-09-20 09:02:37,592 - __main__ - INFO - 🛑 Stopping Agent Leader...
+2025-09-20 09:02:37,592 - __main__ - INFO - 🛑 Echo Agent stopped
+2025-09-20 09:02:37,592 - __main__ - INFO - ✅ Agent Leader stopped gracefully
+2025-09-20 09:02:37,592 - __main__ - INFO - 🛑 Stopping Agent Leader...
+2025-09-20 09:02:37,592 - __main__ - INFO - 🛑 Echo Agent stopped
+2025-09-20 09:02:37,592 - __main__ - INFO - ✅ Agent Leader stopped gracefully
+2025-09-20 09:04:29,051 - __main__ - INFO - 🎭 Starting Agent Leader demo...
+2025-09-20 09:04:29,051 - __main__ - INFO - ✅ Registered agent: Echo Agent (demo_echo)
+2025-09-20 09:04:29,051 - __main__ - INFO - 📋 Created task: Test Task 1 (Priority: HIGH)
+2025-09-20 09:04:29,051 - __main__ - INFO - 📋 Created task: Test Task 2 (Priority: MEDIUM)
+2025-09-20 09:04:29,051 - __main__ - INFO - 📋 Created task: Fail Task (Priority: LOW)
+2025-09-20 09:04:29,051 - __main__ - INFO - 🚀 Starting Agent Leader...
+2025-09-20 09:04:29,051 - __main__ - INFO - 🚀 Echo Agent started
+2025-09-20 09:04:29,051 - __main__ - INFO - 🎯 Assigned task Test Task 1 to demo_echo
+2025-09-20 09:04:29,051 - __main__ - INFO - 🎯 Assigned task Test Task 2 to demo_echo
+2025-09-20 09:04:29,051 - __main__ - INFO - 🎯 Assigned task Fail Task to demo_echo
+2025-09-20 09:04:29,153 - __main__ - INFO - ✅ Task completed: Test Task 1
+2025-09-20 09:04:29,153 - __main__ - INFO - ✅ Task completed: Test Task 2
+2025-09-20 09:04:29,153 - __main__ - ERROR - ❌ Task failed: Fail Task - Simulated failure for task: Fail Task
+2025-09-20 09:04:59,052 - __main__ - INFO - 🛑 Agent Leader main loop cancelled
+2025-09-20 09:04:59,053 - __main__ - INFO - 🛑 Stopping Agent Leader...
+2025-09-20 09:04:59,053 - __main__ - INFO - 🛑 Echo Agent stopped
+2025-09-20 09:04:59,053 - __main__ - INFO - ✅ Agent Leader stopped gracefully
+2025-09-20 09:04:59,053 - __main__ - INFO - 🛑 Stopping Agent Leader...
+2025-09-20 09:04:59,053 - __main__ - INFO - 🛑 Echo Agent stopped
+2025-09-20 09:04:59,053 - __main__ - INFO - ✅ Agent Leader stopped gracefully
+2025-09-20 09:05:05,818 - __main__ - INFO - 🎭 Starting Agent Leader demo...
+2025-09-20 09:05:05,818 - __main__ - INFO - ✅ Registered agent: Echo Agent (demo_echo)
+2025-09-20 09:05:05,818 - __main__ - INFO - 📋 Created task: Test Task 1 (Priority: HIGH)
+2025-09-20 09:05:05,818 - __main__ - INFO - 📋 Created task: Test Task 2 (Priority: MEDIUM)
+2025-09-20 09:05:05,818 - __main__ - INFO - 📋 Created task: Fail Task (Priority: LOW)
+2025-09-20 09:05:05,818 - __main__ - INFO - 🚀 Starting Agent Leader...
+2025-09-20 09:05:05,818 - __main__ - INFO - 🚀 Echo Agent started
+2025-09-20 09:05:05,818 - __main__ - INFO - 🎯 Assigned task Test Task 1 to demo_echo
+2025-09-20 09:05:05,818 - __main__ - INFO - 🎯 Assigned task Test Task 2 to demo_echo
+2025-09-20 09:05:05,818 - __main__ - INFO - 🎯 Assigned task Fail Task to demo_echo
+2025-09-20 09:05:05,919 - __main__ - INFO - ✅ Task completed: Test Task 1
+2025-09-20 09:05:05,920 - __main__ - INFO - ✅ Task completed: Test Task 2
+2025-09-20 09:05:05,920 - __main__ - ERROR - ❌ Task failed: Fail Task - Simulated failure for task: Fail Task
+2025-09-20 09:05:35,819 - __main__ - INFO - 🛑 Agent Leader main loop cancelled
+2025-09-20 09:05:35,819 - __main__ - INFO - 🛑 Stopping Agent Leader...
+2025-09-20 09:05:35,819 - __main__ - INFO - 🛑 Echo Agent stopped
+2025-09-20 09:05:35,819 - __main__ - INFO - ✅ Agent Leader stopped gracefully
+2025-09-20 09:05:35,819 - __main__ - INFO - 🛑 Stopping Agent Leader...
+2025-09-20 09:05:35,819 - __main__ - INFO - 🛑 Echo Agent stopped
+2025-09-20 09:05:35,819 - __main__ - INFO - ✅ Agent Leader stopped gracefully
+2025-09-20 09:05:50,167 - __main__ - INFO - 🎭 Starting Agent Leader demo...
+2025-09-20 09:05:50,167 - telegram_bot_integration - INFO - ✅ Telegram bot alustettu
+2025-09-20 09:05:50,167 - telegram_rate_limiter - INFO - 📱 Telegram Rate Limiter alustettu: 1s rate limit, 30s max backoff
+2025-09-20 09:05:50,167 - __main__ - INFO - ✅ Telegram integration enabled
+2025-09-20 09:05:50,167 - __main__ - INFO - ✅ Registered agent: Echo Agent (demo_echo)
+2025-09-20 09:05:50,340 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 09:05:50,340 - __main__ - INFO - 📋 Created task: Test Task 1 (Priority: HIGH)
+2025-09-20 09:05:50,340 - __main__ - INFO - 📋 Created task: Test Task 2 (Priority: MEDIUM)
+2025-09-20 09:05:50,340 - __main__ - INFO - 📋 Created task: Fail Task (Priority: LOW)
+2025-09-20 09:05:50,340 - __main__ - INFO - 🚀 Starting Agent Leader...
+2025-09-20 09:05:50,340 - __main__ - INFO - 🚀 Echo Agent started
+2025-09-20 09:05:51,382 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 09:05:51,382 - __main__ - INFO - 🎯 Assigned task Test Task 1 to demo_echo
+2025-09-20 09:05:51,382 - __main__ - INFO - 🎯 Assigned task Test Task 2 to demo_echo
+2025-09-20 09:05:51,382 - __main__ - INFO - 🎯 Assigned task Fail Task to demo_echo
+2025-09-20 09:05:51,484 - __main__ - INFO - ✅ Task completed: Test Task 1
+2025-09-20 09:05:51,484 - __main__ - INFO - ✅ Task completed: Test Task 2
+2025-09-20 09:05:51,484 - __main__ - ERROR - ❌ Task failed: Fail Task - Simulated failure for task: Fail Task
+2025-09-20 09:05:52,340 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 09:06:20,342 - __main__ - INFO - 🛑 Agent Leader main loop cancelled
+2025-09-20 09:06:20,342 - __main__ - INFO - 🛑 Stopping Agent Leader...
+2025-09-20 09:06:20,342 - __main__ - INFO - 🛑 Echo Agent stopped
+2025-09-20 09:06:20,672 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 09:06:20,672 - __main__ - INFO - ✅ Agent Leader stopped gracefully
+2025-09-20 09:06:20,672 - __main__ - INFO - 🛑 Stopping Agent Leader...
+2025-09-20 09:06:20,672 - __main__ - INFO - 🛑 Echo Agent stopped
+2025-09-20 09:06:21,652 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 09:06:21,652 - __main__ - INFO - ✅ Agent Leader stopped gracefully
+2025-09-20 09:06:35,390 - telegram_bot_integration - INFO - ✅ Telegram bot alustettu
+2025-09-20 09:06:35,390 - telegram_rate_limiter - INFO - 📱 Telegram Rate Limiter alustettu: 1s rate limit, 30s max backoff
+2025-09-20 09:06:35,390 - __main__ - INFO - ✅ Telegram integration enabled
+2025-09-20 09:06:35,390 - __main__ - INFO - 🚀 Starting Agent Leader...
+2025-09-20 09:06:35,608 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 09:11:35,885 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 09:16:36,108 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 09:32:02,725 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 09:37:03,096 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 09:37:13,067 - __main__ - INFO - 🎭 Starting Integrated Agent Leader demo...
+2025-09-20 09:37:13,067 - telegram_bot_integration - INFO - ✅ Telegram bot alustettu
+2025-09-20 09:37:13,067 - telegram_rate_limiter - INFO - 📱 Telegram Rate Limiter alustettu: 1s rate limit, 30s max backoff
+2025-09-20 09:37:13,067 - agent_leader - INFO - ✅ Telegram integration enabled
+2025-09-20 09:37:13,067 - __main__ - INFO - 🚀 Starting Integrated Agent Leader...
+2025-09-20 09:37:13,067 - agent_leader - INFO - ✅ Registered agent: Hybrid Trading Agent (hybrid_trading_agent)
+2025-09-20 09:37:13,483 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 09:37:13,483 - __main__ - INFO - 🔄 Starting main task loop...
+2025-09-20 09:37:13,483 - __main__ - INFO - 📋 Creating task for cycle 1
+2025-09-20 09:37:13,484 - agent_leader - INFO - 📋 Created task: token_scan (Priority: HIGH)
+2025-09-20 09:37:13,484 - __main__ - INFO - ✅ Created task task_1_1758350233
+2025-09-20 09:37:13,484 - agent_leader - INFO - 🚀 Starting Agent Leader...
+2025-09-20 09:37:13,484 - hybrid_agent - INFO - 🚀 Starting Hybrid Trading Agent...
+2025-09-20 09:37:13,484 - hybrid_agent - INFO - ✅ Hybrid Trading Agent started successfully
+2025-09-20 09:37:14,574 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 09:37:14,575 - agent_leader - INFO - 🎯 Assigned task token_scan to hybrid_trading_agent
+2025-09-20 09:37:14,575 - hybrid_agent - INFO - 🔍 Performing token scan...
+2025-09-20 09:37:14,575 - hybrid_agent - ERROR - Task execution failed: Discovery engine not initialized
+2025-09-20 09:37:14,575 - agent_leader - ERROR - ❌ Task failed: token_scan - Discovery engine not initialized
+2025-09-20 09:37:15,474 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 09:38:13,485 - __main__ - INFO - 📋 Creating task for cycle 2
+2025-09-20 09:38:13,485 - agent_leader - INFO - 📋 Created task: token_scan (Priority: HIGH)
+2025-09-20 09:38:13,485 - __main__ - INFO - ✅ Created task task_2_1758350293
+2025-09-20 09:38:13,641 - agent_leader - INFO - 🎯 Assigned task token_scan to hybrid_trading_agent
+2025-09-20 09:38:13,641 - hybrid_agent - INFO - 🔍 Performing token scan...
+2025-09-20 09:38:13,642 - hybrid_agent - ERROR - Task execution failed: Discovery engine not initialized
+2025-09-20 09:38:13,642 - agent_leader - ERROR - ❌ Task failed: token_scan - Discovery engine not initialized
+2025-09-20 09:38:13,842 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 09:39:13,069 - __main__ - INFO - 🛑 Main loop cancelled
+2025-09-20 09:39:13,069 - agent_leader - INFO - 🛑 Agent Leader main loop cancelled
+2025-09-20 09:39:13,070 - agent_leader - INFO - 🛑 Stopping Agent Leader...
+2025-09-20 09:39:13,070 - hybrid_agent - INFO - 🛑 Stopping Hybrid Trading Agent...
+2025-09-20 09:39:13,070 - hybrid_agent - INFO - ✅ Hybrid Trading Agent stopped successfully
+2025-09-20 09:39:13,265 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 09:39:13,265 - agent_leader - INFO - ✅ Agent Leader stopped gracefully
+2025-09-20 09:39:13,266 - __main__ - INFO - 🛑 Stopping Integrated Agent Leader...
+2025-09-20 09:39:13,266 - hybrid_agent - INFO - 🛑 Stopping Hybrid Trading Agent...
+2025-09-20 09:39:13,266 - hybrid_agent - INFO - ✅ Hybrid Trading Agent stopped successfully
+2025-09-20 09:39:13,266 - __main__ - INFO - ✅ Integrated Agent Leader stopped
+2025-09-20 09:39:13,267 - __main__ - INFO - ⏰ Demo timeout reached
+2025-09-20 09:39:13,267 - __main__ - INFO - 🛑 Stopping Integrated Agent Leader...
+2025-09-20 09:39:13,267 - hybrid_agent - INFO - 🛑 Stopping Hybrid Trading Agent...
+2025-09-20 09:39:13,267 - hybrid_agent - INFO - ✅ Hybrid Trading Agent stopped successfully
+2025-09-20 09:39:13,267 - __main__ - INFO - ✅ Integrated Agent Leader stopped
+2025-09-20 09:42:03,277 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 09:43:47,142 - __main__ - INFO - 🎭 Starting Cloud Agent Leader demo...
+2025-09-20 09:43:47,142 - telegram_bot_integration - INFO - ✅ Telegram bot alustettu
+2025-09-20 09:43:47,142 - telegram_rate_limiter - INFO - 📱 Telegram Rate Limiter alustettu: 1s rate limit, 30s max backoff
+2025-09-20 09:43:47,142 - agent_leader - INFO - ✅ Telegram integration enabled
+2025-09-20 09:43:47,142 - __main__ - INFO - ☁️ Starting Cloud Agent Leader...
+2025-09-20 09:43:47,142 - __main__ - INFO - 📝 Registering agents...
+2025-09-20 09:43:47,142 - agent_leader - INFO - ✅ Registered agent: Hybrid Trading Agent (hybrid_trading_agent)
+2025-09-20 09:43:47,342 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 09:43:47,342 - __main__ - INFO - ✅ Hybrid Trading Agent registered
+2025-09-20 09:43:47,342 - __main__ - WARNING - ⚠️ GITHUB_TOKEN not set, skipping GitHub Agent
+2025-09-20 09:43:47,342 - __main__ - INFO - 📊 Total agents registered: 1
+2025-09-20 09:43:47,342 - __main__ - INFO - 🔄 Starting main task loop...
+2025-09-20 09:43:47,342 - __main__ - INFO - 📋 Creating tasks for cycle 1
+2025-09-20 09:43:47,342 - agent_leader - INFO - 📋 Created task: token_scan (Priority: HIGH)
+2025-09-20 09:43:47,342 - __main__ - INFO - 🔍 Starting GitHub monitoring loop...
+2025-09-20 09:43:47,342 - __main__ - INFO - 🔍 Checking GitHub Actions health...
+2025-09-20 09:43:47,342 - agent_leader - INFO - 🚀 Starting Agent Leader...
+2025-09-20 09:43:47,342 - hybrid_agent - INFO - 🚀 Starting Hybrid Trading Agent...
+2025-09-20 09:43:47,342 - hybrid_agent - INFO - ✅ Hybrid Trading Agent started successfully
+2025-09-20 09:43:48,343 - __main__ - INFO - ✅ GitHub Actions healthy
+2025-09-20 09:43:48,346 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 09:43:48,346 - agent_leader - INFO - 🎯 Assigned task token_scan to hybrid_trading_agent
+2025-09-20 09:43:48,347 - hybrid_agent - INFO - 🔍 Performing token scan...
+2025-09-20 09:43:48,347 - hybrid_agent - ERROR - Task execution failed: Discovery engine not initialized
+2025-09-20 09:43:48,347 - agent_leader - ERROR - ❌ Task failed: token_scan - Discovery engine not initialized
+2025-09-20 09:43:49,445 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 09:44:47,344 - __main__ - INFO - 📋 Creating tasks for cycle 2
+2025-09-20 09:44:47,345 - agent_leader - INFO - 📋 Created task: token_scan (Priority: HIGH)
+2025-09-20 09:44:47,413 - agent_leader - INFO - 🎯 Assigned task token_scan to hybrid_trading_agent
+2025-09-20 09:44:47,413 - hybrid_agent - INFO - 🔍 Performing token scan...
+2025-09-20 09:44:47,413 - hybrid_agent - ERROR - Task execution failed: Discovery engine not initialized
+2025-09-20 09:44:47,413 - agent_leader - ERROR - ❌ Task failed: token_scan - Discovery engine not initialized
+2025-09-20 09:44:47,611 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 09:45:47,347 - __main__ - INFO - 📋 Creating tasks for cycle 3
+2025-09-20 09:45:47,348 - agent_leader - INFO - 📋 Created task: token_scan (Priority: HIGH)
+2025-09-20 09:45:47,480 - agent_leader - INFO - 🎯 Assigned task token_scan to hybrid_trading_agent
+2025-09-20 09:45:47,481 - hybrid_agent - INFO - 🔍 Performing token scan...
+2025-09-20 09:45:47,481 - hybrid_agent - ERROR - Task execution failed: Discovery engine not initialized
+2025-09-20 09:45:47,481 - agent_leader - ERROR - ❌ Task failed: token_scan - Discovery engine not initialized
+2025-09-20 09:45:48,026 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty

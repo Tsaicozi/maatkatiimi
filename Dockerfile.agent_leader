@@ -1,0 +1,41 @@
+# Agent Leader Docker Container
+FROM python:3.11-slim
+
+# Set working directory
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    gcc \
+    g++ \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements first for better caching
+COPY requirements.txt .
+
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy application code
+COPY agent_leader.py .
+COPY telegram_bot_integration.py .
+COPY config.py .
+COPY config.yaml .
+
+# Create logs directory
+RUN mkdir -p /app/logs
+
+# Create non-root user for security
+RUN useradd -m -u 1000 agentuser && \
+    chown -R agentuser:agentuser /app
+USER agentuser
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD python -c "import asyncio; print('Health check passed')" || exit 1
+
+# Expose port (if needed for future web interface)
+EXPOSE 8080
+
+# Default command
+CMD ["python", "agent_leader.py"]

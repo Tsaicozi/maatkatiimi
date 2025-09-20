@@ -1,0 +1,43 @@
+# Agent Leader Environment Configuration
+# Kopioi tämä tiedosto .env.agent_leader nimellä ja täytä arvot
+
+# Timezone
+TZ=Europe/Helsinki
+
+# Python
+PYTHONUNBUFFERED=1
+
+# Telegram Configuration
+TELEGRAM_BOT_TOKEN=your_telegram_bot_token_here
+TELEGRAM_CHAT_ID=your_telegram_chat_id_here
+
+# Agent Leader Configuration
+AGENT_LEADER_LOG_LEVEL=INFO
+AGENT_LEADER_REPORT_INTERVAL=300
+AGENT_LEADER_HEALTH_CHECK_INTERVAL=30
+AGENT_LEADER_MAX_AGENTS=50
+AGENT_LEADER_MAX_QUEUE_SIZE=1000
+
+# Redis Configuration (optional)
+REDIS_URL=redis://redis:6379/0
+
+# Monitoring
+PROMETHEUS_ENABLED=true
+GRAFANA_ENABLED=true
+METRICS_PORT=8080
+
+# Security
+API_KEY=your_api_key_here
+ENABLE_AUTH=false
+
+# Cloud Configuration
+CLOUD_PROVIDER=docker
+REGION=eu-west-1
+INSTANCE_TYPE=t3.micro
+
+# Auto Scaling
+AUTO_SCALING_ENABLED=false
+MIN_INSTANCES=1
+MAX_INSTANCES=3
+SCALE_UP_THRESHOLD=80
+SCALE_DOWN_THRESHOLD=20
