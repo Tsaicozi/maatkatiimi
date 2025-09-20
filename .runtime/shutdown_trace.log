@@ -503,3 +503,8 @@
 [2025-09-20 10:01:41] start: scheduler armed
 [2025-09-20 10:01:41] step: cancel_own_tasks
 [2025-09-20 10:02:00] atexit: process exiting
+[2025-09-20 10:05:17] signal: sync handler fired 15
+[2025-09-20 10:05:17] shutdown: requested (SIGNAL 15(sync))
+[2025-09-20 10:05:17] shutdown: begin
+[2025-09-20 10:05:17] step: telegram_notice
+[2025-09-20 10:05:17] step: cancel_own_tasks

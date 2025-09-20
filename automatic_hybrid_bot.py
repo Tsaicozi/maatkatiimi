@@ -102,6 +102,38 @@ HELSINKI_TZ = ZoneInfo("Europe/Helsinki")
 setup_logging("automatic_hybrid_bot.log", json_logs=True, level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+# --- Single-instance PID lock helpers ---
+def _acquire_pid_lock(lock_path: str) -> Path:
+	p = Path(lock_path)
+	p.parent.mkdir(parents=True, exist_ok=True)
+	try:
+		fd = os.open(str(p), os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+		with os.fdopen(fd, "w", encoding="utf-8") as f:
+			f.write(str(os.getpid()))
+		return p
+	except FileExistsError:
+		try:
+			pid_txt = (p.read_text(encoding="utf-8").strip() or "0")
+			old_pid = int(pid_txt)
+		except Exception:
+			old_pid = 0
+		if old_pid and psutil.pid_exists(old_pid):
+			raise RuntimeError(f"Another instance running (pid={old_pid})")
+		# stale
+		with contextlib.suppress(Exception):
+			p.unlink()
+		fd = os.open(str(p), os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+		with os.fdopen(fd, "w", encoding="utf-8") as f:
+			f.write(str(os.getpid()))
+		return p
+
+def _release_pid_lock(p: Path | None) -> None:
+	if not p:
+		return
+	with contextlib.suppress(Exception):
+		if p.exists():
+			p.unlink()
+
 class AutomaticHybridBot:
     """Automaattinen Hybrid Trading Bot - Parannettu versio"""
     
@@ -821,37 +853,41 @@ async def main():
     """Pääfunktio"""
     restart_on_memory = (os.getenv("AUTO_RESTART_ON_MEMORY") or "").strip().lower() in {"1","true","yes","on"}
     backoff_sec = float(os.getenv("MEMORY_RESTART_BACKOFF_SEC", "5") or 5)
+    lock_path = os.getenv("SINGLE_INSTANCE_LOCK_PATH") or ".runtime/automatic_hybrid_bot.pid"
+    lock_file: Path | None = None
+    try:
+        lock_file = _acquire_pid_lock(lock_path)
+        while True:
+            cfg = load_config()
+            max_cycles = int(os.getenv("TEST_MAX_CYCLES", "0") or 0) or None
+            max_runtime = float(os.getenv("TEST_MAX_RUNTIME", "0") or 0.0) or None
+            logger.info(f"TEST_MAX_CYCLES={cfg.runtime.test_max_cycles} TEST_MAX_RUNTIME={cfg.runtime.test_max_runtime_sec}")
+            logger.info(f"Ympäristömuuttujat: max_cycles={max_cycles}, max_runtime={max_runtime}")
 
-    while True:
-        cfg = load_config()
-        max_cycles = int(os.getenv("TEST_MAX_CYCLES", "0") or 0) or None
-        max_runtime = float(os.getenv("TEST_MAX_RUNTIME", "0") or 0.0) or None
-        logger.info(f"TEST_MAX_CYCLES={cfg.runtime.test_max_cycles} TEST_MAX_RUNTIME={cfg.runtime.test_max_runtime_sec}")
-        logger.info(f"Ympäristömuuttujat: max_cycles={max_cycles}, max_runtime={max_runtime}")
+            bot = AutomaticHybridBot(max_cycles=max_cycles, max_runtime_sec=max_runtime)
+            if max_cycles or max_runtime:
+                logger.info(f"🧪 Testimoodi aktiivinen: max_cycles={max_cycles}, max_runtime={max_runtime}s")
 
-        bot = AutomaticHybridBot(max_cycles=max_cycles, max_runtime_sec=max_runtime)
-        if max_cycles or max_runtime:
-            logger.info(f"🧪 Testimoodi aktiivinen: max_cycles={max_cycles}, max_runtime={max_runtime}s")
-
-        try:
-            await bot.start()
-            break
-        except asyncio.CancelledError:
-            reason = getattr(bot, "_shutdown_reason", None)
-            if reason == "memory_guard" and restart_on_memory:
-                logger.info(f"🔁 Auto-restart after memory_guard in {backoff_sec:.1f}s")
-                await asyncio.sleep(backoff_sec)
-                continue
-            else:
-                logger.info(f"🛑 Cancelled: reason={reason}")
+            try:
+                await bot.start()
                 break
-        except KeyboardInterrupt:
-            logger.info("📡 KeyboardInterrupt pääfunktiossa")
-            break
-        except Exception as e:
-            logger.error(f"Kriittinen virhe: {e}")
-            break
-        # Ei sys.exit - anna prosessin kuolla luonnollisesti
+            except asyncio.CancelledError:
+                reason = getattr(bot, "_shutdown_reason", None)
+                if reason == "memory_guard" and restart_on_memory:
+                    logger.info(f"🔁 Auto-restart after memory_guard in {backoff_sec:.1f}s")
+                    await asyncio.sleep(backoff_sec)
+                    continue
+                else:
+                    logger.info(f"🛑 Cancelled: reason={reason}")
+                    break
+            except KeyboardInterrupt:
+                logger.info("📡 KeyboardInterrupt pääfunktiossa")
+                break
+            except Exception as e:
+                logger.error(f"Kriittinen virhe: {e}")
+                break
+        finally:
+            _release_pid_lock(lock_file)
 
 if __name__ == "__main__":
     try:
