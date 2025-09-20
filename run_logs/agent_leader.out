@@ -1,0 +1,5 @@
+nohup: ignoring input
+2025-09-20 08:28:30,611 - __main__ - INFO - Agent registered: echo-fast (max_concurrent=2)
+2025-09-20 08:28:30,611 - __main__ - INFO - Agent registered: echo-slow (max_concurrent=1)
+2025-09-20 08:28:30,611 - __main__ - INFO - AgentLeader started (2 agents)
+2025-09-20 08:28:31,614 - __main__ - INFO - AgentLeader stopped. Success=15 Fail=0 Queue=0
