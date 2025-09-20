@@ -1,0 +1,39 @@
+{
+  "timestamp": "2025-09-20T11:09:48+03:00",
+  "run_id": "run_20250920_075850_81dadf86",
+  "cycles": {
+    "total": 10,
+    "success": 10,
+    "fail": 0,
+    "last_cycle_id": 11,
+    "last_ts": "2025-09-20T11:08:50+03:00",
+    "last_tokens": 5,
+    "last_hot": 3,
+    "tokens_total": 50,
+    "hot_total": 30,
+    "last_duration_sec": 0.0,
+    "duration_avg_sec": 0.0,
+    "duration_p95_sec": 0.0,
+    "duration_samples": 10,
+    "drift_avg_sec": 50.0,
+    "drift_p95_sec": 50.0,
+    "drift_samples": 10
+  },
+  "logs": {
+    "errors": 0,
+    "warnings": 2,
+    "last_error_ts": null,
+    "top_error_messages": [],
+    "top_warning_messages": [
+      [
+        "🚨 NoNewPools hälytys: raydium ei löytänyt uusia pool:ja 10.0 min",
+        1
+      ],
+      [
+        "🚨 NoNewPools hälytys: pumpfun ei löytänyt uusia pool:ja 10.0 min",
+        1
+      ]
+    ]
+  },
+  "hot_candidates": []
+}

@@ -1533,3 +1533,57 @@
 {"evt": "cycle_end", "ts": "2025-09-20T10:58:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 1, "tokens": 5, "hot": 3, "result": "success"}
 {"evt": "cycle_start", "ts": "2025-09-20T10:59:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 2}
 {"evt": "cycle_end", "ts": "2025-09-20T10:59:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 2, "tokens": 5, "hot": 3, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:00:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 3}
+{"evt": "cycle_end", "ts": "2025-09-20T11:00:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 3, "tokens": 5, "hot": 3, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:01:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 4}
+{"evt": "cycle_end", "ts": "2025-09-20T11:01:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 4, "tokens": 5, "hot": 3, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:02:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 5}
+{"evt": "cycle_end", "ts": "2025-09-20T11:02:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 5, "tokens": 5, "hot": 3, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:03:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 6}
+{"evt": "cycle_end", "ts": "2025-09-20T11:03:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 6, "tokens": 5, "hot": 3, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:04:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 7}
+{"evt": "cycle_end", "ts": "2025-09-20T11:04:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 7, "tokens": 5, "hot": 3, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:05:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 8}
+{"evt": "cycle_end", "ts": "2025-09-20T11:05:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 8, "tokens": 5, "hot": 3, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:06:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 9}
+{"evt": "cycle_end", "ts": "2025-09-20T11:06:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 9, "tokens": 5, "hot": 3, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:07:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 10}
+{"evt": "cycle_end", "ts": "2025-09-20T11:07:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 10, "tokens": 5, "hot": 3, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:08:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 11}
+{"evt": "cycle_end", "ts": "2025-09-20T11:08:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 11, "tokens": 5, "hot": 3, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:09:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 12}
+{"evt": "cycle_end", "ts": "2025-09-20T11:09:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 12, "tokens": 5, "hot": 3, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:10:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 13}
+{"evt": "cycle_end", "ts": "2025-09-20T11:10:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 13, "tokens": 5, "hot": 3, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:11:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 14}
+{"evt": "cycle_end", "ts": "2025-09-20T11:11:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 14, "tokens": 5, "hot": 3, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:12:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 15}
+{"evt": "cycle_end", "ts": "2025-09-20T11:12:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 15, "tokens": 5, "hot": 3, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:13:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 16}
+{"evt": "cycle_end", "ts": "2025-09-20T11:13:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 16, "tokens": 5, "hot": 3, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:14:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 17}
+{"evt": "cycle_end", "ts": "2025-09-20T11:14:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 17, "tokens": 5, "hot": 3, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:15:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 18}
+{"evt": "cycle_end", "ts": "2025-09-20T11:15:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 18, "tokens": 5, "hot": 3, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:16:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 19}
+{"evt": "cycle_end", "ts": "2025-09-20T11:16:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 19, "tokens": 5, "hot": 3, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:17:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 20}
+{"evt": "cycle_end", "ts": "2025-09-20T11:17:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 20, "tokens": 5, "hot": 3, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:18:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 21}
+{"evt": "cycle_end", "ts": "2025-09-20T11:18:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 21, "tokens": 5, "hot": 3, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:19:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 22}
+{"evt": "cycle_end", "ts": "2025-09-20T11:19:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 22, "tokens": 5, "hot": 3, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:20:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 23}
+{"evt": "cycle_end", "ts": "2025-09-20T11:20:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 23, "tokens": 5, "hot": 3, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:21:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 24}
+{"evt": "cycle_end", "ts": "2025-09-20T11:21:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 24, "tokens": 5, "hot": 3, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:22:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 25}
+{"evt": "cycle_end", "ts": "2025-09-20T11:22:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 25, "tokens": 5, "hot": 3, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:23:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 26}
+{"evt": "cycle_end", "ts": "2025-09-20T11:23:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 26, "tokens": 5, "hot": 3, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:24:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 27}
+{"evt": "cycle_end", "ts": "2025-09-20T11:24:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 27, "tokens": 5, "hot": 3, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:25:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 28}
+{"evt": "cycle_end", "ts": "2025-09-20T11:25:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 28, "tokens": 5, "hot": 3, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:26:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 29}
+{"evt": "cycle_end", "ts": "2025-09-20T11:26:50+03:00", "run_id": "run_20250920_075850_81dadf86", "cycle_id": 29, "tokens": 5, "hot": 3, "result": "success"}
