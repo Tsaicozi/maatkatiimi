@@ -17,6 +17,7 @@ import atexit
 from pathlib import Path
 from logging.handlers import RotatingFileHandler
 import psutil
+import psutil
 
 
 class NullTelegramBot:
@@ -133,6 +134,7 @@ class AutomaticHybridBot:
         # JSON logging setup
         self.json_logger = logging.getLogger(__name__)
         self._run_started_at = time.time()
+        self._shutdown_reason: str | None = None
         
         # Testimoodi parametrit (ympäristömuuttujat ylikirjoittavat konfiguraation)
         self._max_cycles = max_cycles or config.runtime.test_max_cycles
@@ -152,6 +154,11 @@ class AutomaticHybridBot:
         self._last_cycle_ts = time.time()
         self._heartbeat_task = None
         self._heartbeat_interval = float(os.getenv("HEARTBEAT_INTERVAL_SEC", "10") or "10")
+        
+        # Memory watchdog
+        self._mem_guard_task = None
+        self._mem_check_sec = float(os.getenv("MEMORY_CHECK_SEC", "10") or 10)
+        self._mem_threshold_mb = float(os.getenv("MEMORY_MAX_MB", "900") or 900)
         
         # Memory watchdog
         self._mem_guard_task = None
@@ -225,6 +232,7 @@ class AutomaticHybridBot:
         if getattr(self, "_shutting_down", False):
             return
         self._shutting_down = True
+        self._shutdown_reason = reason
         self._trace(f"shutdown: requested ({reason})")
         self.running = False  # Pysäytä pääsilmukka
         try:
@@ -402,6 +410,27 @@ class AutomaticHybridBot:
             except Exception:
                 pass
             await asyncio.sleep(self._heartbeat_interval)
+    
+    async def _memory_guard(self):
+        """Watch RSS and request shutdown if above threshold."""
+        proc = psutil.Process()
+        while True:
+            try:
+                rss_mb = proc.memory_info().rss / (1024 * 1024)
+                if rss_mb > self._mem_threshold_mb:
+                    logger.warning(f"🧠 Memory guard: RSS={rss_mb:.1f}MB > {self._mem_threshold_mb:.1f}MB — requesting shutdown")
+                    with contextlib.suppress(Exception):
+                        await self.telegram_bot.send_message(
+                            f"🧠 Memory guard: RSS={rss_mb:.1f}MB > {self._mem_threshold_mb:.1f}MB — pysäytetään"
+                        )
+                    with contextlib.suppress(asyncio.CancelledError):
+                        await self.request_shutdown("memory_guard")
+                    break
+            except asyncio.CancelledError:
+                break
+            except Exception as e:
+                logger.debug(f"Memory guard error: {e}")
+            await asyncio.sleep(self._mem_check_sec)
     
     async def _memory_guard(self):
         """Watch RSS and request shutdown if above threshold."""
@@ -616,6 +645,7 @@ class AutomaticHybridBot:
         self._manual_trigger_task = asyncio.create_task(self._manual_trigger_watcher())
         self._heartbeat_task = asyncio.create_task(self._heartbeat())
         self._mem_guard_task = asyncio.create_task(self._memory_guard())
+        self._mem_guard_task = asyncio.create_task(self._memory_guard())
         
         # 3) LÄHTEET KÄYNNISTETÄÄN VASTA KUN SYKLI ALOITTAA
         
@@ -718,7 +748,7 @@ class AutomaticHybridBot:
 
         # 2) peruuttele omat taustataskit
         self._trace("step: cancel_own_tasks")
-        for tn in ("_manual_trigger_task","_heartbeat_task","_startup_watchdog_task"):
+        for tn in ("_manual_trigger_task","_heartbeat_task","_startup_watchdog_task","_mem_guard_task"):
             t = getattr(self, tn, None)
             if t:
                 t.cancel()
@@ -789,30 +819,38 @@ class AutomaticHybridBot:
 
 async def main():
     """Pääfunktio"""
-    # Lue konfiguraatio
-    cfg = load_config()
-    
-    # Lue ympäristömuuttujat testimoodia varten
-    max_cycles = int(os.getenv("TEST_MAX_CYCLES", "0") or 0) or None
-    max_runtime = float(os.getenv("TEST_MAX_RUNTIME", "0") or 0.0) or None
-    
-    # Loggaa konfiguraatio arvot
-    logger.info(f"TEST_MAX_CYCLES={cfg.runtime.test_max_cycles} TEST_MAX_RUNTIME={cfg.runtime.test_max_runtime_sec}")
-    logger.info(f"Ympäristömuuttujat: max_cycles={max_cycles}, max_runtime={max_runtime}")
-    
-    # Luo bot testimoodin parametreilla
-    bot = AutomaticHybridBot(max_cycles=max_cycles, max_runtime_sec=max_runtime)
-    
-    # Loggaa testimoodi jos aktiivinen
-    if max_cycles or max_runtime:
-        logger.info(f"🧪 Testimoodi aktiivinen: max_cycles={max_cycles}, max_runtime={max_runtime}s")
-    
-    try:
-        await bot.start()
-    except KeyboardInterrupt:
-        logger.info("📡 KeyboardInterrupt pääfunktiossa")
-    except Exception as e:
-        logger.error(f"Kriittinen virhe: {e}")
+    restart_on_memory = (os.getenv("AUTO_RESTART_ON_MEMORY") or "").strip().lower() in {"1","true","yes","on"}
+    backoff_sec = float(os.getenv("MEMORY_RESTART_BACKOFF_SEC", "5") or 5)
+
+    while True:
+        cfg = load_config()
+        max_cycles = int(os.getenv("TEST_MAX_CYCLES", "0") or 0) or None
+        max_runtime = float(os.getenv("TEST_MAX_RUNTIME", "0") or 0.0) or None
+        logger.info(f"TEST_MAX_CYCLES={cfg.runtime.test_max_cycles} TEST_MAX_RUNTIME={cfg.runtime.test_max_runtime_sec}")
+        logger.info(f"Ympäristömuuttujat: max_cycles={max_cycles}, max_runtime={max_runtime}")
+
+        bot = AutomaticHybridBot(max_cycles=max_cycles, max_runtime_sec=max_runtime)
+        if max_cycles or max_runtime:
+            logger.info(f"🧪 Testimoodi aktiivinen: max_cycles={max_cycles}, max_runtime={max_runtime}s")
+
+        try:
+            await bot.start()
+            break
+        except asyncio.CancelledError:
+            reason = getattr(bot, "_shutdown_reason", None)
+            if reason == "memory_guard" and restart_on_memory:
+                logger.info(f"🔁 Auto-restart after memory_guard in {backoff_sec:.1f}s")
+                await asyncio.sleep(backoff_sec)
+                continue
+            else:
+                logger.info(f"🛑 Cancelled: reason={reason}")
+                break
+        except KeyboardInterrupt:
+            logger.info("📡 KeyboardInterrupt pääfunktiossa")
+            break
+        except Exception as e:
+            logger.error(f"Kriittinen virhe: {e}")
+            break
         # Ei sys.exit - anna prosessin kuolla luonnollisesti
 
 if __name__ == "__main__":
