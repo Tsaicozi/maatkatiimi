@@ -14934,3 +14934,49 @@
 {"level": "INFO", "ts": "2025-09-20T10:01:46", "logger": "__main__", "msg": "Cycle completed"}
 {"level": "INFO", "ts": "2025-09-20T10:01:46", "logger": "__main__", "msg": "✅ Sykli #1 valmis"}
 {"level": "INFO", "ts": "2025-09-20T10:01:46", "logger": "__main__", "msg": "{\"evt\": \"cycle_end\", \"result\": \"success\", \"run_id\": \"run_20250920_100141_a44da2f0\", \"cycle_id\": 1, \"tokens\": 5, \"hot\": 3}"}
+{"level": "INFO", "ts": "2025-09-20T10:01:56", "logger": "__main__", "msg": "💓 heartbeat: idle=56.1s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "__main__", "msg": "✅ Align odotus valmis, aloitetaan pääsilmukka"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "__main__", "msg": "🔄 Aloitetaan analyysi sykli #2"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "__main__", "msg": "Cycle started"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "__main__", "msg": "{\"evt\": \"cycle_start\", \"run_id\": \"run_20250920_100141_a44da2f0\", \"cycle_id\": 2}"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "hybrid_trading_bot", "msg": "🔄 Aloitetaan hybrid analyysi sykli..."}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "hybrid_trading_bot", "msg": "🧪 Offline mode: API health-check skipattu"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "hybrid_trading_bot", "msg": "🧪 Offline mode: luotiin 5 synteettistä tokenia"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "hybrid_trading_bot", "msg": "🧪 Offline mode: generoitu 3 mock hot candidatea"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "hybrid_trading_bot", "msg": "🔍 Analysoidaan token MOCK2: Age=n/a, MC=$385,240, Tech=0.95, Risk=0.02, PriceChg=-13.9%, Vol=$83,831, Social=0.60"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "hybrid_trading_bot", "msg": "🔍 Analysoidaan token MOCK1: Age=n/a, MC=$186,078, Tech=0.90, Risk=0.02, PriceChg=-17.3%, Vol=$180,348, Social=0.89"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "hybrid_trading_bot", "msg": "🔍 Analysoidaan token MOCK4: Age=n/a, MC=$1,082,140, Tech=0.85, Risk=0.05, PriceChg=18.6%, Vol=$218,159, Social=0.82"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "hybrid_trading_bot", "msg": "🔍 Analysoidaan token MOCK3: Age=n/a, MC=$722,658, Tech=0.75, Risk=0.04, PriceChg=10.9%, Vol=$146,841, Social=0.27"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "hybrid_trading_bot", "msg": "🔍 Analysoidaan token MOCK5: Age=n/a, MC=$600,037, Tech=0.65, Risk=0.02, PriceChg=12.9%, Vol=$94,158, Social=0.89"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "hybrid_trading_bot", "msg": "🛑 Quick stop: MOCK1 PnL: -12.5%"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "hybrid_trading_bot", "msg": "🔴 Tappiollinen kauppa: MOCK1 $-0.84"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "hybrid_trading_bot", "msg": "✅ Suljettu SELL position MOCK1: PnL $-0.84 (-3.4%)"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "null_telegram_bot", "msg": "[offline] Telegram message skipped: 🔴 *SELL Position Suljettu:* 💰 MOCK1: $-0.84 (-3.4%) 📝 Syy: PnL: -12.5%, Age: 0min"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "hybrid_trading_bot", "msg": "✅ Suljettu SELL position MOCK1: PnL -3.13%"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "hybrid_trading_bot", "msg": "✅ Avattu position MOCK3: 21.81 @ $1.146182 (Age: 3min, FDV: $722,658)"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "null_telegram_bot", "msg": "[offline] Telegram message skipped: 🆕💊 Mock Token 3 - $MOCK3 ⏳ 0% @ Pump 🔥 #1 ⋅ 📺 💎 FDV: $722,658 ⇨ 2,268,430 [5m] 📊 Vol: $146,841 ⋅ Age: 3m 💩 5M: 378.0% ⋅ $99,015 🅑 170 Ⓢ 182  👥 TH: 4.9⋅3.7⋅5.7⋅4"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "hybrid_trading_bot", "msg": "✅ Avattu BUY position MOCK3: $100.00 @ $1.146182"}
+{"level": "WARNING", "ts": "2025-09-20T10:02:00", "logger": "hybrid_trading_bot", "msg": "Position jo olemassa tokenille MOCK4"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "hybrid_trading_bot", "msg": "✅ Avattu position MOCK5: 21.33 @ $1.172062 (Age: 42min, FDV: $600,037)"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "null_telegram_bot", "msg": "[offline] Telegram message skipped: 🆕💊 Mock Token 5 - $MOCK5 ⏳ 0% @ Pump 🔥 #1 ⋅ 📺 💎 FDV: $600,037 ⇨ 1,688,736 [7m] 📊 Vol: $94,158 ⋅ Age: 42m 💩 5M: -66.0% ⋅ $44,026 🅑 120 Ⓢ 166  👥 TH: 3.7⋅4.6⋅5.9⋅4"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "hybrid_trading_bot", "msg": "✅ Avattu BUY position MOCK5: $100.00 @ $1.172062"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "hybrid_trading_bot", "msg": "💾 Hybrid analyysi tulos tallennettu: hybrid_trading_analysis_20250920_100200.json"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "hybrid_trading_bot", "msg": "✅ Hybrid analyysi sykli valmis: 5 tokenia, 4 signaalia, 3 hot candidates"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "hybrid_trading_bot", "msg": "[PAPER] BUY mint=MockMint0003 amount_sol=0.01 score=0.78"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "null_telegram_bot", "msg": "[offline] Telegram message skipped: 📊 *Hybrid Bot Raportti:* 🔍 Tokeneita: 3 📡 Signaaleja: 4 💼 Kauppoja: 3 🔥 Hot Candidates: 3 💰 Portfolio: $10102.75 (+$102.75) 📈 Positioita: 4"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "hybrid_trading_bot", "msg": "Cooldown skip mint=MockMint... remaining=1787s"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "null_telegram_bot", "msg": "[offline] Telegram message skipped: 🌱 *Uudet kuumat tokenit*  1) *MOCK3* — 0.82    • age 3.0m • buyers 12 • buy-ratio 1.63    • liq $30020 • dist 0.88 • rug_risk 0.12    • mint: Mock…0003    • add"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "hybrid_trading_bot", "msg": "✅ Hot candidates Telegram viesti lähetetty: 2 tokenia (cooldown: 1 skipattu)"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "shadow_trading_logger", "msg": "📊 Shadow trade kirjattu: MOCK3 (score: 0.82)"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "shadow_trading_logger", "msg": "📊 Shadow trade kirjattu: MOCK4 (score: 0.79)"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "shadow_trading_logger", "msg": "📊 Shadow trade kirjattu: MOCK5 (score: 0.70)"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "hybrid_trading_bot", "msg": "✅ Burn-in: Hot candidates/h = 6.0 >= 2.0 (kriteeri täyttyy)"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "hybrid_trading_bot", "msg": "✅ Burn-in: P95 cycle = 0.02s <= 3.0s (kriteeri täyttyy)"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "hybrid_trading_bot", "msg": "🔍 Live-kauppa gate: hot_candidates=True, api_health=True, source_health=True, drawdown=True -> True"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "__main__", "msg": "Cycle completed"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "__main__", "msg": "✅ Sykli #2 valmis"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "__main__", "msg": "{\"evt\": \"cycle_end\", \"result\": \"success\", \"run_id\": \"run_20250920_100141_a44da2f0\", \"cycle_id\": 2, \"tokens\": 5, \"hot\": 3}"}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "__main__", "msg": "⏰ Odotetaan 60.0 sekuntia ennen seuraavaa sykliä..."}
+{"level": "INFO", "ts": "2025-09-20T10:02:00", "logger": "__main__", "msg": "👋 Automatic Hybrid Trading Bot lopetettu"}
+{"level": "INFO", "ts": "2025-09-20T10:02:21", "logger": "__main__", "msg": "💓 heartbeat: idle=21.5s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-20T10:02:31", "logger": "__main__", "msg": "💓 heartbeat: idle=31.5s (scheduler alive)"}
