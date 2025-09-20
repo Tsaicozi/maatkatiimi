@@ -16,6 +16,7 @@ import contextlib
 import atexit
 from pathlib import Path
 from logging.handlers import RotatingFileHandler
+import psutil
 
 
 class NullTelegramBot:
@@ -151,6 +152,11 @@ class AutomaticHybridBot:
         self._last_cycle_ts = time.time()
         self._heartbeat_task = None
         self._heartbeat_interval = float(os.getenv("HEARTBEAT_INTERVAL_SEC", "10") or "10")
+        
+        # Memory watchdog
+        self._mem_guard_task = None
+        self._mem_check_sec = float(os.getenv("MEMORY_CHECK_SEC", "10") or 10)
+        self._mem_threshold_mb = float(os.getenv("MEMORY_MAX_MB", "900") or 900)
         
         # Graceful shutdown state
         self._shutting_down = False
@@ -397,6 +403,27 @@ class AutomaticHybridBot:
                 pass
             await asyncio.sleep(self._heartbeat_interval)
     
+    async def _memory_guard(self):
+        """Watch RSS and request shutdown if above threshold."""
+        proc = psutil.Process()
+        while True:
+            try:
+                rss_mb = proc.memory_info().rss / (1024 * 1024)
+                if rss_mb > self._mem_threshold_mb:
+                    logger.warning(f"🧠 Memory guard: RSS={rss_mb:.1f}MB > {self._mem_threshold_mb:.1f}MB — requesting shutdown")
+                    with contextlib.suppress(Exception):
+                        await self.telegram_bot.send_message(
+                            f"🧠 Memory guard: RSS={rss_mb:.1f}MB > {self._mem_threshold_mb:.1f}MB — pysäytetään"
+                        )
+                    with contextlib.suppress(asyncio.CancelledError):
+                        await self.request_shutdown("memory_guard")
+                    break
+            except asyncio.CancelledError:
+                break
+            except Exception as e:
+                logger.debug(f"Memory guard error: {e}")
+            await asyncio.sleep(self._mem_check_sec)
+    
     async def run_trading_cycle(self):
         """Suorita yksi trading-sykli"""
         cycle_start = time.time()
@@ -588,6 +615,7 @@ class AutomaticHybridBot:
         self._startup_watchdog_task = asyncio.create_task(self._startup_watchdog())
         self._manual_trigger_task = asyncio.create_task(self._manual_trigger_watcher())
         self._heartbeat_task = asyncio.create_task(self._heartbeat())
+        self._mem_guard_task = asyncio.create_task(self._memory_guard())
         
         # 3) LÄHTEET KÄYNNISTETÄÄN VASTA KUN SYKLI ALOITTAA
         
@@ -696,6 +724,12 @@ class AutomaticHybridBot:
                 t.cancel()
                 with contextlib.suppress(Exception):
                     await asyncio.wait_for(t, timeout=2.0)
+        # memory guard
+        t = getattr(self, "_mem_guard_task", None)
+        if t:
+            t.cancel()
+            with contextlib.suppress(Exception):
+                await asyncio.wait_for(t, timeout=2.0)
 
         # 3) pysäytä DiscoveryEngine (stop + wait_closed)
         self._trace("step: de_stop")
