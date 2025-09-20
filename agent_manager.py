@@ -166,7 +166,11 @@ class AgentManager:
                     break
                 # write to manager logger at DEBUG to avoid noise
                 try:
-                    logger.debug("%s: %s", name, line.decode("utf-8", "replace").rstrip())
+                    text = line.decode("utf-8", "replace").rstrip()
+                    if name.endswith("stderr"):
+                        logger.warning("%s: %s", name, text)
+                    else:
+                        logger.info("%s: %s", name, text)
                 except Exception:
                     logger.debug("%s: <binary line>", name)
         except Exception:
@@ -178,18 +182,18 @@ class AgentManager:
             if self.follow_only:
                 await asyncio.sleep(1.0)
                 continue
-            if self.proc is None or self.proc.returncode is not None:
+            if self.proc is None or (self.proc.returncode is not None):
                 # not running → spawn
                 if self.max_restarts and self._restarts >= self.max_restarts:
                     logger.error("Max restarts reached; not spawning further")
                     return
                 await self._spawn_bot()
                 self._restarts += 1
-            # Wait until it exits
-            if self.proc is not None:
-                rc = await self.proc.wait()
+            # Poll rather than fully await to avoid blocking restarts scheduling
+            await asyncio.sleep(1.0)
+            if self.proc is not None and self.proc.returncode is not None:
+                rc = self.proc.returncode
                 logger.warning("Bot exited", extra={"returncode": rc})
-                # backoff before next spawn
                 delay = self._backoff.next_delay()
                 await asyncio.sleep(delay)
 
@@ -263,8 +267,13 @@ class AgentManager:
         # Ensure runtime dir
         RUNTIME_DIR.mkdir(parents=True, exist_ok=True)
         # Kick off tasks
+        # Launch monitor and analysis
         self._tasks.append(asyncio.create_task(self._monitor_process()))
-        self._tasks.append(asyncio.create_task(self._heartbeat_watcher()))
+        # Delay heartbeat watcher to allow initial cycle to appear
+        async def delayed_heartbeat():
+            await asyncio.sleep(10)
+            await self._heartbeat_watcher()
+        self._tasks.append(asyncio.create_task(delayed_heartbeat()))
         self._tasks.append(asyncio.create_task(self._start_analysis()))
 
     async def stop(self) -> None:

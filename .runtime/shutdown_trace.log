@@ -470,3 +470,15 @@
 [2025-09-19 22:45:51] init: constructed
 [2025-09-19 22:45:51] signal: loop handlers installed
 [2025-09-19 22:45:51] start: scheduler armed
+[2025-09-20 07:42:20] init: constructed
+[2025-09-20 07:42:20] signal: loop handlers installed
+[2025-09-20 07:42:20] start: scheduler armed
+[2025-09-20 07:57:20] signal: sync handler fired 2
+[2025-09-20 07:57:20] shutdown: requested (SIGNAL 2(sync))
+[2025-09-20 07:57:20] shutdown: begin
+[2025-09-20 07:57:20] step: telegram_notice
+[2025-09-20 07:57:20] step: cancel_own_tasks
+[2025-09-20 07:57:20] atexit: process exiting
+[2025-09-20 07:58:50] init: constructed
+[2025-09-20 07:58:50] signal: loop handlers installed
+[2025-09-20 07:58:50] start: scheduler armed

@@ -1,5 +1,3 @@
-{"level": "INFO", "ts": "2025-09-20T05:04:58", "logger": "analysis_agent", "msg": "Agent starting"}
-{"level": "INFO", "ts": "2025-09-20T05:04:58", "logger": "analysis_agent", "msg": "Analysis snapshot written"}
 {"level": "INFO", "ts": "2025-09-20T07:59:48", "logger": "analysis_agent", "msg": "Agent starting"}
 {"level": "INFO", "ts": "2025-09-20T07:59:48", "logger": "analysis_agent", "msg": "Tailer start"}
 {"level": "INFO", "ts": "2025-09-20T07:59:48", "logger": "analysis_agent", "msg": "Tailer start"}

@@ -1,0 +1,30 @@
+{
+  "timestamp": "2025-09-20T10:40:29+03:00",
+  "run_id": null,
+  "cycles": {
+    "total": 0,
+    "success": 0,
+    "fail": 0,
+    "last_cycle_id": 0,
+    "last_ts": null,
+    "last_tokens": 0,
+    "last_hot": 0,
+    "tokens_total": 0,
+    "hot_total": 0,
+    "last_duration_sec": null,
+    "duration_avg_sec": 0.0,
+    "duration_p95_sec": 0.0,
+    "duration_samples": 0,
+    "drift_avg_sec": 0.0,
+    "drift_p95_sec": 0.0,
+    "drift_samples": 0
+  },
+  "logs": {
+    "errors": 0,
+    "warnings": 0,
+    "last_error_ts": null,
+    "top_error_messages": [],
+    "top_warning_messages": []
+  },
+  "hot_candidates": []
+}

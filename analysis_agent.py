@@ -124,7 +124,7 @@ class RotationAwareTailer:
         self._stop = True
 
     async def run(self) -> None:
-        logger.info("Tailer start", extra={"file": str(self.path), "name": self.name})
+        logger.info("Tailer start", extra={"file": str(self.path), "tailer": self.name})
         while not self._stop:
             try:
                 if self._fh is None:
