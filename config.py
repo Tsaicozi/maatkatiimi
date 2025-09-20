@@ -194,6 +194,10 @@ def load_config(path: str = "config.yaml") -> AppCfg:
     cfg.discovery.min_score_cap_delta = _env_float("DISCOVERY_MIN_SCORE_CAP_DELTA", cfg.discovery.min_score_cap_delta)
     cfg.discovery.max_top10_share = _env_float("DISCOVERY_MAX_TOP10_SHARE", cfg.discovery.max_top10_share)
     cfg.discovery.max_top10_share_fresh = _env_float("DISCOVERY_MAX_TOP10_SHARE_FRESH", cfg.discovery.max_top10_share_fresh)
+    try:
+        cfg.discovery.max_queue = _env_int("DISCOVERY_MAX_QUEUE", cfg.discovery.max_queue)
+    except Exception:
+        pass
     cfg.discovery.candidate_ttl_sec = _env_int("DISCOVERY_CANDIDATE_TTL_SEC", cfg.discovery.candidate_ttl_sec) if os.getenv("DISCOVERY_CANDIDATE_TTL_SEC") else cfg.discovery.candidate_ttl_sec
     cfg.runtime.test_max_cycles = _env_int("TEST_MAX_CYCLES", cfg.runtime.test_max_cycles) if os.getenv("TEST_MAX_CYCLES") else cfg.runtime.test_max_cycles
     cfg.runtime.test_max_runtime_sec = _env_float("TEST_MAX_RUNTIME", cfg.runtime.test_max_runtime_sec) if os.getenv("TEST_MAX_RUNTIME") else cfg.runtime.test_max_runtime_sec
