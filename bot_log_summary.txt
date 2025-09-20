@@ -28,3 +28,56 @@ Koko:      363 riviä
 Tiedosto: automatic_hybrid_bot.log
 Koko:      363 riviä
 
+{"level": "INFO", "ts": "2025-09-19T23:14:32", "logger": "hybrid_trading_bot", "msg": "Trade gates not met mint=5KzpfYaeHp1TZowjLx6uWpCZx6JzNrd4NrH3Kr4Ppump score=0.00 min=0.35"}
+{"level": "INFO", "ts": "2025-09-19T23:14:33", "logger": "telegram_bot_integration", "msg": "✅ Telegram viesti lähetetty"}
+{"level": "INFO", "ts": "2025-09-19T23:14:33", "logger": "hybrid_trading_bot", "msg": "✅ Burn-in: Hot candidates/h = 120.0 >= 2.0 (kriteeri täyttyy)"}
+{"level": "INFO", "ts": "2025-09-19T23:14:33", "logger": "__main__", "msg": "Cycle completed"}
+{"level": "INFO", "ts": "2025-09-19T23:14:54", "logger": "__main__", "msg": "💓 heartbeat: idle=21.3s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-19T23:15:04", "logger": "__main__", "msg": "💓 heartbeat: idle=31.3s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-19T23:15:14", "logger": "__main__", "msg": "💓 heartbeat: idle=41.3s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-19T23:15:24", "logger": "__main__", "msg": "💓 heartbeat: idle=51.3s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-19T23:15:33", "logger": "__main__", "msg": "Cycle started"}
+{"level": "INFO", "ts": "2025-09-19T23:15:34", "logger": "__main__", "msg": "💓 heartbeat: idle=61.3s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-19T23:15:44", "logger": "__main__", "msg": "💓 heartbeat: idle=71.3s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-19T23:15:45", "logger": "hybrid_trading_bot", "msg": "Trade gates not met mint=5KzpfYaeHp1TZowjLx6uWpCZx6JzNrd4NrH3Kr4Ppump score=0.00 min=0.35"}
+{"level": "INFO", "ts": "2025-09-19T23:15:45", "logger": "telegram_bot_integration", "msg": "✅ Telegram viesti lähetetty"}
+{"level": "INFO", "ts": "2025-09-19T23:15:45", "logger": "hybrid_trading_bot", "msg": "✅ Burn-in: Hot candidates/h = 125.0 >= 2.0 (kriteeri täyttyy)"}
+{"level": "INFO", "ts": "2025-09-19T23:15:45", "logger": "__main__", "msg": "Cycle completed"}
+{"level": "INFO", "ts": "2025-09-19T23:16:14", "logger": "__main__", "msg": "💓 heartbeat: idle=28.8s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-19T23:16:18", "logger": "discovery_engine", "msg": "✅ LP-lock ajoissa: DONTBUY lukittu 0.0min listauksesta"}
+{"level": "INFO", "ts": "2025-09-19T23:16:18", "logger": "discovery_engine", "msg": "✅ Token käsitelty: DONTBUY (Score: 0.860, Sources: ['pumpportal_ws'])"}
+{"level": "INFO", "ts": "2025-09-19T23:16:24", "logger": "__main__", "msg": "💓 heartbeat: idle=38.8s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-19T23:16:34", "logger": "__main__", "msg": "💓 heartbeat: idle=48.8s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-19T23:16:44", "logger": "__main__", "msg": "💓 heartbeat: idle=58.8s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-19T23:16:45", "logger": "__main__", "msg": "Cycle started"}
+{"level": "INFO", "ts": "2025-09-19T23:16:54", "logger": "__main__", "msg": "💓 heartbeat: idle=68.8s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-19T23:16:59", "logger": "hybrid_trading_bot", "msg": "Trade gates not met mint=5KzpfYaeHp1TZowjLx6uWpCZx6JzNrd4NrH3Kr4Ppump score=0.00 min=0.35"}
+{"level": "INFO", "ts": "2025-09-19T23:16:59", "logger": "telegram_bot_integration", "msg": "✅ Telegram viesti lähetetty"}
+{"level": "INFO", "ts": "2025-09-19T23:16:59", "logger": "hybrid_trading_bot", "msg": "✅ Burn-in: Hot candidates/h = 130.0 >= 2.0 (kriteeri täyttyy)"}
+{"level": "INFO", "ts": "2025-09-19T23:16:59", "logger": "__main__", "msg": "Cycle completed"}
+{"level": "INFO", "ts": "2025-09-19T23:17:24", "logger": "__main__", "msg": "💓 heartbeat: idle=24.8s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-19T23:17:34", "logger": "__main__", "msg": "💓 heartbeat: idle=34.8s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-19T23:17:44", "logger": "__main__", "msg": "💓 heartbeat: idle=44.8s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-19T23:17:54", "logger": "__main__", "msg": "💓 heartbeat: idle=54.8s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-19T23:17:59", "logger": "__main__", "msg": "Cycle started"}
+{"level": "INFO", "ts": "2025-09-19T23:18:04", "logger": "__main__", "msg": "💓 heartbeat: idle=64.8s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-19T23:18:14", "logger": "__main__", "msg": "💓 heartbeat: idle=74.8s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-19T23:18:15", "logger": "hybrid_trading_bot", "msg": "Trade gates not met mint=5KzpfYaeHp1TZowjLx6uWpCZx6JzNrd4NrH3Kr4Ppump score=0.00 min=0.35"}
+{"level": "INFO", "ts": "2025-09-19T23:18:15", "logger": "telegram_bot_integration", "msg": "✅ Telegram viesti lähetetty"}
+{"level": "INFO", "ts": "2025-09-19T23:18:15", "logger": "hybrid_trading_bot", "msg": "✅ Burn-in: Hot candidates/h = 135.0 >= 2.0 (kriteeri täyttyy)"}
+{"level": "INFO", "ts": "2025-09-19T23:18:15", "logger": "__main__", "msg": "Cycle completed"}
+{"level": "INFO", "ts": "2025-09-19T23:18:44", "logger": "__main__", "msg": "💓 heartbeat: idle=28.7s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-19T23:18:54", "logger": "__main__", "msg": "💓 heartbeat: idle=38.7s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-19T23:19:04", "logger": "__main__", "msg": "💓 heartbeat: idle=48.7s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-19T23:19:14", "logger": "__main__", "msg": "💓 heartbeat: idle=58.7s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-19T23:19:15", "logger": "__main__", "msg": "Cycle started"}
+{"level": "INFO", "ts": "2025-09-19T23:19:24", "logger": "__main__", "msg": "💓 heartbeat: idle=68.7s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-19T23:19:29", "logger": "hybrid_trading_bot", "msg": "Trade gates not met mint=84BTdBN3veRZTYbEY5map1xRuzgeNT4MA2z7Uwjspffb score=0.00 min=0.35"}
+{"level": "INFO", "ts": "2025-09-19T23:19:29", "logger": "telegram_bot_integration", "msg": "✅ Telegram viesti lähetetty"}
+{"level": "INFO", "ts": "2025-09-19T23:19:29", "logger": "hybrid_trading_bot", "msg": "✅ Burn-in: Hot candidates/h = 140.0 >= 2.0 (kriteeri täyttyy)"}
+{"level": "INFO", "ts": "2025-09-19T23:19:29", "logger": "__main__", "msg": "Cycle completed"}
+{"level": "INFO", "ts": "2025-09-19T23:19:54", "logger": "__main__", "msg": "💓 heartbeat: idle=24.6s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-19T23:20:04", "logger": "__main__", "msg": "💓 heartbeat: idle=34.6s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-19T23:20:14", "logger": "__main__", "msg": "💓 heartbeat: idle=44.6s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-19T23:20:24", "logger": "__main__", "msg": "💓 heartbeat: idle=54.6s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-19T23:20:29", "logger": "__main__", "msg": "Cycle started"}
