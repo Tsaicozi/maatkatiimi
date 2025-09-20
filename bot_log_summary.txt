@@ -81,3 +81,13 @@ Koko:      363 riviä
 {"level": "INFO", "ts": "2025-09-19T23:20:14", "logger": "__main__", "msg": "💓 heartbeat: idle=44.6s (scheduler alive)"}
 {"level": "INFO", "ts": "2025-09-19T23:20:24", "logger": "__main__", "msg": "💓 heartbeat: idle=54.6s (scheduler alive)"}
 {"level": "INFO", "ts": "2025-09-19T23:20:29", "logger": "__main__", "msg": "Cycle started"}
+{"level": "INFO", "ts": "2025-09-20T08:28:12", "logger": "__main__", "msg": "Cycle started"}
+{"level": "INFO", "ts": "2025-09-20T08:28:12", "logger": "hybrid_trading_bot", "msg": "Trade gates not met mint=MockMint0001 score=0.00 min=0.35"}
+{"level": "INFO", "ts": "2025-09-20T08:28:12", "logger": "null_telegram_bot", "msg": "[offline] Telegram message skipped: 📊 *Hybrid Bot Raportti:* 🔍 Tokeneita: 3 📡 Signaaleja: 0 💼 Kauppoja: 0 🔥 Hot Candidates: 3 💰 Portfolio: $10000.00 (+$0.00) 📈 Positioita: 0"}
+{"level": "INFO", "ts": "2025-09-20T08:28:12", "logger": "null_telegram_bot", "msg": "[offline] Telegram message skipped: 🌱 *Uudet kuumat tokenit*  1) *MOCK1* — 0.84    • age 45.0m • buyers 11 • buy-ratio 1.55    • liq $44846 • dist 0.90 • rug_risk 0.10    • mint: Mock…0001    • ad"}
+{"level": "INFO", "ts": "2025-09-20T08:28:12", "logger": "hybrid_trading_bot", "msg": "✅ Hot candidates Telegram viesti lähetetty: 3 tokenia (cooldown: 0 skipattu)"}
+{"level": "INFO", "ts": "2025-09-20T08:28:12", "logger": "hybrid_trading_bot", "msg": "✅ Burn-in: Hot candidates/h = 3.0 >= 2.0 (kriteeri täyttyy)"}
+{"level": "INFO", "ts": "2025-09-20T08:28:12", "logger": "__main__", "msg": "Cycle completed"}
+{"level": "INFO", "ts": "2025-09-20T08:28:42", "logger": "__main__", "msg": "💓 heartbeat: idle=30.0s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-20T08:28:52", "logger": "__main__", "msg": "💓 heartbeat: idle=40.0s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-20T08:29:00", "logger": "null_telegram_bot", "msg": "[offline] Telegram message skipped: 🛑 Bot sammutetaan siististi (signal)…"}
