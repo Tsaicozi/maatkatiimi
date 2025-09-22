@@ -109,3 +109,33 @@
 {"level": "INFO", "ts": "2025-09-20T09:46:56", "logger": "hybrid_trading_bot", "msg": "✅ CoinGecko: Löydettiin 20 tokenia"}
 {"level": "INFO", "ts": "2025-09-20T09:46:57", "logger": "hybrid_trading_bot", "msg": "✅ Jupiter: Löydettiin 20 tokenia"}
 {"level": "INFO", "ts": "2025-09-20T09:47:02", "logger": "__main__", "msg": "💓 heartbeat: idle=66.5s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-22T17:44:47", "logger": "telegram_bot_integration", "msg": "✅ Telegram bot alustettu"}
+{"level": "INFO", "ts": "2025-09-22T17:44:47", "logger": "telegram_rate_limiter", "msg": "📱 Telegram Rate Limiter alustettu: 1s rate limit, 30s max backoff"}
+{"level": "INFO", "ts": "2025-09-22T17:44:47", "logger": "hybrid_trading_bot", "msg": "🔄 Aloitetaan hybrid analyysi sykli..."}
+{"level": "INFO", "ts": "2025-09-22T17:44:47", "logger": "hybrid_trading_bot", "msg": "✅ PumpPortal HTTP source lisätty: https://pumpportal.fun"}
+{"level": "INFO", "ts": "2025-09-22T17:44:47", "logger": "hybrid_trading_bot", "msg": "✅ PumpPortal WS new-token source lisätty"}
+{"level": "INFO", "ts": "2025-09-22T17:44:47", "logger": "hybrid_trading_bot", "msg": "✅ Helius logs source lisätty: wss://mainnet.helius-rpc.com/?api-key=e0da0308-2f9... (programs: 1)"}
+{"level": "INFO", "ts": "2025-09-22T17:44:47", "logger": "rpc_interfaces", "msg": "SolanaRPC alustettu endpoint: https://mainnet.helius-rpc.com/?api-key=e0da0308-2f9b-43aa-bb8f-84d7deab8b2d"}
+{"level": "INFO", "ts": "2025-09-22T17:44:47", "logger": "discovery_engine", "msg": "DiscoveryEngine alustettu: 3 lähdettä, min_liq=$500"}
+{"level": "INFO", "ts": "2025-09-22T17:44:47", "logger": "hybrid_trading_bot", "msg": "✅ DiscoveryEngine käynnissä: 3 lähdettä"}
+{"level": "INFO", "ts": "2025-09-22T17:44:47", "logger": "sources.pumpportal_newtokens", "msg": "🎯 PumpPortalNewTokensSource run() käynnistetty"}
+{"level": "INFO", "ts": "2025-09-22T17:44:47", "logger": "sources.pumpportal_ws_newtokens", "msg": "🎯 PumpPortalWSNewTokensSource run() käynnistetty"}
+{"level": "INFO", "ts": "2025-09-22T17:44:47", "logger": "sources.helius_logs_newtokens", "msg": "🦅 HeliusLogsNewTokensSource run() käynnistetty"}
+{"level": "INFO", "ts": "2025-09-22T17:44:47", "logger": "discovery_engine", "msg": "🎯 Scorer loop käynnistetty"}
+{"level": "INFO", "ts": "2025-09-22T17:44:47", "logger": "sources.helius_logs_newtokens", "msg": "✅ Helius WS: Tilaus program logs lähetetty: Tokenkeg..."}
+{"level": "WARNING", "ts": "2025-09-22T17:44:47", "logger": "sources.pumpportal_newtokens", "msg": "⚠️ PumpPortal HTTP fetch epäonnistui: status=404 (attempt=1, url=https://pumpportal.fun/recent?limit=200). Backoff=2.0s"}
+{"level": "INFO", "ts": "2025-09-22T17:44:47", "logger": "sources.pumpportal_ws_newtokens", "msg": "✅ PumpPortal WS: Tilaus 'subscribeNewToken' lähetetty"}
+{"level": "INFO", "ts": "2025-09-22T17:44:47", "logger": "hybrid_trading_bot", "msg": "🔑 API health: cmc=❌(401), birdeye=❌(401), pumpportal=❌(599)"}
+{"level": "INFO", "ts": "2025-09-22T17:44:47", "logger": "hybrid_trading_bot", "msg": "✅ PumpPortal analyzer alustettu"}
+{"level": "INFO", "ts": "2025-09-22T17:44:47", "logger": "hybrid_trading_bot", "msg": "🔍 Skannataan oikeita Solana tokeneita oikeista markkinoista..."}
+{"level": "INFO", "ts": "2025-09-22T17:44:47", "logger": "hybrid_trading_bot", "msg": "✅ CoinGecko: Löydettiin 20 tokenia"}
+{"level": "INFO", "ts": "2025-09-22T17:44:48", "logger": "hybrid_trading_bot", "msg": "✅ Jupiter: Löydettiin 20 tokenia"}
+{"level": "INFO", "ts": "2025-09-22T17:44:54", "logger": "hybrid_trading_bot", "msg": "✅ Raydium: Löydettiin 0 tokenia"}
+{"level": "INFO", "ts": "2025-09-22T17:44:54", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=8vwbU9r7KJCGEMJsT2Hevo69mMyKabMQgfUupEJDpump first_ts=1758563094.8205526 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-22T17:44:54", "logger": "discovery_engine", "msg": "FRESH-PASS mint=8vwbU9r7 buyers=0 trades=0 age=0.0s"}
+{"level": "INFO", "ts": "2025-09-22T17:44:54", "logger": "hybrid_trading_bot", "msg": "🛑 Pysäytetään HybridTradingBot..."}
+{"level": "INFO", "ts": "2025-09-22T17:44:54", "logger": "discovery_engine", "msg": "✅ LP-lock ajoissa: VST lukittu 0.0min listauksesta"}
+{"level": "INFO", "ts": "2025-09-22T17:44:54", "logger": "discovery_engine", "msg": "✅ Token käsitelty: VST (Score: 0.860, Sources: ['pumpportal_ws'])"}
+{"level": "INFO", "ts": "2025-09-22T17:44:54", "logger": "discovery_engine", "msg": "🎯 Scorer loop päättynyt"}
+{"level": "INFO", "ts": "2025-09-22T17:45:04", "logger": "hybrid_trading_bot", "msg": "✅ DiscoveryEngine pysäytetty siististi"}
+{"level": "INFO", "ts": "2025-09-22T17:45:04", "logger": "hybrid_trading_bot", "msg": "✅ HybridTradingBot pysäytetty"}
