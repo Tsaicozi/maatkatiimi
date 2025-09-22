@@ -98,11 +98,12 @@ class BirdeyeWSNewListingsSource:
                                 symbol = data.get("symbol") or data.get("ticker")
                                 name = data.get("name") or data.get("tokenName")
 
+                                from zoneinfo import ZoneInfo
                                 cand = TokenCandidate(
                                     mint=mint,
                                     symbol=symbol,
                                     name=name,
-                                    first_seen=datetime.fromtimestamp(first_ts, tz=ZoneInfo("Europe/Helsinki")) if first_ts else datetime.now(tz=ZoneInfo("Europe/Helsinki")),
+                                    first_seen=datetime.datetime.fromtimestamp(first_ts, tz=ZoneInfo("Europe/Helsinki")) if first_ts else datetime.datetime.now(tz=ZoneInfo("Europe/Helsinki")),
                                     extra={
                                         "first_trade_ts": first_ts,
                                         "source": "birdeye_ws",

@@ -17,9 +17,9 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 import aiohttp
 import yaml
+import hashlib
+import base64
 from cryptography.fernet import Fernet
-from cryptography.hazmat.primitives import hashes
-from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2
 
 # Lokitus
 logging.basicConfig(
@@ -97,16 +97,11 @@ class BirdeyeKeyManager:
         
     def _init_cipher(self) -> Fernet:
         """Alustaa salausavaimen"""
-        # Generoi avain salasanasta
-        kdf = PBKDF2(
-            algorithm=hashes.SHA256(),
-            length=32,
-            salt=b'birdeye_salt_v1',  # Tuotannossa käytä satunnaista salt
-            iterations=100000,
-        )
-        key = kdf.derive(self.password.encode())
-        import base64
-        return Fernet(base64.urlsafe_b64encode(key))
+        # Yksinkertainen tapa: käytä SHA256-hashia salasanasta
+        # Tuotannossa käytä parempaa key derivation -funktiota
+        key_hash = hashlib.sha256(self.password.encode()).digest()
+        key = base64.urlsafe_b64encode(key_hash)
+        return Fernet(key)
     
     def _encrypt(self, data: str) -> str:
         """Salaa merkkijonon"""
