@@ -5,7 +5,8 @@ import asyncio
 import os
 import logging
 
-from helius_token_scanner_bot import HeliusTokenScannerBot, DexInfoFetcher, DexInfo
+from helius_token_scanner_bot import HeliusTokenScannerBot, DexInfoFetcher
+from dex_fetchers import fetch_from_dexscreener, fetch_from_jupiter, fetch_from_solscan
 from solana_rpc_helpers import rpc_get_tx
 
 
@@ -19,17 +20,12 @@ async def main():
         "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",  # SPL Token program
     ]
 
-    # Placeholder DEX fetchers — korvaa oikeilla toteutuksilla
-    async def _dexscreener(mint: str) -> DexInfo:
-        return DexInfo(status="not_found", reason="stub")
-
-    async def _jupiter(mint: str) -> DexInfo:
-        return DexInfo(status="not_found", reason="stub")
-
-    async def _solscan(mint: str) -> DexInfo:
-        return DexInfo(status="not_found", reason="stub")
-
-    fetcher = DexInfoFetcher(dexscreener=_dexscreener, jupiter=_jupiter, solscan=_solscan)
+    # Oikeat DEX hakijat
+    fetcher = DexInfoFetcher(
+        dexscreener=fetch_from_dexscreener,
+        jupiter=fetch_from_jupiter,
+        solscan=fetch_from_solscan,
+    )
 
     bot = HeliusTokenScannerBot(
         ws_url=ws_url,
