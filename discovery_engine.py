@@ -54,6 +54,8 @@ class TokenCandidate:
     mint: str
     symbol: str = ""
     name: str = ""
+    # Yhteensopivuus: jotkin testit/adapterit edelleen välittävät pool_addressin
+    pool_address: str | None = None
     decimals: int = 9
     
     # Likviditeetti ja jakelu
@@ -80,6 +82,7 @@ class TokenCandidate:
     novelty_score: float = 0.0
     liquidity_score: float = 0.0
     distribution_score: float = 0.0
+    activity_score: float = 0.0
     rug_risk_score: float = 0.0
     overall_score: float = 0.0
     last_score: float = 0.0
@@ -561,9 +564,14 @@ class DiscoveryEngine:
         if not timestamp and hasattr(candidate, 'extra') and candidate.extra:
             timestamp = candidate.extra.get("first_trade_ts")
         
-        # Käytä first_seen_ts fallbackina
+        # Käytä first_seen.timestamp() fallbackina (älä oleta first_seen_ts -kenttää)
         if not timestamp:
-            timestamp = candidate.first_seen_ts
+            try:
+                timestamp = candidate.first_seen.timestamp()
+            except Exception:
+                # viimeinen varmistus: käytä nykyhetkeä jotta ikä=0
+                import time as _t
+                timestamp = _t.time()
         
         # Laske ikä minuutteina
         current_time = time.time()

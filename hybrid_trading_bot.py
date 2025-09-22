@@ -1914,10 +1914,27 @@ class HybridTradingBot:
             if not tokens and not hot_candidates:
                 logger.warning("⚠️ Ei löytynyt tokeneita tällä skannauksella")
                 return {
-                    'tokens_found': 0, 
-                    'signals_generated': 0, 
+                    'timestamp': datetime.now().isoformat(),
+                    'tokens_scanned': 0,
+                    'tokens_analyzed': 0,
+                    'signals_generated': 0,
                     'trades_executed': 0,
-                    'hot_candidates': []
+                    'hot_candidates': [],
+                    'accepted_candidates_count': 0,
+                    'portfolio_value': self.portfolio['total_value'],
+                    'portfolio_pnl': self.portfolio['total_pnl'],
+                    'active_positions': len(self.portfolio['positions']),
+                    'performance_metrics': self.performance_metrics.copy(),
+                    'risk_metrics': {
+                        'portfolio_heat': 0.0,
+                        'max_portfolio_risk': self.max_portfolio_risk,
+                        'correlation_threshold': self.correlation_threshold,
+                        'dynamic_position_sizing': True
+                    },
+                    'tokens': [],
+                    'positions': self.portfolio['positions'].copy(),
+                    'signals': [],
+                    'tokens_found': 0
                 }
             
             # Analysoi tokenit
@@ -1946,6 +1963,7 @@ class HybridTradingBot:
             analysis_result = {
                 'timestamp': datetime.now().isoformat(),
                 'tokens_scanned': len(tokens),
+                'tokens_found': len(tokens),
                 'tokens_analyzed': len(analyzed_tokens),
                 'signals_generated': len(signals),
                 'trades_executed': trades_executed,
@@ -2110,7 +2128,12 @@ class HybridTradingBot:
             if self._last_summary_signature == summary_signature:
                 logger.info("📵 Telegram yhteenveto ohitetaan – ei muutoksia.")
             else:
-                await self.telegram_bot.send_message(message)
+                # Turvallinen lähetys: jos telegram_bot ei ole enabled, ohita
+                try:
+                    if getattr(self.telegram_bot, "enabled", False):
+                        await self.telegram_bot.send_message(message)
+                except Exception as e:
+                    logger.warning(f"Telegram summary send failed: {e}")
                 try:
                     from metrics import metrics
                     if metrics:

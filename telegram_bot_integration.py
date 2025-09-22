@@ -18,22 +18,15 @@ load_dotenv()
 
 class TelegramBot:
     """Telegram bot ilmoituksille ja raporteille"""
-    
-    _inited = False
-    
     def __init__(self, rate_limit_sec: int = 1, max_backoff_sec: int = 30, backoff_multiplier: float = 2.0):
-        if TelegramBot._inited:
-            return
-        TelegramBot._inited = True
+        # Lue asetukset jokaisessa instanssissa, varmista että enabled-attribuutti on aina olemassa
         self.bot_token = os.getenv('TELEGRAM_BOT_TOKEN', '')
         self.chat_id = os.getenv('TELEGRAM_CHAT_ID', '')
         self.logger = logging.getLogger(__name__)
-        
-        if not self.bot_token or not self.chat_id:
+        self.enabled = bool(self.bot_token and self.chat_id)
+        if not self.enabled:
             self.logger.warning("⚠️ Telegram API avaimet puuttuvat! Ilmoitukset eivät toimi.")
-            self.enabled = False
         else:
-            self.enabled = True
             self.logger.info("✅ Telegram bot alustettu")
         
         # Alusta rate limiter
