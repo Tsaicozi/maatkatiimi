@@ -4,11 +4,13 @@ from __future__ import annotations
 import asyncio
 import os
 import logging
+from dotenv import load_dotenv
 
 from helius_token_scanner_bot import HeliusTokenScannerBot, DexInfoFetcher
 from dex_fetchers import fetch_from_dexscreener, fetch_from_jupiter, fetch_from_solscan
 from solana_rpc_helpers import rpc_get_tx
 
+load_dotenv()
 
 async def main():
     logging.basicConfig(level=logging.INFO)

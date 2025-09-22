@@ -6,6 +6,9 @@ from typing import Any, Dict, Optional
 import aiohttp
 
 from helius_token_scanner_bot import DexInfo
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 DEXSCREENER_BASE = os.getenv("DEXSCREENER_BASE", "https://api.dexscreener.com/latest/dex")
