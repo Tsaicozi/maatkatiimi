@@ -130,3 +130,12 @@
 {"level": "INFO", "ts": "2025-09-22T17:44:47", "logger": "hybrid_trading_bot", "msg": "🔍 Skannataan oikeita Solana tokeneita oikeista markkinoista..."}
 {"level": "INFO", "ts": "2025-09-22T17:44:47", "logger": "hybrid_trading_bot", "msg": "✅ CoinGecko: Löydettiin 20 tokenia"}
 {"level": "INFO", "ts": "2025-09-22T17:44:48", "logger": "hybrid_trading_bot", "msg": "✅ Jupiter: Löydettiin 20 tokenia"}
+{"level": "INFO", "ts": "2025-09-22T17:44:54", "logger": "hybrid_trading_bot", "msg": "✅ Raydium: Löydettiin 0 tokenia"}
+{"level": "INFO", "ts": "2025-09-22T17:44:54", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=8vwbU9r7KJCGEMJsT2Hevo69mMyKabMQgfUupEJDpump first_ts=1758563094.8205526 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-22T17:44:54", "logger": "discovery_engine", "msg": "FRESH-PASS mint=8vwbU9r7 buyers=0 trades=0 age=0.0s"}
+{"level": "INFO", "ts": "2025-09-22T17:44:54", "logger": "hybrid_trading_bot", "msg": "🛑 Pysäytetään HybridTradingBot..."}
+{"level": "INFO", "ts": "2025-09-22T17:44:54", "logger": "discovery_engine", "msg": "✅ LP-lock ajoissa: VST lukittu 0.0min listauksesta"}
+{"level": "INFO", "ts": "2025-09-22T17:44:54", "logger": "discovery_engine", "msg": "✅ Token käsitelty: VST (Score: 0.860, Sources: ['pumpportal_ws'])"}
+{"level": "INFO", "ts": "2025-09-22T17:44:54", "logger": "discovery_engine", "msg": "🎯 Scorer loop päättynyt"}
+{"level": "INFO", "ts": "2025-09-22T17:45:04", "logger": "hybrid_trading_bot", "msg": "✅ DiscoveryEngine pysäytetty siististi"}
+{"level": "INFO", "ts": "2025-09-22T17:45:04", "logger": "hybrid_trading_bot", "msg": "✅ HybridTradingBot pysäytetty"}
