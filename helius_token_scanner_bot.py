@@ -110,6 +110,7 @@ class HeliusTokenScannerBot:
         programs: list[str] | None = None,
         dex_fetcher: DexInfoFetcher | None = None,
         queue_maxsize: int = 1000,
+        rpc_get_tx: Callable[[str], Awaitable[dict]] | None = None,
     ) -> None:
         self.ws_url = ws_url
         self.programs = programs or ["TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"]
@@ -119,6 +120,7 @@ class HeliusTokenScannerBot:
         self._producer_task: asyncio.Task | None = None
         self._consumer_task: asyncio.Task | None = None
         self._sentinel: object = object()
+        self._rpc_get_tx = rpc_get_tx
 
     # --- Public API ---
     async def start(self) -> None:
@@ -171,14 +173,21 @@ class HeliusTokenScannerBot:
                     backoff = 1.0  # reset backoff kun yhteys auki
                     while not self._stop.is_set():
                         msg = await ws.recv()
-                        data = json.loads(msg)
+                        try:
+                            data = json.loads(msg)
+                        except Exception:
+                            continue
                         params = data.get("params", {})
+                        # Subscription confirmation
+                        if "result" in data and isinstance(data["result"], str):
+                            logger.info("✅ Helius WS: subscription confirmed: %s", data["result"][:8] + "…")
+                            continue
                         value = (params.get("result") or {}).get("value") if isinstance(params, dict) else None
                         if not value:
                             continue
                         logs = value.get("logs") or []
                         sig = value.get("signature")
-                        mint = self._extract_mint_from_logs(logs)
+                        mint = await self._try_extract_mint(logs, sig)
                         if not mint:
                             continue
                         ev = NewTokenEvent(mint=mint, symbol=f"TOKEN_{mint[:6]}", name=f"New Token {mint[:4]}", signature=sig)
@@ -226,14 +235,78 @@ class HeliusTokenScannerBot:
             }
             logger.info(json.dumps(summary, ensure_ascii=False))
 
+    async def _try_extract_mint(self, logs: list[str], signature: str | None) -> str | None:
+        """
+        Yritä päätellä mint:
+        1) Logeista: etsi InitializeMint/InitializeMint2 ja heuristinen osoite
+        2) RPC: getTransaction(signature) → postTokenBalances.mint tai viestin accountKeys:stä
+        """
+        # 1) Logien perusteella (pika)
+        if logs:
+            joined = "\n".join(logs)
+            if ("InitializeMint" in joined) or ("InitializeMint2" in joined):
+                # poimi pitkä aakkisnumeerinen merkkijono joka ei ole tunnettujen ohjelmien id
+                for line in logs:
+                    for token in line.replace(",", " ").split():
+                        if self._looks_like_pubkey(token) and not self._is_known_program(token):
+                            return token
+
+        # 2) RPC fallback, jos allekirjoitus löytyy ja rpc_get_tx on injektoitu
+        if signature and self._rpc_get_tx:
+            try:
+                tx = await self._rpc_get_tx(signature)
+                mint = self._extract_mint_from_tx(tx)
+                if mint:
+                    return mint
+            except Exception:
+                pass
+
+        return None
+
     @staticmethod
-    def _extract_mint_from_logs(logs: list[str]) -> str | None:  # pragma: no cover - yksinkertainen stub
-        # Kevyt heuristiikka; oikeassa elämässä parsitaan account-lista
-        for line in logs or []:
-            parts = line.split()
-            for p in parts:
-                if len(p) >= 32 and p.isalnum():
-                    return p
+    def _looks_like_pubkey(s: str) -> bool:
+        return bool(s and len(s) >= 32 and s.isalnum())
+
+    @staticmethod
+    def _is_known_program(addr: str) -> bool:
+        KNOWN = {
+            "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+            "11111111111111111111111111111111",  # SystemProgram
+            "SysvarRent111111111111111111111111111111111",
+            "ComputeBudget111111111111111111111111111111",
+            "AddressLookupTab1e1111111111111111111111111",
+            "BPFLoaderUpgradeab1e11111111111111111111111",
+            "Vote111111111111111111111111111111111111111",
+            "Sysvar1nstructions1111111111111111111111111",
+            "MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr",
+        }
+        return addr in KNOWN
+
+    @classmethod
+    def _extract_mint_from_tx(cls, tx: dict) -> str | None:
+        # 2a) postTokenBalances mint
+        meta = tx.get("meta") or {}
+        ptb = meta.get("postTokenBalances") or []
+        if isinstance(ptb, list) and ptb:
+            # Jos vain yksi mint löytyy, käytä sitä
+            mints = {b.get("mint") for b in ptb if isinstance(b, dict) and b.get("mint")}
+            if len(mints) == 1:
+                m = next(iter(mints))
+                if isinstance(m, str) and cls._looks_like_pubkey(m):
+                    return m
+
+        # 2b) Viestin accountKeys: valitse ensimmäinen joka ei ole tunnettu ohjelma/sysvar
+        msg = (tx.get("transaction") or {}).get("message") or {}
+        keys = msg.get("accountKeys") or []
+        addresses: list[str] = []
+        for k in keys:
+            if isinstance(k, str):
+                addresses.append(k)
+            elif isinstance(k, dict) and isinstance(k.get("pubkey"), str):
+                addresses.append(k["pubkey"])
+        for a in addresses:
+            if a and cls._looks_like_pubkey(a) and not cls._is_known_program(a):
+                return a
         return None
 
 
