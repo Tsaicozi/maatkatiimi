@@ -12842,3 +12842,13 @@ CYCLE_END cycle_id=17 hot=5 tokens=0
 {"level": "INFO", "ts": "2025-09-22T18:50:41", "logger": "__main__", "msg": "{\"evt\": \"cycle_end\", \"result\": \"success\", \"run_id\": \"run_20250922_182904_2ceed53d\", \"cycle_id\": 17, \"tokens\": 0, \"hot\": 5}"}
 {"level": "INFO", "ts": "2025-09-22T18:50:41", "logger": "__main__", "msg": "⏰ Odotetaan 60.0 sekuntia ennen seuraavaa sykliä..."}
 {"level": "WARNING", "ts": "2025-09-22T18:50:45", "logger": "telegram_bot_integration", "msg": "Telegram API virhe: 409"}
+{"level": "WARNING", "ts": "2025-09-22T18:50:56", "logger": "telegram_bot_integration", "msg": "Telegram API virhe: 409"}
+{"level": "INFO", "ts": "2025-09-22T18:51:02", "logger": "__main__", "msg": "💓 heartbeat: idle=21.7s (scheduler alive)"}
+{"level": "WARNING", "ts": "2025-09-22T18:51:07", "logger": "telegram_bot_integration", "msg": "Telegram API virhe: 409"}
+{"level": "INFO", "ts": "2025-09-22T18:51:12", "logger": "__main__", "msg": "💓 heartbeat: idle=31.7s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-22T18:51:14", "logger": "__main__", "msg": "🛑 Sammutus aloitettu…"}
+{"level": "INFO", "ts": "2025-09-22T18:51:14", "logger": "telegram_bot_integration", "msg": "✅ Telegram viesti lähetetty"}
+{"level": "WARNING", "ts": "2025-09-22T18:51:18", "logger": "telegram_bot_integration", "msg": "Telegram API virhe: 409"}
+{"level": "INFO", "ts": "2025-09-22T18:51:22", "logger": "__main__", "msg": "💓 heartbeat: idle=41.7s (scheduler alive)"}
+{"level": "WARNING", "ts": "2025-09-22T18:51:29", "logger": "telegram_bot_integration", "msg": "Telegram API virhe: 409"}
+{"level": "INFO", "ts": "2025-09-22T18:51:32", "logger": "__main__", "msg": "💓 heartbeat: idle=51.7s (scheduler alive)"}
