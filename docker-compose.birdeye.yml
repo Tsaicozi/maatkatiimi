@@ -1,0 +1,102 @@
+version: '3.8'
+
+services:
+  birdeye-key-manager:
+    build:
+      context: .
+      dockerfile: Dockerfile.birdeye
+    container_name: birdeye-key-manager
+    restart: unless-stopped
+    
+    environment:
+      - PYTHONUNBUFFERED=1
+      - TZ=Europe/Helsinki
+      # API-avaimet .env-tiedostosta
+      - BIRDEYE_API_KEY=${BIRDEYE_API_KEY}
+      - BIRDEYE_API_KEY_1=${BIRDEYE_API_KEY_1}
+      - BIRDEYE_API_KEY_2=${BIRDEYE_API_KEY_2}
+      - BIRDEYE_API_KEY_3=${BIRDEYE_API_KEY_3}
+      - BIRDEYE_KEY_PASSWORD=${BIRDEYE_KEY_PASSWORD:-secure_default_password}
+    
+    volumes:
+      - ./birdeye_keys.json:/app/birdeye_keys.json
+      - ./logs:/app/logs
+      - ./config.yaml:/app/config.yaml:ro
+    
+    networks:
+      - bot-network
+    
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import requests; r = requests.get('http://localhost:9109/metrics'); exit(0 if r.status_code == 200 else 1)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    
+    ports:
+      - "9109:9109"  # Metrics port
+    
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Valinnainen: Prometheus metriikoiden keräys
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: birdeye-prometheus
+    restart: unless-stopped
+    
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+    
+    ports:
+      - "9090:9090"
+    
+    networks:
+      - bot-network
+    
+    depends_on:
+      - birdeye-key-manager
+
+  # Valinnainen: Grafana visualisointi
+  grafana:
+    image: grafana/grafana:latest
+    container_name: birdeye-grafana
+    restart: unless-stopped
+    
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=birdeye123
+      - GF_INSTALL_PLUGINS=
+    
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./grafana/dashboards:/etc/grafana/provisioning/dashboards:ro
+      - ./grafana/datasources:/etc/grafana/provisioning/datasources:ro
+    
+    ports:
+      - "3001:3000"
+    
+    networks:
+      - bot-network
+    
+    depends_on:
+      - prometheus
+
+networks:
+  bot-network:
+    driver: bridge
+
+volumes:
+  prometheus-data:
+  grafana-data:
