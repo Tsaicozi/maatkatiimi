@@ -127,8 +127,7 @@ class HeliusTokenScannerBot:
         if self._producer_task or self._consumer_task:
             return
         # Kuluttaja start INFO-tasolla – korjaus
-        self._consumer_task = asyncio.create_task(self._consume_queue(), name="helius_consumer")
-        logger.info("📥 _consume_queue käynnistyi")
+        self._ensure_consumer_started()
         # Tuottaja voidaan käynnistää myöhemmin testeissä; jos WS:ää ei ole, ohita
         if websockets and hasattr(websockets, "connect"):
             self._producer_task = asyncio.create_task(self._producer_loop(), name="helius_producer")
@@ -151,7 +150,14 @@ class HeliusTokenScannerBot:
 
     # Testiystävällinen injektointi
     async def enqueue(self, event: NewTokenEvent) -> None:
+        # Varmista että kuluttaja on käynnissä, vaikka start() olisi jäänyt kutsumatta
+        self._ensure_consumer_started()
         await self._queue.put(event)
+
+    def _ensure_consumer_started(self) -> None:
+        if not self._consumer_task or self._consumer_task.done() or self._consumer_task.cancelled():
+            self._consumer_task = asyncio.create_task(self._consume_queue(), name="helius_consumer")
+            logger.info("📥 _consume_queue käynnistyi")
 
     # --- Internal ---
     async def _producer_loop(self) -> None:  # pragma: no cover - tuotantopolku
@@ -190,6 +196,8 @@ class HeliusTokenScannerBot:
                         mint = await self._try_extract_mint(logs, sig)
                         if not mint:
                             continue
+                        # Varmista että kuluttaja käy
+                        self._ensure_consumer_started()
                         ev = NewTokenEvent(mint=mint, symbol=f"TOKEN_{mint[:6]}", name=f"New Token {mint[:4]}", signature=sig)
                         with contextlib.suppress(asyncio.QueueFull):
                             self._queue.put_nowait(ev)
@@ -201,39 +209,52 @@ class HeliusTokenScannerBot:
                 backoff = min(30.0, backoff * 2.0)
 
     async def _consume_queue(self) -> None:
-        while not self._stop.is_set():
-            item = await self._queue.get()
-            if item is self._sentinel:
-                break
-            if not isinstance(item, NewTokenEvent):
-                continue
+        try:
+            while not self._stop.is_set():
+                item = await self._queue.get()
+                if item is self._sentinel:
+                    break
+                if not isinstance(item, NewTokenEvent):
+                    continue
 
-            dex_status = "pending"
-            dex_reason = "unknown"  # turvallinen alustaminen – korjaus
-            dex_name: str | None = None
-            pair: str | None = None
-            try:
-                info = await self.dex_fetcher.fetch(item.mint)
-                dex_status = info.status or "pending"
-                dex_reason = info.reason or ""
-                dex_name = info.dex_name
-                pair = info.pair_address
-            except Exception as e:
-                dex_status = "error"
-                dex_reason = f"fetch_failed:{e}"
+                dex_status = "pending"
+                dex_reason = "unknown"  # turvallinen alustaminen – korjaus
+                dex_name: str | None = None
+                pair: str | None = None
+                try:
+                    info = await self.dex_fetcher.fetch(item.mint)
+                    dex_status = info.status or "pending"
+                    dex_reason = info.reason or ""
+                    dex_name = info.dex_name
+                    pair = info.pair_address
+                except Exception as e:
+                    dex_status = "error"
+                    dex_reason = f"fetch_failed:{e}"
 
-            # Summary-loki ei kaadu vaikka reason olisi tyhjä
-            summary = {
-                "evt": "summary",
-                "mint": item.mint,
-                "symbol": item.symbol,
-                "dex_status": dex_status,
-                "dex_reason": dex_reason or "",
-                "dex": dex_name or "",
-                "pair": pair or "",
-                "source": item.source,
-            }
-            logger.info(json.dumps(summary, ensure_ascii=False))
+                # Summary-loki ei kaadu vaikka reason olisi tyhjä
+                summary = {
+                    "evt": "summary",
+                    "mint": item.mint,
+                    "symbol": item.symbol,
+                    "dex_status": dex_status,
+                    "dex_reason": dex_reason or "",
+                    "dex": dex_name or "",
+                    "pair": pair or "",
+                    "source": item.source,
+                }
+                logger.info(json.dumps(summary, ensure_ascii=False))
+                # Kirjoita mahdolliset hylkäykset JSONL-tiedostoon
+                if dex_status != "ok":
+                    self._append_reject(summary)
+        except Exception as e:
+            logger.error("💥 consumer task kaatui: %s", e)
+
+    def _append_reject(self, row: dict) -> None:
+        try:
+            with open("dex_rejects.jsonl", "a", encoding="utf-8") as f:
+                f.write(json.dumps(row, ensure_ascii=False) + "\n")
+        except Exception:
+            pass
 
     async def _try_extract_mint(self, logs: list[str], signature: str | None) -> str | None:
         """
