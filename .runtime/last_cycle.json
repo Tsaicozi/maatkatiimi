@@ -1,1 +1,1 @@
-{"evt": "cycle_start", "ts": "2025-09-20T09:46:55+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 62}
+{"evt": "cycle_end", "ts": "2025-09-22T21:50:41+03:00", "run_id": "run_20250922_182820_ad10086c", "cycle_id": 18, "tokens": 0, "hot": 5, "result": "success"}
