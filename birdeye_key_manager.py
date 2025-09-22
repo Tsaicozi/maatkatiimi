@@ -601,6 +601,13 @@ if __name__ == "__main__":
         from dotenv import load_dotenv
         load_dotenv()
         logger.info("✅ Ladattu .env-tiedosto")
+        
+        # Tarkista onko BIRDEYE_API_KEY
+        if os.getenv("BIRDEYE_API_KEY"):
+            logger.info(f"✅ Löytyi BIRDEYE_API_KEY: {os.getenv('BIRDEYE_API_KEY')[:8]}...")
+    else:
+        logger.warning("⚠️ .env-tiedostoa ei löydy")
+        logger.info("💡 Luo se ajamalla: python3 create_env.py")
     
     # Käynnistä botti
     asyncio.run(main())

@@ -105,7 +105,18 @@ class HybridTokenScanner:
         self.session = None
 
         # API avaimet
-        self.birdeye_api_key = os.getenv('BIRDEYE_API_KEY')
+        # Käytä Birdeye Key Manageria jos saatavilla
+        try:
+            from birdeye_integration import birdeye
+            self.birdeye_integration = birdeye
+            self.birdeye_api_key = None  # Ei käytä vanhaa tapaa
+            self.logger.info("✅ Käytetään Birdeye Key Manageria")
+        except ImportError:
+            # Fallback vanhaan tapaan
+            self.birdeye_api_key = os.getenv('BIRDEYE_API_KEY')
+            self.birdeye_integration = None
+            if self.birdeye_api_key:
+                self.logger.info(f"📌 Käytetään BIRDEYE_API_KEY: {self.birdeye_api_key[:8]}...")
         self.moralis_api_key = os.getenv('MORALIS_API_KEY')
         self.dexscreener_api_key = os.getenv('DEXSCREENER_API_KEY')
         self.coinmarketcap_api_key = os.getenv('COINMARKETCAP_API_KEY')
