@@ -1635,3 +1635,9 @@
 {"evt": "cycle_start", "ts": "2025-09-20T09:45:42+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 61}
 {"evt": "cycle_end", "ts": "2025-09-20T09:45:55+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 61, "tokens": 0, "hot": 0, "result": "success"}
 {"evt": "cycle_start", "ts": "2025-09-20T09:46:55+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 62}
+{"evt": "cycle_start", "ts": "2025-09-22T21:28:25+03:00", "run_id": "run_20250922_182820_ad10086c", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-22T21:28:37+03:00", "run_id": "run_20250922_182820_ad10086c", "cycle_id": 1, "tokens": 0, "hot": 4, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-22T21:29:00+03:00", "run_id": "run_20250922_182820_ad10086c", "cycle_id": 2}
+{"evt": "cycle_start", "ts": "2025-09-22T21:29:09+03:00", "run_id": "run_20250922_182904_2ceed53d", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-22T21:29:09+03:00", "run_id": "run_20250922_182820_ad10086c", "cycle_id": 2, "tokens": 0, "hot": 5, "result": "success"}
+{"evt": "cycle_end", "ts": "2025-09-22T21:29:17+03:00", "run_id": "run_20250922_182904_2ceed53d", "cycle_id": 1, "tokens": 0, "hot": 1, "result": "success"}
