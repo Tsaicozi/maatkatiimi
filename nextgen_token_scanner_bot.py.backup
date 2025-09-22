@@ -14,7 +14,6 @@ from typing import Dict, List, Optional, Any, Tuple
 from dataclasses import dataclass, asdict
 import asyncio
 import aiohttp
-from birdeye_integration import birdeye
 from concurrent.futures import ThreadPoolExecutor
 import logging
 
@@ -94,7 +93,6 @@ class NextGenTokenScanner:
             ]
         )
         self.logger = logging.getLogger(__name__)
-        self.birdeye_integration = None  # Will be initialized in __aenter__
     
     def load_api_keys(self):
         """Lataa API-avaimet"""

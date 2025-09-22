@@ -6,7 +6,6 @@ Keskittyy VAIN todella uusiin tokeneihin (< 2 minuuttia)
 
 import asyncio
 import aiohttp
-from birdeye_integration import birdeye
 import json
 import logging
 from datetime import datetime, timedelta
@@ -41,7 +40,6 @@ class OptimizedTokenScanner:
     
     def __init__(self):
         self.logger = logging.getLogger(__name__)
-        self.birdeye_integration = None  # Will be initialized in __aenter__
         self.session = None
         
         # API endpoints - optimoitu uusille tokeneille
@@ -68,14 +66,6 @@ class OptimizedTokenScanner:
 
     async def __aenter__(self):
         self.session = aiohttp.ClientSession(headers=self.headers)
-        # Alusta Birdeye integraatio
-        try:
-            await birdeye.initialize()
-            self.birdeye_integration = birdeye
-            self.logger.info('✅ Birdeye integration alustettu')
-        except Exception as e:
-            self.logger.warning(f'⚠️ Birdeye integration epäonnistui: {e}')
-            self.birdeye_integration = None
         return self
 
     async def __aexit__(self, exc_type, exc_val, exc_tb):

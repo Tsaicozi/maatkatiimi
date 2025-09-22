@@ -1,6 +1,5 @@
 import asyncio
 import aiohttp
-from birdeye_integration import birdeye
 import json
 import logging
 from datetime import datetime, timedelta
@@ -39,7 +38,6 @@ class RealSolanaToken:
 class RealSolanaTokenScanner:
     def __init__(self):
         self.logger = logging.getLogger(__name__)
-        self.birdeye_integration = None  # Will be initialized in __aenter__
         self.session = None
         
         # API endpoints
@@ -56,14 +54,6 @@ class RealSolanaTokenScanner:
 
     async def __aenter__(self):
         self.session = aiohttp.ClientSession(headers=self.headers)
-        # Alusta Birdeye integraatio
-        try:
-            await birdeye.initialize()
-            self.birdeye_integration = birdeye
-            self.logger.info('✅ Birdeye integration alustettu')
-        except Exception as e:
-            self.logger.warning(f'⚠️ Birdeye integration epäonnistui: {e}')
-            self.birdeye_integration = None
         return self
 
     async def __aexit__(self, exc_type, exc_val, exc_tb):
@@ -130,68 +120,41 @@ class RealSolanaTokenScanner:
         return tokens
 
     async def _scan_birdeye(self) -> List[RealSolanaToken]:
-        """Skannaa Birdeye API:sta käyttäen Key Manager -integraatiota"""
+        """Skannaa Birdeye API:sta"""
         tokens = []
         
-        # Käytä integraatiota jos saatavilla
-        if self.birdeye_integration:
-            try:
-                # Hae uudet tokenit
-                new_tokens = await self.birdeye_integration.get_new_tokens(limit=50)
-                
-                if new_tokens:
-                    for token_data in new_tokens[:20]:  # Top 20
-                        try:
-                            # Hae lisätiedot
-                            mint = token_data.get('address', '')
-                            if not mint:
-                                continue
-                            
-                            # Hae turvallisuustiedot
-                            security = await self.birdeye_integration.get_token_security(mint)
-                            
-                            # Luo token objekti
-                            token = RealSolanaToken(
-                                mint_address=mint,
-                                symbol=token_data.get('symbol', 'Unknown'),
-                                name=token_data.get('name', 'Unknown Token'),
-                                price=float(token_data.get('price', 0)),
-                                market_cap=float(token_data.get('mc', 0)),
-                                liquidity=float(token_data.get('liquidity', 0)),
-                                volume_24h=float(token_data.get('v24hUSD', 0)),
-                                created_at=token_data.get('createdAt', ''),
-                                dex='birdeye',
-                                pair_address=token_data.get('poolAddress', ''),
-                                price_change_24h=float(token_data.get('priceChange24h', 0)),
-                                holder_count=security.get('data', {}).get('holderCount', 0) if security else 0,
-                                top_10_holders=security.get('data', {}).get('top10HoldersPercent', 0) if security else 0,
-                                is_mutable=security.get('data', {}).get('mintAuthority', None) is not None if security else True,
-                                is_freezable=security.get('data', {}).get('freezeAuthority', None) is not None if security else True
-                            )
-                            tokens.append(token)
-                            
-                        except Exception as e:
-                            self.logger.debug(f'Virhe tokenin käsittelyssä: {e}')
-                            continue
-                            
-                    self.logger.info(f'✅ Birdeye (integrated): {len(tokens)} tokenia')
-                else:
-                    self.logger.info('Birdeye: Ei uusia tokeneita')
+        try:
+            # Hae trending tokenit Birdeye:sta
+            url = f"{self.birdeye_url}/v1/tokenlist"
+            params = {
+                "sort_by": "v24hUSD",
+                "sort_type": "desc",
+                "offset": 0,
+                "limit": 50
+            }
+            
+            async with self.session.get(url, params=params, timeout=10) as response:
+                if response.status == 200:
+                    data = await response.json()
                     
-            except Exception as e:
-                self.logger.warning(f'Birdeye integration virhe: {e}')
-                # Fallback vanhaan tapaan jos integraatio epäonnistuu
-                return await self._scan_birdeye_legacy()
-        else:
-            # Käytä vanhaa tapaa jos integraatio ei saatavilla
-            return await self._scan_birdeye_legacy()
+                    if data and 'data' in data and 'tokens' in data['data'] and data['data']['tokens']:
+                        for token_data in data['data']['tokens']:
+                            try:
+                                token = self._parse_birdeye_token(token_data)
+                                if token:
+                                    tokens.append(token)
+                            except Exception as e:
+                                self.logger.warning(f"Virhe parsin Birdeye token: {e}")
+                                continue
+                                
+                else:
+                    self.logger.warning(f"Birdeye API virhe: {response.status}")
+                    
+        except Exception as e:
+            self.logger.error(f"Virhe Birdeye skannauksessa: {e}")
             
         return tokens
-    
-    async def _scan_birdeye_legacy(self) -> List[RealSolanaToken]:
-        """Vanha Birdeye skannaus (fallback)"""
-        # Säilytä vanha koodi tässä fallbackina
-        return []
+
     def _parse_dexscreener_pair(self, pair: Dict) -> Optional[RealSolanaToken]:
         """Parse DexScreener pair data"""
         try:
