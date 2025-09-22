@@ -1,0 +1,188 @@
+
+# 🔍 HELIUS TOKEN ANALYYSI RAPORTTI (ESIMERKKI)
+
+**Raportti ID:** helius_sample_20250922_095947
+**Luotu:** 2025-09-22 09:59:47 (Helsinki)
+**Analyysijakso:** 24h
+
+## 📊 YHTEENVETO
+- **Analysoituja tokeneita:** 5
+- **Korkean riskin tokeneita:** 1
+- **Lupaavia tokeneita:** 3
+
+## 💹 MARKKINATILANNE
+- **Keskimääräinen hinnanmuutos:** 27.4%
+- **Kokonaisvolyymi:** $2,050,061,100
+- **Kokonaismarkkina-arvo:** $99,500,367,000
+- **Keskimääräinen likviditeetti:** $42,820,500
+
+## 🏆 TOP VOITTAJAT (24h)
+1. **MOONSHOT** (7vfCXTUX...) +156.7% ($0.000123) Score: 0.87
+2. **GEM** (NewGemTo...) +45.2% ($0.002340) Score: 0.68
+3. **WSOL** (So111111...) +2.3% ($142.500000) Score: 0.92
+
+## 📉 TOP HÄVIÄJÄT (24h)
+1. **WSOL** (So111111...) 2.3% ($142.500000) Score: 0.92
+2. **USDC** (EPjFWdd5...) 0.0% ($1.000200) Score: 0.78
+3. **DANGER** (Dangerou...) -67.3% ($0.000100) Score: 0.12
+
+## 🆕 UUSIMMAT TOKENIT
+1. **MOONSHOT** (7vfCXTUX...) Score: 0.87 Risk: Matala
+   Lupaava uusi DeFi token joka keskittyy yield farmingiin
+2. **DANGER** (Dangerou...) Score: 0.12 Risk: Korkea
+   Epäilyttävä token - vältä!
+3. **GEM** (NewGemTo...) Score: 0.68 Risk: Keskitaso
+   Pieni mutta kasvava gaming token
+
+## ⚠️ KORKEAN RISKIN TOKENIT
+1. **DANGER** (Dangerou...) Rug Risk: 0.85 Security: Heikko Rec: Vältä
+2. **GEM** (NewGemTo...) Rug Risk: 0.35 Security: Kohtalainen Rec: Harkitse
+3. **USDC** (EPjFWdd5...) Rug Risk: 0.25 Security: Kohtalainen Rec: Hold
+
+## 🌟 LUPAAVIMMAT TOKENIT
+1. **WSOL** (So111111...) Score: 0.92 Liq: $125,000,000 Rec: Hold
+   Solanan natiivin SOL tokenin wrapped versio
+2. **MOONSHOT** (7vfCXTUX...) Score: 0.87 Liq: $87,500 Rec: Ostaa
+   Lupaava uusi DeFi token joka keskittyy yield farmingiin
+3. **USDC** (EPjFWdd5...) Score: 0.78 Liq: $89,000,000 Rec: Hold
+   USD-sidottu stablecoin
+
+## 🎯 SUOSITUKSET
+- ✅ 3 lupaavaa tokenia löydetty
+- 📈 Markkinat ovat nousussa
+
+## 📈 YKSITYISKOHTAINEN ANALYYSI
+
+### Token-kohtainen yhteenveto:
+
+**WSOL** - Wrapped SOL
+- Mint: So11111111111111111111111111111111111111112
+- Hinta: $142.500000
+- Markkina-arvo: $67,500,000,000
+- 24h Volyymi: $850,000,000
+- 24h Muutos: 2.3%
+- Likviditeetti: $125,000,000
+- Ostajia 24h: 2500
+- Kauppoja 24h: 4800
+- Overall Score: 0.92/1.00
+- Rug Risk: 0.05/1.00
+- Turvallisuus: Hyvä
+- Suositus: Hold
+- Kuvaus: Solanan natiivin SOL tokenin wrapped versio
+
+**MOONSHOT** - Moonshot Token
+- Mint: 7vfCXTUXx5WJV5JADk17DUJ4ksgau7utNKj4b963voxs
+- Hinta: $0.000123
+- Markkina-arvo: $123,000
+- 24h Volyymi: $45,000
+- 24h Muutos: 156.7%
+- Likviditeetti: $87,500
+- Ostajia 24h: 89
+- Kauppoja 24h: 112
+- Overall Score: 0.87/1.00
+- Rug Risk: 0.15/1.00
+- Turvallisuus: Hyvä
+- Suositus: Ostaa
+- Kuvaus: Lupaava uusi DeFi token joka keskittyy yield farmingiin
+
+**USDC** - USD Coin
+- Mint: EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v
+- Hinta: $1.000200
+- Markkina-arvo: $32,000,000,000
+- 24h Volyymi: $1,200,000,000
+- 24h Muutos: 0.0%
+- Likviditeetti: $89,000,000
+- Ostajia 24h: 1800
+- Kauppoja 24h: 3550
+- Overall Score: 0.78/1.00
+- Rug Risk: 0.25/1.00
+- Turvallisuus: Kohtalainen
+- Suositus: Hold
+- Kuvaus: USD-sidottu stablecoin
+
+**USDC** - USD Coin
+- Mint: EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v
+- Hinta: $1.000200
+- Markkina-arvo: $32,000,000,000
+- 24h Volyymi: $1,200,000,000
+- 24h Muutos: 0.0%
+- Likviditeetti: $89,000,000
+- Ostajia 24h: 1800
+- Kauppoja 24h: 3550
+- Overall Score: 0.78/1.00
+- Rug Risk: 0.25/1.00
+- Turvallisuus: Kohtalainen
+- Suositus: Hold
+- Kuvaus: USD-sidottu stablecoin
+
+**GEM** - Hidden Gem Token
+- Mint: NewGemTokenAddress123456789012345678901234567
+- Hinta: $0.002340
+- Markkina-arvo: $234,000
+- 24h Volyymi: $15,600
+- 24h Muutos: 45.2%
+- Likviditeetti: $12,500
+- Ostajia 24h: 34
+- Kauppoja 24h: 46
+- Overall Score: 0.68/1.00
+- Rug Risk: 0.35/1.00
+- Turvallisuus: Kohtalainen
+- Suositus: Harkitse
+- Kuvaus: Pieni mutta kasvava gaming token
+
+**DANGER** - Dangerous Token
+- Mint: DangerousTokenMintAddress1234567890123456789
+- Hinta: $0.000100
+- Markkina-arvo: $10,000
+- 24h Volyymi: $500
+- 24h Muutos: -67.3%
+- Likviditeetti: $2,500
+- Ostajia 24h: 3
+- Kauppoja 24h: 18
+- Overall Score: 0.12/1.00
+- Rug Risk: 0.85/1.00
+- Turvallisuus: Heikko
+- Suositus: Vältä
+- Kuvaus: Epäilyttävä token - vältä!
+
+---
+*Esimerkkiraportti luotu Helius Token Analysis Botilla*
+*Tiedot ovat kuvitteellisia - tee oma tutkimus ennen sijoituspäätöksiä*
+
+## 🔧 Botin Ominaisuudet
+
+### Real-time Seuranta
+- Helius WebSocket API integraatio
+- Automaattinen uusien tokenien löytäminen
+- Multi-source data yhdistäminen
+
+### Kattava Analyysi
+- Token metadata ja hintatiedot
+- Likviditeettianalyysi ja poolien seuranta
+- Holder-jakelu ja konsentraatioriski
+- Turvallisuusanalyysi (authority, LP-lukitus)
+- Aktiviteettimetriikat (ostajat, myyjät, kaupat)
+
+### Automaattinen Raportointi
+- Päivittäiset raportit klo 12:00 (Helsinki)
+- Pyydettävät raportit milloin tahansa
+- JSON ja tekstimuotoinen tallentaminen
+- Top-listat ja markkinayhteenveto
+
+### Integraatiot
+- DiscoveryEngine yhteensopivuus
+- Prometheus metriikat
+- Telegram-ilmoitukset (tulossa)
+- Systemd-palvelutuki
+
+### Käyttöönotto
+```bash
+# Luo raportti heti
+python run_helius_analysis.py analyze
+
+# Käynnistä daemon-tila
+python run_helius_analysis.py daemon
+
+# Aseta cron-ajastus
+./setup_cron.sh
+```
