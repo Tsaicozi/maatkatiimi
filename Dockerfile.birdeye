@@ -1,0 +1,50 @@
+FROM python:3.10-slim
+
+# Aseta työhakemisto
+WORKDIR /app
+
+# Asenna järjestelmäriippuvuudet
+RUN apt-get update && apt-get install -y \
+    gcc \
+    g++ \
+    git \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Kopioi requirements
+COPY requirements.txt .
+
+# Asenna Python-riippuvuudet
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Asenna lisäriippuvuudet Birdeye-integraaliolle
+RUN pip install --no-cache-dir \
+    cryptography \
+    aiohttp \
+    pyyaml \
+    python-dotenv \
+    prometheus-client
+
+# Kopioi sovelluksen tiedostot
+COPY birdeye_key_manager.py .
+COPY birdeye_integration.py .
+COPY setup_birdeye_keys.py .
+
+# Luo lokihakemisto
+RUN mkdir -p /app/logs
+
+# Aseta käyttäjä (turvallisuus)
+RUN useradd -m -u 1000 botuser && \
+    chown -R botuser:botuser /app
+
+USER botuser
+
+# Metrics-portti
+EXPOSE 9109
+
+# Health check endpoint
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD python3 -c "import sys; sys.exit(0)"
+
+# Käynnistyskomento
+CMD ["python3", "-u", "birdeye_key_manager.py"]

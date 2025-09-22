@@ -1,0 +1,36 @@
+[Unit]
+Description=Birdeye API Key Manager Bot
+After=network.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/workspace
+Environment="PATH=/usr/local/bin:/usr/bin:/bin"
+Environment="PYTHONUNBUFFERED=1"
+EnvironmentFile=-/workspace/.env
+
+# Käynnistyskomento
+ExecStart=/usr/bin/python3 /workspace/birdeye_key_manager.py
+
+# Uudelleenkäynnistys
+Restart=always
+RestartSec=10
+StartLimitInterval=200
+StartLimitBurst=5
+
+# Lokitus
+StandardOutput=append:/workspace/logs/birdeye_key_manager.log
+StandardError=append:/workspace/logs/birdeye_key_manager_error.log
+
+# Turvallisuus
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/workspace
+
+[Install]
+WantedBy=multi-user.target
