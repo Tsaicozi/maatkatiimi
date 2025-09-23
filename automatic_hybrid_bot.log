@@ -109,3 +109,222 @@
 {"level": "INFO", "ts": "2025-09-20T09:46:56", "logger": "hybrid_trading_bot", "msg": "✅ CoinGecko: Löydettiin 20 tokenia"}
 {"level": "INFO", "ts": "2025-09-20T09:46:57", "logger": "hybrid_trading_bot", "msg": "✅ Jupiter: Löydettiin 20 tokenia"}
 {"level": "INFO", "ts": "2025-09-20T09:47:02", "logger": "__main__", "msg": "💓 heartbeat: idle=66.5s (scheduler alive)"}
+{"level": "INFO", "ts": "2025-09-23T15:03:11", "logger": "__main__", "msg": "TEST_MAX_CYCLES=None TEST_MAX_RUNTIME=None"}
+{"level": "INFO", "ts": "2025-09-23T15:03:11", "logger": "__main__", "msg": "Ympäristömuuttujat: max_cycles=None, max_runtime=None"}
+{"level": "INFO", "ts": "2025-09-23T15:03:11", "logger": "telegram_bot_integration", "msg": "✅ Telegram bot alustettu"}
+{"level": "INFO", "ts": "2025-09-23T15:03:11", "logger": "telegram_rate_limiter", "msg": "📱 Telegram Rate Limiter alustettu: 1s rate limit, 30s max backoff"}
+{"level": "INFO", "ts": "2025-09-23T15:03:11", "logger": "__main__", "msg": "🚀 Käynnistetään Automatic Hybrid Trading Bot..."}
+{"level": "INFO", "ts": "2025-09-23T15:03:11", "logger": "__main__", "msg": "📊 Metrics disabled (forced by code override)"}
+{"level": "INFO", "ts": "2025-09-23T15:03:11", "logger": "metrics", "msg": "Metrics poistettu käytöstä (enabled=false)."}
+{"level": "INFO", "ts": "2025-09-23T15:03:11", "logger": "rpc_pool", "msg": "🔄 RPC Pool alustettu: 4 endpointtia"}
+{"level": "INFO", "ts": "2025-09-23T15:03:11", "logger": "__main__", "msg": "🔄 RPC Pool alustettu: 4 endpointtia"}
+{"level": "INFO", "ts": "2025-09-23T15:03:11", "logger": "__main__", "msg": "⏱️ Cycle scheduler armed (interval=60s)"}
+{"level": "INFO", "ts": "2025-09-23T15:03:11", "logger": "__main__", "msg": "⏰ Align seuraavaan minuuttiin: 48.9s odotusta"}
+{"level": "INFO", "ts": "2025-09-23T15:03:11", "logger": "__main__", "msg": "⏰ Align odotus: 48.9s"}
+{"level": "INFO", "ts": "2025-09-23T15:03:11", "logger": "telegram_bot_integration", "msg": "🔄 Käynnistetään Telegram komennonpollaus..."}
+{"level": "INFO", "ts": "2025-09-23T15:03:11", "logger": "telegram_bot_integration", "msg": "✅ Telegram komennonpollaus käynnistetty"}
+{"level": "INFO", "ts": "2025-09-23T15:03:11", "logger": "telegram_bot_integration", "msg": "✅ Telegram viesti lähetetty"}
+{"level": "WARNING", "ts": "2025-09-23T15:03:16", "logger": "__main__", "msg": "⏱️ Startup watchdog käynnistää syklin (last_exists=True, needs_kick=True)"}
+{"level": "INFO", "ts": "2025-09-23T15:03:16", "logger": "hybrid_trading_bot", "msg": "✅ PumpPortal HTTP source lisätty: https://pumpportal.fun"}
+{"level": "INFO", "ts": "2025-09-23T15:03:16", "logger": "hybrid_trading_bot", "msg": "✅ PumpPortal WS new-token source lisätty"}
+{"level": "INFO", "ts": "2025-09-23T15:03:16", "logger": "hybrid_trading_bot", "msg": "✅ Helius logs source lisätty: wss://mainnet.helius-rpc.com/?api-key=e0da0308-2f9... (programs: 1)"}
+{"level": "INFO", "ts": "2025-09-23T15:03:16", "logger": "rpc_interfaces", "msg": "SolanaRPC alustettu endpoint: https://mainnet.helius-rpc.com/?api-key=e0da0308-2f9b-43aa-bb8f-84d7deab8b2d"}
+{"level": "INFO", "ts": "2025-09-23T15:03:16", "logger": "discovery_engine", "msg": "DiscoveryEngine alustettu: 3 lähdettä, min_liq=$500"}
+{"level": "INFO", "ts": "2025-09-23T15:03:16", "logger": "hybrid_trading_bot", "msg": "✅ DiscoveryEngine käynnissä: 3 lähdettä"}
+{"level": "INFO", "ts": "2025-09-23T15:03:16", "logger": "__main__", "msg": "🔄 Aloitetaan analyysi sykli #1"}
+{"level": "INFO", "ts": "2025-09-23T15:03:16", "logger": "__main__", "msg": "Cycle started"}
+{"level": "INFO", "ts": "2025-09-23T15:03:16", "logger": "__main__", "msg": "{\"evt\": \"cycle_start\", \"run_id\": \"run_20250923_150311_160b86fb\", \"cycle_id\": 1}"}
+{"level": "INFO", "ts": "2025-09-23T15:03:16", "logger": "hybrid_trading_bot", "msg": "🔄 Aloitetaan hybrid analyysi sykli..."}
+{"level": "INFO", "ts": "2025-09-23T15:03:16", "logger": "sources.pumpportal_newtokens", "msg": "🎯 PumpPortalNewTokensSource run() käynnistetty"}
+{"level": "INFO", "ts": "2025-09-23T15:03:16", "logger": "sources.pumpportal_ws_newtokens", "msg": "🎯 PumpPortalWSNewTokensSource run() käynnistetty"}
+{"level": "INFO", "ts": "2025-09-23T15:03:16", "logger": "sources.helius_logs_newtokens", "msg": "🦅 HeliusLogsNewTokensSource run() käynnistetty"}
+{"level": "INFO", "ts": "2025-09-23T15:03:16", "logger": "discovery_engine", "msg": "🎯 Scorer loop käynnistetty"}
+{"level": "INFO", "ts": "2025-09-23T15:03:16", "logger": "sources.helius_logs_newtokens", "msg": "✅ Helius WS: Tilaus program logs lähetetty: Tokenkeg..."}
+{"level": "INFO", "ts": "2025-09-23T15:03:16", "logger": "sources.pumpportal_ws_newtokens", "msg": "✅ PumpPortal WS: Tilaus 'subscribeNewToken' lähetetty"}
+{"level": "WARNING", "ts": "2025-09-23T15:03:16", "logger": "sources.pumpportal_newtokens", "msg": "⚠️ PumpPortal HTTP fetch epäonnistui: status=404 (attempt=1, url=https://pumpportal.fun/recent?limit=200). Backoff=2.0s"}
+{"level": "INFO", "ts": "2025-09-23T15:03:16", "logger": "hybrid_trading_bot", "msg": "🔑 API health: cmc=❌(401), birdeye=❌(401), pumpportal=❌(599)"}
+{"level": "INFO", "ts": "2025-09-23T15:03:16", "logger": "hybrid_trading_bot", "msg": "✅ PumpPortal analyzer alustettu"}
+{"level": "INFO", "ts": "2025-09-23T15:03:16", "logger": "hybrid_trading_bot", "msg": "🔍 Skannataan oikeita Solana tokeneita oikeista markkinoista..."}
+{"level": "INFO", "ts": "2025-09-23T15:03:16", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639796.5391862 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:16", "logger": "discovery_engine", "msg": "FRESH-PASS mint=632Sbjo7 buyers=0 trades=0 age=0.0s"}
+{"level": "INFO", "ts": "2025-09-23T15:03:16", "logger": "discovery_engine", "msg": "✅ LP-lock ajoissa: CONDOMGRAM lukittu 0.0min listauksesta"}
+{"level": "WARNING", "ts": "2025-09-23T15:03:16", "logger": "discovery_engine", "msg": "⚠️ Korkea spread: CONDOMGRAM 2.5% (exit-risk, penalty: -0.02)"}
+{"level": "INFO", "ts": "2025-09-23T15:03:16", "logger": "discovery_engine", "msg": "✅ Token käsitelty: CONDOMGRAM (Score: 0.836, Sources: ['pumpportal_ws'])"}
+{"level": "INFO", "ts": "2025-09-23T15:03:16", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639796.6201437 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:16", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639796.6622305 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:16", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639796.8650937 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:16", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639796.8670743 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:16", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639796.8692305 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:16", "logger": "hybrid_trading_bot", "msg": "✅ CoinGecko: Löydettiin 20 tokenia"}
+{"level": "INFO", "ts": "2025-09-23T15:03:16", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639796.9050899 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:16", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639796.9072 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:16", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639796.9118192 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:17", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639797.1510284 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:17", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639797.1551857 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:17", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639797.1571188 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:17", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639797.1589918 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:17", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639797.200641 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:17", "logger": "hybrid_trading_bot", "msg": "✅ Jupiter: Löydettiin 20 tokenia"}
+{"level": "INFO", "ts": "2025-09-23T15:03:17", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639797.2603323 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:17", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639797.2623556 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:17", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639797.2768161 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:17", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639797.2991908 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:17", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=H58mQSR1ByrqST3bN1gTuqbTpKNR6UjCWFtvxXy9pump first_ts=1758639797.388217 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:17", "logger": "discovery_engine", "msg": "FRESH-PASS mint=H58mQSR1 buyers=0 trades=0 age=0.0s"}
+{"level": "INFO", "ts": "2025-09-23T15:03:17", "logger": "discovery_engine", "msg": "✅ LP-lock ajoissa: CONDOMGRAM lukittu 0.0min listauksesta"}
+{"level": "INFO", "ts": "2025-09-23T15:03:17", "logger": "discovery_engine", "msg": "✅ Token käsitelty: CONDOMGRAM (Score: 0.860, Sources: ['pumpportal_ws'])"}
+{"level": "INFO", "ts": "2025-09-23T15:03:17", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639797.4841564 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:17", "logger": "discovery_engine", "msg": "FRESH-PASS mint=632Sbjo7 buyers=0 trades=0 age=0.0s"}
+{"level": "INFO", "ts": "2025-09-23T15:03:17", "logger": "discovery_engine", "msg": "✅ Token käsitelty: 632Sbjo7…pump (Score: 0.860, Sources: ['pumpportal_ws'])"}
+{"level": "INFO", "ts": "2025-09-23T15:03:17", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639797.593077 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:17", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639797.6818657 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:17", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639797.723138 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:17", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639797.753153 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:17", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639797.8998253 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:17", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639797.9140933 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:17", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=H58mQSR1ByrqST3bN1gTuqbTpKNR6UjCWFtvxXy9pump first_ts=1758639797.9165397 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:18", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639798.0899565 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:18", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639798.0920556 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:18", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639798.1221554 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:18", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639798.1876924 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:18", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639798.427699 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:18", "logger": "discovery_engine", "msg": "FRESH-PASS mint=632Sbjo7 buyers=0 trades=0 age=0.0s"}
+{"level": "INFO", "ts": "2025-09-23T15:03:18", "logger": "discovery_engine", "msg": "✅ Token käsitelty: 632Sbjo7…pump (Score: 0.860, Sources: ['pumpportal_ws'])"}
+{"level": "INFO", "ts": "2025-09-23T15:03:18", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639798.6705103 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:18", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639798.839877 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:18", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639798.906041 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:20", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639800.0379534 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:20", "logger": "discovery_engine", "msg": "FRESH-PASS mint=632Sbjo7 buyers=0 trades=0 age=0.0s"}
+{"level": "WARNING", "ts": "2025-09-23T15:03:20", "logger": "discovery_engine", "msg": "⚠️ Korkea spread: 632Sbjo7…pump 2.8% (exit-risk, penalty: -0.04)"}
+{"level": "INFO", "ts": "2025-09-23T15:03:20", "logger": "discovery_engine", "msg": "✅ Token käsitelty: 632Sbjo7…pump (Score: 0.820, Sources: ['pumpportal_ws'])"}
+{"level": "INFO", "ts": "2025-09-23T15:03:20", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639800.2707376 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "hybrid_trading_bot", "msg": "✅ Raydium: Löydettiin 0 tokenia"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639806.2299337 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639806.2301455 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639806.230213 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=DDT7YcjGP5XXKH9AZwMMe7zMWcYpD7yrki88WjuTqwEo first_ts=1758639806.2302697 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639806.2304661 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639806.2305331 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639806.2305858 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639806.2306378 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639806.2306921 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639806.2307427 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639806.2307906 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639806.2308397 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639806.2308958 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639806.2309434 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639806.2309968 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639806.231053 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639806.2311065 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639806.231178 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639806.2312317 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639806.2312858 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639806.231337 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639806.231413 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639806.231467 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639806.2315195 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "discovery_engine", "msg": "FRESH-PASS mint=DDT7YcjG buyers=0 trades=0 age=0.0s"}
+{"level": "WARNING", "ts": "2025-09-23T15:03:26", "logger": "sources.pumpportal_newtokens", "msg": "⚠️ PumpPortal HTTP fetch epäonnistui: status=404 (attempt=3, url=https://pumpportal.fun/recent?limit=200). Backoff=8.0s"}
+{"level": "ERROR", "ts": "2025-09-23T15:03:26", "logger": "sources.pumpportal_newtokens", "msg": "🚫 PumpPortal /recent endpoint palauttaa 404 toistuvasti – poistetaan HTTP-lähde käytöstä. Tarkista base_url: https://pumpportal.fun"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "discovery_engine", "msg": "✅ LP-lock ajoissa: RolyTimer lukittu 0.0min listauksesta"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "discovery_engine", "msg": "✅ Token käsitelty: RolyTimer (Score: 0.860, Sources: ['pumpportal_ws'])"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639806.429465 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639806.431814 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639806.4336586 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639806.4881096 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "hybrid_trading_bot", "msg": "✅ CoinPaprika: Löydettiin 0 tokenia"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "hybrid_trading_bot", "msg": "✅ CoinMarketCap: Löydettiin 0 tokenia"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "hybrid_trading_bot", "msg": "✅ CryptoCompare: Löydettiin 0 tokenia"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "hybrid_trading_bot", "msg": "✅ Pump.fun: Löydettiin 0 tokenia"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "hybrid_trading_bot", "msg": "✅ PumpPortal: Löydettiin 0 tokenia"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "hybrid_trading_bot", "msg": "✅ Löydettiin 0 ultra-fresh Solana tokenia"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "discovery_engine", "msg": "min_score dynamic=0.35 (base=0.35, q80=0.35, cap=0.15)"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "discovery_engine", "msg": "✅ Löydettiin 3 ultra-fresh kandidattia"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "discovery_engine", "msg": "Palautettu 3 kandidattia (min_score=0.35)"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "hybrid_trading_bot", "msg": "🔥 DiscoveryEngine: Löydettiin 3 hot candidate:ja"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "hybrid_trading_bot", "msg": "💾 Hybrid analyysi tulos tallennettu: hybrid_trading_analysis_20250923_150326.json"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "hybrid_trading_bot", "msg": "✅ Hybrid analyysi sykli valmis: 0 tokenia, 0 signaalia, 3 hot candidates"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "hybrid_trading_bot", "msg": "TopScore mint=H58m…pump score=0.86 liq=$5000 buyers=75 buy_ratio=0.00 top10=0.08 fresh=True age=0.2m src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "hybrid_trading_bot", "msg": "TopScore mint=DDT7…qwEo score=0.86 liq=$5000 buyers=75 buy_ratio=0.00 top10=0.08 fresh=True age=0.0m src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "hybrid_trading_bot", "msg": "TopScore mint=632S…pump score=0.86 liq=$5000 buyers=75 buy_ratio=0.00 top10=0.08 fresh=True age=0.1m src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "hybrid_trading_bot", "msg": "Trade gates not met mint=H58mQSR1ByrqST3bN1gTuqbTpKNR6UjCWFtvxXy9pump score=0.00 min=0.35"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=Bon1rPZZSMUYNi4o5XxofLkGQKRtcEUd1QrvTfKhbonk first_ts=1758639806.8241324 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "discovery_engine", "msg": "FRESH-PASS mint=Bon1rPZZ buyers=0 trades=0 age=0.0s"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "discovery_engine", "msg": "✅ LP-lock ajoissa: Bon1rPZZ…bonk lukittu 0.0min listauksesta"}
+{"level": "WARNING", "ts": "2025-09-23T15:03:26", "logger": "discovery_engine", "msg": "⚠️ Korkea spread: Bon1rPZZ…bonk 2.1% (exit-risk, penalty: -0.00)"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "discovery_engine", "msg": "✅ Token käsitelty: Bon1rPZZ…bonk (Score: 0.855, Sources: ['pumpportal_ws'])"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=Bon1rPZZSMUYNi4o5XxofLkGQKRtcEUd1QrvTfKhbonk first_ts=1758639806.9511058 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639806.9628527 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:26", "logger": "discovery_engine", "msg": "FRESH-PASS mint=632Sbjo7 buyers=0 trades=0 age=0.0s"}
+{"level": "INFO", "ts": "2025-09-23T15:03:27", "logger": "discovery_engine", "msg": "✅ Token käsitelty: 632Sbjo7…pump (Score: 0.860, Sources: ['pumpportal_ws'])"}
+{"level": "INFO", "ts": "2025-09-23T15:03:27", "logger": "telegram_bot_integration", "msg": "✅ Telegram viesti lähetetty"}
+{"level": "INFO", "ts": "2025-09-23T15:03:27", "logger": "hybrid_trading_bot", "msg": "📱 Kaikki hot candidates cooldown:issa tai duplikaatteja, ei lähetetä Telegram viestiä"}
+{"level": "INFO", "ts": "2025-09-23T15:03:27", "logger": "shadow_trading_logger", "msg": "✅ Shadow trading logger alustettu: shadow_trades.db"}
+{"level": "INFO", "ts": "2025-09-23T15:03:27", "logger": "shadow_trading_logger", "msg": "📊 Shadow trade kirjattu: CONDOMGRAM (score: 0.86)"}
+{"level": "INFO", "ts": "2025-09-23T15:03:27", "logger": "shadow_trading_logger", "msg": "📊 Shadow trade kirjattu: RolyTimer (score: 0.86)"}
+{"level": "INFO", "ts": "2025-09-23T15:03:27", "logger": "shadow_trading_logger", "msg": "📊 Shadow trade kirjattu: 632Sbjo7…pump (score: 0.82)"}
+{"level": "INFO", "ts": "2025-09-23T15:03:27", "logger": "hybrid_trading_bot", "msg": "✅ Burn-in: Hot candidates/h = 3.0 >= 2.0 (kriteeri täyttyy)"}
+{"level": "WARNING", "ts": "2025-09-23T15:03:27", "logger": "hybrid_trading_bot", "msg": "⚠️ Burn-in: P95 cycle = 10.68s > 3.0s (kriteeri ei täyty)"}
+{"level": "INFO", "ts": "2025-09-23T15:03:27", "logger": "hybrid_trading_bot", "msg": "🔍 Live-kauppa gate: hot_candidates=True, api_health=False, source_health=True, drawdown=True -> False"}
+{"level": "INFO", "ts": "2025-09-23T15:03:27", "logger": "quality_panel", "msg": "✅ Laatupaneeli alustettu"}
+{"level": "INFO", "ts": "2025-09-23T15:03:27", "logger": "discovery_engine", "msg": "min_score dynamic=0.35 (base=0.35, q80=0.35, cap=0.15)"}
+{"level": "INFO", "ts": "2025-09-23T15:03:27", "logger": "__main__", "msg": "Cycle completed"}
+{"level": "INFO", "ts": "2025-09-23T15:03:27", "logger": "__main__", "msg": "✅ Sykli #1 valmis"}
+{"level": "INFO", "ts": "2025-09-23T15:03:27", "logger": "__main__", "msg": "{\"evt\": \"cycle_end\", \"result\": \"success\", \"run_id\": \"run_20250923_150311_160b86fb\", \"cycle_id\": 1, \"tokens\": 0, \"hot\": 3}"}
+{"level": "INFO", "ts": "2025-09-23T15:03:27", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=Bon1rPZZSMUYNi4o5XxofLkGQKRtcEUd1QrvTfKhbonk first_ts=1758639807.3824456 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:27", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=Bon1rPZZSMUYNi4o5XxofLkGQKRtcEUd1QrvTfKhbonk first_ts=1758639807.69125 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:27", "logger": "discovery_engine", "msg": "FRESH-PASS mint=Bon1rPZZ buyers=0 trades=0 age=0.0s"}
+{"level": "INFO", "ts": "2025-09-23T15:03:27", "logger": "discovery_engine", "msg": "✅ Token käsitelty: Bon1rPZZ…bonk (Score: 0.860, Sources: ['pumpportal_ws'])"}
+{"level": "INFO", "ts": "2025-09-23T15:03:28", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=BJjJru4nzNvU9zDtJSZa4M9Epvb5hk1B2LGASJq1pump first_ts=1758639808.2238984 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:28", "logger": "discovery_engine", "msg": "FRESH-PASS mint=BJjJru4n buyers=0 trades=0 age=0.0s"}
+{"level": "INFO", "ts": "2025-09-23T15:03:28", "logger": "discovery_engine", "msg": "✅ LP-lock ajoissa: RM lukittu 0.0min listauksesta"}
+{"level": "WARNING", "ts": "2025-09-23T15:03:28", "logger": "discovery_engine", "msg": "⚠️ Korkea spread: RM 4.7% (exit-risk, penalty: -0.13)"}
+{"level": "INFO", "ts": "2025-09-23T15:03:28", "logger": "discovery_engine", "msg": "✅ Token käsitelty: RM (Score: 0.726, Sources: ['pumpportal_ws'])"}
+{"level": "INFO", "ts": "2025-09-23T15:03:28", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=Bon1rPZZSMUYNi4o5XxofLkGQKRtcEUd1QrvTfKhbonk first_ts=1758639808.5399792 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:28", "logger": "discovery_engine", "msg": "FRESH-PASS mint=Bon1rPZZ buyers=0 trades=0 age=0.0s"}
+{"level": "INFO", "ts": "2025-09-23T15:03:28", "logger": "discovery_engine", "msg": "✅ Token käsitelty: Bon1rPZZ…bonk (Score: 0.860, Sources: ['pumpportal_ws'])"}
+{"level": "INFO", "ts": "2025-09-23T15:03:28", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=Bon1rPZZSMUYNi4o5XxofLkGQKRtcEUd1QrvTfKhbonk first_ts=1758639808.6389773 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:28", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=Bon1rPZZSMUYNi4o5XxofLkGQKRtcEUd1QrvTfKhbonk first_ts=1758639808.6444275 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:29", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=3WmWjZWmGSELT9UMDJLadpSbdQwfrMwYsskfno9upump first_ts=1758639809.4831176 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:29", "logger": "discovery_engine", "msg": "FRESH-PASS mint=3WmWjZWm buyers=0 trades=0 age=0.0s"}
+{"level": "INFO", "ts": "2025-09-23T15:03:29", "logger": "discovery_engine", "msg": "✅ LP-lock ajoissa: Cloudy lukittu 0.0min listauksesta"}
+{"level": "WARNING", "ts": "2025-09-23T15:03:29", "logger": "discovery_engine", "msg": "⚠️ Korkea spread: Cloudy 2.5% (exit-risk, penalty: -0.02)"}
+{"level": "INFO", "ts": "2025-09-23T15:03:29", "logger": "discovery_engine", "msg": "✅ Token käsitelty: Cloudy (Score: 0.837, Sources: ['pumpportal_ws'])"}
+{"level": "INFO", "ts": "2025-09-23T15:03:29", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=3WmWjZWmGSELT9UMDJLadpSbdQwfrMwYsskfno9upump first_ts=1758639809.5912688 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:29", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=3WmWjZWmGSELT9UMDJLadpSbdQwfrMwYsskfno9upump first_ts=1758639809.593215 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:29", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=3WmWjZWmGSELT9UMDJLadpSbdQwfrMwYsskfno9upump first_ts=1758639809.763448 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:29", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=3WmWjZWmGSELT9UMDJLadpSbdQwfrMwYsskfno9upump first_ts=1758639809.8001142 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:29", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=3WmWjZWmGSELT9UMDJLadpSbdQwfrMwYsskfno9upump first_ts=1758639809.865128 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:30", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639810.4049037 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:30", "logger": "discovery_engine", "msg": "FRESH-PASS mint=632Sbjo7 buyers=0 trades=0 age=0.0s"}
+{"level": "WARNING", "ts": "2025-09-23T15:03:30", "logger": "discovery_engine", "msg": "⚠️ Korkea spread: 632Sbjo7…pump 2.6% (exit-risk, penalty: -0.03)"}
+{"level": "INFO", "ts": "2025-09-23T15:03:30", "logger": "discovery_engine", "msg": "✅ Token käsitelty: 632Sbjo7…pump (Score: 0.831, Sources: ['pumpportal_ws'])"}
+{"level": "INFO", "ts": "2025-09-23T15:03:30", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=Bon1rPZZSMUYNi4o5XxofLkGQKRtcEUd1QrvTfKhbonk first_ts=1758639810.634191 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:30", "logger": "discovery_engine", "msg": "FRESH-PASS mint=Bon1rPZZ buyers=0 trades=0 age=0.0s"}
+{"level": "INFO", "ts": "2025-09-23T15:03:30", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=Bon1rPZZSMUYNi4o5XxofLkGQKRtcEUd1QrvTfKhbonk first_ts=1758639810.6771772 liq_hint=0 src=pumpportal_ws"}
+{"level": "WARNING", "ts": "2025-09-23T15:03:30", "logger": "discovery_engine", "msg": "⚠️ Korkea spread: Bon1rPZZ…bonk 3.7% (exit-risk, penalty: -0.08)"}
+{"level": "INFO", "ts": "2025-09-23T15:03:30", "logger": "discovery_engine", "msg": "✅ Token käsitelty: Bon1rPZZ…bonk (Score: 0.777, Sources: ['pumpportal_ws'])"}
+{"level": "INFO", "ts": "2025-09-23T15:03:31", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639811.5321836 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:31", "logger": "discovery_engine", "msg": "FRESH-PASS mint=632Sbjo7 buyers=0 trades=0 age=0.0s"}
+{"level": "WARNING", "ts": "2025-09-23T15:03:31", "logger": "discovery_engine", "msg": "⚠️ Korkea spread: 632Sbjo7…pump 2.8% (exit-risk, penalty: -0.04)"}
+{"level": "INFO", "ts": "2025-09-23T15:03:31", "logger": "discovery_engine", "msg": "✅ Token käsitelty: 632Sbjo7…pump (Score: 0.819, Sources: ['pumpportal_ws'])"}
+{"level": "INFO", "ts": "2025-09-23T15:03:31", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639811.738201 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:31", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639811.748265 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:32", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=BJjJru4nzNvU9zDtJSZa4M9Epvb5hk1B2LGASJq1pump first_ts=1758639812.0129886 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:32", "logger": "discovery_engine", "msg": "FRESH-PASS mint=BJjJru4n buyers=0 trades=0 age=0.0s"}
+{"level": "WARNING", "ts": "2025-09-23T15:03:32", "logger": "discovery_engine", "msg": "⚠️ Korkea spread: BJjJru4n…pump 3.5% (exit-risk, penalty: -0.08)"}
+{"level": "INFO", "ts": "2025-09-23T15:03:32", "logger": "discovery_engine", "msg": "✅ Token käsitelty: BJjJru4n…pump (Score: 0.783, Sources: ['pumpportal_ws'])"}
+{"level": "INFO", "ts": "2025-09-23T15:03:32", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639812.3558557 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:32", "logger": "discovery_engine", "msg": "FRESH-PASS mint=632Sbjo7 buyers=0 trades=0 age=0.0s"}
+{"level": "INFO", "ts": "2025-09-23T15:03:32", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639812.3580766 liq_hint=0 src=pumpportal_ws"}
+{"level": "WARNING", "ts": "2025-09-23T15:03:32", "logger": "discovery_engine", "msg": "⚠️ Korkea spread: 632Sbjo7…pump 2.5% (exit-risk, penalty: -0.02)"}
+{"level": "INFO", "ts": "2025-09-23T15:03:32", "logger": "discovery_engine", "msg": "✅ Token käsitelty: 632Sbjo7…pump (Score: 0.836, Sources: ['pumpportal_ws'])"}
+{"level": "INFO", "ts": "2025-09-23T15:03:32", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=3WmWjZWmGSELT9UMDJLadpSbdQwfrMwYsskfno9upump first_ts=1758639812.5230346 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:32", "logger": "discovery_engine", "msg": "FRESH-PASS mint=3WmWjZWm buyers=0 trades=0 age=0.0s"}
+{"level": "INFO", "ts": "2025-09-23T15:03:32", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=3WmWjZWmGSELT9UMDJLadpSbdQwfrMwYsskfno9upump first_ts=1758639812.5681016 liq_hint=0 src=pumpportal_ws"}
+{"level": "WARNING", "ts": "2025-09-23T15:03:32", "logger": "discovery_engine", "msg": "⚠️ Korkea spread: 3WmWjZWm…pump 4.5% (exit-risk, penalty: -0.13)"}
+{"level": "INFO", "ts": "2025-09-23T15:03:32", "logger": "discovery_engine", "msg": "✅ Token käsitelty: 3WmWjZWm…pump (Score: 0.734, Sources: ['pumpportal_ws'])"}
+{"level": "INFO", "ts": "2025-09-23T15:03:32", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=3WmWjZWmGSELT9UMDJLadpSbdQwfrMwYsskfno9upump first_ts=1758639812.7407284 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:32", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639812.7515452 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:32", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639812.9659424 liq_hint=0 src=pumpportal_ws"}
+{"level": "INFO", "ts": "2025-09-23T15:03:32", "logger": "sources.pumpportal_ws_newtokens", "msg": "PUSH cand mint=632Sbjo7MHm3vteez65zA72eSdhHjwazViQeucdLpump first_ts=1758639812.968427 liq_hint=0 src=pumpportal_ws"}
