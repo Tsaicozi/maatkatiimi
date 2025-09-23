@@ -1,0 +1,271 @@
+nohup: ignoring input
+INFO:__main__:🚀 Käynnistetään Hybrid Trading Bot...
+INFO:telegram_bot_integration:✅ Telegram bot alustettu
+INFO:telegram_rate_limiter:📱 Telegram Rate Limiter alustettu: 1s rate limit, 30s max backoff
+INFO:__main__:🔄 Aloitetaan analyysi sykli #1
+INFO:__main__:🔄 Aloitetaan hybrid analyysi sykli...
+INFO:__main__:✅ PumpPortal HTTP source lisätty: https://pumpportal.fun
+INFO:__main__:✅ PumpPortal WS new-token source lisätty
+INFO:__main__:✅ Helius logs source lisätty: wss://mainnet.helius-rpc.com/?api-key=e0da0308-2f9... (programs: 1)
+INFO:rpc_interfaces:SolanaRPC alustettu endpoint: https://mainnet.helius-rpc.com/?api-key=e0da0308-2f9b-43aa-bb8f-84d7deab8b2d
+INFO:discovery_engine:DiscoveryEngine alustettu: 3 lähdettä, min_liq=$500
+INFO:__main__:✅ DiscoveryEngine käynnissä: 3 lähdettä
+INFO:sources.pumpportal_newtokens:🎯 PumpPortalNewTokensSource run() käynnistetty
+INFO:sources.pumpportal_ws_newtokens:🎯 PumpPortalWSNewTokensSource run() käynnistetty
+INFO:sources.helius_logs_newtokens:🦅 HeliusLogsNewTokensSource run() käynnistetty
+INFO:discovery_engine:🎯 Scorer loop käynnistetty
+INFO:sources.helius_logs_newtokens:✅ Helius WS: Tilaus program logs lähetetty: Tokenkeg...
+WARNING:sources.pumpportal_newtokens:⚠️ PumpPortal HTTP fetch epäonnistui: status=404 (attempt=1, url=https://pumpportal.fun/recent?limit=200). Backoff=2.0s
+INFO:sources.pumpportal_ws_newtokens:✅ PumpPortal WS: Tilaus 'subscribeNewToken' lähetetty
+INFO:__main__:🔑 API health: cmc=❌(401), birdeye=❌(401), pumpportal=❌(599)
+INFO:__main__:✅ PumpPortal analyzer alustettu
+INFO:__main__:🔍 Skannataan oikeita Solana tokeneita oikeista markkinoista...
+INFO:__main__:✅ CoinGecko: Löydettiin 20 tokenia
+INFO:__main__:✅ Jupiter: Löydettiin 20 tokenia
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=CMA4QFW6TAMYquMmXg76pvNdw4VetQcMDokLBt7dpump first_ts=1758638827.0718315 liq_hint=0 src=pumpportal_ws
+INFO:discovery_engine:FRESH-PASS mint=CMA4QFW6 buyers=0 trades=0 age=0.0s
+INFO:discovery_engine:✅ LP-lock ajoissa: DEVIANT lukittu 0.0min listauksesta
+INFO:discovery_engine:✅ Token käsitelty: DEVIANT (Score: 0.860, Sources: ['pumpportal_ws'])
+INFO:__main__:✅ Raydium: Löydettiin 0 tokenia
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=14b6wZNbCtXGe7vrXfDWjvcgUFwG4U2HGpEDZhn8uUGS first_ts=1758638834.1524122 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=2u1ioq2XWpa6szTNpj1s5wmoViN6jqQJdma5uvKwpump first_ts=1758638834.152682 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=DpgYfAQJYZxYethHQrxxrcd55HW8TQC1xz2dj1Rspump first_ts=1758638834.1527772 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=CMA4QFW6TAMYquMmXg76pvNdw4VetQcMDokLBt7dpump first_ts=1758638834.1528733 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=ER9oQ3Locgh7vhWuXGFY5UE52BKiz5evSTSJDn6spump first_ts=1758638834.1529205 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638834.1529868 liq_hint=0 src=pumpportal_ws
+INFO:discovery_engine:FRESH-PASS mint=14b6wZNb buyers=0 trades=0 age=0.0s
+WARNING:sources.pumpportal_newtokens:⚠️ PumpPortal HTTP fetch epäonnistui: status=404 (attempt=3, url=https://pumpportal.fun/recent?limit=200). Backoff=8.0s
+ERROR:sources.pumpportal_newtokens:🚫 PumpPortal /recent endpoint palauttaa 404 toistuvasti – poistetaan HTTP-lähde käytöstä. Tarkista base_url: https://pumpportal.fun
+INFO:discovery_engine:✅ LP-lock ajoissa: FMP lukittu 0.0min listauksesta
+INFO:discovery_engine:✅ Token käsitelty: FMP (Score: 0.860, Sources: ['pumpportal_ws'])
+INFO:discovery_engine:FRESH-PASS mint=2u1ioq2X buyers=0 trades=0 age=0.1s
+INFO:discovery_engine:✅ LP-lock ajoissa: DEV lukittu 0.0min listauksesta
+WARNING:discovery_engine:⚠️ Korkea spread: DEV 4.6% (exit-risk, penalty: -0.13)
+INFO:discovery_engine:✅ Token käsitelty: DEV (Score: 0.731, Sources: ['pumpportal_ws'])
+INFO:discovery_engine:FRESH-PASS mint=DpgYfAQJ buyers=0 trades=0 age=0.1s
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638834.3001256 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638834.311498 liq_hint=0 src=pumpportal_ws
+INFO:discovery_engine:✅ LP-lock ajoissa: YTGATE lukittu 0.0min listauksesta
+INFO:discovery_engine:✅ Token käsitelty: YTGATE (Score: 0.860, Sources: ['pumpportal_ws'])
+INFO:discovery_engine:FRESH-PASS mint=CMA4QFW6 buyers=0 trades=0 age=0.2s
+INFO:discovery_engine:✅ Token käsitelty: CMA4QFW6…pump (Score: 0.860, Sources: ['pumpportal_ws'])
+INFO:discovery_engine:FRESH-PASS mint=ER9oQ3Lo buyers=0 trades=0 age=0.2s
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638834.4245932 liq_hint=0 src=pumpportal_ws
+INFO:discovery_engine:✅ LP-lock ajoissa: CARBS lukittu 0.0min listauksesta
+WARNING:discovery_engine:⚠️ Korkea spread: CARBS 4.1% (exit-risk, penalty: -0.10)
+INFO:discovery_engine:✅ Token käsitelty: CARBS (Score: 0.757, Sources: ['pumpportal_ws'])
+INFO:discovery_engine:FRESH-PASS mint=7w1mbMWZ buyers=0 trades=0 age=0.3s
+INFO:discovery_engine:✅ LP-lock ajoissa: CABOT lukittu 0.0min listauksesta
+WARNING:discovery_engine:⚠️ Korkea spread: CABOT 4.0% (exit-risk, penalty: -0.10)
+INFO:discovery_engine:✅ Token käsitelty: CABOT (Score: 0.762, Sources: ['pumpportal_ws'])
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=DpgYfAQJYZxYethHQrxxrcd55HW8TQC1xz2dj1Rspump first_ts=1758638834.5630639 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=DpgYfAQJYZxYethHQrxxrcd55HW8TQC1xz2dj1Rspump first_ts=1758638834.5657248 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=DpgYfAQJYZxYethHQrxxrcd55HW8TQC1xz2dj1Rspump first_ts=1758638834.610884 liq_hint=0 src=pumpportal_ws
+INFO:__main__:✅ CoinPaprika: Löydettiin 0 tokenia
+INFO:__main__:✅ CoinMarketCap: Löydettiin 0 tokenia
+INFO:__main__:✅ CryptoCompare: Löydettiin 0 tokenia
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=DpgYfAQJYZxYethHQrxxrcd55HW8TQC1xz2dj1Rspump first_ts=1758638834.685773 liq_hint=0 src=pumpportal_ws
+INFO:__main__:✅ Pump.fun: Löydettiin 0 tokenia
+INFO:__main__:✅ PumpPortal: Löydettiin 0 tokenia
+INFO:__main__:✅ Löydettiin 0 ultra-fresh Solana tokenia
+INFO:discovery_engine:min_score dynamic=0.35 (base=0.35, q80=0.35, cap=0.15)
+INFO:discovery_engine:✅ Löydettiin 6 ultra-fresh kandidattia
+INFO:discovery_engine:Palautettu 5 kandidattia (min_score=0.35)
+INFO:__main__:🔥 DiscoveryEngine: Löydettiin 5 hot candidate:ja
+INFO:__main__:💾 Hybrid analyysi tulos tallennettu: hybrid_trading_analysis_20250923_144714.json
+INFO:__main__:✅ Hybrid analyysi sykli valmis: 0 tokenia, 0 signaalia, 5 hot candidates
+INFO:__main__:TopScore mint=CMA4…pump score=0.86 liq=$5000 buyers=75 buy_ratio=0.00 top10=0.08 fresh=True age=0.0m src=pumpportal_ws
+INFO:__main__:TopScore mint=14b6…uUGS score=0.86 liq=$5000 buyers=75 buy_ratio=0.00 top10=0.08 fresh=True age=0.0m src=pumpportal_ws
+INFO:__main__:TopScore mint=DpgY…pump score=0.86 liq=$5000 buyers=75 buy_ratio=0.00 top10=0.08 fresh=True age=0.0m src=pumpportal_ws
+INFO:__main__:TopScore mint=7w1m…pump score=0.86 liq=$5000 buyers=75 buy_ratio=0.00 top10=0.08 fresh=True age=0.0m src=pumpportal_ws
+INFO:__main__:TopScore mint=ER9o…pump score=0.86 liq=$5000 buyers=75 buy_ratio=0.00 top10=0.08 fresh=True age=0.0m src=pumpportal_ws
+INFO:__main__:TopScore mint=2u1i…pump score=0.86 liq=$5000 buyers=75 buy_ratio=0.00 top10=0.08 fresh=True age=0.0m src=pumpportal_ws
+INFO:__main__:Trade gates not met mint=CMA4QFW6TAMYquMmXg76pvNdw4VetQcMDokLBt7dpump score=0.00 min=0.35
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=DKB8oCXHwf9dGZqoBk3XtK2ftEoHTyH537ZSnGjXpump first_ts=1758638834.9630501 liq_hint=0 src=pumpportal_ws
+INFO:discovery_engine:FRESH-PASS mint=DKB8oCXH buyers=0 trades=0 age=0.0s
+INFO:discovery_engine:✅ LP-lock ajoissa: BiFlag lukittu 0.0min listauksesta
+WARNING:discovery_engine:⚠️ Korkea spread: BiFlag 2.8% (exit-risk, penalty: -0.04)
+INFO:discovery_engine:✅ Token käsitelty: BiFlag (Score: 0.819, Sources: ['pumpportal_ws'])
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=94q4Vt4jBSFJubFkyUNUckcvrrcu8wecgXbTUbJVpump first_ts=1758638835.1699243 liq_hint=0 src=pumpportal_ws
+INFO:discovery_engine:FRESH-PASS mint=94q4Vt4j buyers=0 trades=0 age=0.0s
+INFO:discovery_engine:✅ LP-lock ajoissa: KISS lukittu 0.0min listauksesta
+INFO:discovery_engine:✅ Token käsitelty: KISS (Score: 0.860, Sources: ['pumpportal_ws'])
+INFO:telegram_bot_integration:✅ Telegram viesti lähetetty
+INFO:__main__:📱 Kaikki hot candidates cooldown:issa tai duplikaatteja, ei lähetetä Telegram viestiä
+INFO:shadow_trading_logger:✅ Shadow trading logger alustettu: shadow_trades.db
+INFO:shadow_trading_logger:📊 Shadow trade kirjattu: CMA4QFW6…pump (score: 0.86)
+INFO:shadow_trading_logger:📊 Shadow trade kirjattu: FMP (score: 0.86)
+INFO:shadow_trading_logger:📊 Shadow trade kirjattu: YTGATE (score: 0.86)
+INFO:shadow_trading_logger:📊 Shadow trade kirjattu: CABOT (score: 0.76)
+INFO:shadow_trading_logger:📊 Shadow trade kirjattu: CARBS (score: 0.76)
+INFO:__main__:✅ Burn-in: Hot candidates/h = 5.0 >= 2.0 (kriteeri täyttyy)
+WARNING:__main__:⚠️ Burn-in: P95 cycle = 12.63s > 3.0s (kriteeri ei täyty)
+INFO:__main__:🔍 Live-kauppa gate: hot_candidates=True, api_health=False, source_health=True, drawdown=True -> False
+INFO:quality_panel:✅ Laatupaneeli alustettu
+INFO:discovery_engine:min_score dynamic=0.35 (base=0.35, q80=0.35, cap=0.15)
+INFO:__main__:📊 Hybrid Bot Status:
+INFO:__main__:   Tokeneita skannattu: 0
+INFO:__main__:   Signaaleja generoitu: 0
+INFO:__main__:   Kauppoja suoritettu: 0
+INFO:__main__:   Portfolio arvo: $10000.00
+INFO:__main__:   Portfolio PnL: $0.00
+INFO:__main__:   Aktiivisia positioita: 0
+INFO:__main__:📈 Performance:
+INFO:__main__:   Win rate: 0.0%
+INFO:__main__:   Total PnL: $0.00
+INFO:__main__:   Total trades: 0
+INFO:__main__:   Profit factor: 0.00
+INFO:__main__:⏰ Odotetaan 60 sekuntia ennen seuraavaa sykliä...
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638835.5320337 liq_hint=0 src=pumpportal_ws
+INFO:discovery_engine:FRESH-PASS mint=7w1mbMWZ buyers=0 trades=0 age=0.0s
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638835.573746 liq_hint=0 src=pumpportal_ws
+WARNING:discovery_engine:⚠️ Korkea spread: 7w1mbMWZ…pump 5.0% (exit-risk, penalty: -0.15)
+INFO:discovery_engine:✅ Token käsitelty: 7w1mbMWZ…pump (Score: 0.711, Sources: ['pumpportal_ws'])
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638835.6130672 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=DpgYfAQJYZxYethHQrxxrcd55HW8TQC1xz2dj1Rspump first_ts=1758638836.3851824 liq_hint=0 src=pumpportal_ws
+INFO:discovery_engine:FRESH-PASS mint=DpgYfAQJ buyers=0 trades=0 age=0.0s
+WARNING:discovery_engine:⚠️ Korkea spread: DpgYfAQJ…pump 2.5% (exit-risk, penalty: -0.02)
+INFO:discovery_engine:✅ Token käsitelty: DpgYfAQJ…pump (Score: 0.837, Sources: ['pumpportal_ws'])
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638836.8934777 liq_hint=0 src=pumpportal_ws
+INFO:discovery_engine:FRESH-PASS mint=7w1mbMWZ buyers=0 trades=0 age=0.0s
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638836.8958452 liq_hint=0 src=pumpportal_ws
+INFO:discovery_engine:✅ Token käsitelty: 7w1mbMWZ…pump (Score: 0.860, Sources: ['pumpportal_ws'])
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638836.9787004 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=DpgYfAQJYZxYethHQrxxrcd55HW8TQC1xz2dj1Rspump first_ts=1758638837.784524 liq_hint=0 src=pumpportal_ws
+INFO:discovery_engine:FRESH-PASS mint=DpgYfAQJ buyers=0 trades=0 age=0.0s
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=8Zbqd5VHMrrjyT8vcxztymSVAWJGd5PKeoUfeU68pump first_ts=1758638837.7940097 liq_hint=0 src=pumpportal_ws
+WARNING:discovery_engine:⚠️ Korkea spread: DpgYfAQJ…pump 2.3% (exit-risk, penalty: -0.02)
+INFO:discovery_engine:✅ Token käsitelty: DpgYfAQJ…pump (Score: 0.845, Sources: ['pumpportal_ws'])
+INFO:discovery_engine:FRESH-PASS mint=8Zbqd5VH buyers=0 trades=0 age=0.0s
+INFO:discovery_engine:✅ LP-lock ajoissa: TRUMPTER lukittu 0.0min listauksesta
+WARNING:discovery_engine:⚠️ Korkea spread: TRUMPTER 2.0% (exit-risk, penalty: -0.00)
+INFO:discovery_engine:✅ Token käsitelty: TRUMPTER (Score: 0.859, Sources: ['pumpportal_ws'])
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638839.0886607 liq_hint=0 src=pumpportal_ws
+INFO:discovery_engine:FRESH-PASS mint=7w1mbMWZ buyers=0 trades=0 age=0.0s
+WARNING:discovery_engine:⚠️ Korkea spread: 7w1mbMWZ…pump 3.1% (exit-risk, penalty: -0.05)
+INFO:discovery_engine:✅ Token käsitelty: 7w1mbMWZ…pump (Score: 0.806, Sources: ['pumpportal_ws'])
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638839.16074 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638839.185392 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638839.245208 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638839.69494 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=DpgYfAQJYZxYethHQrxxrcd55HW8TQC1xz2dj1Rspump first_ts=1758638839.697099 liq_hint=0 src=pumpportal_ws
+INFO:discovery_engine:FRESH-PASS mint=DpgYfAQJ buyers=0 trades=0 age=0.0s
+INFO:discovery_engine:✅ Token käsitelty: DpgYfAQJ…pump (Score: 0.860, Sources: ['pumpportal_ws'])
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638839.7596538 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638839.7614658 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638839.9454412 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638839.9472463 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638840.2928 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638840.30395 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=4DDnMQzdTVQ3M3PvoeLi4u6Q99N614xmVJVyQtBwpump first_ts=1758638840.4251 liq_hint=0 src=pumpportal_ws
+INFO:discovery_engine:FRESH-PASS mint=4DDnMQzd buyers=0 trades=0 age=0.0s
+INFO:discovery_engine:✅ LP-lock ajoissa: Community  lukittu 0.0min listauksesta
+INFO:discovery_engine:✅ Token käsitelty: Community  (Score: 0.860, Sources: ['pumpportal_ws'])
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638840.7080736 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638840.7096314 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=DpgYfAQJYZxYethHQrxxrcd55HW8TQC1xz2dj1Rspump first_ts=1758638841.163417 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=DpgYfAQJYZxYethHQrxxrcd55HW8TQC1xz2dj1Rspump first_ts=1758638841.5426807 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638841.5696166 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=4DDnMQzdTVQ3M3PvoeLi4u6Q99N614xmVJVyQtBwpump first_ts=1758638841.683911 liq_hint=0 src=pumpportal_ws
+INFO:discovery_engine:FRESH-PASS mint=4DDnMQzd buyers=0 trades=0 age=0.0s
+INFO:discovery_engine:✅ Token käsitelty: 4DDnMQzd…pump (Score: 0.860, Sources: ['pumpportal_ws'])
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=4DDnMQzdTVQ3M3PvoeLi4u6Q99N614xmVJVyQtBwpump first_ts=1758638841.7754025 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638841.8996055 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=FRDNdYRwNkQP5rofzYNrC3qi2Cr9HhJ3gzDQB7qdpump first_ts=1758638842.209911 liq_hint=0 src=pumpportal_ws
+INFO:discovery_engine:FRESH-PASS mint=FRDNdYRw buyers=0 trades=0 age=0.0s
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=4DDnMQzdTVQ3M3PvoeLi4u6Q99N614xmVJVyQtBwpump first_ts=1758638842.2135396 liq_hint=0 src=pumpportal_ws
+INFO:discovery_engine:✅ LP-lock ajoissa: jridnziwo lukittu 0.0min listauksesta
+WARNING:discovery_engine:⚠️ Korkea spread: jridnziwo 4.7% (exit-risk, penalty: -0.14)
+INFO:discovery_engine:✅ Token käsitelty: jridnziwo (Score: 0.723, Sources: ['pumpportal_ws'])
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638842.298344 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=FRDNdYRwNkQP5rofzYNrC3qi2Cr9HhJ3gzDQB7qdpump first_ts=1758638842.2990696 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638842.3018916 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=4DDnMQzdTVQ3M3PvoeLi4u6Q99N614xmVJVyQtBwpump first_ts=1758638842.7466433 liq_hint=0 src=pumpportal_ws
+INFO:discovery_engine:FRESH-PASS mint=4DDnMQzd buyers=0 trades=0 age=0.0s
+WARNING:discovery_engine:⚠️ Korkea spread: 4DDnMQzd…pump 4.7% (exit-risk, penalty: -0.14)
+INFO:discovery_engine:✅ Token käsitelty: 4DDnMQzd…pump (Score: 0.724, Sources: ['pumpportal_ws'])
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=DpgYfAQJYZxYethHQrxxrcd55HW8TQC1xz2dj1Rspump first_ts=1758638843.2826807 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=DpgYfAQJYZxYethHQrxxrcd55HW8TQC1xz2dj1Rspump first_ts=1758638844.0352538 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=4DDnMQzdTVQ3M3PvoeLi4u6Q99N614xmVJVyQtBwpump first_ts=1758638844.1095967 liq_hint=0 src=pumpportal_ws
+INFO:discovery_engine:FRESH-PASS mint=4DDnMQzd buyers=0 trades=0 age=0.0s
+WARNING:discovery_engine:⚠️ Korkea spread: 4DDnMQzd…pump 3.4% (exit-risk, penalty: -0.07)
+INFO:discovery_engine:✅ Token käsitelty: 4DDnMQzd…pump (Score: 0.790, Sources: ['pumpportal_ws'])
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=DpgYfAQJYZxYethHQrxxrcd55HW8TQC1xz2dj1Rspump first_ts=1758638844.2351747 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638844.4776022 liq_hint=0 src=pumpportal_ws
+INFO:discovery_engine:FRESH-PASS mint=7w1mbMWZ buyers=0 trades=0 age=0.0s
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=HmkEESo8j7gtCSLhnrCDX2KRwb9ng8rur6XdXNuwvVQX first_ts=1758638844.4865022 liq_hint=0 src=pumpportal_ws
+WARNING:discovery_engine:⚠️ Korkea spread: 7w1mbMWZ…pump 2.8% (exit-risk, penalty: -0.04)
+INFO:discovery_engine:✅ Token käsitelty: 7w1mbMWZ…pump (Score: 0.821, Sources: ['pumpportal_ws'])
+INFO:discovery_engine:FRESH-PASS mint=HmkEESo8 buyers=0 trades=0 age=0.0s
+INFO:discovery_engine:✅ LP-lock ajoissa: CABOT lukittu 0.0min listauksesta
+INFO:discovery_engine:✅ Token käsitelty: CABOT (Score: 0.860, Sources: ['pumpportal_ws'])
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638845.0696628 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638845.0722013 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=4DDnMQzdTVQ3M3PvoeLi4u6Q99N614xmVJVyQtBwpump first_ts=1758638845.1176867 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=DpgYfAQJYZxYethHQrxxrcd55HW8TQC1xz2dj1Rspump first_ts=1758638845.1613166 liq_hint=0 src=pumpportal_ws
+INFO:discovery_engine:FRESH-PASS mint=DpgYfAQJ buyers=0 trades=0 age=0.0s
+WARNING:discovery_engine:⚠️ Korkea spread: DpgYfAQJ…pump 3.0% (exit-risk, penalty: -0.05)
+INFO:discovery_engine:✅ Token käsitelty: DpgYfAQJ…pump (Score: 0.811, Sources: ['pumpportal_ws'])
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=4DDnMQzdTVQ3M3PvoeLi4u6Q99N614xmVJVyQtBwpump first_ts=1758638845.3598378 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=4DDnMQzdTVQ3M3PvoeLi4u6Q99N614xmVJVyQtBwpump first_ts=1758638845.3853977 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=94q4Vt4jBSFJubFkyUNUckcvrrcu8wecgXbTUbJVpump first_ts=1758638845.563624 liq_hint=0 src=pumpportal_ws
+INFO:discovery_engine:FRESH-PASS mint=94q4Vt4j buyers=0 trades=0 age=0.0s
+INFO:discovery_engine:✅ Token käsitelty: 94q4Vt4j…pump (Score: 0.860, Sources: ['pumpportal_ws'])
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=4DDnMQzdTVQ3M3PvoeLi4u6Q99N614xmVJVyQtBwpump first_ts=1758638846.2845292 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638846.554274 liq_hint=0 src=pumpportal_ws
+INFO:discovery_engine:FRESH-PASS mint=7w1mbMWZ buyers=0 trades=0 age=0.0s
+WARNING:discovery_engine:⚠️ Korkea spread: 7w1mbMWZ…pump 2.1% (exit-risk, penalty: -0.01)
+INFO:discovery_engine:✅ Token käsitelty: 7w1mbMWZ…pump (Score: 0.855, Sources: ['pumpportal_ws'])
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=4DDnMQzdTVQ3M3PvoeLi4u6Q99N614xmVJVyQtBwpump first_ts=1758638846.7953758 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=DpgYfAQJYZxYethHQrxxrcd55HW8TQC1xz2dj1Rspump first_ts=1758638846.883111 liq_hint=0 src=pumpportal_ws
+INFO:discovery_engine:FRESH-PASS mint=DpgYfAQJ buyers=0 trades=0 age=0.0s
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=DpgYfAQJYZxYethHQrxxrcd55HW8TQC1xz2dj1Rspump first_ts=1758638846.8864686 liq_hint=0 src=pumpportal_ws
+WARNING:discovery_engine:⚠️ Korkea spread: DpgYfAQJ…pump 4.0% (exit-risk, penalty: -0.10)
+INFO:discovery_engine:✅ Token käsitelty: DpgYfAQJ…pump (Score: 0.762, Sources: ['pumpportal_ws'])
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=4DDnMQzdTVQ3M3PvoeLi4u6Q99N614xmVJVyQtBwpump first_ts=1758638847.1594214 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=4DDnMQzdTVQ3M3PvoeLi4u6Q99N614xmVJVyQtBwpump first_ts=1758638847.2775822 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=4DDnMQzdTVQ3M3PvoeLi4u6Q99N614xmVJVyQtBwpump first_ts=1758638847.6706665 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=4DDnMQzdTVQ3M3PvoeLi4u6Q99N614xmVJVyQtBwpump first_ts=1758638847.7119534 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=DpgYfAQJYZxYethHQrxxrcd55HW8TQC1xz2dj1Rspump first_ts=1758638847.9888375 liq_hint=0 src=pumpportal_ws
+INFO:discovery_engine:FRESH-PASS mint=DpgYfAQJ buyers=0 trades=0 age=0.0s
+INFO:discovery_engine:✅ Token käsitelty: DpgYfAQJ…pump (Score: 0.860, Sources: ['pumpportal_ws'])
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=DpgYfAQJYZxYethHQrxxrcd55HW8TQC1xz2dj1Rspump first_ts=1758638848.0462296 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638848.103804 liq_hint=0 src=pumpportal_ws
+INFO:discovery_engine:FRESH-PASS mint=7w1mbMWZ buyers=0 trades=0 age=0.0s
+WARNING:discovery_engine:⚠️ Korkea spread: 7w1mbMWZ…pump 2.9% (exit-risk, penalty: -0.05)
+INFO:discovery_engine:✅ Token käsitelty: 7w1mbMWZ…pump (Score: 0.814, Sources: ['pumpportal_ws'])
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=4DDnMQzdTVQ3M3PvoeLi4u6Q99N614xmVJVyQtBwpump first_ts=1758638848.3805432 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=4DDnMQzdTVQ3M3PvoeLi4u6Q99N614xmVJVyQtBwpump first_ts=1758638848.63149 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=4DDnMQzdTVQ3M3PvoeLi4u6Q99N614xmVJVyQtBwpump first_ts=1758638848.6341496 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638848.6529164 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638848.678014 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638848.6800704 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=DpgYfAQJYZxYethHQrxxrcd55HW8TQC1xz2dj1Rspump first_ts=1758638848.7896695 liq_hint=0 src=pumpportal_ws
+INFO:discovery_engine:FRESH-PASS mint=DpgYfAQJ buyers=0 trades=0 age=0.0s
+INFO:discovery_engine:✅ Token käsitelty: DpgYfAQJ…pump (Score: 0.860, Sources: ['pumpportal_ws'])
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638848.9094524 liq_hint=0 src=pumpportal_ws
+INFO:discovery_engine:FRESH-PASS mint=7w1mbMWZ buyers=0 trades=0 age=0.0s
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638848.9149005 liq_hint=0 src=pumpportal_ws
+INFO:discovery_engine:✅ Token käsitelty: 7w1mbMWZ…pump (Score: 0.860, Sources: ['pumpportal_ws'])
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=4DDnMQzdTVQ3M3PvoeLi4u6Q99N614xmVJVyQtBwpump first_ts=1758638849.1952052 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638849.3324687 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638849.825141 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=4DDnMQzdTVQ3M3PvoeLi4u6Q99N614xmVJVyQtBwpump first_ts=1758638849.9923055 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=DpgYfAQJYZxYethHQrxxrcd55HW8TQC1xz2dj1Rspump first_ts=1758638850.4380963 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638850.558795 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638850.5887368 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638851.110786 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638851.7245512 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638851.7303476 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=DpgYfAQJYZxYethHQrxxrcd55HW8TQC1xz2dj1Rspump first_ts=1758638851.78697 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=4DDnMQzdTVQ3M3PvoeLi4u6Q99N614xmVJVyQtBwpump first_ts=1758638852.4399648 liq_hint=0 src=pumpportal_ws
+INFO:discovery_engine:FRESH-PASS mint=4DDnMQzd buyers=0 trades=0 age=0.0s
+WARNING:discovery_engine:⚠️ Korkea spread: 4DDnMQzd…pump 4.6% (exit-risk, penalty: -0.13)
+INFO:discovery_engine:✅ Token käsitelty: 4DDnMQzd…pump (Score: 0.731, Sources: ['pumpportal_ws'])
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=DpgYfAQJYZxYethHQrxxrcd55HW8TQC1xz2dj1Rspump first_ts=1758638852.594035 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=DpgYfAQJYZxYethHQrxxrcd55HW8TQC1xz2dj1Rspump first_ts=1758638852.6593292 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=7w1mbMWZD234Qjq9koa9cB6nx6bdLedwJdSgjH7jpump first_ts=1758638853.0896325 liq_hint=0 src=pumpportal_ws
+INFO:sources.pumpportal_ws_newtokens:PUSH cand mint=CdNH6FGpRjW1Bj33JeqMfyFUDpwAq9Ef7aCiu2bibonk first_ts=1758638853.1248155 liq_hint=0 src=pumpportal_ws
+INFO:discovery_engine:FRESH-PASS mint=CdNH6FGp buyers=0 trades=0 age=0.0s
+INFO:discovery_engine:✅ LP-lock ajoissa: CdNH6FGp…bonk lukittu 0.0min listauksesta
+INFO:discovery_engine:✅ Token käsitelty: CdNH6FGp…bonk (Score: 0.860, Sources: ['pumpportal_ws'])
