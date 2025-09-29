@@ -1,0 +1,14 @@
+[project]
+name = "crew-cursor-starter"
+version = "0.1.0"
+description = "CrewAI + Cursor multi-agent starter"
+requires-python = ">=3.10"
+dependencies = [
+  "crewai>=0.51.0",
+  "crewai-tools>=0.10.0",
+  "litellm>=1.51.0",
+  "python-dotenv>=1.0.1",
+  "pydantic>=2.7.0",
+  "rich>=13.7.0",
+  "pyyaml>=6.0.0"
+]

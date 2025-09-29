@@ -1,0 +1,12 @@
+# Vaihda mallit yhdestä paikasta
+ChiefIdeator:
+  llm: openai/gpt-4
+  tools_llm: openai/gpt-4o-mini
+MacroAnalyst:
+  llm: anthropic/claude-3-5-sonnet-latest
+QuantScreener:
+  llm: openai/gpt-4o-mini
+RiskOfficer:
+  llm: anthropic/claude-3-5-sonnet-latest
+FactualReviewer:
+  llm: anthropic/claude-3-5-sonnet-latest
