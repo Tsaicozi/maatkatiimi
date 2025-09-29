@@ -1,0 +1,1 @@
+# CrewAI + Cursor starter package

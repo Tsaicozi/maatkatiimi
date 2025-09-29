@@ -1,0 +1,16 @@
+llm:
+  model: ${LLM_MODEL}
+  temperature: ${LLM_TEMPERATURE}
+
+process:
+  kind: sequential  # sequential | parallel
+  add_reviewer_gate: true
+
+memory:
+  kind: local  # local | chroma | redis
+  path: ./.memory
+
+policies:
+  allow_network: false  # työkalut päättävät erikseen
+  allow_code_write: true
+  allow_tests_run: true
