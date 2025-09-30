@@ -1,8 +1,12 @@
-.PHONY: setup run run-idea fmt clean test
+.PHONY: setup run run-idea fmt clean test setup-env3
 
 setup:
 	python -m venv .venv && . .venv/bin/activate && pip install -U pip
 	pip install -r requirements.txt || true
+
+setup-env3:
+	cp .env.example .env3
+	@echo "Muokkaa .env3 tiedostoa ja lisää API-avaimet"
 
 run:
 	python run.py "feature: lisää kirjautumissivu"

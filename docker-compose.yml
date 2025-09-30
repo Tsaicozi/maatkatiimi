@@ -5,7 +5,7 @@ services:
     volumes:
       - ./:/app
     env_file:
-      - .env
+      - .env3
     command: bash -lc "pip install -r requirements.txt && python run.py 'feature: lisää kirjautumissivu'"
   
   crew-invest:
@@ -14,5 +14,5 @@ services:
     volumes:
       - ./:/app
     env_file:
-      - .env
+      - .env3
     command: bash -lc "pip install -r requirements.txt && python run_idea.py 'brief: EU data center REITit hyötyvät AI‑kysynnästä'"

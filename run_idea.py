@@ -3,7 +3,8 @@ from crew.crew_invest import invest_crew
 from crew.memory_invest import IdeaRegistry
 import sys
 
-load_dotenv()
+# Lataa .env3 tiedosto
+load_dotenv('.env3')
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:

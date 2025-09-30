@@ -4,7 +4,8 @@ from dotenv import load_dotenv
 from crew.crew import crew
 from crew.tasks import ResearchTask, BuildTask, ReviewTask
 
-load_dotenv()
+# Lataa .env3 tiedosto
+load_dotenv('.env3')
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
