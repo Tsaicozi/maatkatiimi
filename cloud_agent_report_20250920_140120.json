@@ -1,0 +1,26 @@
+{
+  "timestamp": "2025-09-20T11:01:20.303979+00:00",
+  "environment": "Cursor Cloud",
+  "agents": {
+    "automatic_hybrid_bot": {
+      "status": "running",
+      "pid": 25302,
+      "cpu_percent": 0.0,
+      "memory_mb": 314.046875,
+      "error_count": 0,
+      "last_seen": "2025-09-20T11:01:05.826851+00:00",
+      "is_healthy": false,
+      "performance_score": 81.34375,
+      "issues": [
+        "Agent not running (status: error)",
+        "Too many errors: 37"
+      ]
+    }
+  },
+  "summary": {
+    "total_agents": 1,
+    "running_agents": 1,
+    "healthy_agents": 0,
+    "total_errors": 0
+  }
+}

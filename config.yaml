@@ -17,21 +17,33 @@ discovery:
     ttl_sec: 600           # kuinka kauan tuoretta katsotaan (WS-ts:n perusteella)
     min_unique_buyers: 0   # min ostajamäärä fresh-passiin (0 = ei vaadita)
     min_trades: 0          # min trade-count (0 = ei vaadita)
-    sources: ["pumpportal_ws","helius_logs"]  # mitkä lähteet kelpaa fresh-passiin
+    sources: ["helius_transactions"]
   sources:
-    raydium: false
-    orca: false
+    raydium: true
+    orca: true
     pumpfun: true
     birdeye_ws: false
-    pumpportal_ws: true
-    geckoterminal: true
+    pumpportal_ws: false
+    geckoterminal: false
     dexscreener: true
-    helius_logs: true    # UUSI
+    birdeye: true
+    helius_logs: false
+    helius_transactions: true
+  dexscreener_min_liquidity: 20000.0   # USD, estää täysin illikvidit parit
+  dexscreener_min_volume: 30000.0      # USD 24h volyymikynnys
+  dexscreener_min_price: 0.00005       # USD min hinta
+  dexscreener_max_price: 5.0           # USD max hinta (0 = ei rajaa)
+  birdeye_min_liquidity: 15000.0       # USD, Birdeye fallback likviditeettiraja
+  birdeye_min_volume: 20000.0          # USD 24h volyymiraja
+  birdeye_min_price: 0.00002           # USD minimi-hinta Birdeye-metriikoille
+  birdeye_min_holders: 200             # Minimi holder -määrä jos Birdeye palauttaa tiedon
   # ohjelma-ID:t, joista haluat kuunnella (täytä omaan ympäristöön)
   helius_programs:
     - "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"   # SPL Token (InitializeMint*)
-    # - "RAYDIUM_PROGRAM_ID_HERE"                      # Raydium AMM (täytä)
-    # - "PUMPFUN_PROGRAM_ID_HERE"                      # pump.fun (täytä)
+    - "RVKd61ztZW9yK21G4xMqi6nG5iG6JdzDyxN1q6i1dV4"   # Raydium AMM
+    - "CAMMCzo5YL8CKqQCDx9hcQzYbx8jG9LXNhtzK1Zx6UeD"   # Raydium CLMM
+    - "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc"   # Orca Whirlpools
+    - "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P"   # Pump.fun
 
 risk:
   require_lp_locked: false
@@ -50,7 +62,7 @@ trading:
   sniper_sell_delay_sec: 20
   sniper_sell_amount: "100%"
   sniper_sources:
-    - "pumpportal_ws"
+    - "helius_transactions"
 
 telegram:
   cooldown_seconds: 900
@@ -58,7 +70,7 @@ telegram:
   rate_limit_seconds: 1
   max_backoff_seconds: 30
   backoff_multiplier: 2.0
-  mint_cooldown_seconds: 1800    # UUSI: estä saman mintin lähetys X s
+  mint_cooldown_seconds: 60      # UUSI: estä saman mintin lähetys X s (testausta varten lyhennetty)
   enable_command_polling: true   # UUSI: ota /stats-pollaus käyttöön
   allowed_chat_id: null          # UUSI: rajaa komennot tiettyyn chattiin (valinn.)
   poll_interval_sec: 1           # UUSI: polling-väli

@@ -34,10 +34,12 @@ class SourcesCfg:
     orca: bool = False
     pumpfun: bool = True
     birdeye_ws: bool = True
-    pumpportal_ws: bool = True
+    birdeye: bool = False
+    pumpportal_ws: bool = False
     geckoterminal: bool = True
     dexscreener: bool = True
-    helius_logs: bool = True    # UUSI
+    helius_logs: bool = False    # legacy - pidetään config-yhteensopivuuden vuoksi
+    helius_transactions: bool = True
 
 @dataclass
 class FreshPassCfg:
@@ -45,21 +47,29 @@ class FreshPassCfg:
     ttl_sec: int = 90
     min_unique_buyers: int = 0
     min_trades: int = 0
-    sources: tuple[str, ...] = ("pumpportal_ws","helius_logs")
+    sources: tuple[str, ...] = ("helius_transactions",)
 
 @dataclass
 class DiscoveryCfg:
-    min_liq_usd: float = 3000.0
-    min_liq_fresh_usd: float = 1200.0
-    score_threshold: float = 0.65
-    min_score_cap_delta: float = 0.10
-    max_top10_share: float = 0.95
-    max_top10_share_fresh: float = 0.98
+    min_liq_usd: float = 0.0  # Poistettu raja kokonaan
+    min_liq_fresh_usd: float = 0.0  # Poistettu raja kokonaan
+    score_threshold: float = 0.0  # Poistettu raja kokonaan
+    min_score_cap_delta: float = 0.0  # Poistettu raja kokonaan
+    max_top10_share: float = 1.0  # Poistettu raja kokonaan
+    max_top10_share_fresh: float = 1.0  # Poistettu raja kokonaan
     max_queue: int = 2000
     fresh_window_sec: int = 90
-    trade_min_unique_buyers: int = 3
-    trade_min_trades: int = 5
+    trade_min_unique_buyers: int = 0  # Poistettu raja kokonaan
+    trade_min_trades: int = 0  # Poistettu raja kokonaan
     candidate_ttl_sec: int = 600
+    dexscreener_min_liquidity: float = 20000.0
+    dexscreener_min_volume: float = 30000.0
+    dexscreener_min_price: float = 0.00005
+    dexscreener_max_price: float = 5.0
+    birdeye_min_liquidity: float = 15000.0
+    birdeye_min_volume: float = 20000.0
+    birdeye_min_price: float = 0.00002
+    birdeye_min_holders: int = 200
     sources: SourcesCfg = field(default_factory=SourcesCfg)
     fresh_pass: FreshPassCfg = field(default_factory=FreshPassCfg)
     helius_programs: list = field(default_factory=lambda: [
@@ -68,9 +78,9 @@ class DiscoveryCfg:
 
 @dataclass
 class RiskCfg:
-    require_lp_locked: bool = True
-    max_top10_share: float = 0.90
-    require_renounced: bool = True
+    require_lp_locked: bool = False  # Poistettu raja kokonaan
+    max_top10_share: float = 1.0  # Poistettu raja kokonaan
+    require_renounced: bool = False  # Poistettu raja kokonaan
 
 @dataclass
 class TradingCfg:

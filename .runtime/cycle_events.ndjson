@@ -1635,3 +1635,389 @@
 {"evt": "cycle_start", "ts": "2025-09-20T09:45:42+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 61}
 {"evt": "cycle_end", "ts": "2025-09-20T09:45:55+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 61, "tokens": 0, "hot": 0, "result": "success"}
 {"evt": "cycle_start", "ts": "2025-09-20T09:46:55+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 62}
+{"evt": "cycle_end", "ts": "2025-09-20T09:47:09+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 62, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T09:48:09+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 63}
+{"evt": "cycle_end", "ts": "2025-09-20T09:48:23+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 63, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T09:49:23+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 64}
+{"evt": "cycle_end", "ts": "2025-09-20T09:49:37+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 64, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T09:50:37+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 65}
+{"evt": "cycle_end", "ts": "2025-09-20T09:50:50+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 65, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T09:51:50+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 66}
+{"evt": "cycle_end", "ts": "2025-09-20T09:52:03+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 66, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T09:53:03+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 67}
+{"evt": "cycle_end", "ts": "2025-09-20T09:53:17+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 67, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T09:54:17+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 68}
+{"evt": "cycle_end", "ts": "2025-09-20T09:54:30+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 68, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T09:55:30+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 69}
+{"evt": "cycle_end", "ts": "2025-09-20T09:55:43+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 69, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T09:56:43+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 70}
+{"evt": "cycle_end", "ts": "2025-09-20T09:56:57+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 70, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T09:57:57+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 71}
+{"evt": "cycle_end", "ts": "2025-09-20T09:58:09+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 71, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T09:59:09+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 72}
+{"evt": "cycle_end", "ts": "2025-09-20T09:59:23+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 72, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:00:23+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 73}
+{"evt": "cycle_end", "ts": "2025-09-20T10:00:37+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 73, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:01:37+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 74}
+{"evt": "cycle_end", "ts": "2025-09-20T10:01:50+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 74, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:02:50+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 75}
+{"evt": "cycle_end", "ts": "2025-09-20T10:03:03+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 75, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:04:03+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 76}
+{"evt": "cycle_end", "ts": "2025-09-20T10:04:16+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 76, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:05:16+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 77}
+{"evt": "cycle_end", "ts": "2025-09-20T10:05:29+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 77, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:06:29+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 78}
+{"evt": "cycle_end", "ts": "2025-09-20T10:06:44+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 78, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:07:44+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 79}
+{"evt": "cycle_end", "ts": "2025-09-20T10:07:50+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 79, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:08:50+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 80}
+{"evt": "cycle_end", "ts": "2025-09-20T10:09:05+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 80, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:10:05+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 81}
+{"evt": "cycle_end", "ts": "2025-09-20T10:10:19+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 81, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:11:19+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 82}
+{"evt": "cycle_end", "ts": "2025-09-20T10:11:33+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 82, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:12:33+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 83}
+{"evt": "cycle_end", "ts": "2025-09-20T10:12:47+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 83, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:13:47+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 84}
+{"evt": "cycle_end", "ts": "2025-09-20T10:14:01+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 84, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:15:01+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 85}
+{"evt": "cycle_end", "ts": "2025-09-20T10:15:14+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 85, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:16:14+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 86}
+{"evt": "cycle_end", "ts": "2025-09-20T10:16:27+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 86, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:17:27+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 87}
+{"evt": "cycle_end", "ts": "2025-09-20T10:17:40+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 87, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:18:40+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 88}
+{"evt": "cycle_end", "ts": "2025-09-20T10:18:53+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 88, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:19:53+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 89}
+{"evt": "cycle_end", "ts": "2025-09-20T10:20:06+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 89, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:21:06+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 90}
+{"evt": "cycle_end", "ts": "2025-09-20T10:21:19+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 90, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:22:19+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 91}
+{"evt": "cycle_end", "ts": "2025-09-20T10:22:32+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 91, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:23:32+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 92}
+{"evt": "cycle_end", "ts": "2025-09-20T10:23:46+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 92, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:24:46+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 93}
+{"evt": "cycle_end", "ts": "2025-09-20T10:24:59+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 93, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:25:59+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 94}
+{"evt": "cycle_end", "ts": "2025-09-20T10:26:12+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 94, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:27:12+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 95}
+{"evt": "cycle_end", "ts": "2025-09-20T10:27:25+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 95, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:28:25+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 96}
+{"evt": "cycle_end", "ts": "2025-09-20T10:28:37+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 96, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:29:37+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 97}
+{"evt": "cycle_end", "ts": "2025-09-20T10:29:50+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 97, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:30:50+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 98}
+{"evt": "cycle_end", "ts": "2025-09-20T10:31:03+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 98, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:32:03+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 99}
+{"evt": "cycle_end", "ts": "2025-09-20T10:32:16+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 99, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:33:16+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 100}
+{"evt": "cycle_end", "ts": "2025-09-20T10:33:29+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 100, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:34:29+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 101}
+{"evt": "cycle_end", "ts": "2025-09-20T10:34:41+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 101, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:35:41+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 102}
+{"evt": "cycle_end", "ts": "2025-09-20T10:35:55+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 102, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:36:55+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 103}
+{"evt": "cycle_end", "ts": "2025-09-20T10:37:07+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 103, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:38:07+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 104}
+{"evt": "cycle_end", "ts": "2025-09-20T10:38:19+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 104, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:39:19+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 105}
+{"evt": "cycle_end", "ts": "2025-09-20T10:39:32+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 105, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:40:32+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 106}
+{"evt": "cycle_end", "ts": "2025-09-20T10:40:46+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 106, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:41:46+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 107}
+{"evt": "cycle_end", "ts": "2025-09-20T10:41:58+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 107, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:42:58+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 108}
+{"evt": "cycle_end", "ts": "2025-09-20T10:43:10+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 108, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:44:10+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 109}
+{"evt": "cycle_end", "ts": "2025-09-20T10:44:23+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 109, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:45:23+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 110}
+{"evt": "cycle_end", "ts": "2025-09-20T10:45:36+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 110, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:46:36+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 111}
+{"evt": "cycle_end", "ts": "2025-09-20T10:46:49+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 111, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:47:49+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 112}
+{"evt": "cycle_end", "ts": "2025-09-20T10:48:02+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 112, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:49:02+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 113}
+{"evt": "cycle_end", "ts": "2025-09-20T10:49:15+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 113, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:50:15+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 114}
+{"evt": "cycle_end", "ts": "2025-09-20T10:50:30+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 114, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:51:30+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 115}
+{"evt": "cycle_end", "ts": "2025-09-20T10:51:44+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 115, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:52:44+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 116}
+{"evt": "cycle_end", "ts": "2025-09-20T10:52:57+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 116, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:53:57+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 117}
+{"evt": "cycle_end", "ts": "2025-09-20T10:54:10+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 117, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:55:10+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 118}
+{"evt": "cycle_end", "ts": "2025-09-20T10:55:23+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 118, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:56:23+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 119}
+{"evt": "cycle_end", "ts": "2025-09-20T10:56:36+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 119, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:57:36+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 120}
+{"evt": "cycle_end", "ts": "2025-09-20T10:57:49+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 120, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T10:58:49+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 121}
+{"evt": "cycle_end", "ts": "2025-09-20T10:59:02+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 121, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:00:02+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 122}
+{"evt": "cycle_end", "ts": "2025-09-20T11:00:17+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 122, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:01:17+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 123}
+{"evt": "cycle_end", "ts": "2025-09-20T11:01:30+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 123, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:02:30+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 124}
+{"evt": "cycle_end", "ts": "2025-09-20T11:02:43+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 124, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:03:43+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 125}
+{"evt": "cycle_end", "ts": "2025-09-20T11:03:56+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 125, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:04:56+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 126}
+{"evt": "cycle_end", "ts": "2025-09-20T11:05:09+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 126, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:06:09+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 127}
+{"evt": "cycle_end", "ts": "2025-09-20T11:06:22+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 127, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:07:22+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 128}
+{"evt": "cycle_end", "ts": "2025-09-20T11:07:34+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 128, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:08:34+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 129}
+{"evt": "cycle_end", "ts": "2025-09-20T11:08:47+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 129, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:09:47+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 130}
+{"evt": "cycle_end", "ts": "2025-09-20T11:10:00+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 130, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:11:00+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 131}
+{"evt": "cycle_end", "ts": "2025-09-20T11:11:12+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 131, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:12:12+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 132}
+{"evt": "cycle_end", "ts": "2025-09-20T11:12:24+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 132, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:13:24+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 133}
+{"evt": "cycle_end", "ts": "2025-09-20T11:13:36+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 133, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:14:36+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 134}
+{"evt": "cycle_end", "ts": "2025-09-20T11:14:50+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 134, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:15:50+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 135}
+{"evt": "cycle_end", "ts": "2025-09-20T11:16:06+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 135, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:17:06+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 136}
+{"evt": "cycle_end", "ts": "2025-09-20T11:17:19+03:00", "run_id": "run_20250920_081335_d9720d9e", "cycle_id": 136, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:24:44+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 1}
+{"evt": "cycle_start", "ts": "2025-09-20T11:25:00+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T11:25:00+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 1, "tokens": 0, "hot": 4, "result": "success"}
+{"evt": "cycle_end", "ts": "2025-09-20T11:25:12+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 2, "tokens": 0, "hot": 5, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:26:12+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 3}
+{"evt": "cycle_end", "ts": "2025-09-20T11:26:28+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 3, "tokens": 0, "hot": 5, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:27:28+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 4}
+{"evt": "cycle_end", "ts": "2025-09-20T11:27:41+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 4, "tokens": 0, "hot": 5, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:28:41+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 5}
+{"evt": "cycle_end", "ts": "2025-09-20T11:28:54+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 5, "tokens": 0, "hot": 5, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:29:54+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 6}
+{"evt": "cycle_end", "ts": "2025-09-20T11:30:07+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 6, "tokens": 0, "hot": 5, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:31:07+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 7}
+{"evt": "cycle_end", "ts": "2025-09-20T11:31:22+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 7, "tokens": 0, "hot": 5, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:32:22+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 8}
+{"evt": "cycle_end", "ts": "2025-09-20T11:32:36+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 8, "tokens": 0, "hot": 5, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:33:36+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 9}
+{"evt": "cycle_end", "ts": "2025-09-20T11:33:49+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 9, "tokens": 0, "hot": 5, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:34:49+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 10}
+{"evt": "cycle_end", "ts": "2025-09-20T11:35:02+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 10, "tokens": 0, "hot": 5, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:36:02+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 11}
+{"evt": "cycle_end", "ts": "2025-09-20T11:36:17+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 11, "tokens": 0, "hot": 5, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:37:17+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 12}
+{"evt": "cycle_end", "ts": "2025-09-20T11:37:30+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 12, "tokens": 0, "hot": 5, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:38:30+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 13}
+{"evt": "cycle_end", "ts": "2025-09-20T11:38:43+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 13, "tokens": 0, "hot": 5, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:39:43+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 14}
+{"evt": "cycle_end", "ts": "2025-09-20T11:39:56+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 14, "tokens": 0, "hot": 5, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:40:56+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 15}
+{"evt": "cycle_end", "ts": "2025-09-20T11:41:10+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 15, "tokens": 0, "hot": 5, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:42:10+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 16}
+{"evt": "cycle_end", "ts": "2025-09-20T11:42:25+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 16, "tokens": 0, "hot": 5, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:43:25+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 17}
+{"evt": "cycle_end", "ts": "2025-09-20T11:43:39+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 17, "tokens": 0, "hot": 5, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:44:39+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 18}
+{"evt": "cycle_end", "ts": "2025-09-20T11:44:53+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 18, "tokens": 0, "hot": 5, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:45:53+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 19}
+{"evt": "cycle_end", "ts": "2025-09-20T11:46:06+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 19, "tokens": 0, "hot": 5, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:47:06+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 20}
+{"evt": "cycle_end", "ts": "2025-09-20T11:47:19+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 20, "tokens": 0, "hot": 5, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:48:19+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 21}
+{"evt": "cycle_end", "ts": "2025-09-20T11:48:33+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 21, "tokens": 0, "hot": 5, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:49:33+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 22}
+{"evt": "cycle_end", "ts": "2025-09-20T11:49:46+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 22, "tokens": 0, "hot": 5, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:50:46+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 23}
+{"evt": "cycle_end", "ts": "2025-09-20T11:50:59+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 23, "tokens": 0, "hot": 5, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:51:59+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 24}
+{"evt": "cycle_end", "ts": "2025-09-20T11:52:12+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 24, "tokens": 0, "hot": 5, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T11:53:47+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 25}
+{"evt": "cycle_end", "ts": "2025-09-20T11:54:00+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 25, "tokens": 0, "hot": 5, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T12:11:47+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 26}
+{"evt": "cycle_end", "ts": "2025-09-20T12:12:00+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 26, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T12:39:13+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 27}
+{"evt": "cycle_end", "ts": "2025-09-20T12:39:29+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 27, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T12:40:29+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 28}
+{"evt": "cycle_end", "ts": "2025-09-20T12:40:41+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 28, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T12:41:41+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 29}
+{"evt": "cycle_end", "ts": "2025-09-20T12:41:53+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 29, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T12:42:53+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 30}
+{"evt": "cycle_end", "ts": "2025-09-20T12:43:09+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 30, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T12:44:09+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 31}
+{"evt": "cycle_end", "ts": "2025-09-20T12:44:22+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 31, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T12:45:23+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 32}
+{"evt": "cycle_end", "ts": "2025-09-20T12:45:36+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 32, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T12:46:36+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 33}
+{"evt": "cycle_end", "ts": "2025-09-20T12:46:48+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 33, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T12:47:48+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 34}
+{"evt": "cycle_end", "ts": "2025-09-20T12:48:01+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 34, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T12:49:01+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 35}
+{"evt": "cycle_end", "ts": "2025-09-20T12:49:16+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 35, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T12:50:16+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 36}
+{"evt": "cycle_end", "ts": "2025-09-20T12:50:29+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 36, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T12:51:29+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 37}
+{"evt": "cycle_end", "ts": "2025-09-20T12:51:44+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 37, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T12:52:44+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 38}
+{"evt": "cycle_end", "ts": "2025-09-20T12:52:57+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 38, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T12:53:57+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 39}
+{"evt": "cycle_end", "ts": "2025-09-20T12:54:10+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 39, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T12:55:10+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 40}
+{"evt": "cycle_end", "ts": "2025-09-20T12:55:23+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 40, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T12:56:23+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 41}
+{"evt": "cycle_end", "ts": "2025-09-20T12:56:39+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 41, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T12:57:39+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 42}
+{"evt": "cycle_end", "ts": "2025-09-20T12:57:51+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 42, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T12:58:51+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 43}
+{"evt": "cycle_end", "ts": "2025-09-20T12:59:05+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 43, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T13:00:05+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 44}
+{"evt": "cycle_end", "ts": "2025-09-20T13:00:18+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 44, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T13:01:18+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 45}
+{"evt": "cycle_end", "ts": "2025-09-20T13:01:33+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 45, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T13:02:33+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 46}
+{"evt": "cycle_end", "ts": "2025-09-20T13:02:48+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 46, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T13:03:48+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 47}
+{"evt": "cycle_end", "ts": "2025-09-20T13:04:02+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 47, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T13:05:02+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 48}
+{"evt": "cycle_end", "ts": "2025-09-20T13:05:17+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 48, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T13:06:17+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 49}
+{"evt": "cycle_end", "ts": "2025-09-20T13:06:32+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 49, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T13:07:32+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 50}
+{"evt": "cycle_end", "ts": "2025-09-20T13:07:44+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 50, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T13:09:03+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 51}
+{"evt": "cycle_end", "ts": "2025-09-20T13:10:47+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 51, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T13:11:50+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 52}
+{"evt": "cycle_end", "ts": "2025-09-20T13:11:50+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 52, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T13:35:29+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 53}
+{"evt": "cycle_end", "ts": "2025-09-20T13:35:29+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 53, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T13:48:51+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 54}
+{"evt": "cycle_end", "ts": "2025-09-20T13:49:01+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 54, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T13:50:01+03:00", "run_id": "run_20250920_112439_d86c33fd", "cycle_id": 55}
+{"evt": "cycle_start", "ts": "2025-09-20T13:50:35+03:00", "run_id": "run_20250920_135030_5ee311b1", "cycle_id": 1}
+{"evt": "cycle_start", "ts": "2025-09-20T13:51:00+03:00", "run_id": "run_20250920_135030_5ee311b1", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T13:51:22+03:00", "run_id": "run_20250920_135030_5ee311b1", "cycle_id": 1, "tokens": 0, "hot": 4, "result": "success"}
+{"evt": "cycle_end", "ts": "2025-09-20T13:51:49+03:00", "run_id": "run_20250920_135030_5ee311b1", "cycle_id": 2, "tokens": 0, "hot": 5, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T13:52:49+03:00", "run_id": "run_20250920_135030_5ee311b1", "cycle_id": 3}
+{"evt": "cycle_end", "ts": "2025-09-20T13:53:35+03:00", "run_id": "run_20250920_135030_5ee311b1", "cycle_id": 3, "tokens": 0, "hot": 5, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T13:54:35+03:00", "run_id": "run_20250920_135030_5ee311b1", "cycle_id": 4}
+{"evt": "cycle_end", "ts": "2025-09-20T13:55:25+03:00", "run_id": "run_20250920_135030_5ee311b1", "cycle_id": 4, "tokens": 0, "hot": 5, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T13:56:25+03:00", "run_id": "run_20250920_135030_5ee311b1", "cycle_id": 5}
+{"evt": "cycle_end", "ts": "2025-09-20T13:57:11+03:00", "run_id": "run_20250920_135030_5ee311b1", "cycle_id": 5, "tokens": 0, "hot": 5, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T13:58:11+03:00", "run_id": "run_20250920_135030_5ee311b1", "cycle_id": 6}
+{"evt": "cycle_end", "ts": "2025-09-20T13:58:59+03:00", "run_id": "run_20250920_135030_5ee311b1", "cycle_id": 6, "tokens": 0, "hot": 5, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T13:59:59+03:00", "run_id": "run_20250920_135030_5ee311b1", "cycle_id": 7}
+{"evt": "cycle_end", "ts": "2025-09-20T14:00:43+03:00", "run_id": "run_20250920_135030_5ee311b1", "cycle_id": 7, "tokens": 0, "hot": 5, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T14:01:43+03:00", "run_id": "run_20250920_135030_5ee311b1", "cycle_id": 8}
+{"evt": "cycle_end", "ts": "2025-09-20T14:02:30+03:00", "run_id": "run_20250920_135030_5ee311b1", "cycle_id": 8, "tokens": 0, "hot": 5, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T14:03:30+03:00", "run_id": "run_20250920_135030_5ee311b1", "cycle_id": 9}
+{"evt": "cycle_end", "ts": "2025-09-20T14:04:16+03:00", "run_id": "run_20250920_135030_5ee311b1", "cycle_id": 9, "tokens": 0, "hot": 5, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T14:05:16+03:00", "run_id": "run_20250920_135030_5ee311b1", "cycle_id": 10}
+{"evt": "cycle_end", "ts": "2025-09-20T14:05:59+03:00", "run_id": "run_20250920_135030_5ee311b1", "cycle_id": 10, "tokens": 0, "hot": 5, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T14:06:59+03:00", "run_id": "run_20250920_135030_5ee311b1", "cycle_id": 11}
+{"evt": "cycle_end", "ts": "2025-09-20T14:07:45+03:00", "run_id": "run_20250920_135030_5ee311b1", "cycle_id": 11, "tokens": 0, "hot": 5, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T14:08:45+03:00", "run_id": "run_20250920_135030_5ee311b1", "cycle_id": 12}
+{"evt": "cycle_end", "ts": "2025-09-20T14:09:32+03:00", "run_id": "run_20250920_135030_5ee311b1", "cycle_id": 12, "tokens": 0, "hot": 5, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:12:27+03:00", "run_id": "run_20250920_151222_d7ea526b", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:12:37+03:00", "run_id": "run_20250920_151222_d7ea526b", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:13:00+03:00", "run_id": "run_20250920_151222_d7ea526b", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:13:09+03:00", "run_id": "run_20250920_151222_d7ea526b", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:14:09+03:00", "run_id": "run_20250920_151222_d7ea526b", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:14:18+03:00", "run_id": "run_20250920_151222_d7ea526b", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:15:18+03:00", "run_id": "run_20250920_151222_d7ea526b", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:15:27+03:00", "run_id": "run_20250920_151222_d7ea526b", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:16:27+03:00", "run_id": "run_20250920_151222_d7ea526b", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:16:37+03:00", "run_id": "run_20250920_151222_d7ea526b", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:16:42+03:00", "run_id": "run_20250920_151637_a97e7415", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:16:52+03:00", "run_id": "run_20250920_151637_a97e7415", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:17:00+03:00", "run_id": "run_20250920_151637_a97e7415", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:17:09+03:00", "run_id": "run_20250920_151637_a97e7415", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:17:22+03:00", "run_id": "run_20250920_151716_7c22836c", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:17:31+03:00", "run_id": "run_20250920_151716_7c22836c", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:17:49+03:00", "run_id": "run_20250920_151744_20bb1a84", "cycle_id": 1}
+{"evt": "cycle_start", "ts": "2025-09-20T15:18:00+03:00", "run_id": "run_20250920_151744_20bb1a84", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:18:00+03:00", "run_id": "run_20250920_151744_20bb1a84", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_end", "ts": "2025-09-20T15:18:09+03:00", "run_id": "run_20250920_151744_20bb1a84", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:18:47+03:00", "run_id": "run_20250920_151842_96eaf10d", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:18:56+03:00", "run_id": "run_20250920_151842_96eaf10d", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:19:00+03:00", "run_id": "run_20250920_151842_96eaf10d", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:19:09+03:00", "run_id": "run_20250920_151842_96eaf10d", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:20:09+03:00", "run_id": "run_20250920_151842_96eaf10d", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:20:18+03:00", "run_id": "run_20250920_151842_96eaf10d", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:21:18+03:00", "run_id": "run_20250920_151842_96eaf10d", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:21:27+03:00", "run_id": "run_20250920_151842_96eaf10d", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:22:27+03:00", "run_id": "run_20250920_151842_96eaf10d", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:22:37+03:00", "run_id": "run_20250920_151842_96eaf10d", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:23:00+03:00", "run_id": "run_20250920_152256_146f68d1", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:23:09+03:00", "run_id": "run_20250920_152256_146f68d1", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:23:57+03:00", "run_id": "run_20250920_152352_d4681f7b", "cycle_id": 1}
+{"evt": "cycle_start", "ts": "2025-09-20T15:24:00+03:00", "run_id": "run_20250920_152352_d4681f7b", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:24:06+03:00", "run_id": "run_20250920_152352_d4681f7b", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_end", "ts": "2025-09-20T15:24:09+03:00", "run_id": "run_20250920_152352_d4681f7b", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:24:09+03:00", "run_id": "run_20250920_152256_146f68d1", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:24:18+03:00", "run_id": "run_20250920_152256_146f68d1", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:25:09+03:00", "run_id": "run_20250920_152352_d4681f7b", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:25:18+03:00", "run_id": "run_20250920_152352_d4681f7b", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:25:18+03:00", "run_id": "run_20250920_152256_146f68d1", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:25:27+03:00", "run_id": "run_20250920_152256_146f68d1", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:26:18+03:00", "run_id": "run_20250920_152352_d4681f7b", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:26:27+03:00", "run_id": "run_20250920_152352_d4681f7b", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:26:27+03:00", "run_id": "run_20250920_152256_146f68d1", "cycle_id": 1}
+{"evt": "cycle_start", "ts": "2025-09-20T15:26:37+03:00", "run_id": "run_20250920_152632_8fa00792", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:26:37+03:00", "run_id": "run_20250920_152256_146f68d1", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_end", "ts": "2025-09-20T15:26:47+03:00", "run_id": "run_20250920_152632_8fa00792", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:27:00+03:00", "run_id": "run_20250920_152632_8fa00792", "cycle_id": 1}
+{"evt": "cycle_start", "ts": "2025-09-20T15:27:00+03:00", "run_id": "run_20250920_152646_a7ebbd8e", "cycle_id": 1}
+{"evt": "cycle_start", "ts": "2025-09-20T15:27:22+03:00", "run_id": "run_20250920_152717_72c727fb", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:27:31+03:00", "run_id": "run_20250920_152717_72c727fb", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:28:00+03:00", "run_id": "run_20250920_152717_72c727fb", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:28:09+03:00", "run_id": "run_20250920_152717_72c727fb", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:28:32+03:00", "run_id": "run_20250920_152827_38e10b92", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:28:42+03:00", "run_id": "run_20250920_152827_38e10b92", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:29:00+03:00", "run_id": "run_20250920_152827_38e10b92", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:29:09+03:00", "run_id": "run_20250920_152827_38e10b92", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:30:09+03:00", "run_id": "run_20250920_152827_38e10b92", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:30:18+03:00", "run_id": "run_20250920_152827_38e10b92", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:31:23+03:00", "run_id": "run_20250920_153118_b2187ffb", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:31:33+03:00", "run_id": "run_20250920_153118_b2187ffb", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:31:48+03:00", "run_id": "run_20250920_153143_ef0f24e9", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:31:58+03:00", "run_id": "run_20250920_153143_ef0f24e9", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:32:00+03:00", "run_id": "run_20250920_153118_b2187ffb", "cycle_id": 1}
+{"evt": "cycle_start", "ts": "2025-09-20T15:32:05+03:00", "run_id": "run_20250920_153143_ef0f24e9", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:32:09+03:00", "run_id": "run_20250920_153118_b2187ffb", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_end", "ts": "2025-09-20T15:32:14+03:00", "run_id": "run_20250920_153143_ef0f24e9", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:32:35+03:00", "run_id": "run_20250920_153230_2cc82db9", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:32:45+03:00", "run_id": "run_20250920_153230_2cc82db9", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:33:00+03:00", "run_id": "run_20250920_153230_2cc82db9", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:33:09+03:00", "run_id": "run_20250920_153230_2cc82db9", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:33:56+03:00", "run_id": "run_20250920_153351_fe2c4d0d", "cycle_id": 1}
+{"evt": "cycle_start", "ts": "2025-09-20T15:34:00+03:00", "run_id": "run_20250920_153351_fe2c4d0d", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:34:06+03:00", "run_id": "run_20250920_153351_fe2c4d0d", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_end", "ts": "2025-09-20T15:34:09+03:00", "run_id": "run_20250920_153351_fe2c4d0d", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:35:09+03:00", "run_id": "run_20250920_153351_fe2c4d0d", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:35:18+03:00", "run_id": "run_20250920_153351_fe2c4d0d", "cycle_id": 1, "error": "'dict' object has no attribute 'mint'", "result": "fail"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:36:10+03:00", "run_id": "run_20250920_153605_5da01075", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:36:19+03:00", "run_id": "run_20250920_153605_5da01075", "cycle_id": 1, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:37:00+03:00", "run_id": "run_20250920_153605_5da01075", "cycle_id": 2}
+{"evt": "cycle_end", "ts": "2025-09-20T15:37:09+03:00", "run_id": "run_20250920_153605_5da01075", "cycle_id": 2, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:38:09+03:00", "run_id": "run_20250920_153605_5da01075", "cycle_id": 3}
+{"evt": "cycle_end", "ts": "2025-09-20T15:38:18+03:00", "run_id": "run_20250920_153605_5da01075", "cycle_id": 3, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:38:38+03:00", "run_id": "run_20250920_153832_ea7693d4", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:38:47+03:00", "run_id": "run_20250920_153832_ea7693d4", "cycle_id": 1, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:39:00+03:00", "run_id": "run_20250920_153832_ea7693d4", "cycle_id": 2}
+{"evt": "cycle_end", "ts": "2025-09-20T15:39:09+03:00", "run_id": "run_20250920_153832_ea7693d4", "cycle_id": 2, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:39:18+03:00", "run_id": "run_20250920_153913_01c81ddb", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:39:27+03:00", "run_id": "run_20250920_153913_01c81ddb", "cycle_id": 1, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:40:00+03:00", "run_id": "run_20250920_153913_01c81ddb", "cycle_id": 2}
+{"evt": "cycle_end", "ts": "2025-09-20T15:40:09+03:00", "run_id": "run_20250920_153913_01c81ddb", "cycle_id": 2, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:41:11+03:00", "run_id": "run_20250920_154106_f6c86db5", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:41:20+03:00", "run_id": "run_20250920_154106_f6c86db5", "cycle_id": 1, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:42:00+03:00", "run_id": "run_20250920_154106_f6c86db5", "cycle_id": 2}
+{"evt": "cycle_end", "ts": "2025-09-20T15:42:09+03:00", "run_id": "run_20250920_154106_f6c86db5", "cycle_id": 2, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:52:05+03:00", "run_id": "run_20250920_155200_6b243bb8", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:52:14+03:00", "run_id": "run_20250920_155200_6b243bb8", "cycle_id": 1, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:52:51+03:00", "run_id": "run_20250920_155246_77403c09", "cycle_id": 1}
+{"evt": "cycle_start", "ts": "2025-09-20T15:53:00+03:00", "run_id": "run_20250920_155246_77403c09", "cycle_id": 1}
+{"evt": "cycle_end", "ts": "2025-09-20T15:53:00+03:00", "run_id": "run_20250920_155246_77403c09", "cycle_id": 1, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_end", "ts": "2025-09-20T15:53:09+03:00", "run_id": "run_20250920_155246_77403c09", "cycle_id": 2, "tokens": 0, "hot": 0, "result": "success"}
+{"evt": "cycle_start", "ts": "2025-09-20T15:54:09+03:00", "run_id": "run_20250920_155246_77403c09", "cycle_id": 3}
+{"evt": "cycle_end", "ts": "2025-09-20T15:54:18+03:00", "run_id": "run_20250920_155246_77403c09", "cycle_id": 3, "tokens": 0, "hot": 0, "result": "success"}

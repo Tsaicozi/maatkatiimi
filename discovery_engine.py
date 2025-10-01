@@ -54,6 +54,8 @@ class TokenCandidate:
     mint: str
     symbol: str = ""
     name: str = ""
+    # Yhteensopivuus: jotkin testit/adapterit edelleen välittävät pool_addressin
+    pool_address: str | None = None
     decimals: int = 9
     
     # Likviditeetti ja jakelu
@@ -80,6 +82,7 @@ class TokenCandidate:
     novelty_score: float = 0.0
     liquidity_score: float = 0.0
     distribution_score: float = 0.0
+    activity_score: float = 0.0
     rug_risk_score: float = 0.0
     overall_score: float = 0.0
     last_score: float = 0.0
@@ -168,7 +171,7 @@ class DiscoveryEngine:
                 ttl_sec=90
                 min_unique_buyers=0
                 min_trades=0
-                sources=("pumpportal_ws","helius_logs")
+                sources=("pumpportal_ws","helius_transactions")
             self._fresh_cfg = _F()
         
         # RPC client - tuki sekä vanhalle että uudelle kutsutavalle
@@ -216,7 +219,11 @@ class DiscoveryEngine:
         self.max_candidates = 100
         self.last_effective_score = None
         
-        logger.info(f"DiscoveryEngine alustettu: {len(market_sources)} lähdettä, min_liq=${min_liq_usd}")
+        logger.info(
+            "DiscoveryEngine alustettu: %d lähdettä, min_liq=$%.2f",
+            len(self.market_sources),
+            self.min_liq_usd,
+        )
 
     def _is_fresh(self, c) -> bool:
         """Tunnista tuoreet tokenit (≤10 min on-chain aikaleimasta)"""
@@ -241,7 +248,8 @@ class DiscoveryEngine:
     def _is_ws_fresh_source(self, c) -> bool:
         """Tarkista onko lähde fresh-pass kelpoinen"""
         src = ((c.extra or {}).get("source") if c and getattr(c,"extra",None) else None)
-        return bool(src and (src in getattr(self._fresh_cfg,"sources",("pumpportal_ws","helius_logs"))))
+        default_sources = ("pumpportal_ws", "helius_transactions", "helius_logs")
+        return bool(src and (src in getattr(self._fresh_cfg, "sources", default_sources)))
 
     def _age_sec(self, c) -> float:
         """Laske tokenin ikä sekunneissa"""
@@ -263,6 +271,11 @@ class DiscoveryEngine:
 
     async def start(self) -> None:
         """Käynnistä lähteet ja scorer-loop. Ei blokkaa."""
+        if self.running:
+            logger.debug("DiscoveryEngine.start kutsuttiin kun engine on jo käynnissä")
+            return
+
+        self.running = True
         self._stop_event.clear()
         self._closed_event.clear()
 
@@ -295,6 +308,7 @@ class DiscoveryEngine:
             return
         # ilmoita pysäytyksestä
         self._stop_event.set()
+        self.running = False
         
         # Metrics
         if metrics:
@@ -318,6 +332,47 @@ class DiscoveryEngine:
                 await self.scorer_task
 
         self._closed_event.set()
+
+    async def run_analysis_cycle(
+        self,
+        *,
+        idle_seconds: float = 0.3,
+        max_wait: float = 3.0,
+        top_k: int = 10,
+        min_score: Optional[float] = None,
+    ) -> Dict[str, Any]:
+        """Suorita yksi analyysisykli ja palauta yhteenveto."""
+
+        if not self.running or not self.scorer_task or self.scorer_task.done():
+            await self.start()
+
+        cycle_start = time.time()
+
+        # Odota hetki, että lähteet voivat syöttää dataa (jos niitä on)
+        try:
+            await self.run_until_idle(idle_seconds=idle_seconds, max_wait=max_wait)
+        except Exception as e:
+            logger.warning("run_until_idle epäonnistui: %s", e)
+
+        hot_candidates = []
+        if self.processed_candidates:
+            try:
+                hot_candidates = self.best_candidates(k=top_k, min_score=min_score)
+            except Exception as e:
+                logger.error("best_candidates epäonnistui: %s", e)
+                hot_candidates = []
+
+        stats = self.get_stats()
+        duration = time.time() - cycle_start
+
+        return {
+            "cycle_completed": True,
+            "tokens_analyzed": stats.get("processed_candidates", 0),
+            "hot_candidates": [self._candidate_summary(c) for c in hot_candidates],
+            "stats": stats,
+            "cycle_duration": duration,
+            "timestamp": datetime.now(HELSINKI_TZ).isoformat(),
+        }
 
     async def wait_closed(self, timeout: float | None = 5.0) -> None:
         """Odottaa että pysäytys on valmis (testeissä kätevä)."""
@@ -561,9 +616,14 @@ class DiscoveryEngine:
         if not timestamp and hasattr(candidate, 'extra') and candidate.extra:
             timestamp = candidate.extra.get("first_trade_ts")
         
-        # Käytä first_seen_ts fallbackina
+        # Käytä first_seen.timestamp() fallbackina (älä oleta first_seen_ts -kenttää)
         if not timestamp:
-            timestamp = candidate.first_seen_ts
+            try:
+                timestamp = candidate.first_seen.timestamp()
+            except Exception:
+                # viimeinen varmistus: käytä nykyhetkeä jotta ikä=0
+                import time as _t
+                timestamp = _t.time()
         
         # Laske ikä minuutteina
         current_time = time.time()
@@ -937,6 +997,28 @@ class DiscoveryEngine:
         
         except Exception as e:
             logger.error(f"Virhe tarkistettaessa spread & slippage: {e}")
+
+    def _candidate_summary(self, candidate: TokenCandidate) -> Dict[str, Any]:
+        """Luo yhteenveto TokenCandidatesta tulosraportointia varten."""
+        extra = getattr(candidate, "extra", {}) or {}
+        sources = extra.get("seen_from") or self.candidate_sources.get(getattr(candidate, "mint", ""), [])
+        if isinstance(sources, str):
+            sources = [sources]
+
+        summary = {
+            "mint": getattr(candidate, "mint", ""),
+            "symbol": getattr(candidate, "symbol", ""),
+            "name": getattr(candidate, "name", ""),
+            "score": float(getattr(candidate, "overall_score", 0.0) or 0.0),
+            "age_minutes": float(getattr(candidate, "age_minutes", 0.0) or 0.0),
+            "liquidity_usd": float(getattr(candidate, "liquidity_usd", 0.0) or 0.0),
+            "sources": list(sources) if sources else [],
+        }
+
+        if extra:
+            summary["extra"] = extra
+
+        return summary
 
     async def _enrich_quick(self, candidate: TokenCandidate) -> None:
         """

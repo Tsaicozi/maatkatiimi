@@ -74,7 +74,7 @@ class PumpPortalNewTokensSource:
                                 )
                                 self._last_error_status = status
                             if status == 404 and self._error_streak >= 3:
-                                logger.error(
+                                logger.warning(
                                     "🚫 PumpPortal /recent endpoint palauttaa 404 toistuvasti – poistetaan HTTP-lähde käytöstä. Tarkista base_url: %s",
                                     self.base_url,
                                 )

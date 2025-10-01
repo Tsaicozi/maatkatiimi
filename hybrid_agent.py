@@ -5,6 +5,7 @@ Tämä agentti toimii Agent Leaderin hallinnoimana ja suorittaa token-seulontaa.
 """
 
 import asyncio
+import contextlib
 import logging
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -17,12 +18,20 @@ from agent_leader import ManagedAgent, AgentTask, TaskResult, AgentHealth, Agent
 # Import existing bot components
 try:
     from discovery_engine import DiscoveryEngine
-    from sources.pumpportal_ws_newtokens import PumpPortalWebSocketSource
+except ImportError as e:
+    print(f"⚠️ Failed to import DiscoveryEngine: {e}")
+    DiscoveryEngine = None
+
+try:
+    from sources.pumpportal_ws_newtokens import PumpPortalWSNewTokensSource
+except ImportError as e:
+    print(f"⚠️ Failed to import PumpPortalWSNewTokensSource: {e}")
+    PumpPortalWSNewTokensSource = None
+
+try:
     from telegram_bot_integration import TelegramBot
 except ImportError as e:
-    print(f"⚠️ Import error: {e}")
-    DiscoveryEngine = None
-    PumpPortalWebSocketSource = None
+    print(f"⚠️ Failed to import TelegramBot: {e}")
     TelegramBot = None
 
 logger = logging.getLogger(__name__)
@@ -236,10 +245,11 @@ class HybridAgent:
             # Alusta komponentit
             if DiscoveryEngine:
                 self.discovery_engine = DiscoveryEngine()
+                await self.discovery_engine.start()
                 logger.info("✅ Discovery engine initialized")
             
-            if PumpPortalWebSocketSource:
-                self.pumpportal_source = PumpPortalWebSocketSource()
+            if PumpPortalWSNewTokensSource:
+                self.pumpportal_source = PumpPortalWSNewTokensSource()
                 logger.info("✅ PumpPortal source initialized")
             
             if self.config.telegram_enabled and TelegramBot:
@@ -265,7 +275,14 @@ class HybridAgent:
         try:
             # Sammuta komponentit
             if self.pumpportal_source:
-                await self.pumpportal_source.stop()
+                stop_result = self.pumpportal_source.stop()
+                if asyncio.iscoroutine(stop_result):
+                    await stop_result
+            if self.discovery_engine:
+                await self.discovery_engine.stop()
+                with contextlib.suppress(Exception):
+                    await self.discovery_engine.wait_closed()
+                self.discovery_engine = None
             
             self.is_running = False
             

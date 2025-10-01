@@ -1,0 +1,26 @@
+{
+  "open": [
+    {
+      "coin_id": "squigglestrategy",
+      "symbol": "SQUIGSTR",
+      "category": "NEW",
+      "entry_ts": "2025-09-27T07:19:35.191635+00:00",
+      "entry_price": 0.00246901,
+      "position_usd": 1000.0,
+      "stop_pct": 0.2,
+      "tp1_pct": 0.5,
+      "tp2_pct": 1.0,
+      "stop_price": 0.0019752080000000004,
+      "tp1_price": 0.003703515,
+      "tp2_price": 0.00493802,
+      "trail_atr_mult": 2.0,
+      "time_max_h": 24,
+      "last_price": 0.00246901,
+      "pnl_pct": 0.0,
+      "tp1_hit": false,
+      "status": "open",
+      "vol_ma20": NaN
+    }
+  ],
+  "closed": []
+}

@@ -1,60 +1,26 @@
 version: '3.8'
 
 services:
-  hybrid-bot:
+  helius-scanner:
     build: .
-    container_name: hybrid-bot
+    container_name: helius-scanner-bot
+    restart: always
+    env_file:
+      - .env
     ports:
-      - "9108:9108"
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://127.0.0.1:9108/metrics"]
-      interval: 15s
-      timeout: 3s
-      retries: 5
-    restart: unless-stopped
-
-  prometheus:
-    image: prom/prometheus:latest
-    container_name: prometheus
-    ports:
-      - "9090:9090"
+      - "8001:8001"  # Prometheus metrics
+      - "9109:9109"  # Health check
     volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml
-      - ./alert_rules.yml:/etc/prometheus/alert_rules.yml
-      - ./recording_rules.yml:/etc/prometheus/recording_rules.yml
-      - prometheus_data:/prometheus
-    command:
-      - '--config.file=/etc/prometheus/prometheus.yml'
-      - '--storage.tsdb.path=/prometheus'
-      - '--web.console.libraries=/etc/prometheus/console_libraries'
-      - '--web.console.templates=/etc/prometheus/consoles'
-      - '--storage.tsdb.retention.time=200h'
-      - '--web.enable-lifecycle'
+      - ./logs:/app/logs
+      - ./dex_rejects.jsonl:/app/dex_rejects.jsonl
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     healthcheck:
-      test: ["CMD", "wget", "-q", "-O", "-", "http://127.0.0.1:9090/-/ready"]
-      interval: 15s
-      timeout: 3s
-      retries: 5
-    restart: unless-stopped
-
-  grafana:
-    image: grafana/grafana:latest
-    container_name: grafana
-    ports:
-      - "3000:3000"
-    volumes:
-      - grafana_data:/var/lib/grafana
-      - ./grafana_dashboard.json:/var/lib/grafana/dashboards/hybrid_bot.json
-    environment:
-      - GF_SECURITY_ADMIN_PASSWORD=admin
-      - GF_USERS_ALLOW_SIGN_UP=false
-    healthcheck:
-      test: ["CMD", "wget", "-q", "-O", "-", "http://127.0.0.1:3000/api/health"]
-      interval: 15s
-      timeout: 3s
-      retries: 10
-    restart: unless-stopped
-
-volumes:
-  prometheus_data:
-  grafana_data:
+      test: ["CMD", "curl", "-f", "http://localhost:9109/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s

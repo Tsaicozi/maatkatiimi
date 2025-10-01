@@ -1,0 +1,425 @@
+2025-09-20 09:53:35,307 - __main__ - INFO - 🚀 Starting Cloud Agent Leader...
+2025-09-20 09:53:35,307 - __main__ - INFO - 👀 Starting agent monitoring...
+2025-09-20 09:53:35,341 - __main__ - INFO - ✅ Found running agent: automatic_hybrid_bot (PID: 10867)
+2025-09-20 09:53:35,377 - __main__ - INFO - 🏥 Starting health check loop...
+2025-09-20 09:53:35,377 - __main__ - WARNING - ⚠️ Agent hybrid_trading_bot health issues: Agent not running (status: stopped), Too many errors: 20
+2025-09-20 09:53:35,377 - __main__ - INFO - 📊 Starting report loop...
+2025-09-20 09:53:35,377 - __main__ - INFO - 📊 Cloud Agent Leader Report:
+2025-09-20 09:53:35,377 - __main__ - INFO -    Total agents: 2
+2025-09-20 09:53:35,377 - __main__ - INFO -    Running: 1
+2025-09-20 09:53:35,377 - __main__ - INFO -    Healthy: 1
+2025-09-20 09:53:35,377 - __main__ - INFO -    Total errors: 20
+2025-09-20 09:53:35,377 - __main__ - INFO - 📄 Report saved to cloud_agent_report_20250920_095335.json
+2025-09-20 09:56:46,308 - telegram_bot_integration - INFO - ✅ Telegram bot alustettu
+2025-09-20 09:56:46,308 - telegram_rate_limiter - INFO - 📱 Telegram Rate Limiter alustettu: 1s rate limit, 30s max backoff
+2025-09-20 09:56:46,308 - __main__ - INFO - 📱 Telegram integration enabled
+2025-09-20 09:56:46,824 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 09:56:47,727 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 09:56:50,092 - __main__ - INFO - 🛑 Received signal 15, shutting down gracefully...
+2025-09-20 09:56:52,602 - telegram_bot_integration - INFO - ✅ Telegram bot alustettu
+2025-09-20 09:56:52,603 - telegram_rate_limiter - INFO - 📱 Telegram Rate Limiter alustettu: 1s rate limit, 30s max backoff
+2025-09-20 09:56:52,603 - __main__ - INFO - 📱 Telegram integration enabled
+2025-09-20 09:56:52,603 - __main__ - INFO - 🚀 Starting Cloud Agent Leader...
+2025-09-20 09:56:53,083 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 09:56:53,083 - __main__ - INFO - 👀 Starting agent monitoring...
+2025-09-20 09:56:53,114 - __main__ - INFO - ✅ Found running agent: automatic_hybrid_bot (PID: 10867)
+2025-09-20 09:56:53,115 - __main__ - INFO - 🏥 Starting health check loop...
+2025-09-20 09:56:53,115 - __main__ - INFO - 📊 Starting report loop...
+2025-09-20 09:56:53,115 - __main__ - INFO - 📊 Cloud Agent Leader Report:
+2025-09-20 09:56:53,115 - __main__ - INFO -    Total agents: 1
+2025-09-20 09:56:53,115 - __main__ - INFO -    Running: 1
+2025-09-20 09:56:53,115 - __main__ - INFO -    Healthy: 1
+2025-09-20 09:56:53,115 - __main__ - INFO -    Total errors: 0
+2025-09-20 09:56:53,115 - __main__ - INFO - 📄 Report saved to cloud_agent_report_20250920_095653.json
+2025-09-20 09:56:53,987 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 09:56:54,012 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 09:59:43,798 - __main__ - INFO - 🛑 Received signal 15, shutting down gracefully...
+2025-09-20 09:59:43,798 - __main__ - INFO - 🛑 Received signal 15, shutting down gracefully...
+2025-09-20 09:59:48,415 - __main__ - INFO - 🛑 Received signal 15, shutting down gracefully...
+2025-09-20 09:59:48,415 - __main__ - INFO - 🛑 Received signal 15, shutting down gracefully...
+2025-09-20 10:44:47,800 - telegram_bot_integration - INFO - ✅ Telegram bot alustettu
+2025-09-20 10:44:47,801 - telegram_rate_limiter - INFO - 📱 Telegram Rate Limiter alustettu: 1s rate limit, 30s max backoff
+2025-09-20 10:44:47,801 - __main__ - INFO - 📱 Telegram integration enabled
+2025-09-20 10:44:47,801 - __main__ - INFO - 🚀 Starting Cloud Agent Leader...
+2025-09-20 10:44:48,153 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:44:48,154 - __main__ - INFO - 👀 Starting agent monitoring...
+2025-09-20 10:44:48,172 - __main__ - INFO - ✅ Found running agent: automatic_hybrid_bot (PID: 10867)
+2025-09-20 10:44:48,172 - __main__ - INFO - 🏥 Starting health check loop...
+2025-09-20 10:44:48,172 - __main__ - INFO - 📊 Starting report loop...
+2025-09-20 10:44:48,172 - __main__ - INFO - 📊 Cloud Agent Leader Report:
+2025-09-20 10:44:48,172 - __main__ - INFO -    Total agents: 1
+2025-09-20 10:44:48,172 - __main__ - INFO -    Running: 1
+2025-09-20 10:44:48,172 - __main__ - INFO -    Healthy: 1
+2025-09-20 10:44:48,172 - __main__ - INFO -    Total errors: 0
+2025-09-20 10:44:48,172 - __main__ - INFO - 📄 Report saved to cloud_agent_report_20250920_104448.json
+2025-09-20 10:44:49,081 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:44:49,096 - __main__ - INFO - ✅ Found running agent: hybrid_trading_bot (PID: 16570)
+2025-09-20 10:44:49,104 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:44:50,159 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:44:50,180 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 10:44:51,397 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:45:21,441 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 10:45:21,711 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:45:51,751 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 10:45:52,196 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:46:22,244 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 10:46:22,450 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:46:52,505 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 10:46:52,694 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:47:22,747 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 10:47:22,949 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:47:53,012 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 10:47:53,544 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:48:23,592 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 10:48:24,902 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:48:54,957 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 10:48:55,135 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:49:25,189 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 10:49:25,595 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:49:48,182 - __main__ - WARNING - ⚠️ Agent hybrid_trading_bot health issues: Agent not running (status: error), Too many errors: 20
+2025-09-20 10:49:48,353 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:49:55,640 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 10:49:55,905 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:50:25,960 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 10:50:26,211 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:50:56,254 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 10:50:56,434 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:51:26,493 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 10:51:27,120 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:51:57,177 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 10:51:57,554 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:52:27,610 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 10:52:27,998 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:52:58,056 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 10:52:58,309 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:53:28,366 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 10:53:29,024 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:53:59,070 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 10:53:59,316 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:54:29,373 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 10:54:29,542 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:54:48,352 - __main__ - WARNING - ⚠️ Agent hybrid_trading_bot health issues: Agent not running (status: error), Too many errors: 20
+2025-09-20 10:54:48,554 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:54:49,110 - __main__ - INFO - 📊 Cloud Agent Leader Report:
+2025-09-20 10:54:49,110 - __main__ - INFO -    Total agents: 2
+2025-09-20 10:54:49,110 - __main__ - INFO -    Running: 1
+2025-09-20 10:54:49,110 - __main__ - INFO -    Healthy: 1
+2025-09-20 10:54:49,110 - __main__ - INFO -    Total errors: 21
+2025-09-20 10:54:49,111 - __main__ - INFO - 📄 Report saved to cloud_agent_report_20250920_105449.json
+2025-09-20 10:54:49,536 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:54:59,607 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 10:54:59,930 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:55:29,998 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 10:55:30,188 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:56:00,243 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 10:56:00,459 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:56:30,513 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 10:56:31,073 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:57:01,138 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 10:57:01,375 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:57:31,423 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 10:57:31,602 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:58:01,646 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 10:58:02,176 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:58:32,222 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 10:58:32,486 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:59:02,539 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 10:59:02,776 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:59:32,826 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 10:59:33,006 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 10:59:48,552 - __main__ - WARNING - ⚠️ Agent hybrid_trading_bot health issues: Agent not running (status: error), Too many errors: 20
+2025-09-20 10:59:48,850 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:00:03,055 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 11:00:03,381 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:00:33,423 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 11:00:33,638 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:01:03,688 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 11:01:03,929 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:01:33,983 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 11:01:34,270 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:02:04,321 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 11:02:04,547 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:02:34,602 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 11:02:34,800 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:03:04,864 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 11:03:05,087 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:03:35,132 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 11:03:35,325 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:04:05,367 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 11:04:05,975 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:04:36,034 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 11:04:36,298 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:04:48,848 - __main__ - WARNING - ⚠️ Agent hybrid_trading_bot health issues: Agent not running (status: error), Too many errors: 20
+2025-09-20 11:04:49,089 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:04:49,531 - __main__ - INFO - 📊 Cloud Agent Leader Report:
+2025-09-20 11:04:49,531 - __main__ - INFO -    Total agents: 2
+2025-09-20 11:04:49,531 - __main__ - INFO -    Running: 1
+2025-09-20 11:04:49,531 - __main__ - INFO -    Healthy: 1
+2025-09-20 11:04:49,531 - __main__ - INFO -    Total errors: 21
+2025-09-20 11:04:49,532 - __main__ - INFO - 📄 Report saved to cloud_agent_report_20250920_110449.json
+2025-09-20 11:04:50,051 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:05:06,353 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 11:05:06,667 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:05:36,718 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 11:05:36,994 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:05:46,825 - cloud_agent_leader - INFO - 🚀 Starting Cloud Agent Leader...
+2025-09-20 11:05:46,825 - cloud_agent_leader - INFO - 👀 Starting agent monitoring...
+2025-09-20 11:05:46,842 - cloud_agent_leader - INFO - ✅ Found running agent: automatic_hybrid_bot (PID: 10867)
+2025-09-20 11:05:46,854 - cloud_agent_leader - INFO - ✅ Found running agent: hybrid_trading_bot (PID: 16867)
+2025-09-20 11:05:46,868 - cloud_agent_leader - INFO - 🏥 Starting health check loop...
+2025-09-20 11:05:46,868 - cloud_agent_leader - INFO - 📊 Starting report loop...
+2025-09-20 11:05:46,868 - cloud_agent_leader - INFO - 📊 Cloud Agent Leader Report:
+2025-09-20 11:05:46,868 - cloud_agent_leader - INFO -    Total agents: 2
+2025-09-20 11:05:46,868 - cloud_agent_leader - INFO -    Running: 2
+2025-09-20 11:05:46,868 - cloud_agent_leader - INFO -    Healthy: 2
+2025-09-20 11:05:46,869 - cloud_agent_leader - INFO -    Total errors: 1
+2025-09-20 11:05:46,869 - cloud_agent_leader - INFO - 📄 Report saved to cloud_agent_report_20250920_110546.json
+2025-09-20 11:06:07,049 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 11:06:07,414 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:06:37,468 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 11:06:37,891 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:07:07,942 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 11:07:08,105 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:07:38,153 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 11:07:38,419 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:08:08,470 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 11:08:08,706 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:08:38,750 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 11:08:38,963 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:09:09,011 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 11:09:09,188 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:09:39,238 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 11:09:39,434 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:09:49,087 - __main__ - WARNING - ⚠️ Agent hybrid_trading_bot health issues: Agent not running (status: error), Too many errors: 20
+2025-09-20 11:09:49,672 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:10:09,494 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 11:10:10,303 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:10:40,357 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 11:10:40,563 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:11:10,615 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 11:11:10,834 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:11:40,885 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 11:11:41,075 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:12:11,132 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 11:12:11,346 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:12:41,393 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 11:12:41,995 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:13:12,056 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 11:13:12,343 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:13:42,399 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 11:13:42,775 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:14:12,822 - __main__ - ERROR - ❌ Agent hybrid_trading_bot has too many errors: 20
+2025-09-20 11:14:13,056 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:14:33,935 - __main__ - INFO - 🛑 Received signal 15, shutting down gracefully...
+2025-09-20 11:14:34,614 - telegram_bot_integration - INFO - ✅ Telegram bot alustettu
+2025-09-20 11:14:34,614 - telegram_rate_limiter - INFO - 📱 Telegram Rate Limiter alustettu: 1s rate limit, 30s max backoff
+2025-09-20 11:14:34,614 - __main__ - INFO - 📱 Telegram integration enabled
+2025-09-20 11:14:34,614 - __main__ - INFO - 🚀 Starting Cloud Agent Leader...
+2025-09-20 11:14:34,839 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:14:34,839 - __main__ - INFO - 👀 Starting agent monitoring...
+2025-09-20 11:14:34,866 - __main__ - INFO - ✅ Found running agent: automatic_hybrid_bot (PID: 10867)
+2025-09-20 11:14:34,866 - __main__ - INFO - 🏥 Starting health check loop...
+2025-09-20 11:14:34,866 - __main__ - INFO - 📊 Starting report loop...
+2025-09-20 11:14:34,866 - __main__ - INFO - 📊 Cloud Agent Leader Report:
+2025-09-20 11:14:34,866 - __main__ - INFO -    Total agents: 1
+2025-09-20 11:14:34,866 - __main__ - INFO -    Running: 1
+2025-09-20 11:14:34,866 - __main__ - INFO -    Healthy: 1
+2025-09-20 11:14:34,866 - __main__ - INFO -    Total errors: 0
+2025-09-20 11:14:34,866 - __main__ - INFO - 📄 Report saved to cloud_agent_report_20250920_111434.json
+2025-09-20 11:14:35,919 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:14:35,941 - __main__ - INFO - ✅ Found running agent: hybrid_trading_bot (PID: 20886)
+2025-09-20 11:14:35,994 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:14:37,040 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:14:37,046 - __main__ - WARNING - ⚠️ Log file hybrid_trading_bot.log is stale (109.2 hours old)
+2025-09-20 11:14:50,046 - __main__ - INFO - 🧹 Cleaning up resources...
+2025-09-20 11:14:50,692 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:14:50,692 - __main__ - INFO - 👋 Cloud Agent Leader stopped
+2025-09-20 11:15:07,086 - __main__ - WARNING - ⚠️ Log file hybrid_trading_bot.log is stale (109.2 hours old)
+2025-09-20 11:15:37,133 - __main__ - WARNING - ⚠️ Log file hybrid_trading_bot.log is stale (109.2 hours old)
+2025-09-20 11:15:46,864 - cloud_agent_leader - INFO - 🧹 Cleaning up resources...
+2025-09-20 11:16:07,167 - __main__ - WARNING - ⚠️ Log file hybrid_trading_bot.log is stale (109.2 hours old)
+2025-09-20 11:16:37,205 - __main__ - WARNING - ⚠️ Log file hybrid_trading_bot.log is stale (109.3 hours old)
+2025-09-20 11:17:07,242 - __main__ - WARNING - ⚠️ Log file hybrid_trading_bot.log is stale (109.3 hours old)
+2025-09-20 11:17:37,279 - __main__ - WARNING - ⚠️ Agent hybrid_trading_bot stopped running
+2025-09-20 11:17:37,463 - __main__ - INFO - 🛑 Received signal 15, shutting down gracefully...
+2025-09-20 11:17:37,587 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:17:37,588 - __main__ - WARNING - ⚠️ Log file hybrid_trading_bot.log is stale (109.3 hours old)
+2025-09-20 11:17:44,414 - __main__ - INFO - 🛑 Received signal 15, shutting down gracefully...
+2025-09-20 11:24:39,298 - telegram_bot_integration - INFO - ✅ Telegram bot alustettu
+2025-09-20 11:24:39,298 - telegram_rate_limiter - INFO - 📱 Telegram Rate Limiter alustettu: 1s rate limit, 30s max backoff
+2025-09-20 11:24:39,298 - __main__ - INFO - 📱 Telegram integration enabled
+2025-09-20 11:24:39,298 - __main__ - INFO - 🚀 Starting Cloud Agent Leader...
+2025-09-20 11:24:39,537 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:24:39,537 - __main__ - INFO - 👀 Starting agent monitoring...
+2025-09-20 11:24:39,560 - __main__ - INFO - ✅ Found running agent: automatic_hybrid_bot (PID: 22029)
+2025-09-20 11:24:39,560 - __main__ - INFO - 🏥 Starting health check loop...
+2025-09-20 11:24:39,560 - __main__ - INFO - 📊 Starting report loop...
+2025-09-20 11:24:39,560 - __main__ - INFO - 📊 Cloud Agent Leader Report:
+2025-09-20 11:24:39,560 - __main__ - INFO -    Total agents: 1
+2025-09-20 11:24:39,560 - __main__ - INFO -    Running: 1
+2025-09-20 11:24:39,560 - __main__ - INFO -    Healthy: 1
+2025-09-20 11:24:39,560 - __main__ - INFO -    Total errors: 0
+2025-09-20 11:24:39,561 - __main__ - INFO - 📄 Report saved to cloud_agent_report_20250920_112439.json
+2025-09-20 11:24:40,671 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:24:40,698 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:24:40,722 - __main__ - WARNING - ⚠️ Log file hybrid_trading_bot.log is stale (109.4 hours old)
+2025-09-20 11:25:10,764 - __main__ - WARNING - ⚠️ Log file hybrid_trading_bot.log is stale (109.4 hours old)
+2025-09-20 11:25:40,805 - __main__ - WARNING - ⚠️ Log file hybrid_trading_bot.log is stale (109.4 hours old)
+2025-09-20 11:26:10,860 - __main__ - WARNING - ⚠️ Log file hybrid_trading_bot.log is stale (109.4 hours old)
+2025-09-20 11:26:40,899 - __main__ - WARNING - ⚠️ Log file hybrid_trading_bot.log is stale (109.4 hours old)
+2025-09-20 11:27:10,940 - __main__ - WARNING - ⚠️ Log file hybrid_trading_bot.log is stale (109.4 hours old)
+2025-09-20 11:27:40,974 - __main__ - WARNING - ⚠️ Log file hybrid_trading_bot.log is stale (109.4 hours old)
+2025-09-20 11:28:11,090 - __main__ - WARNING - ⚠️ Log file hybrid_trading_bot.log is stale (109.4 hours old)
+2025-09-20 11:28:41,128 - __main__ - WARNING - ⚠️ Log file hybrid_trading_bot.log is stale (109.5 hours old)
+2025-09-20 11:29:11,176 - __main__ - WARNING - ⚠️ Log file hybrid_trading_bot.log is stale (109.5 hours old)
+2025-09-20 11:29:39,631 - __main__ - WARNING - ⚠️ Agent hybrid_trading_bot health issues: Agent not running (status: stopped), Not seen for 299 seconds
+2025-09-20 11:29:39,812 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:29:41,221 - __main__ - WARNING - ⚠️ Log file hybrid_trading_bot.log is stale (109.5 hours old)
+2025-09-20 11:30:11,256 - __main__ - WARNING - ⚠️ Log file hybrid_trading_bot.log is stale (109.5 hours old)
+2025-09-20 11:30:41,288 - __main__ - WARNING - ⚠️ Log file hybrid_trading_bot.log is stale (109.5 hours old)
+2025-09-20 11:30:43,400 - __main__ - INFO - 🛑 Received signal 15, shutting down gracefully...
+2025-09-20 11:30:44,026 - telegram_bot_integration - INFO - ✅ Telegram bot alustettu
+2025-09-20 11:30:44,026 - telegram_rate_limiter - INFO - 📱 Telegram Rate Limiter alustettu: 1s rate limit, 30s max backoff
+2025-09-20 11:30:44,026 - __main__ - INFO - 📱 Telegram integration enabled
+2025-09-20 11:30:44,027 - __main__ - INFO - 🚀 Starting Cloud Agent Leader...
+2025-09-20 11:30:44,201 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:30:44,201 - __main__ - INFO - 👀 Starting agent monitoring...
+2025-09-20 11:30:44,227 - __main__ - INFO - ✅ Found running agent: automatic_hybrid_bot (PID: 22029)
+2025-09-20 11:30:44,228 - __main__ - INFO - 🏥 Starting health check loop...
+2025-09-20 11:30:44,228 - __main__ - INFO - 📊 Starting report loop...
+2025-09-20 11:30:44,228 - __main__ - INFO - 📊 Cloud Agent Leader Report:
+2025-09-20 11:30:44,228 - __main__ - INFO -    Total agents: 1
+2025-09-20 11:30:44,228 - __main__ - INFO -    Running: 1
+2025-09-20 11:30:44,228 - __main__ - INFO -    Healthy: 1
+2025-09-20 11:30:44,228 - __main__ - INFO -    Total errors: 0
+2025-09-20 11:30:44,228 - __main__ - INFO - 📄 Report saved to cloud_agent_report_20250920_113044.json
+2025-09-20 11:30:45,245 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:30:45,273 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:30:59,577 - __main__ - INFO - 🛑 Received signal 15, shutting down gracefully...
+2025-09-20 11:34:40,745 - __main__ - INFO - 🧹 Cleaning up resources...
+2025-09-20 11:34:40,980 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:34:40,980 - __main__ - INFO - 👋 Cloud Agent Leader stopped
+2025-09-20 11:36:15,544 - __main__ - ERROR - ❌ Agent automatic_hybrid_bot using too much memory: 3294.6875MB
+2025-09-20 11:36:16,053 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:40:45,250 - __main__ - INFO - 📊 Cloud Agent Leader Report:
+2025-09-20 11:40:45,250 - __main__ - INFO -    Total agents: 1
+2025-09-20 11:40:45,250 - __main__ - INFO -    Running: 1
+2025-09-20 11:40:45,250 - __main__ - INFO -    Healthy: 1
+2025-09-20 11:40:45,250 - __main__ - INFO -    Total errors: 0
+2025-09-20 11:40:45,251 - __main__ - INFO - 📄 Report saved to cloud_agent_report_20250920_114045.json
+2025-09-20 11:40:45,442 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 11:50:45,449 - __main__ - INFO - 📊 Cloud Agent Leader Report:
+2025-09-20 11:50:45,449 - __main__ - INFO -    Total agents: 1
+2025-09-20 11:50:45,449 - __main__ - INFO -    Running: 1
+2025-09-20 11:50:45,449 - __main__ - INFO -    Healthy: 1
+2025-09-20 11:50:45,449 - __main__ - INFO -    Total errors: 0
+2025-09-20 11:50:45,451 - __main__ - INFO - 📄 Report saved to cloud_agent_report_20250920_115045.json
+2025-09-20 11:50:45,681 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 12:39:18,861 - __main__ - WARNING - ⚠️ Agent automatic_hybrid_bot health issues: Not seen for 698 seconds
+2025-09-20 12:39:19,190 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 12:44:20,301 - __main__ - INFO - 📊 Cloud Agent Leader Report:
+2025-09-20 12:44:20,303 - __main__ - INFO -    Total agents: 1
+2025-09-20 12:44:20,303 - __main__ - INFO -    Running: 1
+2025-09-20 12:44:20,303 - __main__ - INFO -    Healthy: 1
+2025-09-20 12:44:20,303 - __main__ - INFO -    Total errors: 4
+2025-09-20 12:44:20,305 - __main__ - INFO - 📄 Report saved to cloud_agent_report_20250920_124420.json
+2025-09-20 12:44:20,619 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 12:46:52,271 - __main__ - ERROR - ❌ Agent automatic_hybrid_bot using too much memory: 1046.65625MB
+2025-09-20 12:46:52,456 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 12:47:22,489 - __main__ - ERROR - ❌ Agent automatic_hybrid_bot using too much memory: 1047.078125MB
+2025-09-20 12:47:22,763 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 12:47:52,793 - __main__ - ERROR - ❌ Agent automatic_hybrid_bot using too much memory: 1047.5625MB
+2025-09-20 12:47:53,016 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 12:48:23,051 - __main__ - ERROR - ❌ Agent automatic_hybrid_bot using too much memory: 1114.6875MB
+2025-09-20 12:48:23,394 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 12:48:53,416 - __main__ - ERROR - ❌ Agent automatic_hybrid_bot using too much memory: 1114.6875MB
+2025-09-20 12:48:53,594 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 12:49:19,197 - __main__ - WARNING - ⚠️ Agent automatic_hybrid_bot health issues: Agent not running (status: error), High memory usage: 1114.6875MB
+2025-09-20 12:49:19,383 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 12:54:20,623 - __main__ - INFO - 📊 Cloud Agent Leader Report:
+2025-09-20 12:54:20,624 - __main__ - INFO -    Total agents: 1
+2025-09-20 12:54:20,624 - __main__ - INFO -    Running: 1
+2025-09-20 12:54:20,624 - __main__ - INFO -    Healthy: 1
+2025-09-20 12:54:20,624 - __main__ - INFO -    Total errors: 4
+2025-09-20 12:54:20,625 - __main__ - INFO - 📄 Report saved to cloud_agent_report_20250920_125420.json
+2025-09-20 12:54:20,847 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 13:04:20,853 - __main__ - INFO - 📊 Cloud Agent Leader Report:
+2025-09-20 13:04:20,854 - __main__ - INFO -    Total agents: 1
+2025-09-20 13:04:20,854 - __main__ - INFO -    Running: 1
+2025-09-20 13:04:20,854 - __main__ - INFO -    Healthy: 1
+2025-09-20 13:04:20,854 - __main__ - INFO -    Total errors: 4
+2025-09-20 13:04:20,855 - __main__ - INFO - 📄 Report saved to cloud_agent_report_20250920_130420.json
+2025-09-20 13:04:21,245 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 13:11:48,292 - __main__ - ERROR - ❌ Agent automatic_hybrid_bot has too many errors: 10
+2025-09-20 13:11:48,299 - telegram_rate_limiter - ERROR - ❌ Telegram lähetysvirhe: Telegram lähetysvirhe: Cannot connect to host api.telegram.org:443 ssl:default [Could not contact DNS servers]
+2025-09-20 13:11:48,299 - telegram_rate_limiter - WARNING - 📈 Backoff kasvatettu: 1.0s (virheitä: 1)
+2025-09-20 13:11:48,299 - telegram_bot_integration - WARNING - ⚠️ Telegram viesti epäonnistui
+2025-09-20 13:15:37,375 - __main__ - ERROR - ❌ Agent automatic_hybrid_bot has too many errors: 16
+2025-09-20 13:15:37,375 - telegram_rate_limiter - WARNING - ⏳ Backoff: odotetaan 1.0s
+2025-09-20 13:15:38,383 - telegram_rate_limiter - ERROR - ❌ Telegram lähetysvirhe: Telegram lähetysvirhe: Cannot connect to host api.telegram.org:443 ssl:default [Could not contact DNS servers]
+2025-09-20 13:15:38,383 - telegram_rate_limiter - WARNING - 📈 Backoff kasvatettu: 3.0s (virheitä: 2)
+2025-09-20 13:15:38,383 - telegram_bot_integration - WARNING - ⚠️ Telegram viesti epäonnistui
+2025-09-20 13:35:28,148 - __main__ - ERROR - ❌ Agent automatic_hybrid_bot has too many errors: 22
+2025-09-20 13:35:28,149 - telegram_rate_limiter - WARNING - ⏳ Backoff: odotetaan 3.0s
+2025-09-20 13:35:31,161 - telegram_rate_limiter - ERROR - ❌ Telegram lähetysvirhe: Telegram lähetysvirhe: Cannot connect to host api.telegram.org:443 ssl:default [Could not contact DNS servers]
+2025-09-20 13:35:31,161 - telegram_rate_limiter - WARNING - 📈 Backoff kasvatettu: 7.0s (virheitä: 3)
+2025-09-20 13:35:31,162 - telegram_bot_integration - WARNING - ⚠️ Telegram viesti epäonnistui
+2025-09-20 13:38:30,882 - __main__ - ERROR - ❌ Agent automatic_hybrid_bot has too many errors: 29
+2025-09-20 13:38:30,884 - telegram_rate_limiter - WARNING - ⏳ Backoff: odotetaan 7.0s
+2025-09-20 13:47:08,199 - telegram_rate_limiter - ERROR - ❌ Telegram lähetysvirhe: Telegram lähetysvirhe: Cannot connect to host api.telegram.org:443 ssl:default [Could not contact DNS servers]
+2025-09-20 13:47:08,200 - telegram_rate_limiter - WARNING - 📈 Backoff kasvatettu: 15.0s (virheitä: 4)
+2025-09-20 13:47:08,200 - telegram_bot_integration - WARNING - ⚠️ Telegram viesti epäonnistui
+2025-09-20 13:48:59,536 - __main__ - ERROR - ❌ Agent automatic_hybrid_bot has too many errors: 36
+2025-09-20 13:48:59,537 - telegram_rate_limiter - WARNING - ⏳ Backoff: odotetaan 15.0s
+2025-09-20 13:49:19,753 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 13:49:49,773 - __main__ - ERROR - ❌ Agent automatic_hybrid_bot has too many errors: 36
+2025-09-20 13:49:55,062 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 13:50:25,084 - __main__ - ERROR - ❌ Agent automatic_hybrid_bot has too many errors: 36
+2025-09-20 13:50:30,464 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 13:51:00,483 - __main__ - ERROR - ❌ Agent automatic_hybrid_bot has too many errors: 37
+2025-09-20 13:51:05,971 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 13:51:13,092 - __main__ - WARNING - ⚠️ Agent automatic_hybrid_bot health issues: Agent not running (status: error), Too many errors: 37
+2025-09-20 13:51:14,945 - __main__ - INFO - 📊 Cloud Agent Leader Report:
+2025-09-20 13:51:14,945 - __main__ - INFO -    Total agents: 1
+2025-09-20 13:51:14,945 - __main__ - INFO -    Running: 0
+2025-09-20 13:51:14,945 - __main__ - INFO -    Healthy: 0
+2025-09-20 13:51:14,945 - __main__ - INFO -    Total errors: 37
+2025-09-20 13:51:14,945 - __main__ - INFO - 📄 Report saved to cloud_agent_report_20250920_135114.json
+2025-09-20 13:51:18,727 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 13:51:20,302 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 13:51:35,997 - __main__ - ERROR - ❌ Agent automatic_hybrid_bot has too many errors: 37
+2025-09-20 13:51:41,251 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 13:52:11,274 - __main__ - ERROR - ❌ Agent automatic_hybrid_bot has too many errors: 37
+2025-09-20 13:52:16,526 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 13:52:46,548 - __main__ - ERROR - ❌ Agent automatic_hybrid_bot has too many errors: 37
+2025-09-20 13:52:51,840 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 13:52:59,748 - cloud_agent_leader - INFO - ✅ Found running agent: automatic_hybrid_bot (PID: 25302)
+2025-09-20 13:52:59,750 - cloud_agent_leader - ERROR - ❌ Agent automatic_hybrid_bot has too many errors: 37
+2025-09-20 13:52:59,751 - cloud_agent_leader - WARNING - ⚠️ Agent automatic_hybrid_bot health issues: Agent not running (status: error), Too many errors: 37
+2025-09-20 13:53:21,865 - __main__ - ERROR - ❌ Agent automatic_hybrid_bot has too many errors: 37
+2025-09-20 13:53:27,094 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 13:53:57,116 - __main__ - ERROR - ❌ Agent automatic_hybrid_bot has too many errors: 37
+2025-09-20 13:54:03,309 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 13:54:19,796 - cloud_agent_leader - INFO - ✅ Found running agent: automatic_hybrid_bot (PID: 25302)
+2025-09-20 13:54:33,333 - __main__ - ERROR - ❌ Agent automatic_hybrid_bot has too many errors: 37
+2025-09-20 13:54:38,568 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 13:55:08,586 - __main__ - ERROR - ❌ Agent automatic_hybrid_bot has too many errors: 37
+2025-09-20 13:55:13,903 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 13:55:43,937 - __main__ - ERROR - ❌ Agent automatic_hybrid_bot has too many errors: 37
+2025-09-20 13:55:49,342 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 13:56:18,728 - __main__ - WARNING - ⚠️ Agent automatic_hybrid_bot health issues: Agent not running (status: error), Too many errors: 37
+2025-09-20 13:56:19,375 - __main__ - ERROR - ❌ Agent automatic_hybrid_bot has too many errors: 34
+2025-09-20 13:56:23,987 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 13:56:25,092 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 13:56:55,116 - __main__ - ERROR - ❌ Agent automatic_hybrid_bot has too many errors: 33
+2025-09-20 13:57:00,369 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 14:00:30,577 - __main__ - ERROR - ❌ Agent automatic_hybrid_bot using too much memory: 2942.453125MB
+2025-09-20 14:00:35,802 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 14:01:20,304 - __main__ - INFO - 📊 Cloud Agent Leader Report:
+2025-09-20 14:01:20,304 - __main__ - INFO -    Total agents: 1
+2025-09-20 14:01:20,304 - __main__ - INFO -    Running: 1
+2025-09-20 14:01:20,304 - __main__ - INFO -    Healthy: 0
+2025-09-20 14:01:20,304 - __main__ - INFO -    Total errors: 0
+2025-09-20 14:01:20,305 - __main__ - INFO - 📄 Report saved to cloud_agent_report_20250920_140120.json
+2025-09-20 14:01:25,655 - telegram_bot_integration - INFO - ✅ Telegram viesti lähetetty
+2025-09-20 14:10:03,211 - __main__ - INFO - 🛑 Received signal 15, shutting down gracefully...

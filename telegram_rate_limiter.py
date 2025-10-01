@@ -31,15 +31,44 @@ class TelegramRateLimiter:
     - Priority queue
     """
     
-    def __init__(self, 
-                 rate_limit_sec: int = 1,
-                 max_backoff_sec: int = 30,
+    def __init__(self,
+                 rate_limit_sec: float = 1,
+                 max_backoff_sec: float = 30,
                  backoff_multiplier: float = 2.0,
                  batch_size: int = 5):
-        self.rate_limit_sec = rate_limit_sec
-        self.max_backoff_sec = max_backoff_sec
-        self.backoff_multiplier = backoff_multiplier
-        self.batch_size = batch_size
+        try:
+            self.rate_limit_sec = float(rate_limit_sec)
+        except (TypeError, ValueError):
+            log.warning("Invalid rate_limit_sec=%s, fallback 1.0", rate_limit_sec)
+            self.rate_limit_sec = 1.0
+
+        try:
+            self.max_backoff_sec = float(max_backoff_sec)
+        except (TypeError, ValueError):
+            log.warning("Invalid max_backoff_sec=%s, fallback 30.0", max_backoff_sec)
+            self.max_backoff_sec = 30.0
+
+        try:
+            self.backoff_multiplier = float(backoff_multiplier)
+        except (TypeError, ValueError):
+            log.warning("Invalid backoff_multiplier=%s, fallback 2.0", backoff_multiplier)
+            self.backoff_multiplier = 2.0
+
+        try:
+            self.batch_size = int(batch_size)
+        except (TypeError, ValueError):
+            log.warning("Invalid batch_size=%s, fallback 5", batch_size)
+            self.batch_size = 5
+
+        if self.rate_limit_sec < 0:
+            log.warning("rate_limit_sec %.2f < 0, clamped to 0", self.rate_limit_sec)
+            self.rate_limit_sec = 0.0
+        if self.max_backoff_sec < 0:
+            log.warning("max_backoff_sec %.2f < 0, clamped to 0", self.max_backoff_sec)
+            self.max_backoff_sec = 0.0
+        if self.backoff_multiplier < 1.0:
+            log.warning("backoff_multiplier %.2f < 1.0, clamped to 1.0", self.backoff_multiplier)
+            self.backoff_multiplier = 1.0
         
         # Rate limiting
         self.last_send_time = 0.0

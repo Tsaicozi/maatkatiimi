@@ -1,0 +1,37 @@
+{
+  "timestamp": "2025-09-20T07:54:49.110601+00:00",
+  "environment": "Cursor Cloud",
+  "agents": {
+    "automatic_hybrid_bot": {
+      "status": "running",
+      "pid": 10867,
+      "cpu_percent": 0.0,
+      "memory_mb": 592.53125,
+      "error_count": 1,
+      "last_seen": "2025-09-20T07:54:29.338124+00:00",
+      "is_healthy": true,
+      "performance_score": 40.746875,
+      "issues": []
+    },
+    "hybrid_trading_bot": {
+      "status": "error",
+      "pid": 16867,
+      "cpu_percent": 0.0,
+      "memory_mb": 484.703125,
+      "error_count": 20,
+      "last_seen": "2025-09-20T07:54:29.355669+00:00",
+      "is_healthy": false,
+      "performance_score": 51.5296875,
+      "issues": [
+        "Agent not running (status: error)",
+        "Too many errors: 20"
+      ]
+    }
+  },
+  "summary": {
+    "total_agents": 2,
+    "running_agents": 1,
+    "healthy_agents": 1,
+    "total_errors": 21
+  }
+}

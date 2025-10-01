@@ -13,6 +13,8 @@ REPORT_INTERVAL=3600
 
 # API Keys (optional)
 COINGECKO_API_KEY=your_coingecko_key
+# CoinGecko PRO API Key (required for crypto_new_token_screener.py)
+COINGECKO_PRO_KEY=your_coingecko_pro_api_key_here
 DEXSCREENER_API_KEY=your_dexscreener_key
 MORALIS_API_KEY=your_moralis_key
 
