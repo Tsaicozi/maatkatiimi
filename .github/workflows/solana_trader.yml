@@ -1,0 +1,71 @@
+name: Solana Auto Trader
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'  # Joka 30 minuutti
+  workflow_dispatch:  # Manuaalinen käynnistys
+
+jobs:
+  trade:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Cache pip packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Run Solana Auto Trader
+        env:
+          SOLANA_RPC_URL: ${{ secrets.SOLANA_RPC_URL }}
+          HELIUS_API_KEY: ${{ secrets.HELIUS_API_KEY }}
+          PHANTOM_PRIVATE_KEY: ${{ secrets.PHANTOM_PRIVATE_KEY }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          MIN_LIQUIDITY_USD: ${{ secrets.MIN_LIQUIDITY_USD }}
+          MIN_24H_VOLUME_USD_SOLANA: ${{ secrets.MIN_24H_VOLUME_USD_SOLANA }}
+          MAX_TOKEN_AGE_HOURS: ${{ secrets.MAX_TOKEN_AGE_HOURS }}
+          POSITION_SIZE_SOL: ${{ secrets.POSITION_SIZE_SOL }}
+          MAX_POSITIONS: ${{ secrets.MAX_POSITIONS }}
+          STOP_LOSS_PCT: ${{ secrets.STOP_LOSS_PCT }}
+          TAKE_PROFIT_PCT: ${{ secrets.TAKE_PROFIT_PCT }}
+          MAX_HOLD_HOURS: ${{ secrets.MAX_HOLD_HOURS }}
+          MAX_SLIPPAGE_BPS: ${{ secrets.MAX_SLIPPAGE_BPS }}
+          COOLDOWN_HOURS: ${{ secrets.COOLDOWN_HOURS }}
+        run: python3 solana_auto_trader.py
+      
+      - name: Upload positions state
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: trading-state
+          path: |
+            solana_positions.json
+            solana_cooldown.json
+            solana_auto_trader.log
+          retention-days: 7
+      
+      - name: Commit and push state files
+        if: always()
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -f solana_positions.json solana_cooldown.json || true
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update trading state [skip ci]" && git push) || true
+

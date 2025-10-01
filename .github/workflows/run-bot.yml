@@ -1,0 +1,50 @@
+name: Helius Scanner Bot 24/7
+
+on:
+  # Käynnistä manuaalisesti
+  workflow_dispatch:
+  # TAI automaattisesti cronilla (valinnainen)
+  # schedule:
+  #   - cron: '0 */6 * * *'  # Joka 6. tunti
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360  # 6 tuntia max (GitHub Actions rajoitus)
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Create .env from secrets
+        run: |
+          echo "HELIUS_API_KEY=${{ secrets.HELIUS_API_KEY }}" >> .env
+          echo "TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}" >> .env
+          echo "TELEGRAM_CHAT_ID=${{ secrets.TELEGRAM_CHAT_ID }}" >> .env
+          echo "SOLANA_RPC_URL=${{ secrets.SOLANA_RPC_URL }}" >> .env
+          echo "TRADER_PRIVATE_KEY_HEX=${{ secrets.TRADER_PRIVATE_KEY_HEX }}" >> .env
+          echo "AUTO_TRADE=${{ secrets.AUTO_TRADE }}" >> .env
+          echo "DRY_RUN=${{ secrets.DRY_RUN }}" >> .env
+          echo "TRADE_MAX_USD=${{ secrets.TRADE_MAX_USD }}" >> .env
+          echo "TRADE_MIN_SCORE=${{ secrets.TRADE_MIN_SCORE }}" >> .env
+          echo "TRADE_MIN_LIQ_USD=${{ secrets.TRADE_MIN_LIQ_USD }}" >> .env
+          echo "COINGECKO_API_KEY=${{ secrets.COINGECKO_API_KEY }}" >> .env
+          # Lisää muut tarvittavat muuttujat...
+      
+      - name: Run Helius Scanner Bot
+        run: |
+          python3 run_helius_scanner.py
+        env:
+          PYTHONUNBUFFERED: 1
+
