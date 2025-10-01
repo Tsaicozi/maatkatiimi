@@ -1,0 +1,204 @@
+name: Solana Auto Trader
+
+on:
+  schedule:
+    # Aja joka 30 minuutti
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+    # Mahdollistaa manuaalisen käynnistyksen
+    inputs:
+      run_once:
+        description: 'Run only one trading cycle'
+        required: false
+        default: 'false'
+        type: boolean
+
+env:
+  PYTHON_VERSION: '3.10'
+  TIMEZONE: 'Europe/Helsinki'
+
+jobs:
+  solana-trading:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25  # Timeout ennen seuraavaa ajoa
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        
+    - name: Cache pip dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+          
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential libssl-dev libffi-dev
+        
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt || pip install aiohttp asyncio python-dotenv solana base58 logging
+        
+    - name: Set timezone
+      run: |
+        sudo timedatectl set-timezone ${{ env.TIMEZONE }}
+        echo "Current time: $(date)"
+        
+    - name: Create .env file
+      run: |
+        echo "PHANTOM_PRIVATE_KEY=${{ secrets.PHANTOM_PRIVATE_KEY }}" >> .env
+        echo "TELEGRAM_TOKEN=${{ secrets.TELEGRAM_TOKEN }}" >> .env
+        echo "TELEGRAM_CHAT_ID=${{ secrets.TELEGRAM_CHAT_ID }}" >> .env
+        echo "POSITION_SIZE_SOL=0.05" >> .env
+        echo "MAX_POSITIONS=3" >> .env
+        echo "STOP_LOSS_PERCENT=30" >> .env
+        echo "TAKE_PROFIT_PERCENT=50" >> .env
+        echo "MAX_HOLD_HOURS=48" >> .env
+        echo "COOLDOWN_HOURS=24" >> .env
+        echo "MIN_SCORE_THRESHOLD=7.0" >> .env
+        echo "SLIPPAGE_BPS=100" >> .env
+        echo "SOLANA_RPC_URL=https://api.mainnet-beta.solana.com" >> .env
+        
+    - name: Verify wallet connection
+      run: |
+        python -c "
+        import os
+        from dotenv import load_dotenv
+        load_dotenv()
+        
+        private_key = os.getenv('PHANTOM_PRIVATE_KEY')
+        if not private_key:
+            print('❌ PHANTOM_PRIVATE_KEY puuttuu')
+            exit(1)
+        
+        print('✅ Wallet private key löytyi')
+        print(f'🔑 Key length: {len(private_key)} characters')
+        "
+        
+    - name: Run token scanner test
+      run: |
+        timeout 300 python real_solana_token_scanner.py || echo "Scanner test completed with timeout"
+        
+    - name: Run Solana Auto Trader
+      run: |
+        if [ "${{ github.event.inputs.run_once }}" == "true" ]; then
+          echo "🔄 Running single trading cycle..."
+          timeout 1200 python solana_auto_trader.py --once
+        else
+          echo "🔄 Running continuous trading (25 min max)..."
+          timeout 1500 python solana_auto_trader.py || echo "Trading completed with timeout"
+        fi
+        
+    - name: Upload trading logs
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: trading-logs-${{ github.run_number }}
+        path: |
+          solana_auto_trader.log
+          solana_trader_state.json
+        retention-days: 7
+        
+    - name: Send completion notification
+      if: always()
+      run: |
+        python3 -c "
+        import asyncio
+        import aiohttp
+        import os
+        from datetime import datetime
+        
+        async def send_notification():
+            token = os.getenv('TELEGRAM_TOKEN')
+            chat_id = os.getenv('TELEGRAM_CHAT_ID')
+            
+            if not token or not chat_id:
+                print('📱 Telegram ei konfiguroitu')
+                return
+                
+            status = '✅ ONNISTUI' if '${{ job.status }}' == 'success' else '❌ EPÄONNISTUI'
+            run_type = 'Single Cycle' if '${{ github.event.inputs.run_once }}' == 'true' else 'Continuous'
+            
+            message = f'🤖 Solana Auto Trader - Status: {status} - Type: {run_type} - Run: ${{ github.run_number }}'
+            
+            try:
+                url = f'https://api.telegram.org/bot{token}/sendMessage'
+                data = {
+                    'chat_id': chat_id,
+                    'text': message,
+                    'parse_mode': 'HTML'
+                }
+                
+                async with aiohttp.ClientSession() as session:
+                    async with session.post(url, json=data) as response:
+                        if response.status == 200:
+                            print('📱 Telegram ilmoitus lähetetty')
+                        else:
+                            print(f'📱 Telegram virhe: {response.status}')
+            except Exception as e:
+                print(f'📱 Telegram virhe: {e}')
+        
+        asyncio.run(send_notification())
+        "
+        
+    - name: Cleanup old artifacts
+      run: |
+        # Poista vanhat log tiedostot säästääksemme tilaa
+        find . -name "*.log.*" -mtime +1 -delete || true
+        find . -name "hybrid_trading_analysis_*.json" -mtime +1 -delete || true
+        echo "🧹 Vanhat tiedostot siivottu"
+
+  # Backup job - tallentaa tärkeät tiedot
+  backup-state:
+    runs-on: ubuntu-latest
+    needs: solana-trading
+    if: always()
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Download trading artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: trading-logs-${{ github.run_number }}
+        path: ./trading-data/
+        
+    - name: Create backup summary
+      run: |
+        echo "# Trading Run Summary" > TRADING_SUMMARY.md
+        echo "Date: $(date)" >> TRADING_SUMMARY.md
+        echo "Run Number: ${{ github.run_number }}" >> TRADING_SUMMARY.md
+        echo "Status: ${{ needs.solana-trading.result }}" >> TRADING_SUMMARY.md
+        echo "" >> TRADING_SUMMARY.md
+        
+        if [ -f "./trading-data/solana_trader_state.json" ]; then
+          echo "## Trading State" >> TRADING_SUMMARY.md
+          echo "\`\`\`json" >> TRADING_SUMMARY.md
+          cat ./trading-data/solana_trader_state.json >> TRADING_SUMMARY.md
+          echo "\`\`\`" >> TRADING_SUMMARY.md
+        fi
+        
+        if [ -f "./trading-data/solana_auto_trader.log" ]; then
+          echo "## Recent Logs" >> TRADING_SUMMARY.md
+          echo "\`\`\`" >> TRADING_SUMMARY.md
+          tail -50 ./trading-data/solana_auto_trader.log >> TRADING_SUMMARY.md
+          echo "\`\`\`" >> TRADING_SUMMARY.md
+        fi
+        
+    - name: Upload backup summary
+      uses: actions/upload-artifact@v3
+      with:
+        name: trading-summary-${{ github.run_number }}
+        path: TRADING_SUMMARY.md
+        retention-days: 30
