@@ -5,12 +5,15 @@ import asyncio
 import os
 import logging
 import aiohttp
+from datetime import datetime
 from dotenv import load_dotenv
 
 from helius_token_scanner_bot import HeliusTokenScannerBot, DexInfoFetcher
 from raydium_pool_watcher import RaydiumPoolWatcher
 from trading_config import TradingConfig
 from trader import Trader
+from exit_worker import ExitWorker
+from reconcile_worker import ReconcileWorker
 from dex_fetchers import (
     fetch_from_birdeye,
     fetch_from_coingecko,
@@ -168,6 +171,10 @@ async def main():
     bot.trader = Trader(http_url, trade_cfg, logging.getLogger("trader"))
     bot.trade_cfg = trade_cfg
     
+    # Initialize balance manager
+    from balance_manager import BalanceManager
+    bot.balance_mgr = BalanceManager(bot.trader)
+    
     # Telegram bot for scanner notifications only
     telegram_bot_token = os.getenv("TELEGRAM_BOT_TOKEN")
     telegram_chat_id = os.getenv("TELEGRAM_CHAT_ID")
@@ -271,6 +278,83 @@ async def main():
         lookback_task = asyncio.create_task(lookback.run_forever())
         logging.getLogger(__name__).info("🔄 Lookback sweep started")
     
+    # Start ExitWorker for automated position monitoring
+    if trade_cfg.enabled:
+        exit_worker = ExitWorker(
+            bot=bot,
+            trader=bot.trader,
+            positions=bot.positions,
+            dex_fetcher=fetcher,
+            interval=int(os.getenv("EXIT_INTERVAL_SEC", "30"))
+        )
+        exit_task = asyncio.create_task(exit_worker.run())
+        logging.getLogger(__name__).info("🔄 ExitWorker started")
+    
+    # Start ReconcileWorker for position reconciliation
+    if trade_cfg.enabled:
+        owner_pk = os.getenv("TRADER_PUBLIC_KEY")
+        if not owner_pk:
+            from solders.keypair import Keypair
+            kp = Keypair.from_bytes(bytes.fromhex(os.getenv("TRADER_PRIVATE_KEY_HEX")))
+            owner_pk = str(kp.pubkey())
+        
+        rec = ReconcileWorker(
+            http_url=os.getenv("SOLANA_RPC_URL"),
+            owner_pubkey=owner_pk,
+            positions=bot.positions,
+            interval=int(os.getenv("RECONCILE_INTERVAL_SEC", "90")),
+            logger=logging.getLogger("reconcile"),
+            bot=bot
+        )
+        reconcile_task = asyncio.create_task(rec.run())
+        logging.getLogger(__name__).info("🔄 ReconcileWorker started")
+    
+    # Start wallet report task
+    async def report_wallet():
+        while True:
+            try:
+                snap = await bot.balance_mgr.snapshot(bot.positions.get_all())
+                
+                # Chain-perusteinen avointen positioiden lukumäärä:
+                onchain_open = 0
+                open_mints = []
+                for mint, pos in bot.positions.get_all().items():
+                    if pos.get("status")=="open":
+                        atoms = await bot.balance_mgr.get_token_atoms(mint)
+                        if atoms > 0:
+                            onchain_open += 1
+                            open_mints.append(mint)
+
+                flag = ""
+                file_open = len([1 for p in bot.positions.get_all().values() if p.get("status")=="open"])
+                if onchain_open != file_open:
+                    flag = f" ⚠️ mismatch file={file_open} chain={onchain_open}"
+                
+                total_trades = len(bot._last_trade_ts)
+                
+                if bot.telegram_bot and bot.telegram_bot.enabled:
+                    message = f"""💼 **Wallet Report**
+
+💰 **Balance:**
+├ Total: {snap['sol_total_display']} SOL
+├ Spendable: {snap['sol_spendable_display']} SOL
+├ wSOL: {snap['wsol_display']} SOL
+└ USD: ${snap['sol_total'] * float(os.getenv('SOL_PRICE_FALLBACK', '208')):.2f}
+
+📈 **Trading:**
+├ Status: {'✅ LIVE' if trade_cfg.enabled else '⏸️ PAUSED'}
+├ Trades: {total_trades}
+├ Open Positions: {onchain_open}{flag}
+└ Max/Trade: ${trade_cfg.max_trade_usd}
+
+⏰ {datetime.now().strftime('%Y-%m-%d %H:%M:%S UTC')}"""
+                    
+                    await bot.telegram_bot.send_message(message)
+            except Exception as e:
+                logging.getLogger(__name__).error(f"Wallet report error: {e}")
+            await asyncio.sleep(int(os.getenv("WALLET_REPORT_EVERY_SEC", "7200")))  # 2 hours
+    
+    wallet_report_task = asyncio.create_task(report_wallet())
     
     try:
         while True:
@@ -282,6 +366,27 @@ async def main():
             lookback_task.cancel()
             try:
                 await lookback_task
+            except asyncio.CancelledError:
+                pass
+        
+        if 'exit_task' in locals():
+            exit_task.cancel()
+            try:
+                await exit_task
+            except asyncio.CancelledError:
+                pass
+        
+        if 'reconcile_task' in locals():
+            reconcile_task.cancel()
+            try:
+                await reconcile_task
+            except asyncio.CancelledError:
+                pass
+        
+        if 'wallet_report_task' in locals():
+            wallet_report_task.cancel()
+            try:
+                await wallet_report_task
             except asyncio.CancelledError:
                 pass
         

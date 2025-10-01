@@ -12,6 +12,8 @@ from dataclasses import dataclass, field
 from typing import Any, Awaitable, Callable, Optional, Dict, List, Tuple
 import aiohttp
 from collections import defaultdict
+from position_manager import PositionManager
+from balance_manager import BalanceManager
 
 # Telegram-integraatio
 # TelegramBot removed - using simple notification system
@@ -377,11 +379,23 @@ class HeliusTokenScannerBot:
         self.trader = None
         self.trade_cfg = None
         self._last_trade_ts: dict = {}
+        self._open_positions: dict = {}  # Track open positions: {mint: {entry_price, entry_time, entry_volume, entry_liquidity}}
+        self._positions_file = "open_positions.json"  # File to persist positions
         self._wallet_report_task: asyncio.Task | None = None
+        
+        # New position and balance management
+        self.positions = PositionManager(path=os.getenv("POSITIONS_PATH", "open_positions.json"))
+        self.balance_mgr = None  # Will be set when trader is initialized
         self._wallet_report_interval = 7200  # 2 hours in seconds
         # Per-mint cooldown (2-3 min TG:lle)
         self._telegram_cooldown: dict[str, float] = {}
         self._cooldown_duration = 180.0  # 3 minuuttia
+        
+        # Load existing positions on startup
+        self._load_positions()
+        
+        # Force sell all positions on startup to get cash back
+        self._force_sell_all_on_startup = True
         # Pair failover tracking
         self._published_pairs: dict[str, str] = {}  # mint -> pair_id
         self._retry_max_delay = self._config.retry_max_delay
@@ -456,6 +470,12 @@ class HeliusTokenScannerBot:
         # Käynnistä wallet report worker (2h välein)
         if not self._wallet_report_task or self._wallet_report_task.done():
             self._wallet_report_task = asyncio.create_task(self._wallet_report_worker(), name="wallet_report_worker")
+        
+        # Force sell all positions on startup if enabled
+        if getattr(self, '_force_sell_all_on_startup', False):
+            logger.info("🔄 Force selling all positions on startup...")
+            await self._force_sell_all_positions()
+            self._force_sell_all_on_startup = False  # Only do this once
 
     async def stop(self) -> None:
         if self._stop.is_set():
@@ -943,6 +963,9 @@ class HeliusTokenScannerBot:
                     await self._send_telegram_notification(summary)
                     # Try auto-trade after sending notification
                     await self._maybe_auto_trade(summary)
+                    
+                    # Check if we should sell any existing positions
+                    await self._check_and_sell_positions(summary)
                 else:
                     self._append_reject(summary)
                     if not blacklisted and summary.get("dex_status") != "ok":
@@ -2504,30 +2527,47 @@ class HeliusTokenScannerBot:
             if not self.trader or not self.trade_cfg:
                 return
             
-            # Get wallet balance
-            sol_balance = await self.trader.get_sol_balance()
+            # Get detailed wallet balance using BalanceManager
+            if hasattr(self, 'balance_mgr') and self.balance_mgr:
+                snap = await self.balance_mgr.snapshot(self.positions.get_all())
+                sol_total_display = snap['sol_total_display']
+                sol_spendable_display = snap['sol_spendable_display']
+                wsol_display = snap['wsol_display']
+                sol_total = snap['sol_total']
+            else:
+                # Fallback to old method
+                sol_balance = await self.trader.get_sol_balance()
+                sol_total_display = f"{sol_balance:.5f}"
+                sol_spendable_display = f"{sol_balance:.5f}"
+                wsol_display = "0.00000"
+                sol_total = sol_balance
+            
             sol_price = float(os.getenv("SOL_PRICE_FALLBACK", "208"))
-            balance_usd = sol_balance * sol_price
+            balance_usd = sol_total * sol_price
             
             # Trading stats
             total_trades = len(self._last_trade_ts)
+            open_positions = len(self._open_positions)  # Actual open positions
             
             # Build message
             message = f"""📊 **Wallet Report**
 
 💰 **Balance:**
-├ SOL: {sol_balance:.4f} SOL
+├ Total: {sol_total_display} SOL
+├ Spendable: {sol_spendable_display} SOL
+├ wSOL: {wsol_display} SOL
 └ USD: ${balance_usd:.2f}
 
 📈 **Trading:**
 ├ Status: {"✅ LIVE" if self.trade_cfg.enabled and not self.trade_cfg.dry_run else "🔴 DRY-RUN"}
 ├ Trades: {total_trades}
+├ Open Positions: {open_positions}
 └ Max/Trade: ${self.trade_cfg.max_trade_usd}
 
 ⏰ {datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")} UTC"""
             
             await self.telegram_bot.send_message(message)
-            logger.info(f"📱 Wallet report sent: {sol_balance:.4f} SOL (${balance_usd:.2f})")
+            logger.info(f"📱 Wallet report sent: {sol_total_display} SOL (${balance_usd:.2f})")
             
         except Exception as e:
             logger.error(f"Failed to send wallet report: {e}")
@@ -2548,7 +2588,8 @@ class HeliusTokenScannerBot:
         
         # Get data from metadata instead of "dex"
         metadata = enriched.get("metadata", {}) or {}
-        score = int(enriched.get("score", 0))
+        score_raw = enriched.get("score")
+        score = int(score_raw) if score_raw is not None else 0
         liq = float(metadata.get("liquidity_usd") or 0.0)
         vol = float(metadata.get("volume_24h_usd") or 0.0)
         
@@ -2580,6 +2621,34 @@ class HeliusTokenScannerBot:
                 sig = res.get("sig", "")
                 logger.info("✅ auto_trade_buy_ok mint=%s sig=%s", mint[:8], sig)
                 
+                # Get actual trade details
+                qty_atoms = int(res.get("qty_atoms") or 0)
+                fill_price_usd = float(res.get("fill_price_usd") or 0.0)
+                
+                if qty_atoms > 0:
+                    # Track position using new PositionManager
+                    pos = {
+                        "mint": mint,
+                        "symbol": symbol,
+                        "qty_atoms": qty_atoms,
+                        "entry_price_usd": fill_price_usd,
+                        "entry_time": now,
+                        "entry_liquidity": liq,
+                        "entry_volume": vol,
+                        "status": "open",
+                    }
+                    self.positions.add_position(mint, pos)
+                    
+                    # Also update old system for compatibility
+                    self._open_positions[mint] = {
+                        "entry_price": fill_price_usd,
+                        "entry_time": now,
+                        "entry_volume": vol,
+                        "entry_liquidity": liq,
+                        "entry_symbol": symbol
+                    }
+                    self._save_positions()  # Save to disk
+                
                 # Send detailed Telegram notification
                 if self.telegram_bot and self.telegram_bot.enabled:
                     # Get current balance
@@ -2601,7 +2670,7 @@ class HeliusTokenScannerBot:
 💼 **Wallet:**
 └ Balance: {sol_balance:.4f} SOL
 
-🔗 **Tx:** `{sig[:16]}...{sig[-16:]}`"""
+                        🔗 **Tx:** `{str(sig)[:16]}...{str(sig)[-16:]}`"""
                     
                     await self.telegram_bot.send_message(message)
             else:
@@ -2624,6 +2693,219 @@ class HeliusTokenScannerBot:
                     )
                 except:
                     pass
+
+    async def _check_sell_conditions(self, mint: str, current_data: dict) -> bool:
+        """Check if position should be sold based on current market data"""
+        if mint not in self._open_positions:
+            return False
+        
+        position = self._open_positions[mint]
+        entry_price = position["entry_price"]
+        entry_time = position["entry_time"]
+        entry_volume = position["entry_volume"]
+        entry_liquidity = position["entry_liquidity"]
+        
+        current_price = float(current_data.get("price_usd", 0))
+        current_volume = float(current_data.get("volume_24h_usd", 0))
+        current_liquidity = float(current_data.get("liquidity_usd", 0))
+        current_time = time.time()
+        
+        # 1. Take Profit: +100%
+        if current_price > 0 and entry_price > 0:
+            price_change_pct = ((current_price - entry_price) / entry_price) * 100
+            if price_change_pct >= 100:
+                logger.info(f"🎯 TAKE PROFIT: {mint[:8]} +{price_change_pct:.1f}%")
+                return True
+        
+        # 2. Stop Loss: -30%
+        if current_price > 0 and entry_price > 0:
+            price_change_pct = ((current_price - entry_price) / entry_price) * 100
+            if price_change_pct <= -30:
+                logger.info(f"🛑 STOP LOSS: {mint[:8]} {price_change_pct:.1f}%")
+                return True
+        
+        # 3. Time-based exit: 48h
+        if (current_time - entry_time) > 172800:  # 48 hours
+            logger.info(f"⏰ TIME EXIT: {mint[:8]} after 48h")
+            return True
+        
+        # 4. AGGRESSIVE Volume/Liquidity exit
+        if entry_volume > 0 and current_volume < (entry_volume * 0.2):  # Volume < 20%
+            logger.info(f"📉 VOLUME EXIT: {mint[:8]} volume dropped to {current_volume/entry_volume*100:.1f}%")
+            return True
+        
+        if entry_liquidity > 0 and current_liquidity < (entry_liquidity * 0.5):  # Liquidity < 50%
+            logger.info(f"💧 LIQUIDITY EXIT: {mint[:8]} liquidity dropped to {current_liquidity/entry_liquidity*100:.1f}%")
+            return True
+        
+        if current_volume < 1000:  # Volume < $1000
+            logger.info(f"📉 LOW VOLUME EXIT: {mint[:8]} volume < $1000")
+            return True
+        
+        return False
+
+    async def _sell_position(self, mint: str, reason: str) -> bool:
+        """Sell a position and remove from tracking"""
+        if mint not in self._open_positions:
+            return False
+        
+        try:
+            position = self._open_positions[mint]
+            symbol = position["entry_symbol"]
+            
+            logger.info(f"🔄 SELLING: {mint[:8]} ({symbol}) - {reason}")
+            
+            # Get current SOL price
+            sol_price = float(os.getenv("SOL_PRICE_FALLBACK", "208"))
+            
+            # Sell position
+            res = await self.trader.sell_token_for_base(mint, sol_price)
+            
+            if res.get("ok"):
+                sig = res.get("sig", "")
+                logger.info(f"✅ SELL SUCCESS: {mint[:8]} sig={sig}")
+                
+                # Remove from tracking
+                del self._open_positions[mint]
+                self._save_positions()  # Save to disk
+                
+                # Send Telegram notification
+                if self.telegram_bot and self.telegram_bot.enabled:
+                    message = f"""🔴 **POSITION SOLD**
+
+🪙 **Token:** `{mint[:8]}...{mint[-8:]}`
+📛 **Symbol:** {symbol}
+📊 **Reason:** {reason}
+🔗 **Tx:** `{str(sig)[:16]}...{str(sig)[-16:]}`"""
+                    
+                    await self.telegram_bot.send_message(message)
+                
+                return True
+            else:
+                logger.error(f"❌ SELL FAILED: {mint[:8]} reason={res.get('reason')}")
+                return False
+                
+        except Exception as e:
+            logger.exception(f"❌ SELL ERROR: {mint[:8]} error={e}")
+            return False
+
+    async def _check_and_sell_positions(self, current_token_data: dict) -> None:
+        """Check all open positions and sell if conditions are met"""
+        if not self._open_positions:
+            return
+        
+        current_mint = current_token_data.get("mint", "")
+        current_metadata = current_token_data.get("metadata", {})
+        
+        # Check each open position
+        positions_to_sell = []
+        for mint, position in self._open_positions.items():
+            # Use current token data if it matches, otherwise use position data
+            if mint == current_mint:
+                check_data = current_metadata
+            else:
+                # For other positions, we'd need to fetch current data
+                # For now, skip non-current positions
+                continue
+            
+            should_sell = await self._check_sell_conditions(mint, check_data)
+            if should_sell:
+                positions_to_sell.append(mint)
+        
+        # Sell positions that meet criteria
+        for mint in positions_to_sell:
+            position = self._open_positions[mint]
+            entry_price = position["entry_price"]
+            current_price = float(current_metadata.get("price_usd", 0))
+            
+            if current_price > 0 and entry_price > 0:
+                price_change_pct = ((current_price - entry_price) / entry_price) * 100
+                if price_change_pct >= 100:
+                    reason = f"Take Profit (+{price_change_pct:.1f}%)"
+                elif price_change_pct <= -30:
+                    reason = f"Stop Loss ({price_change_pct:.1f}%)"
+                else:
+                    reason = "Volume/Liquidity Exit"
+            else:
+                reason = "Volume/Liquidity Exit"
+            
+            await self._sell_position(mint, reason)
+
+    def _load_positions(self) -> None:
+        """Load positions from file on startup"""
+        try:
+            if os.path.exists(self._positions_file):
+                with open(self._positions_file, 'r') as f:
+                    data = json.load(f)
+                    # Convert string keys back to float where needed
+                    for mint, position in data.items():
+                        position["entry_price"] = float(position["entry_price"])
+                        position["entry_time"] = float(position["entry_time"])
+                        position["entry_volume"] = float(position["entry_volume"])
+                        position["entry_liquidity"] = float(position["entry_liquidity"])
+                    self._open_positions = data
+                    logger.info(f"📂 Loaded {len(self._open_positions)} positions from {self._positions_file}")
+        except Exception as e:
+            logger.error(f"Failed to load positions: {e}")
+            self._open_positions = {}
+
+    def _save_positions(self) -> None:
+        """Save positions to file"""
+        try:
+            with open(self._positions_file, 'w') as f:
+                json.dump(self._open_positions, f, indent=2)
+        except Exception as e:
+            logger.error(f"Failed to save positions: {e}")
+
+    async def _force_sell_all_positions(self) -> None:
+        """Force sell all positions on startup to get cash back"""
+        if not self._open_positions:
+            logger.info("📊 No positions to sell on startup")
+            return
+        
+        logger.info(f"🔄 FORCE SELLING {len(self._open_positions)} positions on startup...")
+        
+        positions_to_sell = list(self._open_positions.keys())
+        for mint in positions_to_sell:
+            position = self._open_positions[mint]
+            symbol = position["entry_symbol"]
+            
+            logger.info(f"🔄 FORCE SELL: {mint[:8]} ({symbol}) - Startup cleanup")
+            
+            try:
+                # Get current SOL price
+                sol_price = float(os.getenv("SOL_PRICE_FALLBACK", "208"))
+                
+                # Sell position
+                res = await self.trader.sell_token_for_base(mint, sol_price)
+                
+                if res.get("ok"):
+                    sig = res.get("sig", "")
+                    logger.info(f"✅ FORCE SELL SUCCESS: {mint[:8]} sig={sig}")
+                    
+                    # Remove from tracking
+                    del self._open_positions[mint]
+                    self._save_positions()
+                    
+                    # Send Telegram notification
+                    if self.telegram_bot and self.telegram_bot.enabled:
+                        message = f"""🔴 **FORCE SELL (STARTUP)**
+
+🪙 **Token:** `{mint[:8]}...{mint[-8:]}`
+📛 **Symbol:** {symbol}
+📊 **Reason:** Startup cleanup
+🔗 **Tx:** `{str(sig)[:16]}...{str(sig)[-16:]}`"""
+                        
+                        await self.telegram_bot.send_message(message)
+                else:
+                    logger.warning(f"⚠️ FORCE SELL FAILED: {mint[:8]} reason={res.get('reason')} (will let ReconcileWorker handle)")
+                    # Don't remove from tracking - let ReconcileWorker handle it later
+                    
+            except Exception as e:
+                logger.warning(f"⚠️ FORCE SELL ERROR: {mint[:8]} error={e} (will let ReconcileWorker handle)")
+                # Don't remove from tracking - let ReconcileWorker handle it later
+        
+        logger.info(f"✅ Force sell completed. {len(self._open_positions)} positions remaining.")
 
 
 # Pieni smoke-ajuri manuaalisesti
