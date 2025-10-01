@@ -113,42 +113,32 @@ jobs:
       if: always()
       run: |
         python3 -c "
-        import asyncio
-        import aiohttp
         import os
-        from datetime import datetime
+        import requests
         
-        async def send_notification():
-            token = os.getenv('TELEGRAM_TOKEN')
-            chat_id = os.getenv('TELEGRAM_CHAT_ID')
-            
-            if not token or not chat_id:
-                print('📱 Telegram ei konfiguroitu')
-                return
-                
-            status = '✅ ONNISTUI' if '${{ job.status }}' == 'success' else '❌ EPÄONNISTUI'
-            run_type = 'Single Cycle' if '${{ github.event.inputs.run_once }}' == 'true' else 'Continuous'
-            
-            message = f'🤖 Solana Auto Trader - Status: {status} - Type: {run_type} - Run: ${{ github.run_number }}'
-            
-            try:
-                url = f'https://api.telegram.org/bot{token}/sendMessage'
-                data = {
-                    'chat_id': chat_id,
-                    'text': message,
-                    'parse_mode': 'HTML'
-                }
-                
-                async with aiohttp.ClientSession() as session:
-                    async with session.post(url, json=data) as response:
-                        if response.status == 200:
-                            print('📱 Telegram ilmoitus lähetetty')
-                        else:
-                            print(f'📱 Telegram virhe: {response.status}')
-            except Exception as e:
-                print(f'📱 Telegram virhe: {e}')
+        token = os.getenv('TELEGRAM_TOKEN')
+        chat_id = os.getenv('TELEGRAM_CHAT_ID')
         
-        asyncio.run(send_notification())
+        if not token or not chat_id:
+            print('📱 Telegram ei konfiguroitu')
+            exit(0)
+            
+        status = '✅ ONNISTUI' if '${{ job.status }}' == 'success' else '❌ EPÄONNISTUI'
+        run_type = 'Single Cycle' if '${{ github.event.inputs.run_once }}' == 'true' else 'Continuous'
+        
+        message = f'🤖 Solana Auto Trader - Status: {status} - Type: {run_type} - Run: ${{ github.run_number }}'
+        
+        try:
+            url = f'https://api.telegram.org/bot{token}/sendMessage'
+            data = {'chat_id': chat_id, 'text': message}
+            response = requests.post(url, json=data, timeout=10)
+            
+            if response.status_code == 200:
+                print('📱 Telegram ilmoitus lähetetty')
+            else:
+                print(f'📱 Telegram virhe: {response.status_code}')
+        except Exception as e:
+            print(f'📱 Telegram virhe: {e}')
         "
         
     - name: Cleanup old artifacts
