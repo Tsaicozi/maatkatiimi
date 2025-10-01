@@ -112,14 +112,11 @@ jobs:
     - name: Send completion notification
       if: always()
       run: |
-        python -c "
+        python3 -c "
         import asyncio
         import aiohttp
         import os
         from datetime import datetime
-        from dotenv import load_dotenv
-        
-        load_dotenv()
         
         async def send_notification():
             token = os.getenv('TELEGRAM_TOKEN')
@@ -132,13 +129,7 @@ jobs:
             status = '✅ ONNISTUI' if '${{ job.status }}' == 'success' else '❌ EPÄONNISTUI'
             run_type = 'Single Cycle' if '${{ github.event.inputs.run_once }}' == 'true' else 'Continuous'
             
-            message = f'''
-🤖 <b>Solana Auto Trader</b>
-Status: {status}
-Tyyppi: {run_type}
-Aika: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} (Helsinki)
-Run: #{os.getenv('GITHUB_RUN_NUMBER', 'N/A')}
-            '''.strip()
+            message = f'🤖 Solana Auto Trader - Status: {status} - Type: {run_type} - Run: ${{ github.run_number }}'
             
             try:
                 url = f'https://api.telegram.org/bot{token}/sendMessage'
