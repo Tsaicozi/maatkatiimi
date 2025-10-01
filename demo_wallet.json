@@ -1,0 +1,8 @@
+{
+  "public_key": "FbH8tbCJJ8VjzXR6Np7Z6KdgcXxiSCPwSeryBkVxc18a",
+  "private_key_base58": "4d7XXnTCzAoHQemyLAgungAFFQvTP23j7FNBfHiGFT5a1KbCsmv9apW1m7qWyKwgr27UiwfdDgeDLoHD4Joe9ZFc",
+  "private_key_json": "[181, 49, 108, 182, 59, 196, 46, 141, 133, 67, 135, 78, 41, 153, 50, 118, 122, 69, 170, 63, 233, 234, 19, 36, 20, 3, 14, 62, 75, 147, 123, 41, 216, 203, 156, 10, 201, 182, 145, 131, 25, 72, 173, 191, 140, 212, 111, 98, 108, 126, 137, 79, 74, 167, 138, 89, 97, 67, 181, 170, 78, 33, 228, 223]",
+  "created_at": "2025-01-01T00:00:00Z",
+  "network": "mainnet-beta",
+  "note": "DEMO WALLET - Ei oikeaa Solana walletia!"
+}
