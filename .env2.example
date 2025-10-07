@@ -1,0 +1,130 @@
+# ===================================
+# SOLANA AUTO TRADER - CONFIGURATION
+# ===================================
+# Kopioi tämä tiedosto nimellä .env2 ja täytä omat arvot
+
+# ============
+# SOLANA RPC
+# ============
+# Public RPC (ilmainen, hidas):
+SOLANA_RPC_URL=https://api.mainnet-beta.solana.com
+
+# Helius RPC (nopea, suositeltu, 100k req/päivä ilmaiseksi):
+# SOLANA_RPC_URL=https://mainnet.helius-rpc.com/?api-key=YOUR_KEY
+# Hanki avain: https://helius.dev
+
+# Helius API Key (valinnainen, token metadata varten)
+HELIUS_API_KEY=
+
+# ==================
+# PHANTOM WALLET
+# ==================
+# Private key Base58-muodossa
+# Luo uusi lompakko: python create_solana_wallet.py
+# ⚠️ TÄRKEÄÄ: Älä KOSKAAN jaa tätä avainta!
+PHANTOM_PRIVATE_KEY=your_base58_private_key_here
+
+# ==================
+# TELEGRAM BOTTI
+# ==================
+# Luo botti: https://t.me/BotFather
+TELEGRAM_TOKEN=123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11
+
+# Chat ID (Saat tämän lähettämällä viestin botille ja käymällä:
+# https://api.telegram.org/bot<YOUR_TOKEN>/getUpdates
+TELEGRAM_CHAT_ID=123456789
+
+# ========================
+# TRADING PARAMETRIT
+# ========================
+# Position size per kauppa (SOL)
+# Konservatiivinen: 0.01-0.02, Aggressiivinen: 0.05-0.1
+POSITION_SIZE_SOL=0.02
+
+# Maksimi positioita kerralla
+MAX_POSITIONS=3
+
+# Stop-loss prosentti (negatiivinen)
+# Konservatiivinen: -20, Normaali: -30, Aggressiivinen: -40
+STOP_LOSS_PCT=-30
+
+# Take-profit prosentti
+# Konservatiivinen: 40, Normaali: 50, Aggressiivinen: 100
+TAKE_PROFIT_PCT=50
+
+# Maksimi pitoaika tunneissa
+# Lyhyt: 24, Normaali: 48, Pitkä: 72
+MAX_HOLD_HOURS=48
+
+# ========================
+# TOKEN FILTERS
+# ========================
+# Minimi likviditeetti USD (LP-arvo)
+# Konservatiivinen: 10000, Normaali: 5000, Aggressiivinen: 3000
+MIN_LIQUIDITY_USD=5000
+
+# Minimi 24h volyymi USD
+# Konservatiivinen: 20000, Normaali: 10000, Aggressiivinen: 5000
+MIN_24H_VOLUME_USD_SOLANA=10000
+
+# Maksimi tokenin ikä tunneissa (uutuuden määritelmä)
+# Hyvin uusi: 6, Normaali: 24, Laaja: 48
+MAX_TOKEN_AGE_HOURS=24
+
+# Maksimi slippage (basis points, 100 = 1%)
+# Tiukka: 300, Normaali: 500, Löysä: 1000
+MAX_SLIPPAGE_BPS=500
+
+# ========================
+# COOLDOWN
+# ========================
+# Cooldown-aika tunneissa per token myynnin jälkeen
+# Estää FOMO-uudelleennoston
+COOLDOWN_HOURS=24
+
+# ========================
+# STATE FILES
+# ========================
+# Nykyiset positiot
+SOLANA_POSITIONS_FILE=solana_positions.json
+
+# Cooldown-lista
+SOLANA_COOLDOWN_FILE=solana_cooldown.json
+
+# ========================
+# SCAN INTERVAL
+# ========================
+# Skannausväli sekunteina (suositus: 300 = 5 min)
+SCAN_INTERVAL_SECONDS=300
+
+# ========================
+# LOGGING
+# ========================
+LOG_LEVEL=INFO
+LOG_FILE=solana_auto_trader.log
+MAX_LOG_BYTES=5242880
+BACKUP_COUNT=3
+
+# ========================
+# ADVANCED (Valinnainen)
+# ========================
+# Jupiter API versio (jätä tyhjäksi = uusin)
+JUPITER_API_VERSION=v6
+
+# Priority fee (lamports, oletus: 0 = auto)
+# Nopea vahvistus: 10000, Normaali: 0
+PRIORITY_FEE=0
+
+# RPC timeout sekunteina
+RPC_TIMEOUT=30
+
+# Retry-yritykset epäonnistuneiden transaktioiden osalta
+MAX_RETRIES=3
+
+# ========================
+# DRY RUN MODE (Testaus)
+# ========================
+# true = ei todellisia kauppoja, vain simulointi
+# false = live trading
+DRY_RUN=false
+
